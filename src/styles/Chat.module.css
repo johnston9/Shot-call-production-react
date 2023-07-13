@@ -1,0 +1,151 @@
+.Post {
+    background-color: #ffffff;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+.ChatTop {
+    background-color: #1ea7ae;
+    color: #fff;
+    border-bottom: 2px solid #fafafa;
+  }
+
+  .ChatTopLink:hover {
+    cursor: pointer;
+    background-color: #666;
+    color: #fff;
+  }
+
+.ChatTop i {
+  color: #fff;
+  font-size: .75rem;
+}
+
+.PostTop2 {
+  background-color: #fff;
+  color: #000;
+}
+
+.Icons {
+  font-size: .75rem;
+}
+
+.Post figure,
+h5 {
+  margin: 0 0;
+}
+
+.Heart {
+  color: #f85032;
+  font-size: .75rem;
+}
+
+.Edit {
+  color: #fff;
+}
+
+.Edit:hover {
+  color: #fff;
+}
+
+.Heart:hover {
+  color: #2142b2;
+}
+
+.HeartOutline {
+  color: #f85032;
+  font-size: .75rem;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
+
+.GoToScene {
+  color: #fff;
+  font-weight: 700;
+  font-size: .75em;
+  cursor: pointer;
+}
+.GoToScene:hover {
+  color: #000;
+}
+
+.GoToScene a {
+  color: #79f5ef;
+  font-weight: 700;
+  font-size: .75em;
+  cursor: pointer;
+}
+.GoToScene a:hover {
+  color: #e9f1f1;
+}
+
+.Content {
+  background-color: #fff;
+  cursor: pointer;
+  height: 100%;
+}
+
+.Content:hover span {
+  color: #fff;
+  cursor: pointer;
+}
+
+.Content:hover {
+  background-color: #232d30;
+  color: #fff;
+  cursor: pointer;
+}
+
+.PostTopText {
+  color: #205a6e;
+}
+
+.Content1 {
+  color: #1ea7ae;
+  cursor: pointer;
+} 
+
+.Content2 {
+  cursor: pointer;
+  color: #000;
+}
+
+.Content1:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.Content2:hover {
+  cursor: pointer;
+  color: #fff;
+} 
+
+.Red {
+  color: crimson;
+}
+
+.White {
+  color: #fff;
+}
+
+.ContentDep {
+  background-color: #444a4c;
+  color: #79f5ef;
+  cursor: pointer;
+}
+
+.Image {
+  height: 200px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.ContentDep:hover {
+  background-color: #232d30;
+  color: #fff;
+  cursor: pointer;
+}

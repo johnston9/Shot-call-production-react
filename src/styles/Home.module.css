@@ -1,0 +1,178 @@
+.HomeBox {
+    background-color: #c7e7f1;
+    width: 100%; 
+    height: 80vh;
+  }
+
+p { 
+    color: #666;
+}
+
+h1, h2, h3, h4, h5 { 
+    color: #666;
+} 
+ 
+.BlueBody {
+    background-color: rgb(235, 250, 250);
+}
+.PinkBody {
+    background-color: rgb(253, 249, 253);
+}
+.WhiteBody {
+    background-color: rgb(226, 246, 246);
+}
+
+.FeatureLink:hover {
+    background-color: #3b444b;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.FeatureLink:hover h4 {
+    color: #fafafa;
+}
+
+.FeatureLink:hover p {
+    color: #fafafa;
+}
+
+.FeatureLink:hover .FeaturesImage {
+    border-radius: 25%;
+}
+  
+.Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.FeatureImage {
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.Bold {
+    font-weight: 700;
+  }
+
+.Inner {
+    background-color: #0b3d63;
+    color: #fafafa;
+}
+
+.FillerImagel {
+    object-fit: cover;
+    height: 90%;
+    width: 90%;
+}
+
+.FillerImager {
+    object-fit: contain;
+    height: 270px;
+    width: 40px;
+    margin-top: 30px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.Header {
+    text-align: center;
+    color: #fff;
+}
+
+.Depts {
+    color: rgb(170, 248, 248);
+}
+
+.Depts:hover {
+    cursor: pointer;
+    color: rgb(238, 242, 242);
+}
+
+.Image {
+    height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+hr.LineWhite {
+    border-top: 2px solid #fff ;
+    width: 70%
+}
+
+.Creative {
+    color: #fff;
+}
+
+.Creative a {
+    color: #fff;
+}
+
+.Overview {   
+	background-color: #fff;
+}
+
+.OverviewText {
+    color: #000;
+}
+
+.Container {
+padding: 30px 10px;
+}
+
+.SignInCol {
+height: 320px;
+}
+
+.SignUpCol {
+height: 375px;
+}
+
+.Link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: auto;
+    color: antiquewhite;
+}
+
+.Link span {
+color: rgb(170 231 255);
+}
+
+@media screen and (max-width:768px) {
+    .HomeBox {
+        height: 100vh;
+    }
+}
+
+/* .Box {
+    background-color: #c7e7f1;
+    color: #fafafa;
+    border-bottom: 1px solid #fff;
+}
+
+.Box2 {
+    height: 40px;
+    background-color: #112533;
+    color: #fafafa;
+    border-bottom: 1px solid #fff;
+}
+
+.Box:hover {
+    background-color: #abb6bc;
+    color: #000;
+}
+
+.Link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: auto;
+    color: antiquewhite;
+}
+
+.Link span {
+color: rgb(170 231 255);
+}  */

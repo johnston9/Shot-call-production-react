@@ -1,0 +1,34 @@
+.NavBar {
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  color: black;
+}
+
+.NavLink {
+padding: 2px;
+font-size: 12px;
+}
+
+i {
+  color: rgb(41, 180, 180);
+}
+
+.DropLink {
+color: black;
+}
+
+.Active i {
+color: #2142b2;
+}
+
+.Active {
+color: #2142b2;
+}
+
+Title {
+color: #000;
+}
+
+i {
+font-size: .5em !important;
+}

@@ -1,0 +1,48 @@
+.Top {
+    background-color: #1ea7ae;
+    color: #fff;
+  }
+
+.TopCompany {
+    /* font-size: 1.25rem; */
+    color: #fff;
+}
+
+
+.TopName {
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.Top i {
+    color: #fff;
+}
+
+.ProTop {
+    background-color: #3b444b;
+    color: #fff;
+}
+
+.ProTop i {
+    color: #666; 
+}
+
+.BudgetLink {
+    background-color: #33e6e0;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Overview {   
+	background-color: #fff;
+    font-weight: 700;
+}
+
+.Bold {
+    font-weight: 700;
+}
+
+/* .Width100 {
+
+} */
