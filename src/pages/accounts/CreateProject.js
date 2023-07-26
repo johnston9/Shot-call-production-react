@@ -137,11 +137,12 @@ function CreateProject({ setShow, fetchProjects }) {
     }
 
     try {
-      console.log(
-        "SESSION_ACCESS_TOKEN: ",
-        sessionStorage.getItem("accessToken")
-      )
-      const { data } = await axiosReq.post("/projects/", formData)
+      console.log("SESSION_ACCESS_TOKEN: ", localStorage.getItem("accessToken"))
+      const { data } = await axiosReq.post("/projects/", formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       setShow(false)
       fetchProjects()
       console.log(data)

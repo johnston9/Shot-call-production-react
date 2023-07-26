@@ -71,7 +71,7 @@ const SignInForm = () => {
       // axios.defaults.headers.common[
       //   "Cookie"
       // ] = `shot-caller-pro-refresh-token=${data.refresh_token};shot-caller-pro-auth=${data.access_token}`
-      // localStorage.setItem("accessToken", data.access_token)
+      localStorage.setItem("accessToken", data.access_token)
       // sessionStorage.setItem("accessToken", accessToken)
       setTokenTimestamp(data)
       history.push("/")
