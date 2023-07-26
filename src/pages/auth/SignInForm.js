@@ -65,6 +65,9 @@ const SignInForm = () => {
       document.cookie = `JWT_AUTH_REFRESH_COOKIE=${accessToken}; expires=${cookieExpiration}; path=/`
       setCurrentUser(data.user)
       localStorage.setItem("user", JSON.stringify(data.user))
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${data.access_token}`
       // axios.defaults.headers.common[
       //   "Cookie"
       // ] = `shot-caller-pro-refresh-token=${data.refresh_token};shot-caller-pro-auth=${data.access_token}`
