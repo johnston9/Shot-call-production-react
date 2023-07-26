@@ -65,13 +65,13 @@ function CreateProject({ setShow, fetchProjects }) {
   const textFields = (
     <div>
       <MuiFormControl sx={{ minWidth: "95%" }}>
-        <MuiInputLabel id="categoryTypes">Category Type</MuiInputLabel>
+        <MuiInputLabel id="category_type">Category Type</MuiInputLabel>
         <MuiSelect
-          labelId="categoryTypes-label"
-          id="categoryTypes"
-          name="categoryTypes"
+          labelId="category_type-label"
+          id="category_type"
+          name="category_type"
           multiple
-          value={postData.categoryTypes}
+          value={postData.category_type}
           onChange={handleChange}
           input={<FilledInput label="Category types" />}
           MenuProps={MenuProps}
@@ -85,7 +85,7 @@ function CreateProject({ setShow, fetchProjects }) {
             ))}
         </MuiSelect>
       </MuiFormControl>
-      {errors?.categoryType?.map((message, idx) => (
+      {errors?.category_type?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
