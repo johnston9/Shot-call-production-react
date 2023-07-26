@@ -1,38 +1,41 @@
-import jwtDecode from "jwt-decode";
-import { axiosReq } from "../api/axiosDefaults";
+import jwtDecode from "jwt-decode"
+import { axiosReq } from "../api/axiosDefaults"
 
 export const setTokenTimestamp = (data) => {
-    const refreshShotCallerProTimestamp = jwtDecode(data?.refresh_token).exp;
-    localStorage.setItem("refreshShotCallerProTimestamp", refreshShotCallerProTimestamp);
-    console.log(`timestamp set ${refreshShotCallerProTimestamp} ` )
-  };
-  
-  export const shouldRefreshToken = () => {
-    return !!localStorage.getItem("refreshShotCallerProTimestamp");
-  };
-  
-  export const getRefreshToken = () => {
-    return localStorage.getItem("refreshShotCallerProTimestamp");
-  };
-  
-  export const removeTokenTimestamp = () => {
-    localStorage.removeItem("refreshShotCallerProTimestamp");
-  };
+  const refreshShotCallerProTimestamp = jwtDecode(data?.refresh_token).exp
+  localStorage.setItem(
+    "refreshShotCallerProTimestamp",
+    refreshShotCallerProTimestamp
+  )
+  console.log(`timestamp set ${refreshShotCallerProTimestamp} `)
+}
+
+export const shouldRefreshToken = () => {
+  return !!localStorage.getItem("refreshShotCallerProTimestamp")
+}
+
+export const getRefreshToken = () => {
+  return localStorage.getItem("refreshShotCallerProTimestamp")
+}
+
+export const removeTokenTimestamp = () => {
+  localStorage.removeItem("refreshShotCallerProTimestamp")
+}
 
 export const fetchMoreData = async (resource, setResource) => {
   try {
-    const { data } = await axiosReq.get(resource.next);
+    const { data } = await axiosReq.get(resource.next)
     setResource((prevResource) => ({
       ...prevResource,
       next: data.next,
       results: data.results.reduce((acc, cur) => {
         return acc.some((accResult) => accResult.id === cur.id)
           ? acc
-          : [...acc, cur];
+          : [...acc, cur]
       }, prevResource.results),
-    }));
+    }))
   } catch (err) {}
-};
+}
 
 export const followHelper = (profile, clickedProfile, following_id) => {
   return profile.id === clickedProfile.id
@@ -46,8 +49,8 @@ export const followHelper = (profile, clickedProfile, following_id) => {
     ? // update following count
       { ...profile, following_count: profile.following_count + 1 }
     : // return unchanged
-      profile;
-};
+      profile
+}
 
 export const unfollowHelper = (profile, clickedProfile) => {
   return profile.id === clickedProfile.id
@@ -61,5 +64,21 @@ export const unfollowHelper = (profile, clickedProfile) => {
     ? // update following count
       { ...profile, following_count: profile.following_count - 1 }
     : // return unchanged
-      profile;
-};
+      profile
+}
+
+export const getCookie = (cookieName) => {
+  const name = cookieName + "="
+  const decodedCookie = decodeURIComponent(document.cookie)
+  const cookieArray = decodedCookie.split(";")
+
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim()
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length)
+    }
+  }
+
+  // Return null if the cookie is not found
+  return null
+}

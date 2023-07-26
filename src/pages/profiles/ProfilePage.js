@@ -1,34 +1,44 @@
 /* Page to fetch and display the data and chats for each Profile */
-import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import { useParams } from "react-router-dom";
-import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
-import { axiosReq } from "../../api/axiosDefaults";
-import { Button, Image } from "react-bootstrap";
-import NoResults from "../../assets/no-results.png";
-import InfiniteScroll from "react-infinite-scroll-component";
-import ChatTop from "../chat/ChatTop";
-import { fetchMoreData } from "../../utils/utils";
-import { ProfileEditDropdown } from "../../components/UniDropDown";
+import React, { useEffect, useState } from "react"
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
+import Container from "react-bootstrap/Container"
+import btnStyles from "../../styles/Button.module.css"
+import Asset from "../../components/Asset"
+import { useParams } from "react-router-dom"
+import styles from "../../styles/ProfilePage.module.css"
+import appStyles from "../../App.module.css"
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext"
+import {
+  useProfileData,
+  useSetProfileData,
+} from "../../contexts/ProfileDataContext"
+import { axiosReq } from "../../api/axiosDefaults"
+import { Button, Form, Image } from "react-bootstrap"
+import NoResults from "../../assets/no-results.png"
+import InfiniteScroll from "react-infinite-scroll-component"
+import ChatTop from "../chat/ChatTop"
+import { fetchMoreData } from "../../utils/utils"
+import { ProfileEditDropdown } from "../../components/UniDropDown"
+import axios from "axios"
 
 function ProfilePage() {
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [profileChat, setProfileChat] = useState({ results: [] });
-  const currentUser = useCurrentUser();
-  const { id } = useParams();
+  const [hasLoaded, setHasLoaded] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [profileChat, setProfileChat] = useState({ results: [] })
+  const currentUser = useCurrentUser()
+  const setCurrentUser = useSetCurrentUser()
+  const { id } = useParams()
 
-  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
-  const { profilePage } = useProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData()
+  const { profilePage } = useProfileData()
 
-  const [profile] = profilePage.results;
-  const is_owner = currentUser?.username === profile?.owner;
+  const [profile] = profilePage.results
+  const is_owner = currentUser?.username === profile?.owner
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,28 +47,102 @@ function ProfilePage() {
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/chat/?owner__profile=${id}`),
-          ]);
+          ])
 
-          console.log(profilePosts)
+        console.log(profilePosts)
         setProfileData((prevState) => ({
           ...prevState,
           profilePage: { results: [profilePage] },
-        }));
-        setProfileChat(profilePosts);
-        setHasLoaded(true);
+        }))
+        setProfileChat(profilePosts)
+        setHasLoaded(true)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
-    };
-    fetchData();
-  }, [id, setProfileData]);
+    }
+    fetchData()
+  }, [id, setProfileData])
+
+  const handleChange = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    console.log("email", email)
+    try {
+      const result = await axios.patch(`/users/${currentUser.pk}/`, {
+        email,
+        password,
+      })
+
+      console.log("success", result)
+      const {
+        email: updatedEmail,
+        id: pk,
+        username: updatedUsername,
+      } = result?.data?.user
+      const { id: profile_id, image: profile_image } = result?.data?.profile
+      const updatedUser = {
+        pk,
+        username: updatedUsername,
+        email: updatedEmail,
+        first_name: "",
+        last_name: "",
+        profile_id,
+        profile_image,
+      }
+
+      console.log(updatedUser)
+
+      setCurrentUser(updatedUser)
+      localStorage.setItem("user", updatedUser)
+      setEmail("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const mainProfile = (
     <>
+      <Col xs={12}>
+        <p>
+          <span className="font-weight-bold">Username:</span>{" "}
+          {currentUser?.username}
+        </p>
+        <p>
+          {" "}
+          <span className="font-weight-bold">Email:</span> {currentUser?.email}
+        </p>
+        <Form onSubmit={handleSubmit} className={styles.Form}>
+          <Form.Group controlId="password" className="mb-2">
+            <Form.Label className="d-none">Password</Form.Label>
+            <Form.Control
+              className={styles.Input}
+              type="text"
+              placeholder="Enter New Password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+
+          <div className="text-center">
+            <Button
+              className={`px-0 ${btnStyles.Button} ${btnStyles.Wide2} ${btnStyles.Bright}`}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </div>
+        </Form>
+      </Col>
+
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
-        <Image
+          <Image
             className={styles.ProfileImage}
             roundedCircle
             src={profile?.image}
@@ -72,11 +156,9 @@ function ProfilePage() {
           <h5>{profile?.owner}</h5>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
-              <div>{profile?.posts_count ? (
-                <p>{profile?.posts_count} </p>
-              ) : (
-                "0"
-              ) }</div>
+              <div>
+                {profile?.posts_count ? <p>{profile?.posts_count} </p> : "0"}
+              </div>
               <div>posts</div>
             </Col>
             <Col xs={3} className="my-2">
@@ -111,7 +193,7 @@ function ProfilePage() {
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
-  );
+  )
 
   const mainProfilePosts = (
     <>
@@ -135,26 +217,26 @@ function ProfilePage() {
         />
       )}
     </>
-  );
+  )
 
   return (
     <div className="mt-5">
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" >
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfilePosts}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
-      </Col>
-    </Row>
+      <Row>
+        <Col className="py-2 p-0 p-lg-2">
+          <Container className={appStyles.Content}>
+            {hasLoaded ? (
+              <>
+                {mainProfile}
+                {mainProfilePosts}
+              </>
+            ) : (
+              <Asset spinner />
+            )}
+          </Container>
+        </Col>
+      </Row>
     </div>
-  );
+  )
 }
 
-export default ProfilePage;
+export default ProfilePage
