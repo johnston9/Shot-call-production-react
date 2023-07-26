@@ -1,6 +1,6 @@
 /* Component in the Account component to fetch a users Projects data
  * Contains the Project component to which it passes the data for each project */
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
@@ -28,21 +28,27 @@ const Projects = ({ id }) => {
   const [query, setQuery] = useState("")
   const [showCreateProject, setShowCreateProject] = useState(false)
 
-  const fetchProjects = async () => {
-    try {
-      const { data } = await axiosReq.get(`/projects/${userData.pk}`)
-      setProjects(data)
-      console.log(data)
-      setHasLoaded(true)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  const fetchProjects = useCallback(
+    async (searchQuery = "") => {
+      try {
+        const { data } = await axiosReq.get(
+          `/projects/${userData.pk}${
+            searchQuery !== "" ? `?search=${searchQuery}` : ""
+          }`
+        )
+        setProjects(data)
+        setHasLoaded(true)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    [userData.pk]
+  )
 
   useEffect(() => {
     setHasLoaded(false)
     const timer = setTimeout(() => {
-      fetchProjects()
+      fetchProjects(query)
     }, 1000)
 
     return () => {
