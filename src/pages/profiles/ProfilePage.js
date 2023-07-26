@@ -8,30 +8,23 @@ import Asset from "../../components/Asset"
 import { useParams } from "react-router-dom"
 import styles from "../../styles/ProfilePage.module.css"
 import appStyles from "../../App.module.css"
-import {
-  useCurrentUser,
-  useSetCurrentUser,
-} from "../../contexts/CurrentUserContext"
+import { useCurrentUser } from "../../contexts/CurrentUserContext"
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext"
 import { axiosReq } from "../../api/axiosDefaults"
-import { Button, Form, Image } from "react-bootstrap"
+import { Button, Image } from "react-bootstrap"
 import NoResults from "../../assets/no-results.png"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ChatTop from "../chat/ChatTop"
 import { fetchMoreData } from "../../utils/utils"
 import { ProfileEditDropdown } from "../../components/UniDropDown"
-import axios from "axios"
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const [profileChat, setProfileChat] = useState({ results: [] })
   const currentUser = useCurrentUser()
-  const setCurrentUser = useSetCurrentUser()
   const { id } = useParams()
 
   const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData()
@@ -63,47 +56,6 @@ function ProfilePage() {
     fetchData()
   }, [id, setProfileData])
 
-  const handleChange = (e) => {
-    setEmail(e.target.value)
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    console.log("email", email)
-    try {
-      const result = await axios.patch(`/users/${currentUser.pk}/`, {
-        email,
-        password,
-      })
-
-      console.log("success", result)
-      const {
-        email: updatedEmail,
-        id: pk,
-        username: updatedUsername,
-      } = result?.data?.user
-      const { id: profile_id, image: profile_image } = result?.data?.profile
-      const updatedUser = {
-        pk,
-        username: updatedUsername,
-        email: updatedEmail,
-        first_name: "",
-        last_name: "",
-        profile_id,
-        profile_image,
-      }
-
-      console.log(updatedUser)
-
-      setCurrentUser(updatedUser)
-      localStorage.setItem("user", updatedUser)
-      setEmail("")
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const mainProfile = (
     <>
       <Col xs={12}>
@@ -115,28 +67,6 @@ function ProfilePage() {
           {" "}
           <span className="font-weight-bold">Email:</span> {currentUser?.email}
         </p>
-        <Form onSubmit={handleSubmit} className={styles.Form}>
-          <Form.Group controlId="password" className="mb-2">
-            <Form.Label className="d-none">Password</Form.Label>
-            <Form.Control
-              className={styles.Input}
-              type="text"
-              placeholder="Enter New Password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-
-          <div className="text-center">
-            <Button
-              className={`px-0 ${btnStyles.Button} ${btnStyles.Wide2} ${btnStyles.Bright}`}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </div>
-        </Form>
       </Col>
 
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}

@@ -14,8 +14,8 @@ import Row from "react-bootstrap/Row"
 import Image from "react-bootstrap/Image"
 import Container from "react-bootstrap/Container"
 import TopBox from "../../components/TopBox"
-import axios from "axios"
 import { useRedirectSign } from "../../hooks/RedirectSign"
+import { axiosInstanceNoAuth } from "../../api/axiosDefaults"
 
 const SignUpForm = () => {
   useRedirectSign()
@@ -44,7 +44,7 @@ const SignUpForm = () => {
     console.log("signup data: ", signUpData)
 
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData)
+      await axiosInstanceNoAuth.post("/dj-rest-auth/registration/", signUpData)
       history.push("/signin")
     } catch (err) {
       setErrors(err.response?.data)

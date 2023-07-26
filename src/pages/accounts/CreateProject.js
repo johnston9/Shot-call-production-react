@@ -1,49 +1,32 @@
 /* Component in the Account component to create Projects */
 import React, { useEffect, useState } from "react"
 import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+// import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import styles from "../../styles/ChatCreate.module.css"
-import btnStyles from "../../styles/Button.module.css"
+// import btnStyles from "../../styles/Button.module.css"
 import Alert from "react-bootstrap/Alert"
-import { axiosReq } from "../../api/axiosDefaults"
+import { axiosInstance, axiosInstanceNoAuth } from "../../api/axiosDefaults"
 import {
-  FormControl as MuiFormControl,
-  MenuItem as MuiMenuItem,
-  Select as MuiSelect,
-  InputLabel as MuiInputLabel,
-  FilledInput,
-} from "@mui/material"
-import axios from "axios"
+  MultiSelect as ManMultiSelect,
+  Button as ManButton,
+} from "@mantine/core"
+import { toast } from "react-hot-toast"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
 
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-}
-
 function CreateProject({ setShow, fetchProjects }) {
-  const currentUser = useCurrentUser()
+  const userData = useCurrentUser()
   const [errors, setErrors] = useState({})
-  const [categoryTypes, setCategoryTypes] = useState([])
+  const [allCategoryTypes, setAllCategoryTypes] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const [postData, setPostData] = useState({
-    category_type: [],
+    categoryTypes: [],
     name: "",
-    user: currentUser,
   })
 
-  useEffect(() => {
-    console.log(postData)
-  }, [postData])
-  const { name, stripe_id, url } = postData
+  const { name, categoryTypes } = postData
 
   const handleChange = (event) => {
     console.log(event.name)
@@ -55,45 +38,30 @@ function CreateProject({ setShow, fetchProjects }) {
   }
 
   useEffect(() => {
-    axiosReq
+    axiosInstanceNoAuth
       .get("/categories/")
       .then((res) => {
-        setCategoryTypes(res.data.results)
+        console.log(res.data.results)
+        const formattedCategoryTypes = res?.data?.results?.map((data) => ({
+          value: data.type,
+          label: data.type,
+        }))
+        setAllCategoryTypes(formattedCategoryTypes)
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
 
+  const handleSetCategoryTypes = (data) => {
+    setPostData((prev) => ({
+      ...prev,
+      categoryTypes: data,
+    }))
+  }
+
   const textFields = (
     <div>
-      <MuiFormControl sx={{ minWidth: "95%" }}>
-        <MuiInputLabel id="category_type">Category Type</MuiInputLabel>
-        <MuiSelect
-          labelId="category_type-label"
-          id="category_type"
-          name="category_type"
-          multiple
-          value={postData.category_type}
-          onChange={handleChange}
-          input={<FilledInput label="Category types" />}
-          MenuProps={MenuProps}
-          sx={{ backgroundColor: "#fff" }}
-        >
-          {categoryTypes?.length > 0 &&
-            categoryTypes?.map((category) => (
-              <MuiMenuItem key={category?.id} value={category?.type}>
-                {category?.type}
-              </MuiMenuItem>
-            ))}
-        </MuiSelect>
-      </MuiFormControl>
-      {errors?.category_type?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
       <Form.Group controlId="name" className={`${styles.Width95} text-center`}>
         <Form.Label className={`${styles.Bold} `}>Name</Form.Label>
         <Form.Control
@@ -102,6 +70,7 @@ function CreateProject({ setShow, fetchProjects }) {
           name="name"
           value={name}
           onChange={handleChange}
+          disabled={isLoading}
         />
       </Form.Group>
       {errors?.name?.map((message, idx) => (
@@ -109,48 +78,75 @@ function CreateProject({ setShow, fetchProjects }) {
           {message}
         </Alert>
       ))}
+
+      <ManMultiSelect
+        sx={{
+          textAlign: "center",
+          "& .mantine-InputWrapper-label": { fontWeight: "bold" },
+        }}
+        data={allCategoryTypes}
+        value={postData.categoryTypes}
+        label="Project Types"
+        placeholder="Enter project types"
+        onChange={handleSetCategoryTypes}
+        disabled={isLoading}
+      />
     </div>
   )
 
   const buttons = (
     <div className="text-center mt-3">
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue} px-5 mr-3`}
+      <ManButton
+        type="submit"
+        sx={(theme) => ({
+          backgroundColor: theme.colors.lightBlue,
+          marginRight: 10,
+        })}
         onClick={() => setShow((show) => !show)}
+        disabled={isLoading}
       >
         Cancel
-      </Button>
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue} px-5 pl-3`}
+      </ManButton>
+      <ManButton
+        disabled={isLoading}
         type="submit"
+        sx={(theme) => ({
+          backgroundColor: theme.colors.lightBlue,
+        })}
       >
         Create
-      </Button>
+      </ManButton>
     </div>
   )
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setIsLoading(true)
     const formData = {
-      ...postData,
-      stripe_id: "",
+      category_type: categoryTypes,
+      name,
+      stripe_id: "123",
+      user: userData,
     }
 
     try {
-      console.log("SESSION_ACCESS_TOKEN: ", localStorage.getItem("accessToken"))
-      const { data } = await axiosReq.post("/projects/", formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
+      const { data } = await axiosInstance.post("/projects/", formData)
+      toast.success("Project created")
+      console.log(data)
+      setPostData({
+        categoryTypes: [],
+        name: "",
       })
       setShow(false)
       fetchProjects()
-      console.log(data)
     } catch (err) {
+      toast.error("Project creation failed")
       console.log(err)
       if (err.response?.status !== 401) {
         setErrors(err.response?.data)
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 

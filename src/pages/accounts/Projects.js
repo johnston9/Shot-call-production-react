@@ -21,7 +21,6 @@ import { useHistory } from "react-router-dom"
 const Projects = ({ id }) => {
   const history = useHistory()
   const userData = useCurrentUser()
-  console.log(userData)
   const [hasLoaded, setHasLoaded] = useState(false)
   const [projects, setProjects] = useState({ results: [] })
   // eslint-disable-next-line

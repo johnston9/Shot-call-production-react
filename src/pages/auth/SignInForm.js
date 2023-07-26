@@ -16,10 +16,10 @@ import Image from "react-bootstrap/Image"
 import Container from "react-bootstrap/Container"
 
 import TopBox from "../../components/TopBox"
-import axios from "axios"
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext"
 import { useRedirectSign } from "../../hooks/RedirectSign"
 import { setTokenTimestamp } from "../../utils/utils"
+import { axiosInstanceNoAuth } from "../../api/axiosDefaults"
 
 const SignInForm = () => {
   useRedirectSign()
@@ -46,31 +46,13 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData)
-      console.log(data)
-      // store access token in cookie
-      const accessToken = data.refresh_token
+      const { data } = await axiosInstanceNoAuth.post(
+        "/dj-rest-auth/login/",
+        signInData
+      )
 
-      // Set the expiration time for the cookie (in milliseconds)
-      const expirationTime = 3600 * 1000 // 1 hour
-
-      // Get the current timestamp and calculate the expiration date
-      const now = new Date()
-      const expirationDate = new Date(now.getTime() + expirationTime)
-
-      // Format the expiration date in a cookie-compatible string
-      const cookieExpiration = expirationDate.toUTCString()
-
-      // Set the cookie with the access token
-      document.cookie = `JWT_AUTH_REFRESH_COOKIE=${accessToken}; expires=${cookieExpiration}; path=/`
       setCurrentUser(data.user)
       localStorage.setItem("user", JSON.stringify(data.user))
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${data.access_token}`
-      // axios.defaults.headers.common[
-      //   "Cookie"
-      // ] = `shot-caller-pro-refresh-token=${data.refresh_token};shot-caller-pro-auth=${data.access_token}`
       localStorage.setItem("accessToken", data.access_token)
       // sessionStorage.setItem("accessToken", accessToken)
       setTokenTimestamp(data)

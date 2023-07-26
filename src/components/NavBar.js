@@ -11,10 +11,10 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext"
-import axios from "axios"
 import Avatar from "./Avatar"
 import useDropdownClick from "../hooks/useDropdownClick"
 import { removeTokenTimestamp } from "../utils/utils"
+import { axiosInstanceNoAuth } from "../api/axiosDefaults"
 
 const NavBar = () => {
   const currentUser = useCurrentUser()
@@ -46,13 +46,11 @@ const NavBar = () => {
   const handleSignOut = async () => {
     /* Function to sign a user out */
     try {
-      await axios.post("dj-rest-auth/logout/")
+      await axiosInstanceNoAuth.post("dj-rest-auth/logout/")
 
       setCurrentUser(null)
       localStorage.removeItem("user")
       localStorage.removeItem("accessToken")
-      document.cookie =
-        "JWT_AUTH_REFRESH_COOKIE=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
       removeTokenTimestamp()
     } catch (err) {
       console.log(err)
@@ -261,7 +259,7 @@ const NavBar = () => {
         aria-controls="basic-navbar-nav"
       />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto text-right">
+        <Nav className="ml-auto text-right align-items-center">
           {/* home */}
           <NavLink
             exact
