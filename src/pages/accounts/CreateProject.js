@@ -33,7 +33,7 @@ function CreateProject({ setShow, fetchProjects }) {
   const [categoryTypes, setCategoryTypes] = useState([])
 
   const [postData, setPostData] = useState({
-    categoryTypes: [],
+    category_type: [],
     name: "",
   })
 
