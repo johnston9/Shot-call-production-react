@@ -1,7 +1,14 @@
 /* File to contain the Axios base and create the
    axiosReq and axiosRes */
+
 import axios from "axios"
-import { getCookie } from "../utils/utils"
+// import { getCookie } from "../utils/utils"
+
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(";").shift()
+}
 
 axios.defaults.baseURL = "http://dev81.developer24x7.com:9100/"
 axios.defaults.headers.post["Content-Type"] = "multipart/form-data"
@@ -10,7 +17,7 @@ axios.defaults.withCredentials = true
 export const axiosReq = axios.create()
 export const axiosRes = axios.create()
 
-const csrfToken = getCookie("csrftoken")
+const csrfToken = getCookie("csrftoken") ? getCookie("csrftoken") : null
 
 // Create headers object with or without the Authorization header
 const csrfHeader = {}
