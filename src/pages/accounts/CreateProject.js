@@ -16,6 +16,7 @@ import {
   FilledInput,
 } from "@mui/material"
 import axios from "axios"
+import { useCurrentUser } from "../../contexts/CurrentUserContext"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -29,12 +30,14 @@ const MenuProps = {
 }
 
 function CreateProject({ setShow, fetchProjects }) {
+  const currentUser = useCurrentUser()
   const [errors, setErrors] = useState({})
   const [categoryTypes, setCategoryTypes] = useState([])
 
   const [postData, setPostData] = useState({
     category_type: [],
     name: "",
+    user: currentUser,
   })
 
   useEffect(() => {
