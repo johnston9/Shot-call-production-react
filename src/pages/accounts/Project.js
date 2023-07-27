@@ -79,7 +79,6 @@ const Project = ({
           )}
           <hr className="my-2" />
           <Card.Text>Project Id: {id}</Card.Text>
-          <Card.Text>Project Name: {}</Card.Text>
           {/* <Card.Text>Stripe Id: {stripe_id}</Card.Text> */}
           <Card.Text>URL: {shotcaller_url} </Card.Text>
           <Card.Text className="d-flex">
