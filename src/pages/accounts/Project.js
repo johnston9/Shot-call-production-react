@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import { UniDropdown } from "../../components/UniDropDown"
 import { Link, useHistory } from "react-router-dom"
-import { Chip as ManChip } from "@mantine/core"
+import { Badge as ManBadge } from "@mantine/core"
 
 const Project = ({
   id,
@@ -80,12 +80,19 @@ const Project = ({
           <hr className="my-2" />
           <Card.Text>Project Id: {id}</Card.Text>
           {/* <Card.Text>Stripe Id: {stripe_id}</Card.Text> */}
-          <Card.Text>URL: {shotcaller_url} </Card.Text>
+          <Card.Text>
+            URL:{" "}
+            <a href={shotcaller_url} target="_blank" rel="noreferrer">
+              {shotcaller_url}
+            </a>
+          </Card.Text>
           <Card.Text className="d-flex">
-            Project types:
+            Project Types:{" "}
             <span className="d-flex">
               {category_type?.map((category) => (
-                <ManChip>{category}</ManChip>
+                <ManBadge mx={3} sx={{ textTransform: "capitalize" }}>
+                  {category}
+                </ManBadge>
               ))}
             </span>
           </Card.Text>
