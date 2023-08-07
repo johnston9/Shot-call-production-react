@@ -11,7 +11,15 @@ import { ProfileEditDropdown } from "../../components/UniDropDown"
 import Projects from "./Projects"
 import { useHistory } from "react-router-dom"
 
-const Account = ({ id, profile, account }) => {
+const Account = ({
+  id,
+  profile,
+  account,
+  stripeCategoryType,
+  stripeProjectName,
+  stripeSessionId,
+  stripeSuccess,
+}) => {
   const history = useHistory()
 
   const topProfile = (
@@ -101,7 +109,13 @@ const Account = ({ id, profile, account }) => {
       </Row>
       <Row>
         <Col>
-          <Projects id={id} />
+          <Projects
+            id={id}
+            stripeCategoryType={stripeCategoryType}
+            stripeProjectName={stripeProjectName}
+            stripeSessionId={stripeSessionId}
+            stripeSuccess={stripeSuccess}
+          />
         </Col>
       </Row>
       {accountInfo}

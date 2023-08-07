@@ -87,14 +87,7 @@ const Project = ({
             </a>
           </Card.Text>
           <Card.Text className="d-flex">
-            Project Types:{" "}
-            <span className="d-flex">
-              {category_type?.map((category) => (
-                <ManBadge mx={3} sx={{ textTransform: "capitalize" }}>
-                  {category}
-                </ManBadge>
-              ))}
-            </span>
+            Project Types: <span className="d-flex">{category_type}</span>
           </Card.Text>
           <Row className="mt-1">
             <Col>

@@ -9,7 +9,7 @@ import appStyles from "../../App.module.css"
 import styles from "../../styles/Account.module.css"
 import NoResults from "../../assets/no-results.png"
 import { useEffect } from "react"
-import { axiosReq } from "../../api/axiosDefaults"
+import { axiosInstance, axiosReq } from "../../api/axiosDefaults"
 import Asset from "../../components/Asset"
 import Project from "./Project"
 import CreateProject from "./CreateProject"
@@ -18,7 +18,13 @@ import Button from "react-bootstrap/Button"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
 import { useHistory } from "react-router-dom"
 
-const Projects = ({ id }) => {
+const Projects = ({
+  id,
+  stripeCategoryType,
+  stripeProjectName,
+  stripeSessionId,
+  stripeSuccess,
+}) => {
   const history = useHistory()
   const userData = useCurrentUser()
   const [hasLoaded, setHasLoaded] = useState(false)
@@ -56,6 +62,37 @@ const Projects = ({ id }) => {
     }
   }, [query, id])
 
+  const handleCreateProject = async (
+    session_id,
+    project_name,
+    category_type
+  ) => {
+    const { data } = await axiosInstance.get(
+      `/projects/stripe-success/?session_id=${session_id}&project_name=${project_name}&category_type=${category_type}`
+    )
+
+    console.log(data)
+
+    fetchProjects()
+    history.push(`/accounts/${userData.pk}`)
+  }
+
+  useEffect(() => {
+    if (
+      stripeSuccess &&
+      JSON.parse(stripeSuccess) &&
+      stripeCategoryType &&
+      stripeSessionId &&
+      stripeProjectName
+    ) {
+      handleCreateProject(
+        stripeSessionId,
+        stripeProjectName,
+        stripeCategoryType
+      )
+    }
+  }, [stripeSuccess, stripeCategoryType, stripeProjectName, stripeSessionId])
+
   const handleShowProject = () => {
     if (
       userData?.email === "" ||
@@ -83,6 +120,10 @@ const Projects = ({ id }) => {
         <CreateProject
           setShow={setShowCreateProject}
           fetchProjects={fetchProjects}
+          stripeCategoryType={stripeCategoryType}
+          stripeProjectName={stripeProjectName}
+          stripeSessionId={stripeSessionId}
+          stripeSuccess={stripeSuccess}
         />
       ) : (
         ""

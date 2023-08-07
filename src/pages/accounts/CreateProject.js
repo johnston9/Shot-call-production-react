@@ -8,29 +8,32 @@ import styles from "../../styles/ChatCreate.module.css"
 // import btnStyles from "../../styles/Button.module.css"
 import Alert from "react-bootstrap/Alert"
 import { axiosInstance, axiosInstanceNoAuth } from "../../api/axiosDefaults"
-import {
-  MultiSelect as ManMultiSelect,
-  Button as ManButton,
-} from "@mantine/core"
+import { Button as ManButton, Select as ManSelect } from "@mantine/core"
 import { toast } from "react-hot-toast"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
+import { useParams } from "react-router-dom"
 
-function CreateProject({ setShow, fetchProjects }) {
+function CreateProject({
+  setShow,
+  fetchProjects,
+  stripeCategoryType,
+  stripeProjectName,
+  stripeSessionId,
+  stripeSuccess,
+}) {
   const userData = useCurrentUser()
   const [errors, setErrors] = useState({})
   const [allCategoryTypes, setAllCategoryTypes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
   const [postData, setPostData] = useState({
-    categoryTypes: [],
+    categoryType: "",
     name: "",
   })
 
-  const { name, categoryTypes } = postData
+  const { name, categoryType } = postData
 
   const handleChange = (event) => {
-    console.log(event.name)
-
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
@@ -79,16 +82,18 @@ function CreateProject({ setShow, fetchProjects }) {
         </Alert>
       ))}
 
-      <ManMultiSelect
+      <ManSelect
         sx={{
           textAlign: "center",
           "& .mantine-InputWrapper-label": { fontWeight: "bold" },
         }}
         data={allCategoryTypes}
-        value={postData.categoryTypes}
-        label="Project Types"
+        value={postData.categoryType}
+        onChange={(value) =>
+          setPostData((prev) => ({ ...prev, categoryType: value }))
+        }
+        label="Role"
         placeholder="Enter project types"
-        onChange={handleSetCategoryTypes}
         disabled={isLoading}
       />
     </div>
@@ -119,26 +124,43 @@ function CreateProject({ setShow, fetchProjects }) {
     </div>
   )
 
+  useEffect(() => {
+    console.log(JSON.parse(stripeSuccess))
+  }, [stripeSuccess])
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     setIsLoading(true)
     const formData = {
-      category_type: categoryTypes,
+      category_type: categoryType, //category_type: ''
       name,
-      stripe_id: "123",
-      user: userData,
     }
-
+    console.log("formData: ", formData)
     try {
-      const { data } = await axiosInstance.post("/projects/", formData)
-      toast.success("Project created")
-      console.log(data)
-      setPostData({
-        categoryTypes: [],
-        name: "",
-      })
-      setShow(false)
-      fetchProjects()
+      const { data } = await axiosInstance.get(
+        `/create-checkout-session/?project_name=${formData.name}&category_type=${formData.category_type}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }
+      )
+
+      window.open(data.message, "_self")
+
+      // return URL
+      // redirect to that URL
+      // if success = true in URL, then GET "/projects/stripe-success/?"
+      // toast.success("Project created")
+      // console.log(data)
+      // setPostData({
+      //   categoryTypes: [],
+      //   name: "",
+      // })
+      // setShow(false)
+      // fetchProjects()
     } catch (err) {
       toast.error("Project creation failed")
       console.log(err)

@@ -44,6 +44,7 @@ const SignUpForm = () => {
     console.log("signup data: ", signUpData)
 
     try {
+      // TODO: remove
       await axiosInstanceNoAuth.post("/dj-rest-auth/registration/", signUpData)
       history.push("/signin")
     } catch (err) {

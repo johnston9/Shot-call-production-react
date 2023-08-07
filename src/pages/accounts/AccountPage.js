@@ -4,17 +4,24 @@ import React, { useEffect, useState } from "react"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Asset from "../../components/Asset"
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext"
-import { axiosReq } from "../../api/axiosDefaults"
+import { axiosInstance, axiosReq } from "../../api/axiosDefaults"
 import Account from "./Account"
 import useRedirect from "../../hooks/Redirect"
 
 function AccountPage() {
-  useRedirect()
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const stripeSuccess = queryParams.get("success")
+  const stripeSessionId = queryParams.get("session_id")
+  const stripeProjectName = queryParams.get("project_name")
+  const stripeCategoryType = queryParams.get("category_type")
+
+  // useRedirect()
   const [hasLoaded, setHasLoaded] = useState(false)
   const [account, setAccount] = useState({ results: [] })
   // eslint-disable-next-line
@@ -29,8 +36,20 @@ function AccountPage() {
   const fetchData = async () => {
     try {
       const [{ data: profilePage }, { data: accountInfo }] = await Promise.all([
-        axiosReq.get(`/profiles/${id}/`),
-        axiosReq.get(`/accounts/?owner__profile=${id}`),
+        axiosInstance.get(`/profiles/${id}/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }),
+        axiosInstance.get(`/accounts/?owner__profile=${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }),
       ])
       setProfileData((prevState) => ({
         ...prevState,
@@ -55,7 +74,15 @@ function AccountPage() {
       <Col className="py-2 p-0 p-lg-2">
         {hasLoaded ? (
           <>
-            <Account account={account} profile={profile} id={id} />
+            <Account
+              account={account}
+              profile={profile}
+              id={id}
+              stripeCategoryType={stripeCategoryType}
+              stripeProjectName={stripeProjectName}
+              stripeSessionId={stripeSessionId}
+              stripeSuccess={stripeSuccess}
+            />
           </>
         ) : (
           <Asset spinner />
