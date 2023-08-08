@@ -24,7 +24,9 @@ function CreateProject({
   const userData = useCurrentUser()
   const [errors, setErrors] = useState({})
   const [allCategoryTypes, setAllCategoryTypes] = useState([])
+  const [unformattedCategoryTypes, setUnformattedCategoryTypes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [currentAmount, setCurrentAmount] = useState(null)
 
   const [postData, setPostData] = useState({
     categoryType: "",
@@ -41,10 +43,20 @@ function CreateProject({
   }
 
   useEffect(() => {
+    if (postData.categoryType !== "") {
+      const selectedCategory = unformattedCategoryTypes.find(
+        (cat) => cat.type === postData.categoryType
+      )
+      setCurrentAmount(selectedCategory.amount)
+    }
+  }, [postData.categoryType, unformattedCategoryTypes, setCurrentAmount])
+
+  useEffect(() => {
     axiosInstanceNoAuth
       .get("/categories/")
       .then((res) => {
         console.log(res.data.results)
+        setUnformattedCategoryTypes(res.data.results)
         const formattedCategoryTypes = res?.data?.results?.map((data) => ({
           value: data.type,
           label: data.type,
@@ -92,10 +104,27 @@ function CreateProject({
         onChange={(value) =>
           setPostData((prev) => ({ ...prev, categoryType: value }))
         }
-        label="Role"
+        label="Project Type"
         placeholder="Enter project types"
         disabled={isLoading}
       />
+
+      {currentAmount && (
+        <Form.Group
+          controlId="amount"
+          className={`${styles.Width95} text-center`}
+        >
+          <Form.Label className={`${styles.Bold} `}>Amount</Form.Label>
+          <Form.Control
+            type="text"
+            className={styles.Input}
+            name="amount"
+            value={currentAmount}
+            // onChange={handleChange}
+            disabled={true}
+          />
+        </Form.Group>
+      )}
     </div>
   )
 

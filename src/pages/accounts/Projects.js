@@ -17,6 +17,7 @@ import btnStyles from "../../styles/Button.module.css"
 import Button from "react-bootstrap/Button"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
 import { useHistory } from "react-router-dom"
+import { Alert as ManAlert } from "@mantine/core"
 
 const Projects = ({
   id,
@@ -33,6 +34,7 @@ const Projects = ({
   const [error, setErrors] = useState({})
   const [query, setQuery] = useState("")
   const [showCreateProject, setShowCreateProject] = useState(false)
+  const [showMessage, setShowMessage] = useState(false)
 
   const fetchProjects = useCallback(
     async (searchQuery = "") => {
@@ -103,6 +105,23 @@ const Projects = ({
     setShowCreateProject((showCreateProject) => !showCreateProject)
   }
 
+  const getMessage = (stripeSuccess) => {
+    setShowMessage(true)
+    setTimeout(() => {
+      setShowMessage(false)
+    }, 5000)
+
+    if (!stripeSuccess) return null
+
+    if (stripeSuccess && JSON.parse(stripeSuccess)) {
+      return <ManAlert color="green">Payment successful.</ManAlert>
+    }
+
+    if (stripeSuccess && !JSON.parse(stripeSuccess)) {
+      return <ManAlert color="red">Payment successful.</ManAlert>
+    }
+  }
+
   return (
     <div className="px-3">
       {/* create project */}
@@ -114,6 +133,7 @@ const Projects = ({
           >
             Create Project
           </Button>
+          {showMessage && getMessage(stripeSuccess)}
         </Col>
       </Row>
       {showCreateProject ? (
