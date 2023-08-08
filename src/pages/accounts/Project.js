@@ -83,27 +83,35 @@ const Project = ({
           {/* <Card.Text>Stripe Id: {stripe_id}</Card.Text> */}
           <Card.Text>
             Project URL:{" "}
-            <a href={shotcaller_url} target="_blank" rel="noreferrer">
+            <a
+              href={shotcaller_url}
+              style={{ textDecoration: "underline" }}
+              target="_blank"
+              rel="noreferrer"
+            >
               {shotcaller_url}
             </a>
           </Card.Text>
           <Card.Text className="d-flex">
-            Project Type: <span className="d-flex">{category_type}</span>
+            Project Type: <span className="ml-2 d-flex">{category_type}</span>
           </Card.Text>
           <Card.Text className="d-flex">
-            Created On: <span className="d-flex">{payment?.created_at}</span>
+            Created On:{" "}
+            <span className="ml-2 d-flex">{payment?.created_at}</span>
           </Card.Text>
           <Card.Text className="d-flex">
-            Amount: <span className="d-flex">{payment?.amount}</span>
+            Amount: <span className="ml-2 d-flex">${payment?.amount}</span>
           </Card.Text>
           <Card.Text className="d-flex">
-            Payment Date: <span className="d-flex">{payment?.created_at}</span>
+            Payment Date:{" "}
+            <span className="ml-2 d-flex">{payment?.created_at}</span>
           </Card.Text>
           <Card.Text className="d-flex">
-            Payment Status: <span className="d-flex">Success</span>
+            Payment Status: <span className="ml-2 d-flex">Success</span>
           </Card.Text>
           <Card.Text className="d-flex">
-            Transaction Id: <span className="d-flex">{payment?.stripe_id}</span>
+            Stripe Transaction Id:{" "}
+            <span className="ml-2 d-flex">{payment?.stripe_id}</span>
           </Card.Text>
           <Row className="mt-1">
             <Col>

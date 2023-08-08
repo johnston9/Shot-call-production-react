@@ -79,8 +79,13 @@ function CreateProject({
 
   const textFields = (
     <div>
-      <Form.Group controlId="name" className={`${styles.Width95} text-center`}>
-        <Form.Label className={`${styles.Bold} `}>Name</Form.Label>
+      <Form.Group controlId="name" className={`${styles.Width95}`}>
+        <Form.Label
+          className={`${styles.Bold} `}
+          style={{ fontSize: "0.8rem" }}
+        >
+          Name
+        </Form.Label>
         <Form.Control
           type="text"
           className={styles.Input}
@@ -98,8 +103,10 @@ function CreateProject({
 
       <ManSelect
         sx={{
-          textAlign: "center",
-          "& .mantine-InputWrapper-label": { fontWeight: "bold" },
+          "& .mantine-InputWrapper-label": {
+            fontWeight: "700",
+            fontSize: "0.8rem",
+          },
         }}
         data={allCategoryTypes}
         value={postData.categoryType}
@@ -112,26 +119,15 @@ function CreateProject({
       />
 
       {currentAmount && (
-        <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
-          <Form.Group
-            controlId="amount"
-            className={`${styles.Width95} text-center`}
-          >
-            <Form.Label className={`${styles.Bold} `}>Amount</Form.Label>
-            <Form.Control
-              type="text"
-              className={styles.Input}
-              name="amount"
-              value={currentAmount}
-              // onChange={handleChange}
-              disabled={true}
-            />
-          </Form.Group>
+        <div>
+          <div className="mt-4" style={{ fontSize: "20px" }}>
+            Amount: <span className="ml-2">${currentAmount}</span>
+          </div>
           <Image
             src={stripevisa}
             style={{ objectFit: "contain" }}
-            height={150}
-            width={150}
+            height={120}
+            width={120}
           />
         </div>
       )}
@@ -158,7 +154,7 @@ function CreateProject({
           backgroundColor: theme.colors.lightBlue,
         })}
       >
-        Create
+        Pay and Create
       </ManButton>
     </div>
   )
