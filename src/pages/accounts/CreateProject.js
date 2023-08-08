@@ -12,6 +12,8 @@ import { Button as ManButton, Select as ManSelect } from "@mantine/core"
 import { toast } from "react-hot-toast"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
 import { useParams } from "react-router-dom"
+import { Image } from "react-bootstrap"
+import stripevisa from "../../assets/stripevisa.png"
 
 function CreateProject({
   setShow,
@@ -110,20 +112,28 @@ function CreateProject({
       />
 
       {currentAmount && (
-        <Form.Group
-          controlId="amount"
-          className={`${styles.Width95} text-center`}
-        >
-          <Form.Label className={`${styles.Bold} `}>Amount</Form.Label>
-          <Form.Control
-            type="text"
-            className={styles.Input}
-            name="amount"
-            value={currentAmount}
-            // onChange={handleChange}
-            disabled={true}
+        <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+          <Form.Group
+            controlId="amount"
+            className={`${styles.Width95} text-center`}
+          >
+            <Form.Label className={`${styles.Bold} `}>Amount</Form.Label>
+            <Form.Control
+              type="text"
+              className={styles.Input}
+              name="amount"
+              value={currentAmount}
+              // onChange={handleChange}
+              disabled={true}
+            />
+          </Form.Group>
+          <Image
+            src={stripevisa}
+            style={{ objectFit: "contain" }}
+            height={150}
+            width={150}
           />
-        </Form.Group>
+        </div>
       )}
     </div>
   )

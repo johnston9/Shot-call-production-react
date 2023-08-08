@@ -18,6 +18,7 @@ import Button from "react-bootstrap/Button"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
 import { useHistory } from "react-router-dom"
 import { Alert as ManAlert } from "@mantine/core"
+import { toast } from "react-hot-toast"
 
 const Projects = ({
   id,
@@ -105,22 +106,32 @@ const Projects = ({
     setShowCreateProject((showCreateProject) => !showCreateProject)
   }
 
-  const getMessage = (stripeSuccess) => {
-    setShowMessage(true)
-    setTimeout(() => {
-      setShowMessage(false)
-    }, 5000)
+  // const getMessage = (stripeSuccess) => {
+  //   setShowMessage(true)
+  //   setTimeout(() => {
+  //     setShowMessage(false)
+  //   }, 5000)
 
-    if (!stripeSuccess) return null
+  //   if (!stripeSuccess) return null
 
+  //   if (stripeSuccess && JSON.parse(stripeSuccess)) {
+  //     return <ManAlert color="green">Payment successful.</ManAlert>
+  //   }
+
+  //   if (stripeSuccess && !JSON.parse(stripeSuccess)) {
+  //     return <ManAlert color="red">Payment successful.</ManAlert>
+  //   }
+  // }
+
+  useEffect(() => {
+    if (!stripeSuccess) return
     if (stripeSuccess && JSON.parse(stripeSuccess)) {
-      return <ManAlert color="green">Payment successful.</ManAlert>
+      return toast.success("Payment successful")
     }
-
     if (stripeSuccess && !JSON.parse(stripeSuccess)) {
-      return <ManAlert color="red">Payment successful.</ManAlert>
+      return toast.error("Payment failed. Please try again!")
     }
-  }
+  }, [stripeSuccess])
 
   return (
     <div className="px-3">
@@ -133,7 +144,7 @@ const Projects = ({
           >
             Create Project
           </Button>
-          {showMessage && getMessage(stripeSuccess)}
+          {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>
       </Row>
       {showCreateProject ? (
