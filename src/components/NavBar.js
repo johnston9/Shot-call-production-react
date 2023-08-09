@@ -46,7 +46,7 @@ const NavBar = () => {
   const handleSignOut = async () => {
     /* Function to sign a user out */
     try {
-      await axiosInstanceNoAuth.post("dj-rest-auth/logout/")
+      await axiosInstanceNoAuth.post("api-auth/logout/")
 
       setCurrentUser(null)
       localStorage.removeItem("user")
