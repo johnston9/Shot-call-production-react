@@ -120,7 +120,10 @@ function CreateProject({
 
       {currentAmount && (
         <div>
-          <div className="mt-4" style={{ fontSize: "20px" }}>
+          <div
+            className="mt-4"
+            style={{ fontSize: "0.8rem", fontWeight: "bold" }}
+          >
             Amount: <span className="ml-2">${currentAmount}</span>
           </div>
           <Image
@@ -135,7 +138,7 @@ function CreateProject({
   )
 
   const buttons = (
-    <div className="text-center mt-3">
+    <div className="mt-3" style={{ marginLeft: "14rem" }}>
       <ManButton
         type="submit"
         sx={(theme) => ({
