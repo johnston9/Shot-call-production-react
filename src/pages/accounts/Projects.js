@@ -126,7 +126,9 @@ const Projects = ({
   useEffect(() => {
     if (!stripeSuccess) return
     if (stripeSuccess && JSON.parse(stripeSuccess)) {
-      return toast.success("Payment successful")
+      return toast.success(
+        "Your payment has been done successfully and you can find your project in the project listing. Also please check your registered email address for the username & password for the project."
+      )
     }
     if (stripeSuccess && !JSON.parse(stripeSuccess)) {
       return toast.error("Payment failed. Please try again!")
