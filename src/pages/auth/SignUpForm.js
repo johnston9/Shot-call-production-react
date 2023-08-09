@@ -120,7 +120,7 @@ const SignUpForm = () => {
                     <Form.Label className="d-none">Confirm Password</Form.Label>
                     <Form.Control
                       className={styles.Input}
-                      type="password2"
+                      type="password"
                       placeholder="Confirm Password"
                       name="password2"
                       value={password2}
