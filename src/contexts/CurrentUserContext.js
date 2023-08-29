@@ -6,6 +6,7 @@
  * The Gmail mobile browser issue seems to be all requests 
    getting 401 so the token refresh is being rejected */
 import { createContext, useContext, useEffect, useState } from "react"
+import { axiosInstance } from "../api/axiosDefaults"
 // import axios from "axios"
 // import { axiosReq, axiosRes } from "../api/axiosDefaults"
 // import { useHistory } from "react-router-dom"
@@ -30,11 +31,18 @@ export const CurrentUserProvider = ({ children }) => {
   //   }
   // }
 
-  useEffect(() => {
+  const getCurrentUserData = async () => {
     if (localStorage.getItem("user")) {
       const user = JSON.parse(localStorage.getItem("user"))
-      setCurrentUser(user)
+      console.log(user)
+      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`)
+      console.log(data)
+      setCurrentUser({ ...user, profile_image: data?.data?.image })
     }
+  }
+
+  useEffect(() => {
+    getCurrentUserData()
   }, [])
 
   // useMemo(() => {

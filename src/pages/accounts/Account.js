@@ -19,7 +19,9 @@ const Account = ({
   stripeProjectName,
   stripeSessionId,
   stripeSuccess,
+  profileInfo,
 }) => {
+  console.log(account?.data?.results[0]?.image)
   const history = useHistory()
 
   const topProfile = (
@@ -31,18 +33,22 @@ const Account = ({
             height={40}
             width={40}
             roundedCircle
-            src={profile?.image}
+            src={profileInfo?.data?.image}
           />
-          <span className={`${styles.TopName} pl-2`}>{profile?.owner}</span>
+          <span className={`${styles.TopName} pl-2`}>
+            {account?.data?.results[0]?.owner}
+          </span>
         </Col>
         <Col md={8} className="text-center">
           <h3 className={` ${styles.TopCompany}`}>
-            {profile?.company}
-            <span className={`pl-5 ${styles.TopName}`}>{profile?.name}</span>
+            {account?.data?.results[0]?.company}
+            <span className={`pl-5 ${styles.TopName}`}>
+              {account?.data?.results[0]?.name}
+            </span>
           </h3>
         </Col>
         <Col md={1}>
-          {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+          <ProfileEditDropdown id={id} />
         </Col>
       </Row>
     </div>
@@ -62,7 +68,7 @@ const Account = ({
           <span className={`${styles.TopName} pl-2`}>{profile?.owner}</span>
         </Col>
         <Col xs={2}>
-          {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+          <ProfileEditDropdown id={id} />
         </Col>
         <Col xs={12} className="text-center">
           <h3 className={`pl-5 ${styles.TopCompany}`}>{profile?.company}</h3>

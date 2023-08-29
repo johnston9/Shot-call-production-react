@@ -24,6 +24,7 @@ function AccountPage() {
   // useRedirect()
   const [hasLoaded, setHasLoaded] = useState(false)
   const [account, setAccount] = useState({ results: [] })
+  const [profileInfo, setProfileInfo] = useState(null)
   // eslint-disable-next-line
   const [name, setName] = useState({ results: [] })
   const { id } = useParams()
@@ -56,7 +57,8 @@ function AccountPage() {
         profilePage: { results: [profilePage] },
       }))
       setAccount(accountInfo)
-      console.log(accountInfo)
+      setProfileInfo(profilePage)
+      console.log(profilePage)
       console.log(profilePage)
       setName(accountInfo?.data?.results[0].name)
       setHasLoaded(true)
@@ -82,6 +84,7 @@ function AccountPage() {
               stripeProjectName={stripeProjectName}
               stripeSessionId={stripeSessionId}
               stripeSuccess={stripeSuccess}
+              profileInfo={profileInfo}
             />
           </>
         ) : (

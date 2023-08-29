@@ -22,7 +22,7 @@ import useHostName from "../../hooks/useHostName"
 import { CLIENT_PROGRAM_HOSTNAME } from "../../utils/config"
 
 const ProfileEditForm = () => {
-  useRedirect()
+  // useRedirect()
   const host = useHostName()
   const currentUser = useCurrentUser()
   const setCurrentUser = useSetCurrentUser()
@@ -50,7 +50,8 @@ const ProfileEditForm = () => {
             setProfileData({ name, company, content, image })
           } else {
             const { data } = await axiosInstance.get(`/profiles/${id}/`)
-            const { name, company, content, image } = data
+            console.log(data)
+            const { name, company, content, image } = data?.data
             setProfileData({ name, company, content, image })
           }
         } catch (err) {
@@ -95,7 +96,7 @@ const ProfileEditForm = () => {
         const { data } = await axiosInstance.put(`/profiles/${id}/`, formData)
         setCurrentUser((currentUser) => ({
           ...currentUser,
-          profile_image: data.image,
+          profile_image: data.data.image,
         }))
         history.goBack()
       }

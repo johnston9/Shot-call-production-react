@@ -8,10 +8,10 @@
    users to edit their profiles
  * CURRENTLY IT IS NOT DISPLAYING CORRECTLY AND NEEDS FIXING 
    FOR X, Y AND Z POSITIONING */
-import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import styles from "../styles/Dropdown.module.css";
-import { useHistory } from "react-router-dom";
+import React from "react"
+import Dropdown from "react-bootstrap/Dropdown"
+import styles from "../styles/Dropdown.module.css"
+import { useHistory } from "react-router-dom"
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -20,11 +20,11 @@ const EditDeleteIcon = React.forwardRef(({ onClick }, ref) => (
     className="fas fa-ellipsis-v"
     ref={ref}
     onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
+      e.preventDefault()
+      onClick(e)
     }}
   />
-));
+))
 
 export const UniDropdown = ({ handleEdit, handleDelete }) => {
   return (
@@ -50,23 +50,26 @@ export const UniDropdown = ({ handleEdit, handleDelete }) => {
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  );
-};
+  )
+}
 
 export const ProfileEditDropdown = ({ id }) => {
-  const history = useHistory();
+  const history = useHistory()
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} 
-      drop="left">
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={EditDeleteIcon} />
       <Dropdown.Menu>
         <Dropdown.Item
+          style={{ cursor: "pointer" }}
+          as="span"
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
           <i className="fas fa-edit" /> Edit Profile
         </Dropdown.Item>
         <Dropdown.Item
+          style={{ cursor: "pointer" }}
+          as="span"
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
         >
@@ -74,6 +77,8 @@ export const ProfileEditDropdown = ({ id }) => {
           Change Username
         </Dropdown.Item>
         <Dropdown.Item
+          style={{ cursor: "pointer" }}
+          as="span"
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >
@@ -82,5 +87,5 @@ export const ProfileEditDropdown = ({ id }) => {
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  );
-};
+  )
+}

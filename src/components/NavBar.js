@@ -19,6 +19,8 @@ import { axiosInstanceNoAuth } from "../api/axiosDefaults"
 const NavBar = () => {
   const currentUser = useCurrentUser()
   const setCurrentUser = useSetCurrentUser()
+
+  console.log(currentUser)
   // const {
   //   reff, reff1, reff2, reff3, reff4, reff5, reff6,
   //   refm, refm1, refm2, refin, refin2,
