@@ -79,10 +79,10 @@ const Account = ({
       <Row>
         <Col className="my-2">
           <p className="pb-0 float-right ml-3">
-            Account Created: {account.results[0].created_at}
+            Account Created: {account?.data?.results[0].created_at}
           </p>
           <p className="pb-0 float-right">
-            Account Owner: {account.results[0].owner}
+            Account Owner: {account?.data?.results[0].owner}
           </p>
         </Col>
       </Row>

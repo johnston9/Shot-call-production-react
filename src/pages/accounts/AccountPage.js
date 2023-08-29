@@ -58,7 +58,7 @@ function AccountPage() {
       setAccount(accountInfo)
       console.log(accountInfo)
       console.log(profilePage)
-      setName(accountInfo.results[0].name)
+      setName(accountInfo?.data?.results[0].name)
       setHasLoaded(true)
     } catch (err) {
       console.log(err)

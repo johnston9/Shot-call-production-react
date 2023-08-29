@@ -62,3 +62,28 @@ export const axiosInstanceNoAuthFormData = axios.create({
   },
   withCredentials: true,
 })
+
+axiosInstance.interceptors.response.use(
+  (result) => {
+    return { success: true, data: result }
+  },
+  (error) => {
+    if (error?.response?.status === 401) {
+      window.location.replace("/signin")
+      return Promise.resolve({ success: false, error })
+    }
+    return Promise.resolve({ success: false, error })
+  }
+)
+axiosInstanceFormData.interceptors.response.use(
+  (result) => {
+    return { success: true, data: result }
+  },
+  (error) => {
+    if (error?.response?.status === 401) {
+      window.location.replace("/signin")
+      return Promise.resolve({ success: false, error })
+    }
+    return Promise.resolve({ success: false, error })
+  }
+)
