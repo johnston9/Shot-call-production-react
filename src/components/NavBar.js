@@ -70,11 +70,11 @@ const NavBar = () => {
         ref={refw}
         id="nav-dropdown1"
         // activeClassName={styles.Active}
-        className={`mt-1 ${styles.NavLink} `}
+        className={` ${styles.NavLink} `}
       >
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refw3}
             to="workspaces"
@@ -94,7 +94,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refw4}
             to="shotstory"
@@ -106,7 +106,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refw2}
             to="charslocates"
@@ -129,11 +129,11 @@ const NavBar = () => {
         ref={reff}
         id="nav-dropdown2"
         // activeClassName={styles.Active}
-        className={`mt-1 ${styles.NavLink} `}
+        className={`${styles.NavLink} `}
       >
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={reff2}
             to="schedule"
@@ -143,7 +143,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={reff3}
             to="callsheets"
@@ -163,7 +163,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={reff4}
             to="mobile"
@@ -179,7 +179,7 @@ const NavBar = () => {
     <>
       {/* sign out */}
       <NavLink
-        className={`mt-2 pt-1 ${styles.NavLink}`}
+        className={` pt-1 ${styles.NavLink}`}
         to="/"
         onClick={handleSignOut}
       >
@@ -211,7 +211,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={`mt-2 ${styles.NavLink} `}
+            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refp2}
             to={`/profiles/${currentUser?.profile_id}`}
@@ -227,7 +227,7 @@ const NavBar = () => {
     /* Icons that display when a user is logged out */
     <>
       <NavLink
-        className={`mt-2 mx-2 ${styles.NavLink}`}
+        className={` mx-2 ${styles.NavLink}`}
         activeClassName={styles.Active}
         to="/signin"
       >
@@ -235,7 +235,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         to="/signup"
-        className={`mt-2 ${styles.NavLink}`}
+        className={` ${styles.NavLink}`}
         activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>Sign up
@@ -265,7 +265,7 @@ const NavBar = () => {
           {/* home */}
           <NavLink
             exact
-            className={`mt-2 pt-1 mx-2 ${styles.NavLink}`}
+            className={` pt-1 mx-2 ${styles.NavLink}`}
             activeClassName={styles.Active}
             to="/"
           >
@@ -277,7 +277,7 @@ const NavBar = () => {
           {productionIcons}
           {/* chat */}
           <NavLink
-            className={`mt-2 pt-1 mx-2  ${styles.NavLink}`}
+            className={` pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}
             to="/chat"
           >
