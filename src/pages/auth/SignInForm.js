@@ -22,7 +22,7 @@ import { setTokenTimestamp } from "../../utils/utils"
 import { axiosInstanceNoAuth } from "../../api/axiosDefaults"
 
 const SignInForm = () => {
-  useRedirectSign()
+  // useRedirectSign()
   const setCurrentUser = useSetCurrentUser()
 
   const [signInData, setSignInData] = useState({

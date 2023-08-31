@@ -2,6 +2,7 @@
    axiosReq and axiosRes */
 
 import axios from "axios"
+import { toast } from "react-hot-toast"
 // import { getCookie } from "../utils/utils"
 
 const getCookie = (name) => {
@@ -69,7 +70,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      window.location.replace("/signin")
+      toast.error("Session timeout. Please signin again!")
       return Promise.resolve({ success: false, error })
     }
     return Promise.resolve({ success: false, error })
@@ -81,7 +82,7 @@ axiosInstanceFormData.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      window.location.replace("/signin")
+      toast.error("Session timeout. Please signin again!")
       return Promise.resolve({ success: false, error })
     }
     return Promise.resolve({ success: false, error })
