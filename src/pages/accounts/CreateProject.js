@@ -11,7 +11,7 @@ import { axiosInstance, axiosInstanceNoAuth } from "../../api/axiosDefaults"
 import { Button as ManButton, Select as ManSelect } from "@mantine/core"
 import { toast } from "react-hot-toast"
 import { useCurrentUser } from "../../contexts/CurrentUserContext"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { Image } from "react-bootstrap"
 import stripevisa from "../../assets/stripevisa.png"
 
@@ -23,6 +23,7 @@ function CreateProject({
   stripeSessionId,
   stripeSuccess,
 }) {
+  const history = useHistory()
   const userData = useCurrentUser()
   const [errors, setErrors] = useState({})
   const [allCategoryTypes, setAllCategoryTypes] = useState([])
@@ -186,8 +187,9 @@ function CreateProject({
         }
       )
 
-      window.open(data.message, "_self")
+      window.open(data.data.message, "_self")
 
+      // history.push(data.message)
       // return URL
       // redirect to that URL
       // if success = true in URL, then GET "/projects/stripe-success/?"
