@@ -170,11 +170,23 @@ function CreateProject({
   const handleSubmit = async (event) => {
     event.preventDefault()
     setIsLoading(true)
+
+    if (name === "") {
+      toast.error("Project name is required")
+      setIsLoading(false)
+      return
+    }
+    if (categoryType === "") {
+      toast.error("Project type is required")
+      setIsLoading(false)
+      return
+    }
+
     const formData = {
       category_type: categoryType, //category_type: ''
       name,
     }
-    console.log("formData: ", formData)
+
     try {
       const { data } = await axiosInstance.get(
         `/create-checkout-session/?project_name=${formData.name}&category_type=${formData.category_type}`,
