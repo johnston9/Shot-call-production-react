@@ -11,7 +11,8 @@ const getCookie = (name) => {
   if (parts.length === 2) return parts.pop().split(";").shift();
 };
 
-axios.defaults.baseURL = "https://cnp1906-production-react.developer24x7.com/";
+axios.defaults.baseURL =
+  "https://cnp1906-shotcall-production.developer24x7.com/";
 axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
 axios.defaults.withCredentials = true;
 
