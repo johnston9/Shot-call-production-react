@@ -2,25 +2,25 @@
  * Currently the activeClassName item is working but is throwing an
    error in the console so is commented out on each link
    Am looking for a way to resolve this issue */
-import React from "react"
-import { Navbar, Nav, NavDropdown } from "react-bootstrap"
-import logo from "../assets/logo1.png"
-import styles from "../styles/NavBar.module.css"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import logo from "../assets/logo1.png";
+import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "../contexts/CurrentUserContext"
-import Avatar from "./Avatar"
-import useDropdownClick from "../hooks/useDropdownClick"
-import { removeTokenTimestamp } from "../utils/utils"
-import { axiosInstanceNoAuth } from "../api/axiosDefaults"
+} from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import useDropdownClick from "../hooks/useDropdownClick";
+import { removeTokenTimestamp } from "../utils/utils";
+import { axiosInstanceNoAuth } from "../api/axiosDefaults";
 
 const NavBar = () => {
-  const currentUser = useCurrentUser()
-  const setCurrentUser = useSetCurrentUser()
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
-  console.log(currentUser)
+  console.log(currentUser);
   // const {
   //   reff, reff1, reff2, reff3, reff4, reff5, reff6,
   //   refm, refm1, refm2, refin, refin2,
@@ -43,21 +43,21 @@ const NavBar = () => {
     refp,
     refp1,
     refp2,
-  } = useDropdownClick()
+  } = useDropdownClick();
 
   const handleSignOut = async () => {
     /* Function to sign a user out */
     try {
-      await axiosInstanceNoAuth.post("api-auth/logout/")
+      await axiosInstanceNoAuth.post("api-auth/logout/");
 
-      setCurrentUser(null)
-      localStorage.removeItem("user")
-      localStorage.removeItem("accessToken")
-      removeTokenTimestamp()
+      setCurrentUser(null);
+      localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
+      removeTokenTimestamp();
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const creativeIcons = (
     <>
@@ -116,7 +116,7 @@ const NavBar = () => {
         </NavDropdown.Item>
       </NavDropdown>
     </>
-  )
+  );
 
   const productionIcons = (
     <>
@@ -173,7 +173,7 @@ const NavBar = () => {
         </NavDropdown.Item>
       </NavDropdown>
     </>
-  )
+  );
 
   const loggedInIcons = (
     <>
@@ -219,9 +219,19 @@ const NavBar = () => {
             <i className="navicon fas fa-play"></i>My Profile
           </NavLink>
         </NavDropdown.Item>
+        <NavDropdown.Item>
+          <NavLink
+            className={` ${styles.NavLink} `}
+            activeClassName={styles.Active}
+            ref={refp2}
+            to={`/subscription-plans`}
+          >
+            <i className="navicon fas fa-play"></i>Subscription Plans
+          </NavLink>
+        </NavDropdown.Item>
       </NavDropdown>
     </>
-  )
+  );
 
   const loggedOutIcons = (
     /* Icons that display when a user is logged out */
@@ -241,7 +251,7 @@ const NavBar = () => {
         <i className="fas fa-user-plus"></i>Sign up
       </NavLink>
     </>
-  )
+  );
 
   return (
     <Navbar
@@ -288,7 +298,7 @@ const NavBar = () => {
       </Navbar.Collapse>
       {/* </Container> */}
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

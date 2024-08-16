@@ -1,51 +1,52 @@
-import styles from "./App.module.css"
-import NavBar from "./components/NavBar"
-import { Route, Switch } from "react-router-dom"
-import "./api/axiosDefaults"
-import SignUpForm from "./pages/auth/SignUpForm"
-import SignInForm from "./pages/auth/SignInForm"
-import ChatPage from "./pages/chat/ChatPage"
-import ChatsPage from "./pages/chat/ChatsPage"
+import styles from "./App.module.css";
+import NavBar from "./components/NavBar";
+import { Route, Switch } from "react-router-dom";
+import "./api/axiosDefaults";
+import SignUpForm from "./pages/auth/SignUpForm";
+import SignInForm from "./pages/auth/SignInForm";
+import ChatPage from "./pages/chat/ChatPage";
+import ChatsPage from "./pages/chat/ChatsPage";
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "./contexts/CurrentUserContext"
-import ChatEditForm from "./pages/chat/ChatEditForm"
-import ProfilesPage from "./pages/profiles/ProfilesPage"
-import ProfilePage from "./pages/profiles/ProfilePage"
-import Home from "./pages/home/Home"
-import UsernameForm from "./pages/profiles/UsernameForm"
-import UserPasswordForm from "./pages/profiles/UserPasswordForm"
-import ProfileEditForm from "./pages/profiles/ProfileEditForm"
-import PageNotFound from "./components/PageNotFound"
-import Landing from "./pages/home/Landing"
-import Moodboards from "./pages/home/Moodboards"
-import CharsLocates from "./pages/home/CharsLocates"
-import Workspaces from "./pages/home/Workspaces"
-import ShotStory from "./pages/home/ShotStory"
-import CastCrew from "./pages/home/CastCrew"
-import Schedules from "./pages/home/Schedules"
-import Callsheets from "./pages/home/Callsheets"
-import Mobile from "./pages/home/Mobile"
-import AccountPage from "./pages/accounts/AccountPage"
-import BudgetPage from "./pages/accounts/BudgetPage"
-import BudgetCreate from "./pages/accounts/BudgetCreate"
-import BudgetEdit from "./pages/accounts/BudgetEdit"
-import NeedToSignIn from "./pages/chat/NeedToSignIn"
-import ProjectEdit from "./pages/accounts/ProjectEdit"
-import { useEffect } from "react"
+} from "./contexts/CurrentUserContext";
+import ChatEditForm from "./pages/chat/ChatEditForm";
+import ProfilesPage from "./pages/profiles/ProfilesPage";
+import ProfilePage from "./pages/profiles/ProfilePage";
+import Home from "./pages/home/Home";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import PageNotFound from "./components/PageNotFound";
+import Landing from "./pages/home/Landing";
+import Moodboards from "./pages/home/Moodboards";
+import CharsLocates from "./pages/home/CharsLocates";
+import Workspaces from "./pages/home/Workspaces";
+import ShotStory from "./pages/home/ShotStory";
+import CastCrew from "./pages/home/CastCrew";
+import Schedules from "./pages/home/Schedules";
+import Callsheets from "./pages/home/Callsheets";
+import Mobile from "./pages/home/Mobile";
+import AccountPage from "./pages/accounts/AccountPage";
+import BudgetPage from "./pages/accounts/BudgetPage";
+import BudgetCreate from "./pages/accounts/BudgetCreate";
+import BudgetEdit from "./pages/accounts/BudgetEdit";
+import NeedToSignIn from "./pages/chat/NeedToSignIn";
+import ProjectEdit from "./pages/accounts/ProjectEdit";
+import { useEffect } from "react";
+import SubscriptionPlansPage from "./pages/subscription-plans/SubscriptionPlansPage";
 
 function App() {
-  const currentUser = useCurrentUser()
-  const setCurrentUser = useSetCurrentUser()
-  const profile_id = currentUser?.profile_id || ""
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"))
-      setCurrentUser(user)
+      const user = JSON.parse(localStorage.getItem("user"));
+      setCurrentUser(user);
     }
-  }, [setCurrentUser])
+  }, [setCurrentUser]);
 
   return (
     <div className={styles.App}>
@@ -69,6 +70,11 @@ function App() {
           {/* chat  */}
           <Route exact path="/needtosignin" render={() => <NeedToSignIn />} />
           <Route exact path="/chat/edit/:id" render={() => <ChatEditForm />} />
+          <Route
+            exact
+            path="/subscription-plans"
+            render={() => <SubscriptionPlansPage />}
+          />
           <Route
             exact
             path="/chat"
@@ -135,7 +141,7 @@ function App() {
         </Switch>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
