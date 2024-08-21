@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosDefaults";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import useActivePlan from "../../hooks/useActivePlan";
+import { useHistory } from "react-router-dom";
 
 export default function SubscriptionPlansPage() {
+  const history = useHistory();
   const { loading: currentlyActivePlanLoading, currentlyActivePlan } =
     useActivePlan();
   const [allPlans, setAllPlans] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const choosePlan = async (plan) => {
+    history.push(`/payment/${plan?.name}/${plan?.id}`);
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -32,6 +39,8 @@ export default function SubscriptionPlansPage() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log(allPlans);
   return (
     <div className="py-2">
       <div
@@ -69,7 +78,12 @@ export default function SubscriptionPlansPage() {
                     <p>Plan Id: {plan?.stripe_plan_id}</p>
 
                     {currentlyActivePlan?.plan?.id !== plan?.id && (
-                      <Button style={{ cursor: "pointer" }}>Buy</Button>
+                      <Button
+                        style={{ cursor: "pointer" }}
+                        onClick={() => choosePlan(plan)}
+                      >
+                        Buy
+                      </Button>
                     )}
                   </div>
                 </Card>

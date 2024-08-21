@@ -8,7 +8,7 @@ export default function useActivePlan() {
   const fetchMyActivePlan = async () => {
     try {
       setLoading(true);
-      const response = await axiosInstance.get(`/my_plan/`, {
+      const response = await axiosInstance.get(`/my-plan/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -19,9 +19,13 @@ export default function useActivePlan() {
       if (response?.data?.status === 200) {
         setLoading(false);
         setCurrentActivePlan(response?.data?.data[0]);
+      } else {
+        setLoading(false);
+        setCurrentActivePlan(null);
       }
     } catch (err) {
       setLoading(false);
+      setCurrentActivePlan(null);
       console.log(err);
     }
   };
