@@ -1,24 +1,24 @@
 /* Component in the Account component to fetch a users Projects data
  * Contains the Project component to which it passes the data for each project */
-import React, { useCallback, useState } from "react"
-import Form from "react-bootstrap/Form"
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import Container from "react-bootstrap/Container"
-import appStyles from "../../App.module.css"
-import styles from "../../styles/Account.module.css"
-import NoResults from "../../assets/no-results.png"
-import { useEffect } from "react"
-import { axiosInstance, axiosReq } from "../../api/axiosDefaults"
-import Asset from "../../components/Asset"
-import Project from "./Project"
-import CreateProject from "./CreateProject"
-import btnStyles from "../../styles/Button.module.css"
-import Button from "react-bootstrap/Button"
-import { useCurrentUser } from "../../contexts/CurrentUserContext"
-import { useHistory } from "react-router-dom"
-import { Alert as ManAlert } from "@mantine/core"
-import { toast } from "react-hot-toast"
+import React, { useCallback, useState } from "react";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import appStyles from "../../App.module.css";
+import styles from "../../styles/Account.module.css";
+import NoResults from "../../assets/no-results.png";
+import { useEffect } from "react";
+import { axiosInstance, axiosReq } from "../../api/axiosDefaults";
+import Asset from "../../components/Asset";
+import Project from "./Project";
+import CreateProject from "./CreateProject";
+import btnStyles from "../../styles/Button.module.css";
+import Button from "react-bootstrap/Button";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useHistory } from "react-router-dom";
+import { Alert as ManAlert } from "@mantine/core";
+import { toast } from "react-hot-toast";
 
 const Projects = ({
   id,
@@ -27,15 +27,15 @@ const Projects = ({
   stripeSessionId,
   stripeSuccess,
 }) => {
-  const history = useHistory()
-  const userData = useCurrentUser()
-  const [hasLoaded, setHasLoaded] = useState(false)
-  const [projects, setProjects] = useState({ results: [] })
+  const history = useHistory();
+  const userData = useCurrentUser();
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const [projects, setProjects] = useState({ results: [] });
   // eslint-disable-next-line
-  const [error, setErrors] = useState({})
-  const [query, setQuery] = useState("")
-  const [showCreateProject, setShowCreateProject] = useState(false)
-  const [showMessage, setShowMessage] = useState(false)
+  const [error, setErrors] = useState({});
+  const [query, setQuery] = useState("");
+  const [showCreateProject, setShowCreateProject] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const fetchProjects = useCallback(
     async (searchQuery = "") => {
@@ -44,26 +44,26 @@ const Projects = ({
           `/projects/${userData.pk}${
             searchQuery !== "" ? `?search=${searchQuery}` : ""
           }`
-        )
-        setProjects(data)
-        setHasLoaded(true)
+        );
+        setProjects(data);
+        setHasLoaded(true);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
     [userData.pk]
-  )
+  );
 
   useEffect(() => {
-    setHasLoaded(false)
+    setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchProjects(query)
-    }, 1000)
+      fetchProjects(query);
+    }, 1000);
 
     return () => {
-      clearTimeout(timer)
-    }
-  }, [query, id])
+      clearTimeout(timer);
+    };
+  }, [query, id]);
 
   const handleCreateProject = async (
     session_id,
@@ -72,13 +72,13 @@ const Projects = ({
   ) => {
     const { data } = await axiosInstance.get(
       `/projects/stripe-success/?session_id=${session_id}&project_name=${project_name}&category_type=${category_type}`
-    )
+    );
 
-    console.log(data)
+    console.log(data);
 
-    fetchProjects()
-    history.push(`/accounts/${userData.pk}`)
-  }
+    fetchProjects();
+    history.push(`/accounts/${userData.pk}`);
+  };
 
   useEffect(() => {
     if (
@@ -92,9 +92,9 @@ const Projects = ({
         stripeSessionId,
         stripeProjectName,
         stripeCategoryType
-      )
+      );
     }
-  }, [stripeSuccess, stripeCategoryType, stripeProjectName, stripeSessionId])
+  }, [stripeSuccess, stripeCategoryType, stripeProjectName, stripeSessionId]);
 
   const handleShowProject = () => {
     if (
@@ -102,9 +102,9 @@ const Projects = ({
       userData?.email === null ||
       userData?.email === undefined
     )
-      history.push(`/profiles/${userData?.pk}`)
-    setShowCreateProject((showCreateProject) => !showCreateProject)
-  }
+      history.push(`/profiles/${userData?.pk}`);
+    setShowCreateProject((showCreateProject) => !showCreateProject);
+  };
 
   // const getMessage = (stripeSuccess) => {
   //   setShowMessage(true)
@@ -124,16 +124,16 @@ const Projects = ({
   // }
 
   useEffect(() => {
-    if (!stripeSuccess) return
+    if (!stripeSuccess) return;
     if (stripeSuccess && JSON.parse(stripeSuccess)) {
       return toast.success(
         "Your payment has been done successfully and you can find your project in the project listing. Also please check your registered email address for the username & password for the project."
-      )
+      );
     }
     if (stripeSuccess && !JSON.parse(stripeSuccess)) {
-      return toast.error("Payment failed. Please try again!")
+      return toast.error("Payment failed. Please try again!");
     }
-  }, [stripeSuccess])
+  }, [stripeSuccess]);
 
   return (
     <div className="px-3">
@@ -206,7 +206,7 @@ const Projects = ({
         )}
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

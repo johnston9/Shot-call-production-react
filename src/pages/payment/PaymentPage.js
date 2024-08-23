@@ -35,6 +35,7 @@ export default function PaymentPage() {
   const history = useHistory();
   const params = useParams();
   const [planName, setPlanName] = useState("");
+  const [processingPayment, setProcessingPayment] = useState(false);
   const [planId, setPlanId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
@@ -75,6 +76,7 @@ export default function PaymentPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setProcessingPayment(true);
 
     if (
       !formData.city ||
@@ -83,6 +85,7 @@ export default function PaymentPage() {
       !formData.postalCode ||
       !formData.state
     ) {
+      setProcessingPayment(false);
       toast.error("All the fields are required!");
       return;
     }
@@ -104,6 +107,7 @@ export default function PaymentPage() {
       billing_details: body,
     });
     if (error) {
+      setProcessingPayment(false);
       console.log(error);
     } else {
       const {
@@ -139,9 +143,11 @@ export default function PaymentPage() {
 
       console.log("create-customer: ", res);
       if (res.data?.data?.subscription?.status === "trialing") {
+        setProcessingPayment(false);
         history.push(`/subscription-plans`);
         toast.success("Trail period started");
       } else {
+        setProcessingPayment(false);
         toast.error("Subscription failed!");
       }
     }
@@ -200,8 +206,8 @@ export default function PaymentPage() {
           <div className="col-12">
             <div className="mt-2 row">
               <div className="col-12 col-lg-2">
-                <Button type="submit" disabled={false}>
-                  Pay Now
+                <Button type="submit" disabled={processingPayment}>
+                  {processingPayment ? "Processing payment" : "Pay Now"}
                 </Button>
               </div>
             </div>
