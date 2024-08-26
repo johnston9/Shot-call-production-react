@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
+// import CheckoutForm from "./CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
-import { axiosInstance } from "../../api/axiosDefaults";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Button, Row } from "react-bootstrap";
-import BillingDetailsFields from "./BillingDetailsFields";
-import CardElementContainer from "./CardElementContainer";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+import BillingDetailsFields from "../BillingDetailsFields";
+import CardElementContainer from "../CardElementContainer";
+import { axiosInstance } from "../../../api/axiosDefaults";
 
 const cardElementOptions = {
   style: {
@@ -30,7 +30,7 @@ const cardElementOptions = {
   hidePostalCode: true,
 };
 
-export default function PaymentPage() {
+export default function BudgetPaymentPage() {
   const currentUser = useCurrentUser();
   const history = useHistory();
   const params = useParams();
@@ -121,8 +121,8 @@ export default function PaymentPage() {
       const res = await axiosInstance.post(
         `/create-customer/`,
         {
-          plan_id: planId,
-          subscription_type: "project",
+          //   plan_id: planId,
+          subscription_type: "budget",
           customer_details: {
             payment_method: id,
             address_line1: formData.addressLine1,
@@ -144,28 +144,28 @@ export default function PaymentPage() {
       console.log("create-customer: ", res);
       if (res.data?.data?.subscription?.status === "trialing") {
         setProcessingPayment(false);
-        history.push(`/subscription-plans`);
-        toast.success("Trail period started");
+        history.push(`/accounts/${currentUser?.profile_id}`);
+        toast.success("Payment successful");
       } else {
         setProcessingPayment(false);
-        toast.error("Subscription failed!");
+        toast.error("Payment failed!");
       }
     }
 
     // console.log(paymentMethod)
   };
 
-  useEffect(() => {
-    setPlanId(params?.planId);
-    setPlanName(params?.planName);
-    // if (params?.planId && params?.planName) {
-    //   getPaymentIntent(params?.planId, params?.planName);
-    // }
-  }, [params]);
+  //   useEffect(() => {
+  //     setPlanId(params?.planId);
+  //     setPlanName(params?.planName);
+  //     // if (params?.planId && params?.planName) {
+  //     //   getPaymentIntent(params?.planId, params?.planName);
+  //     // }
+  //   }, [params]);
 
-  const options = {
-    clientSecret: clientSecret,
-  };
+  //   const options = {
+  //     clientSecret: clientSecret,
+  //   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,14 +1,14 @@
 /* Component in the Projects Component to display a Project's data */
-import React from "react"
-import Card from "react-bootstrap/Card"
-import styles from "../../styles/Account.module.css"
-import { useCurrentUser } from "../../contexts/CurrentUserContext"
-import { axiosRes } from "../../api/axiosDefaults"
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import { UniDropdown } from "../../components/UniDropDown"
-import { Link, useHistory } from "react-router-dom"
-import { Badge as ManBadge } from "@mantine/core"
+import React from "react";
+import Card from "react-bootstrap/Card";
+import styles from "../../styles/Account.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { axiosRes } from "../../api/axiosDefaults";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import { UniDropdown } from "../../components/UniDropDown";
+import { Link, useHistory } from "react-router-dom";
+import { Badge as ManBadge } from "@mantine/core";
 
 const Project = ({
   id,
@@ -21,21 +21,21 @@ const Project = ({
   category_type,
   payment,
 }) => {
-  const currentUser = useCurrentUser()
-  const is_owner = currentUser?.username === owner
-  const history = useHistory()
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+  const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/projects/edit/${id}`)
-  }
+    history.push(`/projects/edit/${id}`);
+  };
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/projects/${id}`)
-      console.log("delete")
-      history.goBack()
+      await axiosRes.delete(`/projects/${id}`);
+      console.log("delete");
+      history.goBack();
     } catch (err) {}
-  }
+  };
   return (
     <div>
       <Card className="mb-3">
@@ -115,7 +115,7 @@ const Project = ({
           </Card.Text>
           <Row className="mt-1">
             <Col>
-              <Link to={`/budgets/${id}`}>
+              <Link to={`/payment/budget`}>
                 <div className={`text-center`}>
                   <span className={`${styles.BudgetLink} px-md-5 mx-1`}>
                     Budget
@@ -128,7 +128,7 @@ const Project = ({
         <hr />
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;
