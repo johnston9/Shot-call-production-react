@@ -49,6 +49,7 @@ const Projects = ({
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
+        setHasLoaded(true);
       }
     },
     [userData.pk]
@@ -145,6 +146,12 @@ const Projects = ({
             onClick={handleShowProject}
           >
             Create Project
+          </Button>
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
+            // onClick={handleShowProject}
+          >
+            Budget
           </Button>
           {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>

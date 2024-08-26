@@ -3,16 +3,23 @@ import { axiosInstance } from "../../api/axiosDefaults";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import useActivePlan from "../../hooks/useActivePlan";
 import { useHistory } from "react-router-dom";
+import { Chip } from "@mantine/core";
 
 export default function SubscriptionPlansPage() {
   const history = useHistory();
-  const { loading: currentlyActivePlanLoading, currentlyActivePlan } =
+  const { loading: currentlyActivePlanLoading, currentlyActivePlans } =
     useActivePlan();
+
+  console.log(currentlyActivePlans);
   const [allPlans, setAllPlans] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const choosePlan = async (plan) => {
-    history.push(`/payment/${plan?.name}/${plan?.id}`);
+    if (plan?.plan_type === "budget") {
+      history.push(`/payment/budget`);
+    } else {
+      history.push(`/payment/${plan?.name}/${plan?.id}`);
+    }
   };
 
   const fetchData = async () => {
@@ -52,7 +59,6 @@ export default function SubscriptionPlansPage() {
       >
         <Row style={{ gap: "1rem" }}>
           {!loading &&
-            !currentlyActivePlanLoading &&
             allPlans?.map((plan) => (
               <Col key={plan?.id}>
                 <Card
@@ -60,7 +66,9 @@ export default function SubscriptionPlansPage() {
                     padding: "2rem",
                     minHeight: "250px",
                     border: `${
-                      currentlyActivePlan?.plan?.id === plan?.id
+                      currentlyActivePlans?.find(
+                        (p) => p?.plan?.id === plan?.id
+                      )
                         ? "1px solid green"
                         : ""
                     }`,
@@ -69,15 +77,31 @@ export default function SubscriptionPlansPage() {
                   <div
                     style={{ display: "flex", flexDirection: "column", gap: 2 }}
                   >
-                    <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
+                    {plan?.plan_type === "budget" && <h4>Pay for Budget</h4>}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
+                      {currentlyActivePlans?.find(
+                        (p) => p?.plan?.id === plan?.id
+                      ) && <Chip>Active</Chip>}
+                    </div>
                     {plan?.description && <p>{plan?.description}</p>}
                     <p>
                       <span style={{ fontWeight: "bold" }}>Price</span>: $
                       {plan?.price}
                     </p>
                     <p>Plan Id: {plan?.stripe_plan_id}</p>
+                    {plan?.plan_type !== "budget" && (
+                      <p>Max project: {plan?.max_projects}</p>
+                    )}
 
-                    {currentlyActivePlan?.plan?.id !== plan?.id && (
+                    {!currentlyActivePlans?.find(
+                      (p) => p?.plan?.id === plan?.id
+                    ) && (
                       <Button
                         style={{ cursor: "pointer" }}
                         onClick={() => choosePlan(plan)}

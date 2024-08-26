@@ -144,7 +144,7 @@ export default function BudgetPaymentPage() {
       console.log("create-customer: ", res);
       if (res.data?.data?.subscription?.status === "trialing") {
         setProcessingPayment(false);
-        history.push(`/accounts/${currentUser?.profile_id}`);
+        history.push(`/subscription-plans`);
         toast.success("Payment successful");
       } else {
         setProcessingPayment(false);

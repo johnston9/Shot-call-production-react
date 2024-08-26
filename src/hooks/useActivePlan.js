@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../api/axiosDefaults";
 
 export default function useActivePlan() {
-  const [currentlyActivePlan, setCurrentActivePlan] = useState(null);
+  const [currentlyActivePlans, setCurrentActivePlans] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const fetchMyActivePlan = async () => {
@@ -18,14 +18,14 @@ export default function useActivePlan() {
 
       if (response?.data?.status === 200) {
         setLoading(false);
-        setCurrentActivePlan(response?.data?.data[0]);
+        setCurrentActivePlans(response?.data?.data);
       } else {
         setLoading(false);
-        setCurrentActivePlan(null);
+        setCurrentActivePlans([]);
       }
     } catch (err) {
       setLoading(false);
-      setCurrentActivePlan(null);
+      setCurrentActivePlans([]);
       console.log(err);
     }
   };
@@ -35,6 +35,6 @@ export default function useActivePlan() {
   }, []);
   return {
     loading,
-    currentlyActivePlan,
+    currentlyActivePlans,
   };
 }

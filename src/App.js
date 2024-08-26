@@ -28,15 +28,18 @@ import Schedules from "./pages/home/Schedules";
 import Callsheets from "./pages/home/Callsheets";
 import Mobile from "./pages/home/Mobile";
 import AccountPage from "./pages/accounts/AccountPage";
-import BudgetPage from "./pages/accounts/BudgetPage";
-import BudgetCreate from "./pages/accounts/BudgetCreate";
-import BudgetEdit from "./pages/accounts/BudgetEdit";
+// import BudgetPage from "./pages/accounts/BudgetPage";
+// import BudgetCreate from "./pages/accounts/BudgetCreate";
+// import BudgetEdit from "./pages/accounts/BudgetEdit";
 import NeedToSignIn from "./pages/chat/NeedToSignIn";
 import ProjectEdit from "./pages/accounts/ProjectEdit";
 import { useEffect } from "react";
 import SubscriptionPlansPage from "./pages/subscription-plans/SubscriptionPlansPage";
 import PaymentPage from "./pages/payment/PaymentPage";
 import BudgetPaymentPage from "./pages/payment/budget/PaymentPage";
+import BudgetPage from "./pages/accounts/budgets/BudgetPage";
+import BudgetCreate from "./pages/accounts/budgets/BudgetCreate";
+import BudgetEdit from "./pages/accounts/budgets/BudgetEdit";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -87,6 +90,23 @@ function App() {
             path="/payment/budget"
             render={() => <BudgetPaymentPage />}
           />
+          {/* budget page */}
+          <Route exact path="/:id/budgets" render={() => <BudgetPage />} />
+          <Route
+            exact
+            path="/:id/budgets/create"
+            render={() => <BudgetCreate />}
+          />
+          <Route exact path="/:id/budgets/edit" render={() => <BudgetEdit />} />
+          <Route
+            exact
+            path="/chat"
+            render={() => <ChatsPage message="No results found." />}
+          />
+          {/* for budget only */}
+          <Route exact path="/budgets" render={() => <BudgetPage />} />
+          <Route exact path="/budgets/create" render={() => <BudgetCreate />} />
+          <Route exact path="/budgets/edit" render={() => <BudgetEdit />} />
           <Route
             exact
             path="/chat"
@@ -124,13 +144,13 @@ function App() {
             render={() => <ProjectEdit />}
           />
           {/* budgets */}
-          <Route exact path="/budgets/:id" render={() => <BudgetPage />} />
-          <Route
+          {/* <Route exact path="/budgets/:id" render={() => <BudgetPage />} /> */}
+          {/* <Route
             exact
             path="/budgets/create/:id"
             render={() => <BudgetCreate />}
-          />
-          <Route exact path="/budgets/edit/:id" render={() => <BudgetEdit />} />
+          /> */}
+          {/* <Route exact path="/budgets/edit/:id" render={() => <BudgetEdit />} /> */}
           {/* profiles */}
           <Route exact path="/profiles" render={() => <ProfilesPage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
