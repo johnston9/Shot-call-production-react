@@ -19,6 +19,9 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom";
 import { Alert as ManAlert } from "@mantine/core";
 import { toast } from "react-hot-toast";
+import useActivePlan from "../../hooks/useActivePlan";
+import { hasProjectPlan } from "../../utils/hasProjectPlan";
+import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
 
 const Projects = ({
   id,
@@ -29,6 +32,7 @@ const Projects = ({
 }) => {
   const history = useHistory();
   const userData = useCurrentUser();
+  const { currentlyActivePlans } = useActivePlan();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [projects, setProjects] = useState({ results: [] });
   // eslint-disable-next-line
@@ -98,6 +102,11 @@ const Projects = ({
   }, [stripeSuccess, stripeCategoryType, stripeProjectName, stripeSessionId]);
 
   const handleShowProject = () => {
+    console.log(hasProjectPlan(currentlyActivePlans));
+    if (!hasProjectPlan(currentlyActivePlans)) {
+      toast.error(`You don't have an active project subscription.`);
+      return;
+    }
     if (
       userData?.email === "" ||
       userData?.email === null ||
@@ -150,6 +159,18 @@ const Projects = ({
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
             // onClick={handleShowProject}
+            onClick={() => {
+              if (
+                hasProjectPlan(currentlyActivePlans) ||
+                hasBudgetPlan(currentlyActivePlans)
+              ) {
+                history.push("/budgets");
+              } else {
+                toast.error(
+                  "Cannot access budget. Please buy either budget or project subscription"
+                );
+              }
+            }}
           >
             Budget
           </Button>

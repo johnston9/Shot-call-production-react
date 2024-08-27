@@ -9,6 +9,10 @@ import Row from "react-bootstrap/Row";
 import { UniDropdown } from "../../components/UniDropDown";
 import { Link, useHistory } from "react-router-dom";
 import { Badge as ManBadge } from "@mantine/core";
+import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
+import useActivePlan from "../../hooks/useActivePlan";
+import { hasProjectPlan } from "../../utils/hasProjectPlan";
+import toast from "react-hot-toast";
 
 const Project = ({
   id,
@@ -23,6 +27,7 @@ const Project = ({
   created_at,
 }) => {
   const currentUser = useCurrentUser();
+  const { currentlyActivePlans } = useActivePlan();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
@@ -114,13 +119,27 @@ const Project = ({
           </Card.Text> */}
           <Row className="mt-1">
             <Col>
-              <Link to={`/${id}/budgets`}>
+              <span
+                onClick={() => {
+                  if (
+                    hasBudgetPlan(currentlyActivePlans) ||
+                    hasProjectPlan(currentlyActivePlans)
+                  ) {
+                    history.push(`/${id}/budgets`);
+                  } else {
+                    toast.error(
+                      "Cannot access budget. Please buy either budget or project subscription"
+                    );
+                  }
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <div className={`text-center`}>
                   <span className={`${styles.BudgetLink} px-md-5 mx-1`}>
                     Budget
                   </span>
                 </div>
-              </Link>
+              </span>
             </Col>
           </Row>
         </Card.Body>
