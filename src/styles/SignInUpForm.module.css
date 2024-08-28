@@ -1,13 +1,17 @@
 .SignupBox {
   background-color: #353839;
-    width: 100%; 
+  height: 530px;
 }
 
 .Image {
-    max-height: 40vh;
+    height: 300px;
     max-width: 100%;
     object-fit: contain;
 }
+
+/* .Row1 {
+  height: 600px;
+} */
 
 .Inner {
   background-color: #0b3d63;
@@ -20,8 +24,8 @@
 
 .FillerImagel {
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 50%;
 }
 
 .FillerImager {
@@ -75,13 +79,13 @@
 }
 
 .Container {
-  padding: 30px 10px;
+  padding: 5px 5px;
 }
 
-.SignInCol {
-  height: 320px;
-}
-
-.SignUpCol {
-  height: 375px;
+@media screen and (max-width: 600px) {
+  .FillerImagel {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+  }
 }
