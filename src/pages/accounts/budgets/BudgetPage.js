@@ -1,7 +1,7 @@
 /* Page to fetch the Project's Budget data
  * Contains the Budget Component to which it passes the data*/
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import useRedirect from "../../../hooks/Redirect";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -19,11 +19,12 @@ const BudgetPage = () => {
   useEffect(() => {
     const fetchBudget = async () => {
       try {
-        const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] = await Promise.all([
-          axiosReq.get(`/budgets1/?project=${id}`),
-          axiosReq.get(`/budgets2/?project=${id}`),
-          axiosReq.get(`/budgets3/?project=${id}`),
-        ]);
+        const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] =
+          await Promise.all([
+            axiosReq.get(id ? `/budgets1/?project=${id}` : `/budgets1/`),
+            axiosReq.get(id ? `/budgets2/?project=${id}` : `/budgets2/`),
+            axiosReq.get(id ? `/budgets3/?project=${id}` : `/budgets3/`),
+          ]);
         setBudget1({ results: [budget1] });
         setBudget2({ results: [budget2] });
         setBudget3({ results: [budget3] });
@@ -38,28 +39,27 @@ const BudgetPage = () => {
     };
 
     fetchBudget();
-
   }, [id]);
 
   return (
     <div>
-    {/* budget */}
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" >
+      {/* budget */}
+      <Row>
+        <Col className="py-2 p-0 p-lg-2">
           {hasLoaded ? (
-              <Budget
-              budget1={budget1.results[0]} 
-              budget2={budget2.results[0]} 
-              budget3={budget3.results[0]} 
+            <Budget
+              budget1={budget1.results[0]}
+              budget2={budget2.results[0]}
+              budget3={budget3.results[0]}
               projectId={id}
-               />
-            ) : (
-              ""
-            ) }
-      </Col>
-    </Row>
+            />
+          ) : (
+            ""
+          )}
+        </Col>
+      </Row>
     </div>
-  )
-}
+  );
+};
 
-export default BudgetPage
+export default BudgetPage;
