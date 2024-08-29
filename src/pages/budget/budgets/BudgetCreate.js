@@ -386,7 +386,7 @@ function BudgetCreate() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("project", id);
+    // formData.append("project", id );
     formData.append("budget_number", "1");
     // prepared by
     formData.append("dated", dated);
@@ -417,7 +417,7 @@ function BudgetCreate() {
   const handleSubmit2 = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("project", id);
+    // formData.append("project", id);
     formData.append("title", title);
     formData.append("budget_number", "2");
 
@@ -436,7 +436,7 @@ function BudgetCreate() {
   const handleSubmit3 = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("project", id);
+    // formData.append("project", id);
     formData.append("title", title);
     formData.append("budget_number", "3");
 

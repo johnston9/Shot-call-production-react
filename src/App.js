@@ -41,6 +41,10 @@ import BudgetPage from "./pages/accounts/budgets/BudgetPage";
 import BudgetCreate from "./pages/accounts/budgets/BudgetCreate";
 import BudgetEdit from "./pages/accounts/budgets/BudgetEdit";
 
+import BPage from "./pages/budget/budgets/BudgetPage";
+import BCreate from "./pages/budget/budgets/BudgetCreate";
+import BEdit from "./pages/budget/budgets/BudgetEdit";
+
 function App() {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -104,9 +108,9 @@ function App() {
             render={() => <ChatsPage message="No results found." />}
           />
           {/* for budget only */}
-          <Route exact path="/budgets" render={() => <BudgetPage />} />
-          <Route exact path="/budgets/create" render={() => <BudgetCreate />} />
-          <Route exact path="/budgets/edit" render={() => <BudgetEdit />} />
+          <Route exact path="/budgets" render={() => <BPage />} />
+          <Route exact path="/budgets/create" render={() => <BCreate />} />
+          <Route exact path="/budgets/edit" render={() => <BEdit />} />
           <Route
             exact
             path="/chat"
