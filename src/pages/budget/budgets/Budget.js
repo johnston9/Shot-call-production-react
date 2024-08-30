@@ -2364,6 +2364,8 @@ const Budget = (props) => {
     completion_bond,
   } = budget13;
 
+  console.log(budget1, "yoyo");
+
   const history = useHistory();
   const [showCover, setShowCover] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -2400,7 +2402,9 @@ const Budget = (props) => {
       {budget11 ? (
         <Row className="mt-0 mb-0">
           <Col className="text-center">
-            <Link to={`/budgets/edit`}>
+            <Link
+              to={`/budgets/edit/${budget1?.results[0]?.id}/${budget2?.results[0]?.id}/${budget3?.results[0]?.id}`}
+            >
               <div className={`px-1`}>
                 <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
               </div>

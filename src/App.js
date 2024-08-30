@@ -110,7 +110,11 @@ function App() {
           {/* for budget only */}
           <Route exact path="/budgets" render={() => <BPage />} />
           <Route exact path="/budgets/create" render={() => <BCreate />} />
-          <Route exact path="/budgets/edit" render={() => <BEdit />} />
+          <Route
+            exact
+            path="/budgets/edit/:budget1Id/:budget2Id/:budget3Id"
+            render={() => <BEdit />}
+          />
           <Route
             exact
             path="/chat"
