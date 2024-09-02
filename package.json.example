@@ -6,7 +6,6 @@
   },
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
     "@mantine/core": "^6.0.17",
     "@mantine/dates": "^6.0.17",
     "@mantine/form": "^6.0.17",
@@ -14,6 +13,7 @@
     "@mantine/modals": "^6.0.17",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.3.0",
+    "@tanstack/react-table": "^8.20.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
