@@ -42,6 +42,10 @@ const TransactionsTable = ({ headers, data, dataLoading }) => {
     return <div>Loading...</div>;
   }
 
+  if (data?.length === 0) {
+    return <div>No transactions yet</div>;
+  }
+
   const tableStyle = {
     // width: "100%",
     borderCollapse: "collapse",
