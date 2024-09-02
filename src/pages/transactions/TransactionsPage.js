@@ -6,7 +6,30 @@ export default function TransactionsPage() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
-  const headers = ["Payment Intent Id", "Plan Id", "Amount", "status", "Date"];
+  const headers = [
+    "Plan Name",
+    "Payment Method",
+    "Last 4",
+    "Amount",
+    "Status",
+    "Payment Date",
+  ];
+
+  const getStatus = (status) => {
+    switch (status) {
+      case "succeeded":
+        return "Success";
+      case "pending":
+        return "Pending";
+      case "failed":
+        return "Failed";
+      case "canceled":
+        return "Canceled";
+
+      default:
+        return "";
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -26,10 +49,11 @@ export default function TransactionsPage() {
         const modifiedData =
           response?.data?.data?.results?.length > 0
             ? response?.data?.data?.results?.map((el) => ({
-                stripe_payment_intent_id: el?.stripe_payment_intent_id,
-                stripe_plan_id: el?.stripe_plan_id,
+                plan_name: el?.plan_name,
+                payment_method_type: el?.payment_method_type,
+                card_last_four: el?.card_last_four,
                 amount: el?.amount,
-                status: el?.status,
+                status: getStatus(el?.status),
                 created_at: el?.created_at,
               }))
             : [];
@@ -47,8 +71,36 @@ export default function TransactionsPage() {
   }, []);
 
   return (
-    <div className="py-2">
-      <TransactionsTable headers={headers} data={data} dataLoading={loading} />
+    <div
+      className="py-4"
+      style={{
+        margin: "0 auto",
+        maxWidth: "1200px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.6rem",
+        }}
+      >
+        <div>
+          <h4
+            style={{
+              fontWeight: "bold",
+              color: "black",
+            }}
+          >
+            Transaction List
+          </h4>
+        </div>
+        <TransactionsTable
+          headers={headers}
+          data={data}
+          dataLoading={loading}
+        />
+      </div>
     </div>
   );
 }

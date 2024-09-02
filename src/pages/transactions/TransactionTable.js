@@ -10,22 +10,26 @@ const TransactionsTable = ({ headers, data, dataLoading }) => {
     () => [
       {
         header: headers[0],
-        accessorKey: "stripe_payment_intent_id",
+        accessorKey: "plan_name",
       },
       {
         header: headers[1],
-        accessorKey: "stripe_plan_id",
+        accessorKey: "payment_method_type",
       },
       {
         header: headers[2],
-        accessorKey: "amount",
+        accessorKey: "card_last_four",
       },
       {
         header: headers[3],
-        accessorKey: "status",
+        accessorKey: "amount",
       },
       {
         header: headers[4],
+        accessorKey: "status",
+      },
+      {
+        header: headers[5],
         accessorKey: "created_at",
       },
     ],
@@ -49,10 +53,9 @@ const TransactionsTable = ({ headers, data, dataLoading }) => {
   const tableStyle = {
     // width: "100%",
     borderCollapse: "collapse",
-    margin: "20px auto",
+    margin: "20px 0",
     fontSize: "16px",
     textAlign: "left",
-    maxWidth: "1200px",
   };
 
   const thStyle = {
