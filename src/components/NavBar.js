@@ -229,6 +229,16 @@ const NavBar = () => {
             <i className="navicon fas fa-play"></i>Subscription Plans
           </NavLink>
         </NavDropdown.Item>
+        <NavDropdown.Item>
+          <NavLink
+            className={` ${styles.NavLink} `}
+            activeClassName={styles.Active}
+            ref={refp2}
+            to={`/transactions`}
+          >
+            <i className="navicon fas fa-play"></i>Transactions
+          </NavLink>
+        </NavDropdown.Item>
       </NavDropdown>
     </>
   );

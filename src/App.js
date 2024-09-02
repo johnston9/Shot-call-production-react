@@ -35,6 +35,7 @@ import NeedToSignIn from "./pages/chat/NeedToSignIn";
 import ProjectEdit from "./pages/accounts/ProjectEdit";
 import { useEffect } from "react";
 import SubscriptionPlansPage from "./pages/subscription-plans/SubscriptionPlansPage";
+import TransactionsPage from "./pages/transactions/TransactionsPage";
 import PaymentPage from "./pages/payment/PaymentPage";
 import BudgetPaymentPage from "./pages/payment/budget/PaymentPage";
 import BudgetPage from "./pages/accounts/budgets/BudgetPage";
@@ -83,6 +84,11 @@ function App() {
             exact
             path="/subscription-plans"
             render={() => <SubscriptionPlansPage />}
+          />
+          <Route
+            exact
+            path="/transactions"
+            render={() => <TransactionsPage />}
           />
           <Route
             exact
