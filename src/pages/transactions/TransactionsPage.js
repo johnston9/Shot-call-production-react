@@ -9,7 +9,7 @@ export default function TransactionsPage() {
   const headers = [
     "Plan Name",
     "Payment Method",
-    "Last 4",
+    "Card No.",
     "Amount",
     "Status",
     "Payment Date",
