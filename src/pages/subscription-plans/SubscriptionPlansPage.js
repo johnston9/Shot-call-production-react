@@ -11,7 +11,8 @@ export default function SubscriptionPlansPage() {
     useActivePlan();
 
   console.log(currentlyActivePlans);
-  const [allPlans, setAllPlans] = useState([]);
+  const [allProjectPlans, setAllProjectPlans] = useState([]);
+  const [allBudgetPlans, setAllBudgetPlans] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const choosePlan = async (plan) => {
@@ -35,7 +36,14 @@ export default function SubscriptionPlansPage() {
 
       if (response?.data?.status === 200) {
         setLoading(false);
-        setAllPlans(response?.data?.data?.results);
+        const projectPlans = response?.data?.data?.results?.filter(
+          (p) => p?.plan_type === "project"
+        );
+        const budgetPlans = response?.data?.data?.results?.filter(
+          (p) => p?.plan_type === "budget"
+        );
+        setAllProjectPlans(projectPlans);
+        setAllBudgetPlans(budgetPlans);
       }
     } catch (err) {
       setLoading(false);
@@ -47,7 +55,6 @@ export default function SubscriptionPlansPage() {
     fetchData();
   }, []);
 
-  console.log(allPlans);
   return (
     <div className="py-2">
       <div
@@ -57,62 +64,213 @@ export default function SubscriptionPlansPage() {
           padding: "1rem",
         }}
       >
-        <Row style={{ gap: "1rem" }}>
-          {!loading &&
-            allPlans?.map((plan) => (
-              <Col key={plan?.id}>
-                <Card
-                  style={{
-                    padding: "2rem",
-                    minHeight: "250px",
-                    border: `${
-                      currentlyActivePlans?.find(
-                        (p) => p?.plan?.id === plan?.id
-                      )
-                        ? "1px solid green"
-                        : ""
-                    }`,
-                  }}
-                >
-                  <div
-                    style={{ display: "flex", flexDirection: "column", gap: 2 }}
-                  >
-                    {plan?.plan_type === "budget" && <h4>Pay for Budget</h4>}
-                    <div
+        <Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2rem",
+          }}
+        >
+          <div
+            style={{
+              marginLeft: "1.2rem",
+              fontWeight: "bold",
+              fontSize: "24px",
+            }}
+          >
+            Packages
+          </div>
+        </Row>
+        <Row>
+          <Col>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              <div
+                style={{
+                  marginLeft: "1.2rem",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                }}
+              >
+                Projects with Budgets
+              </div>
+              {!loading &&
+                allProjectPlans?.map((plan) => (
+                  <Col key={plan?.id}>
+                    <Card
                       style={{
-                        display: "flex",
-                        justifyContent: "space-between",
+                        padding: "2rem",
+                        minHeight: "250px",
+                        border: `${
+                          currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          )
+                            ? "1px solid green"
+                            : ""
+                        }`,
                       }}
                     >
-                      <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
-                      {currentlyActivePlans?.find(
-                        (p) => p?.plan?.id === plan?.id
-                      ) && <Chip>Active</Chip>}
-                    </div>
-                    {plan?.description && <p>{plan?.description}</p>}
-                    <p>
-                      <span style={{ fontWeight: "bold" }}>Price</span>: $
-                      {plan?.price}
-                    </p>
-                    <p>Plan Id: {plan?.stripe_plan_id}</p>
-                    {plan?.plan_type !== "budget" && (
-                      <p>Max project: {plan?.max_projects}</p>
-                    )}
-
-                    {!currentlyActivePlans?.find(
-                      (p) => p?.plan?.id === plan?.id
-                    ) && (
-                      <Button
-                        style={{ cursor: "pointer" }}
-                        onClick={() => choosePlan(plan)}
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 2,
+                        }}
                       >
-                        Buy
-                      </Button>
-                    )}
-                  </div>
-                </Card>
-              </Col>
-            ))}
+                        {/* {plan?.plan_type === "budget" && (
+                          <h4>Pay for Budget</h4>
+                        )} */}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
+                          {currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          ) && (
+                            <div
+                              style={{
+                                color: "green",
+                                fontWeight: "bold",
+                                borderRadius: "20px",
+                                border: "1px solid green",
+                                padding: "0.3rem 0.8rem",
+                              }}
+                            >
+                              Active
+                            </div>
+                          )}
+                        </div>
+                        {plan?.description && <p>{plan?.description}</p>}
+                        <p>
+                          <span style={{ fontWeight: "bold" }}>Price</span>: $
+                          {plan?.price}
+                        </p>
+                        {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
+                        {plan?.plan_type !== "budget" && (
+                          <p style={{ fontWeight: "bold" }}>
+                            Max project with budget: {plan?.max_projects}
+                          </p>
+                        )}
+
+                        {!currentlyActivePlans?.find(
+                          (p) => p?.plan?.id === plan?.id
+                        ) && (
+                          <Button
+                            style={{ cursor: "pointer" }}
+                            onClick={() => choosePlan(plan)}
+                          >
+                            Buy
+                          </Button>
+                        )}
+                      </div>
+                    </Card>
+                  </Col>
+                ))}
+            </div>
+          </Col>
+          <Col>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              <div
+                style={{
+                  marginLeft: "1.2rem",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                }}
+              >
+                Budget Only
+              </div>
+
+              {!loading &&
+                allBudgetPlans?.map((plan) => (
+                  <Col key={plan?.id}>
+                    <Card
+                      style={{
+                        padding: "2rem",
+                        minHeight: "250px",
+                        border: `${
+                          currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          )
+                            ? "1px solid green"
+                            : ""
+                        }`,
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 2,
+                        }}
+                      >
+                        {/* {plan?.plan_type === "budget" && (
+                          <h4>Pay for Budget</h4>
+                        )} */}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
+                          {currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          ) && (
+                            <div
+                              style={{
+                                color: "green",
+                                fontWeight: "bold",
+                                borderRadius: "20px",
+                                border: "1px solid green",
+                                padding: "0.3rem 0.8rem",
+                              }}
+                            >
+                              Active
+                            </div>
+                          )}
+                        </div>
+                        {plan?.description && <p>{plan?.description}</p>}
+                        <p>
+                          <span style={{ fontWeight: "bold" }}>Price</span>: $
+                          {plan?.price}
+                        </p>
+                        {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
+                        {plan?.plan_type !== "budget" && (
+                          <p style={{ fontWeight: "bold" }}>
+                            Max project with budget: {plan?.max_projects}
+                          </p>
+                        )}
+
+                        {!currentlyActivePlans?.find(
+                          (p) => p?.plan?.id === plan?.id
+                        ) && (
+                          <Button
+                            style={{ cursor: "pointer" }}
+                            onClick={() => choosePlan(plan)}
+                          >
+                            Buy
+                          </Button>
+                        )}
+                      </div>
+                    </Card>
+                  </Col>
+                ))}
+            </div>
+          </Col>
         </Row>
       </div>
     </div>

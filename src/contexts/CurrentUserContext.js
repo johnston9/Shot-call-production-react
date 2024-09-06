@@ -5,21 +5,21 @@
    affecting the axiosReq interceptor in mobile
  * The Gmail mobile browser issue seems to be all requests 
    getting 401 so the token refresh is being rejected */
-import { createContext, useContext, useEffect, useState } from "react"
-import { axiosInstance } from "../api/axiosDefaults"
+import { createContext, useContext, useEffect, useState } from "react";
+import { axiosInstance } from "../api/axiosDefaults";
 // import axios from "axios"
 // import { axiosReq, axiosRes } from "../api/axiosDefaults"
 // import { useHistory } from "react-router-dom"
 // import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils"
 
-export const CurrentUserContext = createContext()
-export const SetCurrentUserContext = createContext()
+export const CurrentUserContext = createContext();
+export const SetCurrentUserContext = createContext();
 
-export const useCurrentUser = () => useContext(CurrentUserContext)
-export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
+export const useCurrentUser = () => useContext(CurrentUserContext);
+export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
   // const history = useHistory()
 
   // const handleMount = async () => {
@@ -33,17 +33,21 @@ export const CurrentUserProvider = ({ children }) => {
 
   const getCurrentUserData = async () => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"))
-      console.log(user)
-      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`)
-      console.log(data)
-      setCurrentUser({ ...user, profile_image: data?.data?.image })
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user);
+      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`);
+      console.log(data);
+      setCurrentUser({
+        ...user,
+        profile_image: data?.data?.image,
+        remaining_projects: data?.data?.remaining_projects,
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    getCurrentUserData()
-  }, [])
+    getCurrentUserData();
+  }, []);
 
   // useMemo(() => {
   //   axiosReq.interceptors.request.use(
@@ -98,5 +102,5 @@ export const CurrentUserProvider = ({ children }) => {
         {children}
       </SetCurrentUserContext.Provider>
     </CurrentUserContext.Provider>
-  )
-}
+  );
+};

@@ -22,6 +22,7 @@ import { toast } from "react-hot-toast";
 import useActivePlan from "../../hooks/useActivePlan";
 import { hasProjectPlan } from "../../utils/hasProjectPlan";
 import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
+import { Alert } from "react-bootstrap";
 
 const Projects = ({
   id,
@@ -33,6 +34,7 @@ const Projects = ({
   const history = useHistory();
   const userData = useCurrentUser();
   const { currentlyActivePlans } = useActivePlan();
+  console.log(currentlyActivePlans, userData);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [projects, setProjects] = useState({ results: [] });
   // eslint-disable-next-line
@@ -104,7 +106,8 @@ const Projects = ({
   const handleShowProject = () => {
     console.log(hasProjectPlan(currentlyActivePlans));
     if (!hasProjectPlan(currentlyActivePlans)) {
-      toast.error(`You don't have an active project subscription.`);
+      toast.error(`You don't have any active packages.`);
+      history.push(`/subscription-plans`);
       return;
     }
     if (
@@ -114,6 +117,15 @@ const Projects = ({
     )
       history.push(`/profiles/${userData?.pk}`);
     setShowCreateProject((showCreateProject) => !showCreateProject);
+  };
+
+  const getMaxProject = (plans) => {
+    const projectPlan = plans?.find((p) => p?.plan?.plan_type === "project");
+    if (projectPlan) {
+      return projectPlan?.plan?.max_projects;
+    } else {
+      return null;
+    }
   };
 
   // const getMessage = (stripeSuccess) => {
@@ -167,12 +179,13 @@ const Projects = ({
                 history.push("/budgets");
               } else {
                 toast.error(
-                  "Cannot access budget. Please buy either budget or project subscription"
+                  "Cannot access budget. Please buy either budget or project packages."
                 );
+                history.push(`/subscription-plans`);
               }
             }}
           >
-            Budget
+            Create Budget
           </Button>
           {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>
@@ -188,6 +201,18 @@ const Projects = ({
         />
       ) : (
         ""
+      )}
+      {getMaxProject(currentlyActivePlans) && (
+        <Alert
+          variant="info"
+          style={{
+            maxWidth: "fit-content",
+            margin: "0 auto",
+          }}
+        >
+          {userData?.remaining_projects ? userData?.remaining_projects : 0}{" "}
+          projects created out of {getMaxProject(currentlyActivePlans)}
+        </Alert>
       )}
       {/* search */}
       <Row>

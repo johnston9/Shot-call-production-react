@@ -85,7 +85,7 @@ const Project = ({
             </p>
           )}
           <hr className="my-2" />
-          <Card.Text>Project Id: {id}</Card.Text>
+          {/* <Card.Text>Project Id: {id}</Card.Text> */}
           {/* <Card.Text>Stripe Id: {stripe_id}</Card.Text> */}
           <Card.Text>
             Project URL:{" "}
