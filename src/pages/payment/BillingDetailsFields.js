@@ -19,6 +19,7 @@ export default function BillingDetailsFields({
     axiosInstance
       .get("/countries/")
       .then((response) => {
+        console.log(response.data?.data);
         setCountries(response?.data?.data);
       })
       .catch((error) => console.error("Error fetching countries:", error));
@@ -82,8 +83,8 @@ export default function BillingDetailsFields({
         >
           <option value="">Select Country</option>
           {countries.map((country) => (
-            <option key={country[0]} value={country[0]}>
-              {country[1]}
+            <option key={country.code2} value={country.code2}>
+              {country.name}
             </option>
           ))}
         </Form.Control>
@@ -101,8 +102,8 @@ export default function BillingDetailsFields({
         >
           <option value="">Select State</option>
           {states.map((state) => (
-            <option key={state[0]} value={state[0]}>
-              {state[1]}
+            <option key={state.name} value={state.name}>
+              {state.name}
             </option>
           ))}
         </Form.Control>
