@@ -153,10 +153,17 @@ export default function SubscriptionPlansPage() {
                           <span style={{ fontWeight: "bold" }}>Price</span>: $
                           {plan?.price}
                         </p>
+
                         {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                         {plan?.plan_type !== "budget" && (
                           <p style={{ fontWeight: "bold" }}>
                             Max project with budget: {plan?.max_projects}
+                          </p>
+                        )}
+                        {plan?.interval && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>Interval</span>
+                            : {plan?.interval}
                           </p>
                         )}
 
@@ -252,6 +259,15 @@ export default function SubscriptionPlansPage() {
                         {plan?.plan_type !== "budget" && (
                           <p style={{ fontWeight: "bold" }}>
                             Max project with budget: {plan?.max_projects}
+                          </p>
+                        )}
+                        <p style={{ fontWeight: "bold" }}>
+                          Can create only 1 budget
+                        </p>
+                        {plan?.interval && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>Interval</span>
+                            : {plan?.interval}
                           </p>
                         )}
 

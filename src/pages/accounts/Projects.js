@@ -106,7 +106,7 @@ const Projects = ({
   const handleShowProject = () => {
     console.log(hasProjectPlan(currentlyActivePlans));
     if (!hasProjectPlan(currentlyActivePlans)) {
-      toast.error(`You don't have any active packages.`);
+      toast.error(`You don't have any active packages!`);
       history.push(`/subscription-plans`);
       return;
     }
@@ -211,7 +211,7 @@ const Projects = ({
           }}
         >
           {userData?.remaining_projects ? userData?.remaining_projects : 0}{" "}
-          projects created out of {getMaxProject(currentlyActivePlans)}
+          projects remaining out of {getMaxProject(currentlyActivePlans)}
         </Alert>
       )}
       {/* search */}

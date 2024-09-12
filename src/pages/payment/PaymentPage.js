@@ -11,6 +11,7 @@ import CardElementContainer from "./CardElementContainer";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import StripeImage from "../../assets/stripe-logo-company.png";
 
 const cardElementOptions = {
   style: {
@@ -40,6 +41,7 @@ export default function PaymentPage() {
   const [clientSecret, setClientSecret] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [paymentAmount, setPaymentAmount] = useState(0);
   const [formData, setFormData] = useState({
     addressLine1: "",
     city: "",
@@ -155,12 +157,40 @@ export default function PaymentPage() {
     // console.log(paymentMethod)
   };
 
+  const fetchData = async (planName) => {
+    try {
+      // setLoading(true);
+      const response = await axiosInstance.get(`/plans/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        withCredentials: true,
+      });
+
+      if (response?.data?.status === 200) {
+        // setLoading(false);
+        const plan = response?.data?.data?.results?.find(
+          (p) => p?.name === planName
+        );
+
+        setPaymentAmount(plan?.price);
+      }
+    } catch (err) {
+      // setLoading(false);
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     setPlanId(params?.planId);
     setPlanName(params?.planName);
     // if (params?.planId && params?.planName) {
     //   getPaymentIntent(params?.planId, params?.planName);
     // }
+    if (params?.planName) {
+      fetchData(params?.planName);
+    }
   }, [params]);
 
   const options = {
@@ -177,7 +207,7 @@ export default function PaymentPage() {
       <div
         style={{
           maxWidth: "800px",
-          margin: "0 auto",
+          margin: "1rem auto",
           padding: "1rem",
         }}
       >
@@ -205,9 +235,32 @@ export default function PaymentPage() {
 
           <div className="col-12">
             <div className="mt-2 row">
-              <div className="col-12 col-lg-2">
+              <div className="col-12">
+                <Row
+                  style={{
+                    marginBottom: "1rem",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {/* <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
+                      width: "100%",
+                    }}
+                  > */}
+                  <div style={{ display: "inline-block" }}>
+                    Your data is safe with
+                  </div>
+                  {/* </div> */}
+                  <img src={StripeImage} height={30} />
+                </Row>
                 <Button type="submit" disabled={processingPayment}>
-                  {processingPayment ? "Processing payment" : "Pay Now"}
+                  {processingPayment
+                    ? "Processing payment"
+                    : `Pay $${paymentAmount} Now`}
                 </Button>
               </div>
             </div>

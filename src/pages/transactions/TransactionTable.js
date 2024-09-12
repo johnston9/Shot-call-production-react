@@ -19,6 +19,7 @@ const TransactionsTable = ({ headers, data, dataLoading }) => {
       {
         header: headers[2],
         accessorKey: "card_last_four",
+        cell: (info) => `**** **** **** ${info.getValue()}`,
       },
       {
         header: headers[3],
