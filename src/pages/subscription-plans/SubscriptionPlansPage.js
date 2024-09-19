@@ -36,10 +36,10 @@ export default function SubscriptionPlansPage() {
 
       if (response?.data?.status === 200) {
         setLoading(false);
-        const projectPlans = response?.data?.data?.results?.filter(
+        const projectPlans = response?.data?.data?.filter(
           (p) => p?.plan_type === "project"
         );
-        const budgetPlans = response?.data?.data?.results?.filter(
+        const budgetPlans = response?.data?.data?.filter(
           (p) => p?.plan_type === "budget"
         );
         setAllProjectPlans(projectPlans);
@@ -81,8 +81,12 @@ export default function SubscriptionPlansPage() {
             Packages
           </div>
         </Row>
-        <Row>
-          <Col>
+        <Row
+          style={{
+            gap: "3rem",
+          }}
+        >
+          <Col xs={12}>
             <div
               style={{
                 display: "flex",
@@ -183,7 +187,8 @@ export default function SubscriptionPlansPage() {
                 ))}
             </div>
           </Col>
-          <Col>
+
+          <Col xs={12}>
             <div
               style={{
                 display: "flex",
