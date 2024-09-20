@@ -303,6 +303,20 @@ const NavBar = () => {
           >
             <i className="fas fa-play"></i>Chat
           </NavLink>
+          <NavLink
+            className={` pt-1 mx-2  ${styles.NavLink}`}
+            activeClassName={styles.Active}
+            to="/contact-us"
+          >
+            <i className="fas fa-play"></i>Contact Us
+          </NavLink>
+          <NavLink
+            className={` pt-1 mx-2  ${styles.NavLink}`}
+            activeClassName={styles.Active}
+            to="/how-it-works"
+          >
+            <i className="fas fa-play"></i>How it Works
+          </NavLink>
           {currentUser ? loggedInIcons : loggedOutIcons}
         </Nav>
       </Navbar.Collapse>

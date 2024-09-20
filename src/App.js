@@ -45,6 +45,8 @@ import BudgetEdit from "./pages/accounts/budgets/BudgetEdit";
 import BPage from "./pages/budget/budgets/BudgetPage";
 import BCreate from "./pages/budget/budgets/BudgetCreate";
 import BEdit from "./pages/budget/budgets/BudgetEdit";
+import ContactUs from "./pages/contact-us/ContactUs";
+import HowItWorks from "./pages/how-it-works/HowItWorks";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -125,6 +127,16 @@ function App() {
             exact
             path="/chat"
             render={() => <ChatsPage message="No results found." />}
+          />
+          <Route
+            exact
+            path="/contact-us"
+            render={() => <ContactUs message="No results found." />}
+          />
+          <Route
+            exact
+            path="/how-it-works"
+            render={() => <HowItWorks message="No results found." />}
           />
           {/* Feed chat*/}
           <Route

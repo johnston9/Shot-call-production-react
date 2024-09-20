@@ -4,6 +4,7 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import useActivePlan from "../../hooks/useActivePlan";
 import { useHistory } from "react-router-dom";
 import { Chip } from "@mantine/core";
+import GreenTick from "../../assets/green-tick.png";
 
 export default function SubscriptionPlansPage() {
   const history = useHistory();
@@ -152,7 +153,18 @@ export default function SubscriptionPlansPage() {
                             </div>
                           )}
                         </div>
-                        {plan?.description && <p>{plan?.description}</p>}
+                        {plan?.description && (
+                          <div
+                            style={{
+                              display: "flex",
+                              gap: "0.5rem",
+                            }}
+                          >
+                            <img src={GreenTick} height={20} width={20} />
+
+                            <p>{plan?.description}</p>
+                          </div>
+                        )}
                         <p>
                           <span style={{ fontWeight: "bold" }}>Price</span>: $
                           {plan?.price}
