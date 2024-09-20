@@ -79,7 +79,7 @@ export default function SubscriptionPlansPage() {
               fontSize: "24px",
             }}
           >
-            Packages
+            Subscription Plans
           </div>
         </Row>
         <Row
