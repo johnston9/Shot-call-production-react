@@ -4,9 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useRedirect from "../../../hooks/Redirect";
 import Col from "react-bootstrap/Col";
+import { Button } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../../api/axiosDefaults";
 import Budget from "./Budget";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const BudgetPage = () => {
   useRedirect();
@@ -41,11 +44,50 @@ const BudgetPage = () => {
     fetchBudget();
   }, []);
 
+  const handleDownload = () => {
+    const input = document.getElementById("pdf-content"); // Change this to the ID of your scrollable content
+
+    html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgWidth = 210; // A4 size width in mm
+      const pageHeight = 295; // A4 size height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const heightLeft = imgHeight;
+
+      let position = 0;
+
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      position -= pageHeight;
+
+      // Add new page if there's more content
+      while (heightLeft + position >= 0) {
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        position -= pageHeight;
+      }
+
+      pdf.save("download.pdf");
+    });
+  };
+
   return (
     <div>
       {/* budget */}
+      <Row
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "1rem",
+          width: "100%",
+          marginTop: "2rem",
+        }}
+      >
+        <div></div>
+        <Button onClick={handleDownload}>Download PDF</Button>
+      </Row>
       <Row>
-        <Col className="py-2 p-0 p-lg-2">
+        <Col id="pdf-content" className="py-2 p-0 p-lg-2">
           {hasLoaded ? (
             <Budget
               budget1={budget1.results[0]}
