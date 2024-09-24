@@ -4,6 +4,7 @@ import styles from "../../styles/ChatCreate.module.css";
 import TopBox from "../../components/TopBox";
 import { Button as ManButton } from "@mantine/core";
 import toast from "react-hot-toast";
+import { axiosInstance } from "../../api/axiosDefaults";
 
 export default function () {
   const [data, setData] = useState({
@@ -29,7 +30,38 @@ export default function () {
       return;
     }
 
-    console.log(data);
+    try {
+      setIsLoading(true);
+      const response = await axiosInstance.post(
+        `/contacts/`,
+        {
+          name: data.name,
+          email: data.email,
+          contact: data.contactNumber,
+          message: data.message,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }
+      );
+
+      setData({
+        ...data,
+        contactNumber: "",
+        email: "",
+        message: "",
+        name: "",
+      });
+    } catch (err) {
+      toast.error("Failed to contact. Try again!");
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const buttons = (

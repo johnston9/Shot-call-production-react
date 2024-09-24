@@ -8,11 +8,13 @@ import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
 import { axiosReq } from "../../../api/axiosDefaults";
 import Budget from "./Budget";
+import DownloadIcon from "../../../assets/download-icon.jpg";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const BudgetPage = () => {
   useRedirect();
+  const [isGenerating, setIsGenerating] = useState(false); // State to manage button disable
   const [hasLoaded, setHasLoaded] = useState(false);
   const [budget1, setBudget1] = useState({ results: [] });
   const [budget2, setBudget2] = useState({ results: [] });
@@ -45,6 +47,8 @@ const BudgetPage = () => {
   }, [id]);
 
   const handleDownload = () => {
+    setIsGenerating(true); // Disable button when generation starts
+
     const input = document.getElementById("pdf-content"); // Change this to the ID of your scrollable content
 
     html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
@@ -68,6 +72,7 @@ const BudgetPage = () => {
       }
 
       pdf.save("download.pdf");
+      setIsGenerating(false);
     });
   };
 
@@ -83,7 +88,19 @@ const BudgetPage = () => {
         }}
       >
         <div></div>
-        <Button onClick={handleDownload}>Download PDF</Button>
+        <>
+          {isGenerating ? (
+            <div style={{}}>Generating PDF...</div>
+          ) : (
+            <>
+              {hasLoaded && (
+                <div onClick={handleDownload} style={{ cursor: "pointer" }}>
+                  <img src={DownloadIcon} height={30} width={30} />
+                </div>
+              )}
+            </>
+          )}
+        </>
       </Row>
       {/* budget */}
       <Row>
