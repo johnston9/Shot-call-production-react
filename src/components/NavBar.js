@@ -2,7 +2,7 @@
  * Currently the activeClassName item is working but is throwing an
    error in the console so is commented out on each link
    Am looking for a way to resolve this issue */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo1.png";
 import styles from "../styles/NavBar.module.css";
@@ -43,7 +43,9 @@ const NavBar = () => {
     refp,
     refp1,
     refp2,
+    refh1,
   } = useDropdownClick();
+  const [videos, setVideos] = useState([]);
 
   const handleSignOut = async () => {
     /* Function to sign a user out */
@@ -58,6 +60,21 @@ const NavBar = () => {
       console.log(err);
     }
   };
+  const fetchVideos = async () => {
+    /* Function to sign a user out */
+    try {
+      const res = await axiosInstanceNoAuth.get("api/videos/");
+
+      console.log(res);
+      setVideos(res?.data?.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
   const creativeIcons = (
     <>
@@ -118,6 +135,36 @@ const NavBar = () => {
     </>
   );
 
+  const howItWorksIcons = (
+    <>
+      <NavDropdown
+        title={
+          <span style={{ color: "#555555" }}>
+            <i className="navicon fas fa-stream pt-1"></i>How it Works
+          </span>
+        }
+        ref={refh1}
+        id="nav-dropdown2"
+        // activeClassName={styles.Active}
+        className={`${styles.NavLink} `}
+      >
+        {videos?.length > 0 &&
+          videos?.map((v) => (
+            <NavDropdown.Item key={v.id}>
+              <NavLink
+                className={` ${styles.NavLink} `}
+                activeClassName={styles.Active}
+                // ref={reff2}
+                to={`how-it-works/${v.video_id}`}
+              >
+                <i className="navicon fas fa-play"></i>
+                {v.title}
+              </NavLink>
+            </NavDropdown.Item>
+          ))}
+      </NavDropdown>
+    </>
+  );
   const productionIcons = (
     <>
       <NavDropdown
@@ -310,13 +357,7 @@ const NavBar = () => {
           >
             <i className="fas fa-play"></i>Contact Us
           </NavLink>
-          <NavLink
-            className={` pt-1 mx-2  ${styles.NavLink}`}
-            activeClassName={styles.Active}
-            to="/how-it-works"
-          >
-            <i className="fas fa-play"></i>How it Works
-          </NavLink>
+          {howItWorksIcons}
           {currentUser ? loggedInIcons : loggedOutIcons}
         </Nav>
       </Navbar.Collapse>

@@ -135,7 +135,7 @@ function App() {
           />
           <Route
             exact
-            path="/how-it-works"
+            path="/how-it-works/:video_id"
             render={() => <HowItWorks message="No results found." />}
           />
           {/* Feed chat*/}

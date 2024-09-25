@@ -3,9 +3,14 @@ import { Col, Form, Row } from "react-bootstrap";
 import styles from "../../styles/ChatCreate.module.css";
 import TopBox from "../../components/TopBox";
 import { Button as ManButton } from "@mantine/core";
-import { YOUTUBE_URL } from "../../utils/config";
+import { VIMEO_BASE_URL } from "../../utils/config";
+import { useParams } from "react-router-dom";
 
 export default function () {
+  const params = useParams();
+
+  console.log(params);
+
   return (
     <div>
       <div className="mx-md-5">
@@ -19,7 +24,7 @@ export default function () {
               <iframe
                 width="100%"
                 height="315"
-                src={YOUTUBE_URL} // Replace with your dummy YouTube link
+                src={`${VIMEO_BASE_URL}${params?.video_id}`} // Replace with your dummy YouTube link
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
