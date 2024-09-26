@@ -5,7 +5,7 @@ import CheckoutForm from "./CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
 import { axiosInstance } from "../../api/axiosDefaults";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { Button, Row } from "react-bootstrap";
+import { Button, Row, Form } from "react-bootstrap";
 import BillingDetailsFields from "./BillingDetailsFields";
 import CardElementContainer from "./CardElementContainer";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -49,6 +49,8 @@ export default function PaymentPage() {
     country: "",
     postalCode: "",
   });
+  const [accepted, setAccepted] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -79,6 +81,13 @@ export default function PaymentPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessingPayment(true);
+
+    if (!accepted) {
+      toast.error("Please accept terms and conditions!");
+      setProcessingPayment(false);
+
+      return;
+    }
 
     if (
       !formData.city ||
@@ -157,7 +166,7 @@ export default function PaymentPage() {
     // console.log(paymentMethod)
   };
 
-  const fetchData = async (planName) => {
+  const fetchData = async (pId) => {
     try {
       // setLoading(true);
       const response = await axiosInstance.get(`/plans/`, {
@@ -170,10 +179,12 @@ export default function PaymentPage() {
 
       if (response?.data?.status === 200) {
         // setLoading(false);
-        const plan = response?.data?.data?.results?.find(
-          (p) => p?.name === planName
-        );
+        console.log(response?.data?.data);
+        console.log(pId);
 
+        const plan = response?.data?.data?.find((p) => p?.id === pId);
+
+        console.log(plan);
         setPaymentAmount(plan?.price);
       }
     } catch (err) {
@@ -188,8 +199,8 @@ export default function PaymentPage() {
     // if (params?.planId && params?.planName) {
     //   getPaymentIntent(params?.planId, params?.planName);
     // }
-    if (params?.planName) {
-      fetchData(params?.planName);
+    if (params?.planId) {
+      fetchData(params?.planId);
     }
   }, [params]);
 
@@ -235,6 +246,27 @@ export default function PaymentPage() {
 
           <div className="col-12">
             <div className="mt-2 row">
+              <div className="col-12">
+                <Form.Group controlId="termsConditions">
+                  <Form.Check
+                    type="checkbox"
+                    label={
+                      <>
+                        I accept the{" "}
+                        <a
+                          href="/terms-and-conditions"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Terms and Conditions
+                        </a>
+                      </>
+                    }
+                    checked={accepted}
+                    onChange={(e) => setAccepted(e.target.checked)}
+                  />
+                </Form.Group>
+              </div>
               <div className="col-12">
                 <Row
                   style={{

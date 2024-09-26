@@ -47,6 +47,7 @@ import BCreate from "./pages/budget/budgets/BudgetCreate";
 import BEdit from "./pages/budget/budgets/BudgetEdit";
 import ContactUs from "./pages/contact-us/ContactUs";
 import HowItWorks from "./pages/how-it-works/HowItWorks";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -94,6 +95,11 @@ function App() {
           />
           <Route
             exact
+            path="/terms-and-conditions"
+            render={() => <TermsAndConditions />}
+          />
+          <Route
+            exact
             path="/payment/:planName/:planId"
             render={() => <PaymentPage />}
           />
@@ -135,7 +141,7 @@ function App() {
           />
           <Route
             exact
-            path="/how-it-works/:video_id"
+            path="/how-it-works/:video_id/:title"
             render={() => <HowItWorks message="No results found." />}
           />
           {/* Feed chat*/}

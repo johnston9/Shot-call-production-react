@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 // import CheckoutForm from "./CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { Button, Row } from "react-bootstrap";
+import { Button, Row, Form } from "react-bootstrap";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import { useCurrentUser } from "../../../contexts/CurrentUserContext";
@@ -47,6 +47,8 @@ export default function BudgetPaymentPage() {
     country: "",
     postalCode: "",
   });
+  const [accepted, setAccepted] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -77,6 +79,12 @@ export default function BudgetPaymentPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessingPayment(true);
+    if (!accepted) {
+      toast.error("Please accept terms and conditions!");
+      setProcessingPayment(false);
+
+      return;
+    }
 
     if (
       !formData.city ||
@@ -205,6 +213,27 @@ export default function BudgetPaymentPage() {
 
           <div className="col-12">
             <div className="mt-2 row">
+              <div className="col-12">
+                <Form.Group controlId="termsConditions">
+                  <Form.Check
+                    type="checkbox"
+                    label={
+                      <>
+                        I accept the{" "}
+                        <a
+                          href="/terms-and-conditions"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Terms and Conditions
+                        </a>
+                      </>
+                    }
+                    checked={accepted}
+                    onChange={(e) => setAccepted(e.target.checked)}
+                  />
+                </Form.Group>
+              </div>
               <div className="col-12 col-lg-2">
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment ? "Processing payment" : "Pay Now"}

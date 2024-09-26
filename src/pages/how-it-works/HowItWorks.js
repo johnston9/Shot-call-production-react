@@ -9,8 +9,6 @@ import { useParams } from "react-router-dom";
 export default function () {
   const params = useParams();
 
-  console.log(params);
-
   return (
     <div>
       <div className="mx-md-5">
@@ -34,7 +32,7 @@ export default function () {
 
             {/* Right side: Description */}
             <div style={{ flex: 1, paddingLeft: "15px" }}>
-              <h5>Description</h5>
+              <h5>{params?.title}</h5>
               <p>
                 This is a description of the Short Call. Here you can provide
                 more details about the content, its significance, or any other

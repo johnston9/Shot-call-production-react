@@ -36,6 +36,7 @@ export default function SubscriptionPlansPage() {
       });
 
       if (response?.data?.status === 200) {
+        console.log(response?.data?.data);
         setLoading(false);
         const projectPlans = response?.data?.data?.filter(
           (p) => p?.plan_type === "project"

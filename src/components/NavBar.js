@@ -155,7 +155,7 @@ const NavBar = () => {
                 className={` ${styles.NavLink} `}
                 activeClassName={styles.Active}
                 // ref={reff2}
-                to={`how-it-works/${v.video_id}`}
+                to={`how-it-works/${v.video_id}/${v.title}`}
               >
                 <i className="navicon fas fa-play"></i>
                 {v.title}
