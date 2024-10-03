@@ -5,22 +5,93 @@ import useActivePlan from "../../hooks/useActivePlan";
 import { useHistory } from "react-router-dom";
 import { Chip } from "@mantine/core";
 import GreenTick from "../../assets/green-tick.png";
+import { toast } from "react-hot-toast";
 
 export default function SubscriptionPlansPage() {
   const history = useHistory();
-  const { loading: currentlyActivePlanLoading, currentlyActivePlans } =
-    useActivePlan();
+  const {
+    loading: currentlyActivePlanLoading,
+    currentlyActivePlans,
+    fetchMyActivePlan,
+  } = useActivePlan();
 
   console.log(currentlyActivePlans);
+
+  console.log(currentlyActivePlans);
+
   const [allProjectPlans, setAllProjectPlans] = useState([]);
   const [allBudgetPlans, setAllBudgetPlans] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [isCancelling, setIsCancelling] = useState(false);
+  console.log(allProjectPlans);
   const choosePlan = async (plan) => {
     if (plan?.plan_type === "budget") {
       history.push(`/payment/budget`);
     } else {
       history.push(`/payment/${plan?.name}/${plan?.id}`);
+    }
+  };
+
+  const findStartedDate = (plan) => {
+    if (!currentlyActivePlans || currentlyActivePlans?.length <= 0) {
+      return null;
+    }
+    const subPlan = currentlyActivePlans?.find(
+      (activePlan) => activePlan?.plan?.id === plan?.id
+    );
+    if (!subPlan) {
+      return null;
+    }
+    return subPlan?.current_period_start;
+  };
+
+  const findEndDate = (plan) => {
+    if (!currentlyActivePlans || currentlyActivePlans?.length <= 0) {
+      return null;
+    }
+    const subPlan = currentlyActivePlans?.find(
+      (activePlan) => activePlan?.plan?.id === plan?.id
+    );
+    if (!subPlan) {
+      return null;
+    }
+    return subPlan?.current_period_end;
+  };
+
+  const handleCancelSubscription = async () => {
+    // fetch subscription id
+    const projectPlan = currentlyActivePlans?.find(
+      (activePlan) => activePlan?.plan?.plan_type === "project"
+    );
+
+    if (!projectPlan) {
+      return toast.error("No project plan is active yet!");
+    }
+
+    try {
+      setIsCancelling(true);
+      const response = await axiosInstance.post(
+        `/cancel-subscription/`,
+        {
+          stripe_subscription_id: projectPlan?.stripe_subscription_id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }
+      );
+
+      if (response?.data?.status === 200) {
+        setIsCancelling(false);
+        fetchData();
+        fetchMyActivePlan();
+      }
+    } catch (err) {
+      setIsCancelling(false);
+      console.log(err);
     }
   };
 
@@ -170,6 +241,22 @@ export default function SubscriptionPlansPage() {
                           <span style={{ fontWeight: "bold" }}>Price</span>: $
                           {plan?.price}
                         </p>
+                        {findStartedDate(plan) && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>
+                              Subscription Start Date
+                            </span>
+                            : {findStartedDate(plan)}
+                          </p>
+                        )}
+                        {findEndDate(plan) && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>
+                              Subscription End Date
+                            </span>
+                            : {findEndDate(plan)}
+                          </p>
+                        )}
 
                         {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                         {plan?.plan_type !== "budget" && (
@@ -186,12 +273,23 @@ export default function SubscriptionPlansPage() {
 
                         {!currentlyActivePlans?.find(
                           (p) => p?.plan?.id === plan?.id
-                        ) && (
+                        ) ? (
                           <Button
                             style={{ cursor: "pointer" }}
                             onClick={() => choosePlan(plan)}
                           >
                             Buy
+                          </Button>
+                        ) : (
+                          <Button
+                            style={{
+                              cursor: "pointer",
+                              backgroundColor: "red",
+                            }}
+                            onClick={handleCancelSubscription}
+                            disabled={isCancelling}
+                          >
+                            Cancel Subscription
                           </Button>
                         )}
                       </div>

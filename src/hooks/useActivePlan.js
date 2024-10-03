@@ -36,5 +36,6 @@ export default function useActivePlan() {
   return {
     loading,
     currentlyActivePlans,
+    fetchMyActivePlan,
   };
 }
