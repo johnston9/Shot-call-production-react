@@ -244,7 +244,7 @@ export default function SubscriptionPlansPage() {
                         {findStartedDate(plan) && (
                           <p>
                             <span style={{ fontWeight: "bold" }}>
-                              Subscription Start Date
+                              Start Date
                             </span>
                             : {findStartedDate(plan)}
                           </p>
@@ -252,7 +252,7 @@ export default function SubscriptionPlansPage() {
                         {findEndDate(plan) && (
                           <p>
                             <span style={{ fontWeight: "bold" }}>
-                              Subscription End Date
+                              Renewal Date
                             </span>
                             : {findEndDate(plan)}
                           </p>
