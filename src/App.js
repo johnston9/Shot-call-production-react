@@ -100,7 +100,7 @@ function App() {
           />
           <Route
             exact
-            path="/payment/:planName/:planId"
+            path="/payment/:planName/:planId/:categoryId"
             render={() => <PaymentPage />}
           />
           <Route

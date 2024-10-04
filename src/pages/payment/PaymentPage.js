@@ -166,7 +166,7 @@ export default function PaymentPage() {
     // console.log(paymentMethod)
   };
 
-  const fetchData = async (pId) => {
+  const fetchData = async (pId, cId) => {
     try {
       // setLoading(true);
       const response = await axiosInstance.get(`/plans/`, {
@@ -182,7 +182,11 @@ export default function PaymentPage() {
         console.log(response?.data?.data);
         console.log(pId);
 
-        const plan = response?.data?.data?.find((p) => p?.id === pId);
+        const plans = response?.data?.data?.filter(
+          (p) => p?.category?.id === Number(cId)
+        )[0]?.plans;
+        console.log(plans);
+        const plan = plans?.find((p) => p?.id === pId);
 
         console.log(plan);
         setPaymentAmount(plan?.price);
@@ -199,8 +203,8 @@ export default function PaymentPage() {
     // if (params?.planId && params?.planName) {
     //   getPaymentIntent(params?.planId, params?.planName);
     // }
-    if (params?.planId) {
-      fetchData(params?.planId);
+    if (params?.planId && params?.categoryId) {
+      fetchData(params?.planId, params?.categoryId);
     }
   }, [params]);
 
