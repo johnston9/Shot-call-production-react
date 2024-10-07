@@ -107,12 +107,12 @@ const Project = ({
           {/* <Card.Text className="d-flex">
             Amount: <span className="ml-2 d-flex">${payment?.amount}</span>
           </Card.Text> */}
-          <Card.Text className="d-flex">
+          {/* <Card.Text className="d-flex">
             Payment Date: <span className="ml-2 d-flex">{created_at}</span>
-          </Card.Text>
-          <Card.Text className="d-flex">
+          </Card.Text> */}
+          {/* <Card.Text className="d-flex">
             Payment Status: <span className="ml-2 d-flex">Success</span>
-          </Card.Text>
+          </Card.Text> */}
           {/* <Card.Text className="d-flex">
             Stripe Transaction Id:{" "}
             <span className="ml-2 d-flex">{payment?.stripe_id}</span>
