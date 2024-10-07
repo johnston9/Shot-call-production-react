@@ -274,7 +274,7 @@ export default function BudgetPaymentPage() {
                   />
                 </Form.Group>
               </div>
-              <div className="col-12 col-lg-2">
+              <div className="col-12">
                 <Row
                   style={{
                     marginBottom: "1rem",
