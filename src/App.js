@@ -105,7 +105,7 @@ function App() {
           />
           <Route
             exact
-            path="/payment/budget"
+            path="/payment/budget/:planId"
             render={() => <BudgetPaymentPage />}
           />
           {/* budget page */}

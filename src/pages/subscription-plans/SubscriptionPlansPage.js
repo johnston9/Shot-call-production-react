@@ -29,7 +29,7 @@ export default function SubscriptionPlansPage() {
     console.log(plan);
     // return;
     if (plan?.plan_type === "budget") {
-      history.push(`/payment/budget`);
+      history.push(`/payment/budget/${plan?.id}`);
     } else {
       const encodedPlanName = encodeURIComponent(plan?.name);
       history.push(

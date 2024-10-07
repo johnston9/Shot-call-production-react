@@ -11,6 +11,7 @@ import { useCurrentUser } from "../../../contexts/CurrentUserContext";
 import BillingDetailsFields from "../BillingDetailsFields";
 import CardElementContainer from "../CardElementContainer";
 import { axiosInstance } from "../../../api/axiosDefaults";
+import StripeImage from "../../../assets/stripe-logo-company.png";
 
 const cardElementOptions = {
   style: {
@@ -48,6 +49,7 @@ export default function BudgetPaymentPage() {
     postalCode: "",
   });
   const [accepted, setAccepted] = useState(false);
+  const [paymentAmount, setPaymentAmount] = useState(0);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -180,6 +182,44 @@ export default function BudgetPaymentPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const fetchData = async (pId) => {
+    try {
+      // setLoading(true);
+      const response = await axiosInstance.get(`/plans/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        withCredentials: true,
+      });
+
+      if (response?.data?.status === 200) {
+        // setLoading(false);
+        console.log(response?.data?.data);
+        // console.log(pId);
+
+        const price = response?.data?.data?.find(
+          (p) => p?.category?.name === "Budget Only"
+        )?.plans[0]?.price;
+        // console.log(plans);
+        // const plan = plans?.find((p) => p?.id === pId);
+
+        // console.log(plan);
+        setPaymentAmount(price);
+      }
+    } catch (err) {
+      // setLoading(false);
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    setPlanId(params?.planId);
+    if (params?.planId) {
+      fetchData(params?.planId);
+    }
+  }, [params]);
+
   return (
     <div className="py-2">
       <div
@@ -235,8 +275,31 @@ export default function BudgetPaymentPage() {
                 </Form.Group>
               </div>
               <div className="col-12 col-lg-2">
+                <Row
+                  style={{
+                    marginBottom: "1rem",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {/* <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
+                      width: "100%",
+                    }}
+                  > */}
+                  <div style={{ display: "inline-block" }}>
+                    Your data is safe with
+                  </div>
+                  {/* </div> */}
+                  <img src={StripeImage} height={30} />
+                </Row>
                 <Button type="submit" disabled={processingPayment}>
-                  {processingPayment ? "Processing payment" : "Pay Now"}
+                  {processingPayment
+                    ? "Processing payment"
+                    : `Pay ${paymentAmount} Now`}
                 </Button>
               </div>
             </div>
