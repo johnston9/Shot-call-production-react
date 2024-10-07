@@ -101,6 +101,24 @@ export default function SubscriptionPlansPage() {
     }
   };
 
+  const enabledBuy = (plan) => {
+    if (currentlyActivePlans?.length <= 0) return true;
+    const currentActivetProjectPlan = currentlyActivePlans?.find(
+      (p) => p?.plan?.plan_type === "project"
+    );
+    if (
+      currentActivetProjectPlan?.plan?.subscription_category?.name ===
+        "Company" &&
+      plan?.subscription_category?.name === "Student"
+    ) {
+      return false;
+    }
+    if (Number(currentActivetProjectPlan?.plan?.price) > Number(plan?.price)) {
+      return false;
+    }
+    return true;
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -209,7 +227,7 @@ export default function SubscriptionPlansPage() {
                     fontSize: "16px",
                   }}
                 >
-                  Company Plans
+                  Plans for Company for Projects with Budgets
                 </div>
                 <Row>
                   {!loading &&
@@ -315,12 +333,34 @@ export default function SubscriptionPlansPage() {
                             {!currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             ) ? (
-                              <Button
-                                style={{ cursor: "pointer" }}
-                                onClick={() => choosePlan(plan)}
-                              >
-                                Buy
-                              </Button>
+                              <>
+                                {!currentlyActivePlans?.find(
+                                  (p) => p?.plan?.plan_type === "project"
+                                ) ? (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      if (enabledBuy(plan)) {
+                                        choosePlan(plan);
+                                      }
+                                    }}
+                                    disabled={!enabledBuy(plan)}
+                                  >
+                                    {enabledBuy(plan)
+                                      ? "Upgrade"
+                                      : "Unavailable"}
+                                  </Button>
+                                )}
+                              </>
                             ) : (
                               <Button
                                 style={{
@@ -347,7 +387,7 @@ export default function SubscriptionPlansPage() {
                     fontSize: "16px",
                   }}
                 >
-                  Student Plans
+                  Plans for Indie/Student for Projects with Budgets
                 </div>
                 <Row>
                   {!loading &&
@@ -453,12 +493,34 @@ export default function SubscriptionPlansPage() {
                             {!currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             ) ? (
-                              <Button
-                                style={{ cursor: "pointer" }}
-                                onClick={() => choosePlan(plan)}
-                              >
-                                Buy
-                              </Button>
+                              <>
+                                {!currentlyActivePlans?.find(
+                                  (p) => p?.plan?.plan_type === "project"
+                                ) ? (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      if (enabledBuy(plan)) {
+                                        choosePlan(plan);
+                                      }
+                                    }}
+                                    disabled={!enabledBuy(plan)}
+                                  >
+                                    {enabledBuy(plan)
+                                      ? "Upgrade"
+                                      : "Unavailable"}
+                                  </Button>
+                                )}
+                              </>
                             ) : (
                               <Button
                                 style={{
