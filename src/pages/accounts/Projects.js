@@ -211,7 +211,8 @@ const Projects = ({
           }}
         >
           {userData?.remaining_projects ? userData?.remaining_projects : 0}{" "}
-          projects remaining out of {getMaxProject(currentlyActivePlans)}
+          {Number(userData?.remaining_projects) === 1 ? "project" : "projects"}{" "}
+          remaining out of {getMaxProject(currentlyActivePlans)}
         </Alert>
       )}
       {/* search */}
