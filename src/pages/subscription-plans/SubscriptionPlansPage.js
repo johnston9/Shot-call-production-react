@@ -51,7 +51,7 @@ export default function SubscriptionPlansPage() {
     return subPlan?.current_period_start;
   };
 
-  const findEndDate = (plan) => {
+  const findDates = (plan) => {
     if (!currentlyActivePlans || currentlyActivePlans?.length <= 0) {
       return null;
     }
@@ -61,7 +61,31 @@ export default function SubscriptionPlansPage() {
     if (!subPlan) {
       return null;
     }
-    return subPlan?.current_period_end;
+    console.log("isTrail", subPlan);
+    if (subPlan?.plan?.plan_type === "project") {
+      if (subPlan?.inTrial) {
+        return {
+          startDate: subPlan?.created_at,
+          trailEndDate: subPlan?.current_period_end,
+        };
+      } else {
+        return {
+          startDate: subPlan?.current_period_start,
+          renewalDate: subPlan?.current_period_end,
+        };
+      }
+    } else {
+      if (subPlan?.inTrial) {
+        return {
+          startDate: subPlan?.created_at,
+          trailEndDate: subPlan?.current_period_end,
+        };
+      } else {
+        return {
+          startDate: subPlan?.current_period_start,
+        };
+      }
+    }
   };
 
   const handleCancelSubscription = async () => {
@@ -210,7 +234,7 @@ export default function SubscriptionPlansPage() {
                 gap: "1rem",
               }}
             >
-              <div
+              {/* <div
                 style={{
                   marginLeft: "1.2rem",
                   fontWeight: "bold",
@@ -218,13 +242,13 @@ export default function SubscriptionPlansPage() {
                 }}
               >
                 Projects with Budgets
-              </div>
+              </div> */}
               <div style={{ marginBottom: "2rem" }}>
                 <div
                   style={{
                     marginLeft: "1.2rem",
                     fontWeight: "bold",
-                    fontSize: "16px",
+                    fontSize: "18px",
                   }}
                 >
                   Plans for Company for Projects with Budgets
@@ -298,20 +322,28 @@ export default function SubscriptionPlansPage() {
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
-                            {findStartedDate(plan) && (
+                            {findDates(plan)?.startDate && (
                               <p>
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
-                                : {findStartedDate(plan)}
+                                : {findDates(plan)?.startDate}
                               </p>
                             )}
-                            {findEndDate(plan) && (
+                            {findDates(plan)?.renewalDate && (
                               <p>
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
-                                : {findEndDate(plan)}
+                                : {findDates(plan)?.renewalDate}
+                              </p>
+                            )}
+                            {findDates(plan)?.trailEndDate && (
+                              <p>
+                                <span style={{ fontWeight: "bold" }}>
+                                  Trail End Date
+                                </span>
+                                : {findDates(plan)?.trailEndDate}
                               </p>
                             )}
 
@@ -384,7 +416,7 @@ export default function SubscriptionPlansPage() {
                   style={{
                     marginLeft: "1.2rem",
                     fontWeight: "bold",
-                    fontSize: "16px",
+                    fontSize: "18px",
                   }}
                 >
                   Plans for Indie/Student for Projects with Budgets
@@ -458,20 +490,28 @@ export default function SubscriptionPlansPage() {
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
-                            {findStartedDate(plan) && (
+                            {findDates(plan)?.startDate && (
                               <p>
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
-                                : {findStartedDate(plan)}
+                                : {findDates(plan)?.startDate}
                               </p>
                             )}
-                            {findEndDate(plan) && (
+                            {findDates(plan)?.renewalDate && (
                               <p>
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
-                                : {findEndDate(plan)}
+                                : {findDates(plan)?.renewalDate}
+                              </p>
+                            )}
+                            {findDates(plan)?.trailEndDate && (
+                              <p>
+                                <span style={{ fontWeight: "bold" }}>
+                                  Trail End Date
+                                </span>
+                                : {findDates(plan)?.trailEndDate}
                               </p>
                             )}
 
@@ -623,12 +663,36 @@ export default function SubscriptionPlansPage() {
                         <p style={{ fontWeight: "bold" }}>
                           Can create only 1 budget
                         </p>
-                        {plan?.interval && (
+                        {findDates(plan)?.startDate && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>
+                              Start Date
+                            </span>
+                            : {findDates(plan)?.startDate}
+                          </p>
+                        )}
+                        {findDates(plan)?.renewalDate && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>
+                              Renewal Date
+                            </span>
+                            : {findDates(plan)?.renewalDate}
+                          </p>
+                        )}
+                        {findDates(plan)?.trailEndDate && (
+                          <p>
+                            <span style={{ fontWeight: "bold" }}>
+                              Trail End Date
+                            </span>
+                            : {findDates(plan)?.trailEndDate}
+                          </p>
+                        )}
+                        {/* {plan?.interval && (
                           <p>
                             <span style={{ fontWeight: "bold" }}>Interval</span>
                             : {plan?.interval}
                           </p>
-                        )}
+                        )} */}
 
                         {!currentlyActivePlans?.find(
                           (p) => p?.plan?.id === plan?.id

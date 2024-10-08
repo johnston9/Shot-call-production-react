@@ -299,7 +299,7 @@ export default function BudgetPaymentPage() {
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
-                    : `Pay ${paymentAmount} Now`}
+                    : `Pay $${paymentAmount} Now`}
                 </Button>
               </div>
             </div>
