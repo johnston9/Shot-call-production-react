@@ -48,7 +48,7 @@ const TransactionsTable = ({ headers, data, dataLoading }) => {
   }
 
   if (data?.length === 0) {
-    return <div>No transactions yet</div>;
+    return <div className="text-center">No transactions yet</div>;
   }
 
   const tableStyle = {

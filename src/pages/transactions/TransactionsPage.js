@@ -71,11 +71,22 @@ export default function TransactionsPage() {
   }, []);
 
   return (
-    <div
+    <div>
+      <h2
+          className="text-center py-4 w-100 mt-2"
+            style={{
+              fontWeight: "bold",
+              background: "#3B444A",
+              color: "#fff",
+            }}
+          >
+            Transaction List
+          </h2>
+      <div
       className="py-4"
       style={{
         margin: "0 auto",
-        maxWidth: "1200px",
+        maxWidth: "1400px",
       }}
     >
       <div
@@ -85,22 +96,13 @@ export default function TransactionsPage() {
           gap: "0.6rem",
         }}
       >
-        <div>
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "black",
-            }}
-          >
-            Transaction List
-          </h4>
-        </div>
         <TransactionsTable
           headers={headers}
           data={data}
           dataLoading={loading}
         />
       </div>
+    </div>
     </div>
   );
 }
