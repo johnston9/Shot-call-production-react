@@ -200,9 +200,10 @@ export default function SubscriptionPlansPage() {
       <h2
           className="text-center py-4 w-100 mt-2"
             style={{
-              fontWeight: "bold",
               background: "#3B444A",
-              color: "#fff",
+              color: "#F5F5F5",
+              fontFamily: "Playfair Display",
+              textTransform: "uppercase",
             }}
           >
             Subscription Plans
@@ -224,7 +225,7 @@ export default function SubscriptionPlansPage() {
         </Row>
         <Row
           style={{
-            gap: "3rem",
+            gap: "2rem",
           }}
         >
           <Col xs={12}>
@@ -260,7 +261,7 @@ export default function SubscriptionPlansPage() {
                         <Card
                           style={{
                             padding: "2rem",
-                            height: "400px",
+                            height: "370px",
                             marginBottom: "1rem",
                             border: `${
                               currentlyActivePlans?.find(
@@ -326,12 +327,12 @@ export default function SubscriptionPlansPage() {
                                 <p>{plan?.description}</p>
                               </div>
                             )}
-                            <p>
+                            <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
                             {findDates(plan)?.startDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
@@ -339,7 +340,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.renewalDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
@@ -347,7 +348,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.trailEndDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Trail End Date
                                 </span>
@@ -357,12 +358,12 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p style={{ fontWeight: "bold" }}>
+                              <p className="mb-0" style={{ fontWeight: "bold" }}>
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
                             {plan?.interval && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Interval
                                 </span>
@@ -437,7 +438,7 @@ export default function SubscriptionPlansPage() {
                         <Card
                           style={{
                             padding: "2rem",
-                            height: "400px",
+                            height: "370px",
                             marginBottom: "1rem",
                             border: `${
                               currentlyActivePlans?.find(
@@ -503,12 +504,12 @@ export default function SubscriptionPlansPage() {
                                 <p>{plan?.description}</p>
                               </div>
                             )}
-                            <p>
+                            <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
                             {findDates(plan)?.startDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
@@ -516,7 +517,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.renewalDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
@@ -524,7 +525,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.trailEndDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Trail End Date
                                 </span>
@@ -534,12 +535,12 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p style={{ fontWeight: "bold" }}>
+                              <p className="mb-0" style={{ fontWeight: "bold" }}>
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
                             {plan?.interval && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Interval
                                 </span>
@@ -674,21 +675,21 @@ export default function SubscriptionPlansPage() {
                           )}
                         </div>
                         {plan?.description && <p>{plan?.description}</p>}
-                        <p>
+                        <p className="mb-0">
                           <span style={{ fontWeight: "bold" }}>Price</span>: $
                           {plan?.price}
                         </p>
                         {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                         {plan?.plan_type !== "budget" && (
-                          <p style={{ fontWeight: "bold" }}>
+                          <p className="mb-0" style={{ fontWeight: "bold" }}>
                             Max project with budget: {plan?.max_projects}
                           </p>
                         )}
-                        <p style={{ fontWeight: "bold" }}>
+                        <p className="mb-0" style={{ fontWeight: "bold" }}>
                           Can create only 1 budget
                         </p>
                         {findDates(plan)?.startDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Start Date
                             </span>
@@ -696,7 +697,7 @@ export default function SubscriptionPlansPage() {
                           </p>
                         )}
                         {findDates(plan)?.renewalDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Renewal Date
                             </span>
@@ -704,7 +705,7 @@ export default function SubscriptionPlansPage() {
                           </p>
                         )}
                         {findDates(plan)?.trailEndDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Trail End Date
                             </span>

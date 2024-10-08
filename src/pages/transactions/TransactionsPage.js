@@ -75,9 +75,10 @@ export default function TransactionsPage() {
       <h2
           className="text-center py-4 w-100 mt-2"
             style={{
-              fontWeight: "bold",
               background: "#3B444A",
-              color: "#fff",
+              color: "#F5F5F5",
+              fontFamily: "Playfair Display",
+              textTransform: "uppercase",
             }}
           >
             Transaction List
