@@ -196,10 +196,21 @@ export default function SubscriptionPlansPage() {
   console.log(allStudPlans);
 
   return (
-    <div className="py-2">
+    <div className="pb-2">
+      <h2
+          className="text-center py-4 w-100 mt-2"
+            style={{
+              background: "#3B444A",
+              color: "#F5F5F5",
+              fontFamily: "Playfair Display",
+              textTransform: "uppercase",
+            }}
+          >
+            Subscription Plans
+          </h2>
       <div
         style={{
-          maxWidth: "800px",
+          maxWidth: "1400px",
           margin: "0 auto",
           padding: "1rem",
         }}
@@ -211,19 +222,10 @@ export default function SubscriptionPlansPage() {
             marginBottom: "2rem",
           }}
         >
-          <div
-            style={{
-              marginLeft: "1.2rem",
-              fontWeight: "bold",
-              fontSize: "24px",
-            }}
-          >
-            Subscription Plans
-          </div>
         </Row>
         <Row
           style={{
-            gap: "3rem",
+            gap: "2rem",
           }}
         >
           <Col xs={12}>
@@ -244,23 +246,22 @@ export default function SubscriptionPlansPage() {
                 Projects with Budgets
               </div> */}
               <div style={{ marginBottom: "2rem" }}>
-                <div
+                <h3
+                className="px-2 pb-4 text-center"
                   style={{
-                    marginLeft: "1.2rem",
                     fontWeight: "bold",
-                    fontSize: "18px",
                   }}
                 >
                   Plans for Company for Projects with Budgets
-                </div>
-                <Row>
+                </h3>
+                <Row className="justify-content-center">
                   {!loading &&
                     allCompanyPlans?.map((plan) => (
-                      <Col key={plan?.id} xs={12} md={6}>
+                      <Col key={plan?.id} xs={12} md={3}>
                         <Card
                           style={{
                             padding: "2rem",
-                            height: "400px",
+                            height: "370px",
                             marginBottom: "1rem",
                             border: `${
                               currentlyActivePlans?.find(
@@ -295,8 +296,16 @@ export default function SubscriptionPlansPage() {
                               ) && (
                                 <div
                                   style={{
-                                    color: "green",
                                     fontWeight: "bold",
+                                    color: "#ffffff",
+                                    background: "#2bb673",
+                                    borderRadius: "20px",
+                                    height: "26px",
+                                    width: "75px",
+                                    fontSize: "14px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
                                     // borderRadius: "20px",
                                     // border: "1px solid green",
                                     // padding: "0.3rem 0.8rem",
@@ -318,12 +327,12 @@ export default function SubscriptionPlansPage() {
                                 <p>{plan?.description}</p>
                               </div>
                             )}
-                            <p>
+                            <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
                             {findDates(plan)?.startDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
@@ -331,7 +340,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.renewalDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
@@ -339,7 +348,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.trailEndDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Trail End Date
                                 </span>
@@ -349,12 +358,12 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p style={{ fontWeight: "bold" }}>
+                              <p className="mb-0" style={{ fontWeight: "bold" }}>
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
                             {plan?.interval && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Interval
                                 </span>
@@ -379,6 +388,7 @@ export default function SubscriptionPlansPage() {
                                   </Button>
                                 ) : (
                                   <Button
+                                  className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       if (enabledBuy(plan)) {
@@ -395,6 +405,7 @@ export default function SubscriptionPlansPage() {
                               </>
                             ) : (
                               <Button
+                              className="card-absolute-btn"
                                 style={{
                                   cursor: "pointer",
                                   backgroundColor: "red",
@@ -412,23 +423,22 @@ export default function SubscriptionPlansPage() {
                 </Row>
               </div>
               <div style={{ marginBottom: "2rem" }}>
-                <div
+                <h3
+                  className="px-2 py-4 text-center"
                   style={{
-                    marginLeft: "1.2rem",
                     fontWeight: "bold",
-                    fontSize: "18px",
                   }}
                 >
                   Plans for Indie/Student for Projects with Budgets
-                </div>
-                <Row>
+                </h3>
+                <Row className="justify-content-center">
                   {!loading &&
                     allStudPlans?.map((plan) => (
-                      <Col key={plan?.id} xs={12} md={6}>
+                      <Col key={plan?.id} xs={12} md={3}>
                         <Card
                           style={{
                             padding: "2rem",
-                            height: "400px",
+                            height: "370px",
                             marginBottom: "1rem",
                             border: `${
                               currentlyActivePlans?.find(
@@ -463,8 +473,16 @@ export default function SubscriptionPlansPage() {
                               ) && (
                                 <div
                                   style={{
-                                    color: "green",
                                     fontWeight: "bold",
+                                    color: "#ffffff",
+                                    background: "#2bb673",
+                                    borderRadius: "20px",
+                                    height: "26px",
+                                    width: "75px",
+                                    fontSize: "14px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
                                     // borderRadius: "20px",
                                     // border: "1px solid green",
                                     // padding: "0.3rem 0.8rem",
@@ -486,12 +504,12 @@ export default function SubscriptionPlansPage() {
                                 <p>{plan?.description}</p>
                               </div>
                             )}
-                            <p>
+                            <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
                             {findDates(plan)?.startDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Start Date
                                 </span>
@@ -499,7 +517,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.renewalDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Renewal Date
                                 </span>
@@ -507,7 +525,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
                             {findDates(plan)?.trailEndDate && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Trail End Date
                                 </span>
@@ -517,12 +535,12 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p style={{ fontWeight: "bold" }}>
+                              <p className="mb-0" style={{ fontWeight: "bold" }}>
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
                             {plan?.interval && (
-                              <p>
+                              <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
                                   Interval
                                 </span>
@@ -538,6 +556,7 @@ export default function SubscriptionPlansPage() {
                                   (p) => p?.plan?.plan_type === "project"
                                 ) ? (
                                   <Button
+                                  className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       choosePlan(plan);
@@ -547,6 +566,7 @@ export default function SubscriptionPlansPage() {
                                   </Button>
                                 ) : (
                                   <Button
+                                  className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       if (enabledBuy(plan)) {
@@ -563,6 +583,7 @@ export default function SubscriptionPlansPage() {
                               </>
                             ) : (
                               <Button
+                              className="card-absolute-btn"
                                 style={{
                                   cursor: "pointer",
                                   backgroundColor: "red",
@@ -590,19 +611,18 @@ export default function SubscriptionPlansPage() {
                 gap: "1rem",
               }}
             >
-              <div
+              <h3
+                className="px-2 pb-4 text-center"
                 style={{
-                  marginLeft: "1.2rem",
                   fontWeight: "bold",
-                  fontSize: "18px",
                 }}
               >
                 Budget Only
-              </div>
-
-              {!loading &&
+              </h3>
+                <Row className="justify-content-center">
+                {!loading &&
                 allBudgetPlans?.map((plan) => (
-                  <Col key={plan?.id}>
+                  <Col key={plan?.id} xs={12} md={3}>
                     <Card
                       style={{
                         padding: "2rem",
@@ -638,11 +658,16 @@ export default function SubscriptionPlansPage() {
                           ) && (
                             <div
                               style={{
-                                color: "green",
                                 fontWeight: "bold",
+                                color: "#ffffff",
+                                background: "#2bb673",
                                 borderRadius: "20px",
-                                border: "1px solid green",
-                                padding: "0.3rem 0.8rem",
+                                height: "26px",
+                                width: "75px",
+                                fontSize: "14px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                               }}
                             >
                               Active
@@ -650,21 +675,21 @@ export default function SubscriptionPlansPage() {
                           )}
                         </div>
                         {plan?.description && <p>{plan?.description}</p>}
-                        <p>
+                        <p className="mb-0">
                           <span style={{ fontWeight: "bold" }}>Price</span>: $
                           {plan?.price}
                         </p>
                         {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                         {plan?.plan_type !== "budget" && (
-                          <p style={{ fontWeight: "bold" }}>
+                          <p className="mb-0" style={{ fontWeight: "bold" }}>
                             Max project with budget: {plan?.max_projects}
                           </p>
                         )}
-                        <p style={{ fontWeight: "bold" }}>
+                        <p className="mb-0" style={{ fontWeight: "bold" }}>
                           Can create only 1 budget
                         </p>
                         {findDates(plan)?.startDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Start Date
                             </span>
@@ -672,7 +697,7 @@ export default function SubscriptionPlansPage() {
                           </p>
                         )}
                         {findDates(plan)?.renewalDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Renewal Date
                             </span>
@@ -680,7 +705,7 @@ export default function SubscriptionPlansPage() {
                           </p>
                         )}
                         {findDates(plan)?.trailEndDate && (
-                          <p>
+                          <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>
                               Trail End Date
                             </span>
@@ -698,6 +723,7 @@ export default function SubscriptionPlansPage() {
                           (p) => p?.plan?.id === plan?.id
                         ) && (
                           <Button
+                          className="card-absolute-btn"
                             style={{ cursor: "pointer" }}
                             onClick={() => choosePlan(plan)}
                           >
@@ -708,6 +734,7 @@ export default function SubscriptionPlansPage() {
                     </Card>
                   </Col>
                 ))}
+                </Row>
             </div>
           </Col>
         </Row>
