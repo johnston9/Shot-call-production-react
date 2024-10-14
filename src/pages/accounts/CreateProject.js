@@ -22,6 +22,7 @@ function CreateProject({
   stripeProjectName,
   stripeSessionId,
   stripeSuccess,
+  getCurrentUserData,
 }) {
   const history = useHistory();
   const userData = useCurrentUser();
@@ -204,6 +205,7 @@ function CreateProject({
       if (response?.success) {
         toast.success(response?.data?.data?.message);
         fetchProjects();
+        getCurrentUserData();
         setPostData((prev) => ({ ...prev, categoryType: "", name: "" }));
       } else {
         console.log(response);

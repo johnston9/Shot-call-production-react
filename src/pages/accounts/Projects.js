@@ -15,7 +15,10 @@ import Project from "./Project";
 import CreateProject from "./CreateProject";
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom";
 import { Alert as ManAlert } from "@mantine/core";
 import { toast } from "react-hot-toast";
@@ -33,6 +36,9 @@ const Projects = ({
 }) => {
   const history = useHistory();
   const userData = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  console.log("user data: ", userData);
   const { currentlyActivePlans } = useActivePlan();
   console.log(currentlyActivePlans, userData);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -84,6 +90,7 @@ const Projects = ({
     console.log(data);
 
     fetchProjects();
+    getCurrentUserData();
     history.push(`/accounts/${userData.pk}`);
   };
 
@@ -157,6 +164,24 @@ const Projects = ({
     }
   }, [stripeSuccess]);
 
+  const getCurrentUserData = async () => {
+    if (localStorage.getItem("user")) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user);
+      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`);
+      console.log(data);
+      setCurrentUser({
+        ...user,
+        profile_image: data?.data?.image,
+        remaining_projects: data?.data?.remaining_projects,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getCurrentUserData();
+  }, []);
+
   return (
     <div className="px-3">
       {/* create project */}
@@ -198,6 +223,7 @@ const Projects = ({
           stripeProjectName={stripeProjectName}
           stripeSessionId={stripeSessionId}
           stripeSuccess={stripeSuccess}
+          getCurrentUserData={getCurrentUserData}
         />
       ) : (
         ""
