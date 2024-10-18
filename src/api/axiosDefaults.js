@@ -70,8 +70,10 @@ axiosInstance.interceptors.response.use(
     return { success: true, data: result };
   },
   (error) => {
+    console.log("INTERCEPTOR ERROR", error.response);
     if (error?.response?.status === 401) {
-      toast.error("Session timeout. Please signin again!");
+      // window.location.href = `/signin`;
+      // toast.error("Session timeout. Please signin again!");
       return Promise.resolve({ success: false, error });
     }
     return Promise.resolve({ success: false, error });
@@ -83,7 +85,7 @@ axiosInstanceFormData.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      toast.error("Session timeout. Please signin again!");
+      // toast.error("Session timeout. Please signin again!");
       return Promise.resolve({ success: false, error });
     }
     return Promise.resolve({ success: false, error });
