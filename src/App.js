@@ -48,6 +48,7 @@ import BEdit from "./pages/budget/budgets/BudgetEdit";
 import ContactUs from "./pages/contact-us/ContactUs";
 import HowItWorks from "./pages/how-it-works/HowItWorks";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import AuthCheckPage from "./pages/AuthCheckPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -191,6 +192,7 @@ function App() {
             path="/profiles/:id/edit/username"
             render={() => <UsernameForm />}
           />
+          <Route exact path="/authcheck" render={() => <AuthCheckPage />} />
           <Route
             exact
             path="/profiles/:id/edit/password"

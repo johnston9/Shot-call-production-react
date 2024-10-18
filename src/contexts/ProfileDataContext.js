@@ -6,6 +6,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
+import { CLIENT_PROGRAM_HOSTNAME } from "../utils/config";
+import useHostName from "../hooks/useHostName";
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -14,6 +16,7 @@ export const useProfileData = () => useContext(ProfileDataContext);
 export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
+  const host = useHostName();
   const [profileData, setProfileData] = useState({
     // This is used on the Profile page
     profilePage: { results: [] },
@@ -89,12 +92,16 @@ export const ProfileDataProvider = ({ children }) => {
       }
     };
 
-    handleMount();
+    if (host === CLIENT_PROGRAM_HOSTNAME) {
+      handleMount();
+    }
   }, [currentUser]);
 
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider value={{setProfileData, handleFollow, handleUnfollow}}>
+      <SetProfileDataContext.Provider
+        value={{ setProfileData, handleFollow, handleUnfollow }}
+      >
         {children}
       </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>

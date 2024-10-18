@@ -32,7 +32,7 @@ export const CurrentUserProvider = ({ children }) => {
   // }
 
   const getCurrentUserData = async () => {
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("user") && localStorage.getItem("accessToken")) {
       const user = JSON.parse(localStorage.getItem("user"));
       console.log(user);
       const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`);
