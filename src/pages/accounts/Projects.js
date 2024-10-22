@@ -175,7 +175,13 @@ const Projects = ({
   }, [stripeSuccess]);
 
   const getCurrentUserData = async () => {
-    if (localStorage.getItem("user")) {
+    console.log(
+      "test",
+      localStorage.getItem("accessToken"),
+      localStorage.getItem("user")
+    );
+    return;
+    if (localStorage.getItem("user") && localStorage.getItem("accessToken")) {
       const user = JSON.parse(localStorage.getItem("user"));
       console.log(user);
       const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`, {
@@ -195,8 +201,11 @@ const Projects = ({
   };
 
   useEffect(() => {
-    // getCurrentUserData();
-  }, []);
+    getCurrentUserData();
+  }, [
+    JSON.parse(localStorage.getItem("user")),
+    localStorage.getItem("accessToken"),
+  ]);
 
   return (
     <div className="px-3">
