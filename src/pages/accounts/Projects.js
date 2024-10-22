@@ -69,7 +69,7 @@ const Projects = ({
 
         console.log(data);
 
-        setProjects(data.results);
+        setProjects(data?.data?.results);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
