@@ -52,13 +52,20 @@ const Projects = ({
   const fetchProjects = useCallback(
     async (searchQuery = "") => {
       console.log("userData.pk", userData.pk);
-      return;
+
       try {
-        // const { data } = await axiosReq.get(
-        //   `/projects/${userData.pk}${
-        //     searchQuery !== "" ? `?search=${searchQuery}` : ""
-        //   }`
-        // );
+        const { data } = await axiosInstance.get(
+          `/projects/${userData.pk}${
+            searchQuery !== "" ? `?search=${searchQuery}` : ""
+          }`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            withCredentials: true,
+          }
+        );
 
         setProjects(data);
         setHasLoaded(true);
