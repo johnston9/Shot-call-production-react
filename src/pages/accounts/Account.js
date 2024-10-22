@@ -1,15 +1,15 @@
 /* Component in Accountpage to display the Profile and Account data
  * Contains the CreateProject and Projects components */
-import React from "react"
-import btnStyles from "../../styles/Button.module.css"
-import Button from "react-bootstrap/Button"
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import styles from "../../styles/Account.module.css"
-import { Image } from "react-bootstrap"
-import { ProfileEditDropdown } from "../../components/UniDropDown"
-import Projects from "./Projects"
-import { useHistory } from "react-router-dom"
+import React from "react";
+import btnStyles from "../../styles/Button.module.css";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import styles from "../../styles/Account.module.css";
+import { Image } from "react-bootstrap";
+import { ProfileEditDropdown } from "../../components/UniDropDown";
+import Projects from "./Projects";
+import { useHistory } from "react-router-dom";
 
 const Account = ({
   id,
@@ -21,8 +21,8 @@ const Account = ({
   stripeSuccess,
   profileInfo,
 }) => {
-  console.log(account?.data?.results[0]?.image)
-  const history = useHistory()
+  console.log(account?.data?.results[0]?.image);
+  const history = useHistory();
 
   const topProfile = (
     <div className={`px-3 py-1 ${styles.Top}`}>
@@ -52,7 +52,7 @@ const Account = ({
         </Col>
       </Row>
     </div>
-  )
+  );
 
   const topProfileMo = (
     <div className={`px-3 py-1 ${styles.Top}`}>
@@ -78,7 +78,7 @@ const Account = ({
         </Col>
       </Row>
     </div>
-  )
+  );
 
   const accountInfo = (
     <div className="px-3">
@@ -93,7 +93,7 @@ const Account = ({
         </Col>
       </Row>
     </div>
-  )
+  );
   return (
     <div>
       <Row className="mt-3">
@@ -115,18 +115,18 @@ const Account = ({
       </Row>
       <Row>
         <Col>
-          <Projects
+          {/* <Projects
             id={id}
             stripeCategoryType={stripeCategoryType}
             stripeProjectName={stripeProjectName}
             stripeSessionId={stripeSessionId}
             stripeSuccess={stripeSuccess}
-          />
+          /> */}
         </Col>
       </Row>
       {accountInfo}
     </div>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
