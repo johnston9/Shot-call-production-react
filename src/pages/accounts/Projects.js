@@ -51,12 +51,15 @@ const Projects = ({
 
   const fetchProjects = useCallback(
     async (searchQuery = "") => {
+      console.log("userData.pk", userData.pk);
+      return;
       try {
-        const { data } = await axiosReq.get(
-          `/projects/${userData.pk}${
-            searchQuery !== "" ? `?search=${searchQuery}` : ""
-          }`
-        );
+        // const { data } = await axiosReq.get(
+        //   `/projects/${userData.pk}${
+        //     searchQuery !== "" ? `?search=${searchQuery}` : ""
+        //   }`
+        // );
+
         setProjects(data);
         setHasLoaded(true);
       } catch (err) {

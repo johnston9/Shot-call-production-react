@@ -115,13 +115,13 @@ const Account = ({
       </Row>
       <Row>
         <Col>
-          {/* <Projects
+          <Projects
             id={id}
             stripeCategoryType={stripeCategoryType}
             stripeProjectName={stripeProjectName}
             stripeSessionId={stripeSessionId}
             stripeSuccess={stripeSuccess}
-          /> */}
+          />
         </Col>
       </Row>
       {accountInfo}
