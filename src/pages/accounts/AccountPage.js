@@ -36,7 +36,10 @@ function AccountPage() {
 
   const fetchData = async () => {
     try {
-      if (localStorage.getItem("accessToken")) {
+      if (
+        localStorage.getItem("accessToken") &&
+        localStorage.getItem("accessToken") !== "null"
+      ) {
         const [{ data: profilePage }, { data: accountInfo }] =
           await Promise.all([
             axiosInstance.get(`/profiles/${id}/`, {
