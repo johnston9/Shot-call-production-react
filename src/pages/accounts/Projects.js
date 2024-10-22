@@ -178,7 +178,13 @@ const Projects = ({
     if (localStorage.getItem("user")) {
       const user = JSON.parse(localStorage.getItem("user"));
       console.log(user);
-      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`);
+      const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        withCredentials: true,
+      });
       console.log(data);
       setCurrentUser({
         ...user,
