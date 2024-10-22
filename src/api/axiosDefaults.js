@@ -77,7 +77,7 @@ axiosInstance.interceptors.response.use(
       // );
       localStorage.removeItem("accessToken");
 
-      window.location.href = `/authcheck`;
+      window.location.href = `/signin`;
     }
     if (error?.response?.status === 401) {
       // toast.error(error?.response?.data?.detail || "Unauthenticated user!");
@@ -85,7 +85,8 @@ axiosInstance.interceptors.response.use(
       // toast.error("Session timeout. Please signin again!");
       localStorage.removeItem("accessToken");
 
-      window.location.href = `/authcheck`;
+      // window.location.href = `/authcheck`;
+      window.location.href = `/signin`;
     }
     return Promise.resolve({ success: false, error });
   }
