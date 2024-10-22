@@ -206,10 +206,7 @@ const Projects = ({
 
   useEffect(() => {
     getCurrentUserData();
-  }, [
-    JSON.parse(localStorage.getItem("user")),
-    localStorage.getItem("accessToken"),
-  ]);
+  }, []);
 
   return (
     <div className="px-3">
