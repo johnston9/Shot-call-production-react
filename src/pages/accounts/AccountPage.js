@@ -36,32 +36,35 @@ function AccountPage() {
 
   const fetchData = async () => {
     try {
-      const [{ data: profilePage }, { data: accountInfo }] = await Promise.all([
-        axiosInstance.get(`/profiles/${id}/`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          withCredentials: true,
-        }),
-        axiosInstance.get(`/accounts/?owner__profile=${id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          withCredentials: true,
-        }),
-      ]);
-      setProfileData((prevState) => ({
-        ...prevState,
-        profilePage: { results: [profilePage] },
-      }));
-      setAccount(accountInfo);
-      setProfileInfo(profilePage);
-      console.log(profilePage);
-      console.log(profilePage);
-      setName(accountInfo?.data?.results[0].name);
-      setHasLoaded(true);
+      if (localStorage.getItem("accessToken")) {
+        const [{ data: profilePage }, { data: accountInfo }] =
+          await Promise.all([
+            axiosInstance.get(`/profiles/${id}/`, {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              withCredentials: true,
+            }),
+            axiosInstance.get(`/accounts/?owner__profile=${id}`, {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              withCredentials: true,
+            }),
+          ]);
+        setProfileData((prevState) => ({
+          ...prevState,
+          profilePage: { results: [profilePage] },
+        }));
+        setAccount(accountInfo);
+        setProfileInfo(profilePage);
+        console.log(profilePage);
+        console.log(profilePage);
+        setName(accountInfo?.data?.results[0].name);
+        setHasLoaded(true);
+      }
     } catch (err) {
       console.log(err);
     }
