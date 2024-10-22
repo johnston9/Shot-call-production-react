@@ -67,7 +67,7 @@ export const axiosInstanceNoAuthFormData = axios.create({
 
 axiosInstance.interceptors.response.use(
   (result) => {
-    return result;
+    return { success: true, data: result };
   },
   (error) => {
     console.log("INTERCEPTOR ERROR", error.response);
