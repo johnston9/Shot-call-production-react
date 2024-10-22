@@ -195,7 +195,7 @@ const Projects = ({
   };
 
   useEffect(() => {
-    getCurrentUserData();
+    // getCurrentUserData();
   }, []);
 
   return (
