@@ -1,66 +1,67 @@
 /* Page to sign the user in
  * Set the CurrentUser Context
  * Set the TokenTimestamp */
-import React, { useState } from "react"
-import { Link, useHistory } from "react-router-dom"
-import door from "../../assets/door.png"
-import rightdoor from "../../assets/rightdoor.png"
-import styles from "../../styles/SignInUpForm.module.css"
-import btnStyles from "../../styles/Button.module.css"
-import Form from "react-bootstrap/Form"
-import Alert from "react-bootstrap/Alert"
-import Button from "react-bootstrap/Button"
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import Image from "react-bootstrap/Image"
-import Container from "react-bootstrap/Container"
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import door from "../../assets/door.png";
+import rightdoor from "../../assets/rightdoor.png";
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 
-import TopBox from "../../components/TopBox"
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext"
-import { useRedirectSign } from "../../hooks/RedirectSign"
-import { setTokenTimestamp } from "../../utils/utils"
-import { axiosInstanceNoAuth } from "../../api/axiosDefaults"
+import TopBox from "../../components/TopBox";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { useRedirectSign } from "../../hooks/RedirectSign";
+import { setTokenTimestamp } from "../../utils/utils";
+import { axiosInstanceNoAuth } from "../../api/axiosDefaults";
 
 const SignInForm = () => {
   // useRedirectSign()
-  const setCurrentUser = useSetCurrentUser()
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
-  })
+  });
 
-  const { username, password } = signInData
+  const { username, password } = signInData;
 
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       const { data } = await axiosInstanceNoAuth.post(
         "/dj-rest-auth/login/",
         signInData
-      )
+      );
 
-      setCurrentUser(data.user)
-      localStorage.setItem("user", JSON.stringify(data.user))
-      localStorage.setItem("accessToken", data.access_token)
+      setCurrentUser(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("accessToken", data.access_token);
       // sessionStorage.setItem("accessToken", accessToken)
-      setTokenTimestamp(data)
-      history.push("/")
+      setTokenTimestamp(data);
+      window.location.reload(true);
+      history.push("/");
     } catch (err) {
-      setErrors(err.response?.data)
+      setErrors(err.response?.data);
     }
-  }
+  };
 
   return (
     <Container className={styles.SignupBox}>
@@ -136,7 +137,7 @@ const SignInForm = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default SignInForm
+export default SignInForm;
