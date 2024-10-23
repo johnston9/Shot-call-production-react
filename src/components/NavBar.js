@@ -48,6 +48,10 @@ const NavBar = () => {
   const [videos, setVideos] = useState([]);
 
   const handleSignOut = async () => {
+    setCurrentUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    window.location.reload();
     /* Function to sign a user out */
     try {
       await axiosInstanceNoAuth.post("api-auth/logout/");
