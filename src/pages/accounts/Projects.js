@@ -295,7 +295,8 @@ const Projects = ({
       <Row className="px-5">
         {hasLoaded ? (
           <>
-            {projects?.results?.length ? (
+            {hasProjectPlan(currentlyActivePlans) &&
+            projects?.results?.length ? (
               projects.results.map((proj) => (
                 <Col xs={12} md={4} className="">
                   <Project key={proj.id} {...proj} />

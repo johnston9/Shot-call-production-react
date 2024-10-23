@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosDefaults";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row, Modal } from "react-bootstrap";
 import useActivePlan from "../../hooks/useActivePlan";
 import { useHistory } from "react-router-dom";
 import { Chip } from "@mantine/core";
@@ -24,6 +24,15 @@ export default function SubscriptionPlansPage() {
   const [allBudgetPlans, setAllBudgetPlans] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isCancelling, setIsCancelling] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleCloseDelete = () => {
+    handleCancelSubscription();
+    setShow(false);
+  };
+  const handleShow = () => setShow(true);
 
   const choosePlan = async (plan) => {
     console.log(plan);
@@ -198,16 +207,16 @@ export default function SubscriptionPlansPage() {
   return (
     <div className="pb-2">
       <h2
-          className="text-center py-4 w-100 mt-2"
-            style={{
-              background: "#3B444A",
-              color: "#F5F5F5",
-              fontFamily: "Playfair Display",
-              textTransform: "uppercase",
-            }}
-          >
-            Subscription Plans
-          </h2>
+        className="text-center py-4 w-100 mt-2"
+        style={{
+          background: "#3B444A",
+          color: "#F5F5F5",
+          fontFamily: "Playfair Display",
+          textTransform: "uppercase",
+        }}
+      >
+        Subscription Plans
+      </h2>
       <div
         style={{
           maxWidth: "1400px",
@@ -221,8 +230,7 @@ export default function SubscriptionPlansPage() {
             justifyContent: "center",
             marginBottom: "2rem",
           }}
-        >
-        </Row>
+        ></Row>
         <Row
           style={{
             gap: "2rem",
@@ -247,7 +255,7 @@ export default function SubscriptionPlansPage() {
               </div> */}
               <div style={{ marginBottom: "2rem" }}>
                 <h3
-                className="px-2 pb-4 text-center"
+                  className="px-2 pb-4 text-center"
                   style={{
                     fontWeight: "bold",
                   }}
@@ -358,7 +366,10 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p className="mb-0" style={{ fontWeight: "bold" }}>
+                              <p
+                                className="mb-0"
+                                style={{ fontWeight: "bold" }}
+                              >
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
@@ -388,7 +399,7 @@ export default function SubscriptionPlansPage() {
                                   </Button>
                                 ) : (
                                   <Button
-                                  className="card-absolute-btn"
+                                    className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       if (enabledBuy(plan)) {
@@ -405,17 +416,39 @@ export default function SubscriptionPlansPage() {
                               </>
                             ) : (
                               <Button
-                              className="card-absolute-btn"
+                                className="card-absolute-btn"
                                 style={{
                                   cursor: "pointer",
                                   backgroundColor: "red",
                                 }}
-                                onClick={handleCancelSubscription}
+                                onClick={handleShow}
                                 disabled={isCancelling}
                               >
                                 Cancel Subscription
                               </Button>
                             )}
+                            <Modal show={show} onHide={handleClose}>
+                              <Modal.Header closeButton>
+                                <Modal.Title>Confirm Delete</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                Are you sure you want to delete this item?
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button
+                                  variant="secondary"
+                                  onClick={handleClose}
+                                >
+                                  Cancel
+                                </Button>
+                                <Button
+                                  variant="primary"
+                                  onClick={handleCloseDelete}
+                                >
+                                  Delete
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
                           </div>
                         </Card>
                       </Col>
@@ -535,7 +568,10 @@ export default function SubscriptionPlansPage() {
 
                             {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
-                              <p className="mb-0" style={{ fontWeight: "bold" }}>
+                              <p
+                                className="mb-0"
+                                style={{ fontWeight: "bold" }}
+                              >
                                 Max project with budget: {plan?.max_projects}
                               </p>
                             )}
@@ -556,7 +592,7 @@ export default function SubscriptionPlansPage() {
                                   (p) => p?.plan?.plan_type === "project"
                                 ) ? (
                                   <Button
-                                  className="card-absolute-btn"
+                                    className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       choosePlan(plan);
@@ -566,7 +602,7 @@ export default function SubscriptionPlansPage() {
                                   </Button>
                                 ) : (
                                   <Button
-                                  className="card-absolute-btn"
+                                    className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       if (enabledBuy(plan)) {
@@ -583,12 +619,12 @@ export default function SubscriptionPlansPage() {
                               </>
                             ) : (
                               <Button
-                              className="card-absolute-btn"
+                                className="card-absolute-btn"
                                 style={{
                                   cursor: "pointer",
                                   backgroundColor: "red",
                                 }}
-                                onClick={handleCancelSubscription}
+                                onClick={handleShow}
                                 disabled={isCancelling}
                               >
                                 Cancel Subscription
@@ -619,122 +655,122 @@ export default function SubscriptionPlansPage() {
               >
                 Budget Only
               </h3>
-                <Row className="justify-content-center">
+              <Row className="justify-content-center">
                 {!loading &&
-                allBudgetPlans?.map((plan) => (
-                  <Col key={plan?.id} xs={12} md={3}>
-                    <Card
-                      style={{
-                        padding: "2rem",
-                        minHeight: "250px",
-                        border: `${
-                          currentlyActivePlans?.find(
-                            (p) => p?.plan?.id === plan?.id
-                          )
-                            ? "1px solid green"
-                            : ""
-                        }`,
-                      }}
-                    >
-                      <div
+                  allBudgetPlans?.map((plan) => (
+                    <Col key={plan?.id} xs={12} md={3}>
+                      <Card
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 2,
+                          padding: "2rem",
+                          minHeight: "250px",
+                          border: `${
+                            currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            )
+                              ? "1px solid green"
+                              : ""
+                          }`,
                         }}
                       >
-                        {/* {plan?.plan_type === "budget" && (
-                          <h4>Pay for Budget</h4>
-                        )} */}
                         <div
                           style={{
                             display: "flex",
-                            justifyContent: "space-between",
+                            flexDirection: "column",
+                            gap: 2,
                           }}
                         >
-                          <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
-                          {currentlyActivePlans?.find(
-                            (p) => p?.plan?.id === plan?.id
-                          ) && (
-                            <div
-                              style={{
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                background: "#2bb673",
-                                borderRadius: "20px",
-                                height: "26px",
-                                width: "75px",
-                                fontSize: "14px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
-                            >
-                              Active
-                            </div>
+                          {/* {plan?.plan_type === "budget" && (
+                          <h4>Pay for Budget</h4>
+                        )} */}
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <h4 style={{ fontWeight: "bold" }}>{plan?.name}</h4>
+                            {currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            ) && (
+                              <div
+                                style={{
+                                  fontWeight: "bold",
+                                  color: "#ffffff",
+                                  background: "#2bb673",
+                                  borderRadius: "20px",
+                                  height: "26px",
+                                  width: "75px",
+                                  fontSize: "14px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                Active
+                              </div>
+                            )}
+                          </div>
+                          {plan?.description && <p>{plan?.description}</p>}
+                          <p className="mb-0">
+                            <span style={{ fontWeight: "bold" }}>Price</span>: $
+                            {plan?.price}
+                          </p>
+                          {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
+                          {plan?.plan_type !== "budget" && (
+                            <p className="mb-0" style={{ fontWeight: "bold" }}>
+                              Max project with budget: {plan?.max_projects}
+                            </p>
                           )}
-                        </div>
-                        {plan?.description && <p>{plan?.description}</p>}
-                        <p className="mb-0">
-                          <span style={{ fontWeight: "bold" }}>Price</span>: $
-                          {plan?.price}
-                        </p>
-                        {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
-                        {plan?.plan_type !== "budget" && (
                           <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            Max project with budget: {plan?.max_projects}
+                            Can create only 1 budget
                           </p>
-                        )}
-                        <p className="mb-0" style={{ fontWeight: "bold" }}>
-                          Can create only 1 budget
-                        </p>
-                        {findDates(plan)?.startDate && (
-                          <p className="mb-0">
-                            <span style={{ fontWeight: "bold" }}>
-                              Start Date
-                            </span>
-                            : {findDates(plan)?.startDate}
-                          </p>
-                        )}
-                        {findDates(plan)?.renewalDate && (
-                          <p className="mb-0">
-                            <span style={{ fontWeight: "bold" }}>
-                              Renewal Date
-                            </span>
-                            : {findDates(plan)?.renewalDate}
-                          </p>
-                        )}
-                        {findDates(plan)?.trailEndDate && (
-                          <p className="mb-0">
-                            <span style={{ fontWeight: "bold" }}>
-                              Trail End Date
-                            </span>
-                            : {findDates(plan)?.trailEndDate}
-                          </p>
-                        )}
-                        {/* {plan?.interval && (
+                          {findDates(plan)?.startDate && (
+                            <p className="mb-0">
+                              <span style={{ fontWeight: "bold" }}>
+                                Start Date
+                              </span>
+                              : {findDates(plan)?.startDate}
+                            </p>
+                          )}
+                          {findDates(plan)?.renewalDate && (
+                            <p className="mb-0">
+                              <span style={{ fontWeight: "bold" }}>
+                                Renewal Date
+                              </span>
+                              : {findDates(plan)?.renewalDate}
+                            </p>
+                          )}
+                          {findDates(plan)?.trailEndDate && (
+                            <p className="mb-0">
+                              <span style={{ fontWeight: "bold" }}>
+                                Trail End Date
+                              </span>
+                              : {findDates(plan)?.trailEndDate}
+                            </p>
+                          )}
+                          {/* {plan?.interval && (
                           <p>
                             <span style={{ fontWeight: "bold" }}>Interval</span>
                             : {plan?.interval}
                           </p>
                         )} */}
 
-                        {!currentlyActivePlans?.find(
-                          (p) => p?.plan?.id === plan?.id
-                        ) && (
-                          <Button
-                          className="card-absolute-btn"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => choosePlan(plan)}
-                          >
-                            Buy
-                          </Button>
-                        )}
-                      </div>
-                    </Card>
-                  </Col>
-                ))}
-                </Row>
+                          {!currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          ) && (
+                            <Button
+                              className="card-absolute-btn"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => choosePlan(plan)}
+                            >
+                              Buy
+                            </Button>
+                          )}
+                        </div>
+                      </Card>
+                    </Col>
+                  ))}
+              </Row>
             </div>
           </Col>
         </Row>
