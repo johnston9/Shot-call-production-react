@@ -56,8 +56,8 @@ const SignInForm = () => {
       localStorage.setItem("accessToken", data.access_token);
       // sessionStorage.setItem("accessToken", accessToken)
       setTokenTimestamp(data);
-      window.location.reload(true);
-      history.push("/");
+      window.location.href = "/";
+      // history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
