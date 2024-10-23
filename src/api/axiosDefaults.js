@@ -76,6 +76,7 @@ axiosInstance.interceptors.response.use(
       //   error?.response?.data?.detail || "Session timeout. Please signin again!"
       // );
       localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
 
       window.location.href = `/signin`;
     }
@@ -84,6 +85,7 @@ axiosInstance.interceptors.response.use(
       // window.location.href = `/signin`;
       // toast.error("Session timeout. Please signin again!");
       localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
 
       // window.location.href = `/authcheck`;
       window.location.href = `/signin`;

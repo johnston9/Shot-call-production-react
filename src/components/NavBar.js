@@ -55,6 +55,7 @@ const NavBar = () => {
       setCurrentUser(null);
       localStorage.removeItem("user");
       localStorage.removeItem("accessToken");
+      window.location.reload();
       removeTokenTimestamp();
     } catch (err) {
       console.log(err);
@@ -358,7 +359,9 @@ const NavBar = () => {
             <i className="fas fa-play"></i>Contact Us
           </NavLink>
           {howItWorksIcons}
-          {currentUser ? loggedInIcons : loggedOutIcons}
+          {currentUser && localStorage.getItem("user")
+            ? loggedInIcons
+            : loggedOutIcons}
         </Nav>
       </Navbar.Collapse>
       {/* </Container> */}
