@@ -429,23 +429,27 @@ export default function SubscriptionPlansPage() {
                             )}
                             <Modal show={show} onHide={handleClose}>
                               <Modal.Header closeButton>
-                                <Modal.Title>Confirm Delete</Modal.Title>
+                                <Modal.Title>
+                                  Confirm Cancel Subscription
+                                </Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                                Are you sure you want to delete this item?
+                                Are you sure you want to cancel your
+                                subscription? Once canceled, you will no longer
+                                have access to your projects.
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button
                                   variant="secondary"
                                   onClick={handleClose}
                                 >
-                                  Cancel
+                                  NO
                                 </Button>
                                 <Button
                                   variant="primary"
                                   onClick={handleCloseDelete}
                                 >
-                                  Delete
+                                  YES
                                 </Button>
                               </Modal.Footer>
                             </Modal>

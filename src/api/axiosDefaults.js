@@ -72,22 +72,15 @@ axiosInstance.interceptors.response.use(
   (error) => {
     console.log("INTERCEPTOR ERROR", error.response);
     if (error.response?.status === 440) {
-      // toast.error(
-      //   error?.response?.data?.detail || "Session timeout. Please signin again!"
-      // );
       localStorage.removeItem("accessToken");
       localStorage.removeItem("user");
 
       window.location.href = `/signin`;
     }
     if (error?.response?.status === 401) {
-      // toast.error(error?.response?.data?.detail || "Unauthenticated user!");
-      // window.location.href = `/signin`;
-      // toast.error("Session timeout. Please signin again!");
       localStorage.removeItem("accessToken");
       localStorage.removeItem("user");
 
-      // window.location.href = `/authcheck`;
       window.location.href = `/signin`;
     }
     return Promise.resolve({ success: false, error });
@@ -99,7 +92,6 @@ axiosInstanceFormData.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      // toast.error("Session timeout. Please signin again!");
       return Promise.resolve({ success: false, error });
     }
     return Promise.resolve({ success: false, error });
