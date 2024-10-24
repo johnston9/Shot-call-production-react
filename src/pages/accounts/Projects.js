@@ -225,15 +225,10 @@ const Projects = ({
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
             // onClick={handleShowProject}
             onClick={() => {
-              if (
-                hasProjectPlan(currentlyActivePlans) ||
-                hasBudgetPlan(currentlyActivePlans)
-              ) {
+              if (hasBudgetPlan(currentlyActivePlans)) {
                 history.push("/budgets");
               } else {
-                toast.error(
-                  "Cannot access budget. Please buy either budget or project packages."
-                );
+                toast.error("Please buy budget before creating budget!");
                 history.push(`/subscription-plans`);
               }
             }}
