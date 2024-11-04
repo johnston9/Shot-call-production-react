@@ -51,19 +51,21 @@ const NavBar = () => {
     setCurrentUser(null);
     localStorage.removeItem("user");
     localStorage.removeItem("accessToken");
-    window.location.reload();
-    /* Function to sign a user out */
-    try {
-      await axiosInstanceNoAuth.post("api-auth/logout/");
+    // window.location.reload();
+    window.location.href = "/signin";
 
-      setCurrentUser(null);
-      localStorage.removeItem("user");
-      localStorage.removeItem("accessToken");
-      window.location.reload();
-      removeTokenTimestamp();
-    } catch (err) {
-      console.log(err);
-    }
+    /* Function to sign a user out */
+    // try {
+    //   await axiosInstanceNoAuth.post("api-auth/logout/");
+
+    //   setCurrentUser(null);
+    //   localStorage.removeItem("user");
+    //   localStorage.removeItem("accessToken");
+    //   window.location.reload();
+    //   removeTokenTimestamp();
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   const fetchVideos = async () => {
     /* Function to sign a user out */
