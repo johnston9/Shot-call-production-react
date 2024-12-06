@@ -8,10 +8,13 @@
    users to edit their profiles
  * CURRENTLY IT IS NOT DISPLAYING CORRECTLY AND NEEDS FIXING 
    FOR X, Y AND Z POSITIONING */
-import React from "react"
-import Dropdown from "react-bootstrap/Dropdown"
-import styles from "../styles/Dropdown.module.css"
-import { useHistory } from "react-router-dom"
+import React, { useState } from "react";
+
+import Dropdown from "react-bootstrap/Dropdown";
+import { useHistory } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+
+import styles from "../styles/Dropdown.module.css";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -20,41 +23,73 @@ const EditDeleteIcon = React.forwardRef(({ onClick }, ref) => (
     className="fas fa-ellipsis-v"
     ref={ref}
     onClick={(e) => {
-      e.preventDefault()
-      onClick(e)
+      e.preventDefault();
+      onClick(e);
     }}
   />
-))
+));
 
-export const UniDropdown = ({ handleEdit, handleDelete }) => {
+export const UniDropdown = ({ handleEdit, handleDelete, id }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleCloseDelete = () => {
+    handleDelete(id);
+    setShow(false);
+  };
+  const handleShow = () => setShow(true);
+
   return (
-    <Dropdown className="ml-auto" drop="left">
-      <Dropdown.Toggle as={EditDeleteIcon} />
-      <Dropdown.Menu
-        className="text-center"
-        popperConfig={{ strategy: "fixed" }}
-      >
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleEdit}
-          aria-label="edit"
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCloseDelete();
+            }}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Dropdown className="ml-auto" drop="left">
+        <Dropdown.Toggle as={EditDeleteIcon} />
+        <Dropdown.Menu
+          className="text-center"
+          popperConfig={{ strategy: "fixed" }}
         >
-          <i className="fas fa-edit" />
-        </Dropdown.Item>
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleDelete}
-          aria-label="delete"
-        >
-          <i className="fas fa-trash-alt" />
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  )
-}
+          <Dropdown.Item
+            className={styles.DropdownItem}
+            onClick={handleEdit}
+            aria-label="edit"
+          >
+            <i className="fas fa-edit" />
+          </Dropdown.Item>
+          <Dropdown.Item
+            className={styles.DropdownItem}
+            onClick={handleShow}
+            aria-label="delete"
+          >
+            <i className="fas fa-trash-alt" />
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </>
+  );
+};
 
 export const ProfileEditDropdown = ({ id }) => {
-  const history = useHistory()
+  const history = useHistory();
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={EditDeleteIcon} />
@@ -87,5 +122,5 @@ export const ProfileEditDropdown = ({ id }) => {
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  )
-}
+  );
+};

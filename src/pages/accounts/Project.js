@@ -1,18 +1,20 @@
 /* Component in the Projects Component to display a Project's data */
 import React from "react";
+
 import Card from "react-bootstrap/Card";
-import styles from "../../styles/Account.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { UniDropdown } from "../../components/UniDropDown";
 import { Link, useHistory } from "react-router-dom";
 import { Badge as ManBadge } from "@mantine/core";
+import toast from "react-hot-toast";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { axiosInstance, axiosRes } from "../../api/axiosDefaults";
+import { UniDropdown } from "../../components/UniDropDown";
 import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
 import useActivePlan from "../../hooks/useActivePlan";
 import { hasProjectPlan } from "../../utils/hasProjectPlan";
-import toast from "react-hot-toast";
+
+import styles from "../../styles/Account.module.css";
 
 const Project = ({
   id,
@@ -25,6 +27,7 @@ const Project = ({
   category_type,
   payment,
   created_at,
+  fetchData,
 }) => {
   const currentUser = useCurrentUser();
   const { currentlyActivePlans } = useActivePlan();
@@ -37,10 +40,14 @@ const Project = ({
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/projects/${id}`);
+      await axiosInstance.delete(`/projects-detail/${id}`);
       console.log("delete");
-      history.goBack();
-    } catch (err) {}
+      console.log(currentUser);
+      fetchData();
+      // /projects-detail/:projectId
+    } catch (err) {
+      console.log("failed to delete", err);
+    }
   };
   return (
     <div>
@@ -69,6 +76,7 @@ const Project = ({
                 <UniDropdown
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
+                  id={id}
                 />
               )}
             </Col>

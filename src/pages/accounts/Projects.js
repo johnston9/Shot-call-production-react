@@ -1,31 +1,33 @@
 /* Component in the Account component to fetch a users Projects data
  * Contains the Project component to which it passes the data for each project */
 import React, { useCallback, useState } from "react";
+import { useEffect } from "react";
+
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import appStyles from "../../App.module.css";
-import styles from "../../styles/Account.module.css";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+import { Alert as ManAlert } from "@mantine/core";
+import { toast } from "react-hot-toast";
+import { Alert } from "react-bootstrap";
 import NoResults from "../../assets/no-results.png";
-import { useEffect } from "react";
 import { axiosInstance, axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import Project from "./Project";
 import CreateProject from "./CreateProject";
-import btnStyles from "../../styles/Button.module.css";
-import Button from "react-bootstrap/Button";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-import { useHistory } from "react-router-dom";
-import { Alert as ManAlert } from "@mantine/core";
-import { toast } from "react-hot-toast";
 import useActivePlan from "../../hooks/useActivePlan";
 import { hasProjectPlan } from "../../utils/hasProjectPlan";
 import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
-import { Alert } from "react-bootstrap";
+
+import appStyles from "../../App.module.css";
+import styles from "../../styles/Account.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
 const Projects = ({
   id,
@@ -292,11 +294,18 @@ const Projects = ({
           <>
             {hasProjectPlan(currentlyActivePlans) &&
             projects?.results?.length ? (
-              projects.results.map((proj) => (
-                <Col xs={12} md={4} className="">
-                  <Project key={proj.id} {...proj} />
-                </Col>
-              ))
+              projects.results.map((proj) => {
+                if (proj?.is_deleted) return null;
+                return (
+                  <Col xs={12} md={4} className="" key={proj.id}>
+                    <Project
+                      key={proj.id}
+                      {...proj}
+                      fetchData={fetchProjects}
+                    />
+                  </Col>
+                );
+              })
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message="No Projects" />
