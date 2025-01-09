@@ -1,6 +1,7 @@
-import styles from "./App.module.css";
-import NavBar from "./components/NavBar";
+import { useEffect } from "react";
+
 import { Route, Switch } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -28,12 +29,8 @@ import Schedules from "./pages/home/Schedules";
 import Callsheets from "./pages/home/Callsheets";
 import Mobile from "./pages/home/Mobile";
 import AccountPage from "./pages/accounts/AccountPage";
-// import BudgetPage from "./pages/accounts/BudgetPage";
-// import BudgetCreate from "./pages/accounts/BudgetCreate";
-// import BudgetEdit from "./pages/accounts/BudgetEdit";
 import NeedToSignIn from "./pages/chat/NeedToSignIn";
 import ProjectEdit from "./pages/accounts/ProjectEdit";
-import { useEffect } from "react";
 import SubscriptionPlansPage from "./pages/subscription-plans/SubscriptionPlansPage";
 import TransactionsPage from "./pages/transactions/TransactionsPage";
 import PaymentPage from "./pages/payment/PaymentPage";
@@ -41,7 +38,6 @@ import BudgetPaymentPage from "./pages/payment/budget/PaymentPage";
 import BudgetPage from "./pages/accounts/budgets/BudgetPage";
 import BudgetCreate from "./pages/accounts/budgets/BudgetCreate";
 import BudgetEdit from "./pages/accounts/budgets/BudgetEdit";
-
 import BPage from "./pages/budget/budgets/BudgetPage";
 import BCreate from "./pages/budget/budgets/BudgetCreate";
 import BEdit from "./pages/budget/budgets/BudgetEdit";
@@ -49,6 +45,14 @@ import ContactUs from "./pages/contact-us/ContactUs";
 import HowItWorks from "./pages/how-it-works/HowItWorks";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import AuthCheckPage from "./pages/AuthCheckPage";
+import ForgotPasswordForm from "./pages/auth/ForgotPasswordForm";
+import ResetPasswordForm from "./pages/auth/ResetPasswordForm";
+
+import styles from "./App.module.css";
+
+// import BudgetPage from "./pages/accounts/BudgetPage";
+// import BudgetCreate from "./pages/accounts/BudgetCreate";
+// import BudgetEdit from "./pages/accounts/BudgetEdit";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -71,6 +75,16 @@ function App() {
           <Route exact path="/" render={() => <Home />} />
           <Route exact path="/landing" render={() => <Landing />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
+          <Route
+            exact
+            path="/forgot-password"
+            render={() => <ForgotPasswordForm />}
+          />
+          <Route
+            exact
+            path="/reset-password/:token/:token_id"
+            render={() => <ResetPasswordForm />}
+          />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           {/* features */}
           <Route exact path="/moodboards" render={() => <Moodboards />} />

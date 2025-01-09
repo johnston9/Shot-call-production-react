@@ -11,6 +11,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import toast from "react-hot-toast";
 import door from "../../assets/door.png";
 import rightdoor from "../../assets/rightdoor.png";
 import TopBox from "../../components/TopBox";
@@ -22,16 +23,15 @@ import { axiosInstanceNoAuth } from "../../api/axiosDefaults";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-const SignInForm = () => {
+const ForgotPasswordForm = () => {
   // useRedirectSign()
   const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
-    username: "",
-    password: "",
+    email: "",
   });
 
-  const { username, password } = signInData;
+  const { email } = signInData;
 
   const [errors, setErrors] = useState({});
 
@@ -47,18 +47,12 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axiosInstanceNoAuth.post(
-        "/dj-rest-auth/login/",
-        signInData
-      );
+      const { data } = await axiosInstanceNoAuth.post("/forgot-password/", {
+        email: email,
+      });
 
-      setCurrentUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("accessToken", data.access_token);
-      // sessionStorage.setItem("accessToken", accessToken)
-      setTokenTimestamp(data);
-      window.location.href = "/";
-      // history.push("/");
+      console.log(data);
+      toast.success(data?.message);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -66,7 +60,7 @@ const SignInForm = () => {
 
   return (
     <Container className={styles.SignupBox}>
-      <TopBox title="Sign In" />
+      <TopBox title="Forgot Password" />
       <Row className={styles.Row}>
         <Col className="my-3 pr-0 pl-3 pl-md-4" xs={1} md={1}>
           <Image className={`${styles.FillerImagel}`} src={door} />
@@ -76,46 +70,31 @@ const SignInForm = () => {
             <Col md={3} className="d-none d-md-block"></Col>
             <Col xs={12} md={6} className="text-center">
               <Container>
-                <h1 className={`${styles.Header}`}>Sign in</h1>
+                <h1 className={`${styles.Header}`}>Forgot Password</h1>
                 <Form onSubmit={handleSubmit} className={styles.Form}>
                   <Form.Group controlId="username" className="mb-2">
-                    <Form.Label className="d-none">Username</Form.Label>
+                    <Form.Label className="d-none">Email</Form.Label>
                     <Form.Control
                       className={styles.Input}
                       type="text"
-                      placeholder="Username"
-                      name="username"
-                      value={username}
+                      placeholder="Email"
+                      name="email"
+                      value={email}
                       onChange={handleChange}
                     />
                   </Form.Group>
-                  {errors.username?.map((message, idx) => (
+                  {errors.email?.map((message, idx) => (
                     <Alert variant="warning" key={idx}>
                       {message}
                     </Alert>
                   ))}
-                  <Form.Group controlId="password" className="mb-2">
-                    <Form.Label className="d-none">Password</Form.Label>
-                    <Form.Control
-                      className={styles.Input}
-                      type="password"
-                      placeholder="Password"
-                      name="password"
-                      value={password}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  {errors.password?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
-                  ))}
+
                   <div className="text-center">
                     <Button
                       className={`px-0 ${btnStyles.Button} ${btnStyles.Wide2} ${btnStyles.Bright}`}
                       type="submit"
                     >
-                      Sign in
+                      Send Reset Link
                     </Button>
                   </div>
                   {errors.non_field_errors?.map((message, idx) => (
@@ -126,13 +105,8 @@ const SignInForm = () => {
                 </Form>
               </Container>
               <Container className="mt-3">
-                <Link className={styles.Link} to="/signup">
-                  Register <span>Here</span>
-                </Link>
-              </Container>
-              <Container className="mt-3">
-                <Link className={styles.Link} to="/forgot-password">
-                  Forgot Password <span>Here</span>
+                <Link className={styles.Link} to="/signin">
+                  Sign in <span>Here</span>
                 </Link>
               </Container>
             </Col>
@@ -146,4 +120,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default ForgotPasswordForm;

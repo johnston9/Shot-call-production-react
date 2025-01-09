@@ -11,6 +11,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 import door from "../../assets/door.png";
 import rightdoor from "../../assets/rightdoor.png";
 import TopBox from "../../components/TopBox";
@@ -22,16 +24,18 @@ import { axiosInstanceNoAuth } from "../../api/axiosDefaults";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-const SignInForm = () => {
+const ForgotPasswordForm = () => {
   // useRedirectSign()
+  const { token, token_id } = useParams();
+  console.log(token, token_id);
   const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
-    username: "",
     password: "",
+    confirm_password: "",
   });
 
-  const { username, password } = signInData;
+  const { password, confirm_password } = signInData;
 
   const [errors, setErrors] = useState({});
 
@@ -46,19 +50,22 @@ const SignInForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password !== confirm_password) {
+      setErrors({
+        confirm_password: ["Passwords do not match"],
+      });
+      return;
+    }
     try {
       const { data } = await axiosInstanceNoAuth.post(
-        "/dj-rest-auth/login/",
-        signInData
+        `/reset-password/${token}/${token_id}/`,
+        {
+          new_password: password,
+        }
       );
 
-      setCurrentUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("accessToken", data.access_token);
-      // sessionStorage.setItem("accessToken", accessToken)
-      setTokenTimestamp(data);
-      window.location.href = "/";
-      // history.push("/");
+      console.log(data);
+      toast.success(data?.message);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -66,7 +73,7 @@ const SignInForm = () => {
 
   return (
     <Container className={styles.SignupBox}>
-      <TopBox title="Sign In" />
+      <TopBox title="Reset Password" />
       <Row className={styles.Row}>
         <Col className="my-3 pr-0 pl-3 pl-md-4" xs={1} md={1}>
           <Image className={`${styles.FillerImagel}`} src={door} />
@@ -76,24 +83,8 @@ const SignInForm = () => {
             <Col md={3} className="d-none d-md-block"></Col>
             <Col xs={12} md={6} className="text-center">
               <Container>
-                <h1 className={`${styles.Header}`}>Sign in</h1>
+                <h1 className={`${styles.Header}`}>Reset Password</h1>
                 <Form onSubmit={handleSubmit} className={styles.Form}>
-                  <Form.Group controlId="username" className="mb-2">
-                    <Form.Label className="d-none">Username</Form.Label>
-                    <Form.Control
-                      className={styles.Input}
-                      type="text"
-                      placeholder="Username"
-                      name="username"
-                      value={username}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  {errors.username?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
-                  ))}
                   <Form.Group controlId="password" className="mb-2">
                     <Form.Label className="d-none">Password</Form.Label>
                     <Form.Control
@@ -110,12 +101,29 @@ const SignInForm = () => {
                       {message}
                     </Alert>
                   ))}
+                  <Form.Group controlId="confirm_password" className="mb-2">
+                    <Form.Label className="d-none">Confirm Password</Form.Label>
+                    <Form.Control
+                      className={styles.Input}
+                      type="password"
+                      placeholder="Confirm Password"
+                      name="confirm_password"
+                      value={confirm_password}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                  {errors.confirm_password?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
+                  ))}
+
                   <div className="text-center">
                     <Button
                       className={`px-0 ${btnStyles.Button} ${btnStyles.Wide2} ${btnStyles.Bright}`}
                       type="submit"
                     >
-                      Sign in
+                      Reset Password
                     </Button>
                   </div>
                   {errors.non_field_errors?.map((message, idx) => (
@@ -124,11 +132,6 @@ const SignInForm = () => {
                     </Alert>
                   ))}
                 </Form>
-              </Container>
-              <Container className="mt-3">
-                <Link className={styles.Link} to="/signup">
-                  Register <span>Here</span>
-                </Link>
               </Container>
               <Container className="mt-3">
                 <Link className={styles.Link} to="/forgot-password">
@@ -146,4 +149,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default ForgotPasswordForm;
