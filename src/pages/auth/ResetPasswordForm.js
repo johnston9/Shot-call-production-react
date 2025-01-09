@@ -66,6 +66,7 @@ const ForgotPasswordForm = () => {
 
       console.log(data);
       toast.success(data?.message);
+      history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
     }
