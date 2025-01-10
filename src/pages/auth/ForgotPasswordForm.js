@@ -52,7 +52,12 @@ const ForgotPasswordForm = () => {
       });
 
       console.log(data);
-      toast.success(data?.message);
+      toast.success(
+        `We've sent password reset instructions to your email. Check your inbox or spam folder.`,
+        {
+          duration: 6000,
+        }
+      );
     } catch (err) {
       setErrors(err.response?.data);
     }

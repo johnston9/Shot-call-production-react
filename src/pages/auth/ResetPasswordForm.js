@@ -65,8 +65,15 @@ const ForgotPasswordForm = () => {
       );
 
       console.log(data);
-      toast.success(data?.message);
-      history.push("/signin");
+      toast.success(
+        `You have successfully reset your password. Soon you will be redirected to the Login.`,
+        {
+          duration: 6000,
+        }
+      );
+      setTimeout(() => {
+        history.push("/signin");
+      }, 1000);
     } catch (err) {
       setErrors(err.response?.data);
     }
