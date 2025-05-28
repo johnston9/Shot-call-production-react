@@ -47,6 +47,7 @@ export default function BudgetPaymentPage() {
     state: "",
     country: "",
     postalCode: "",
+    currency: ""
   });
   const [accepted, setAccepted] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
@@ -115,6 +116,7 @@ export default function BudgetPaymentPage() {
       type: "card",
       card: cardElement,
       billing_details: body,
+      // currency: formData?.currency?.split(',')[0]?.toLowerCase() ?? "usd",
     });
     if (error) {
       setProcessingPayment(false);
@@ -131,8 +133,9 @@ export default function BudgetPaymentPage() {
       const res = await axiosInstance.post(
         `/create-customer/`,
         {
-          //   plan_id: planId,
+          plan_id: planId,
           subscription_type: "budget",
+          currency: formData?.currency?.split(',')[0]?.toLowerCase() ?? "usd",
           customer_details: {
             payment_method: id,
             address_line1: formData.addressLine1,
@@ -195,16 +198,14 @@ export default function BudgetPaymentPage() {
 
       if (response?.data?.status === 200) {
         // setLoading(false);
-        console.log(response?.data?.data);
-        // console.log(pId);
+        const price = response?.data?.data
+          ?.find((p) => p?.category?.name === "Budget Only")
+          ?.plans?.find((plan) => plan?.id === params?.planId)?.price;
 
-        const price = response?.data?.data?.find(
-          (p) => p?.category?.name === "Budget Only"
-        )?.plans[0]?.price;
         // console.log(plans);
         // const plan = plans?.find((p) => p?.id === pId);
 
-        // console.log(plan);
+        console.log("paisa>>>>>>>>>>>", price, response?.data?.data);
         setPaymentAmount(price);
       }
     } catch (err) {
@@ -299,7 +300,7 @@ export default function BudgetPaymentPage() {
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
-                    : `Pay $${paymentAmount} Now`}
+                    : `Pay ${formData?.currency[1] && '$'} ${paymentAmount} Now`}
                 </Button>
               </div>
             </div>

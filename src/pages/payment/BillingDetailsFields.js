@@ -58,8 +58,50 @@ export default function BillingDetailsFields({
     }));
   };
 
+  const currency = [
+    {
+      id:"1",
+      name:'EURO',
+      icon:"€",
+      value: 'EUR'
+    },
+    {
+      id:"2",
+      name:'US Dollar ',
+      icon:"$",
+      value: 'USD'
+    },
+    {
+      id:"3",
+      name:'British Pound Sterling',
+      icon:"£",
+      value: 'GBP'
+    },
+  ]
   return (
     <>
+
+      <Form.Group controlId="formCurrency">
+        <Form.Label>Select Currency</Form.Label>
+        <Form.Control
+          as="select"
+          name="currency"
+          value={formData.currency}
+          onChange={handleChange}
+          required
+          // disabled={!formData.country}
+        >
+          <option value="">Select Currency</option>
+          {currency.map((item) => (
+            <option key={item.id} value={[item.value,item.icon]}>
+              {item.name}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
+
+
+
       <Form.Group controlId="formAddressLine1">
         <Form.Label>Address Line 1</Form.Label>
         <Form.Control

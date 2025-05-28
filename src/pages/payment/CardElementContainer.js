@@ -6,6 +6,7 @@ export default function CardElementContainer({
   isMxTwo = true,
   customClassName,
   customStyle = {},
+  
 }) {
   return (
     <div

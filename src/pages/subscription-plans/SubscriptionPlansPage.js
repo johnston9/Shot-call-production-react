@@ -141,7 +141,7 @@ export default function SubscriptionPlansPage() {
     );
     if (
       currentActivetProjectPlan?.plan?.subscription_category?.name ===
-        "Company" &&
+      "Company" &&
       plan?.subscription_category?.name === "Student"
     ) {
       return false;
@@ -271,13 +271,12 @@ export default function SubscriptionPlansPage() {
                             padding: "2rem",
                             height: "370px",
                             marginBottom: "1rem",
-                            border: `${
-                              currentlyActivePlans?.find(
-                                (p) => p?.plan?.id === plan?.id
-                              )
+                            border: `${currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            )
                                 ? "1px solid green"
                                 : ""
-                            }`,
+                              }`,
                           }}
                         >
                           <div
@@ -302,26 +301,26 @@ export default function SubscriptionPlansPage() {
                               {currentlyActivePlans?.find(
                                 (p) => p?.plan?.id === plan?.id
                               ) && (
-                                <div
-                                  style={{
-                                    fontWeight: "bold",
-                                    color: "#ffffff",
-                                    background: "#2bb673",
-                                    borderRadius: "20px",
-                                    height: "26px",
-                                    width: "75px",
-                                    fontSize: "14px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    // borderRadius: "20px",
-                                    // border: "1px solid green",
-                                    // padding: "0.3rem 0.8rem",
-                                  }}
-                                >
-                                  Active
-                                </div>
-                              )}
+                                  <div
+                                    style={{
+                                      fontWeight: "bold",
+                                      color: "#ffffff",
+                                      background: "#2bb673",
+                                      borderRadius: "20px",
+                                      height: "26px",
+                                      width: "75px",
+                                      fontSize: "14px",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      // borderRadius: "20px",
+                                      // border: "1px solid green",
+                                      // padding: "0.3rem 0.8rem",
+                                    }}
+                                  >
+                                    Active
+                                  </div>
+                                )}
                             </div>
                             {plan?.description && (
                               <div
@@ -477,13 +476,12 @@ export default function SubscriptionPlansPage() {
                             padding: "2rem",
                             height: "370px",
                             marginBottom: "1rem",
-                            border: `${
-                              currentlyActivePlans?.find(
-                                (p) => p?.plan?.id === plan?.id
-                              )
+                            border: `${currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            )
                                 ? "1px solid green"
                                 : ""
-                            }`,
+                              }`,
                           }}
                         >
                           <div
@@ -508,26 +506,26 @@ export default function SubscriptionPlansPage() {
                               {currentlyActivePlans?.find(
                                 (p) => p?.plan?.id === plan?.id
                               ) && (
-                                <div
-                                  style={{
-                                    fontWeight: "bold",
-                                    color: "#ffffff",
-                                    background: "#2bb673",
-                                    borderRadius: "20px",
-                                    height: "26px",
-                                    width: "75px",
-                                    fontSize: "14px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    // borderRadius: "20px",
-                                    // border: "1px solid green",
-                                    // padding: "0.3rem 0.8rem",
-                                  }}
-                                >
-                                  Active
-                                </div>
-                              )}
+                                  <div
+                                    style={{
+                                      fontWeight: "bold",
+                                      color: "#ffffff",
+                                      background: "#2bb673",
+                                      borderRadius: "20px",
+                                      height: "26px",
+                                      width: "75px",
+                                      fontSize: "14px",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      // borderRadius: "20px",
+                                      // border: "1px solid green",
+                                      // padding: "0.3rem 0.8rem",
+                                    }}
+                                  >
+                                    Active
+                                  </div>
+                                )}
                             </div>
                             {plan?.description && (
                               <div
@@ -666,14 +664,13 @@ export default function SubscriptionPlansPage() {
                       <Card
                         style={{
                           padding: "2rem",
-                          minHeight: "250px",
-                          border: `${
-                            currentlyActivePlans?.find(
-                              (p) => p?.plan?.id === plan?.id
-                            )
+                          height: "370px",
+                          border: `${currentlyActivePlans?.find(
+                            (p) => p?.plan?.id === plan?.id
+                          )
                               ? "1px solid green"
                               : ""
-                          }`,
+                            }`,
                         }}
                       >
                         <div
@@ -696,38 +693,47 @@ export default function SubscriptionPlansPage() {
                             {currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             ) && (
-                              <div
-                                style={{
-                                  fontWeight: "bold",
-                                  color: "#ffffff",
-                                  background: "#2bb673",
-                                  borderRadius: "20px",
-                                  height: "26px",
-                                  width: "75px",
-                                  fontSize: "14px",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                }}
-                              >
-                                Active
-                              </div>
-                            )}
+                                <div
+                                  style={{
+                                    fontWeight: "bold",
+                                    color: "#ffffff",
+                                    background: "#2bb673",
+                                    borderRadius: "20px",
+                                    height: "26px",
+                                    width: "75px",
+                                    fontSize: "14px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                  }}
+                                >
+                                  Active
+                                </div>
+                              )}
                           </div>
-                          {plan?.description && <p>{plan?.description}</p>}
+                          {plan?.description && <div
+                            style={{
+                              display: "flex",
+                              gap: "0.5rem",
+                            }}
+                          >
+                            <img src={GreenTick} height={20} width={20} alt="check"/>
+
+                            <p>{plan?.description}</p>
+                          </div>}
                           <p className="mb-0">
                             <span style={{ fontWeight: "bold" }}>Price</span>: $
                             {plan?.price}
                           </p>
                           {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
-                          {plan?.plan_type !== "budget" && (
-                            <p className="mb-0" style={{ fontWeight: "bold" }}>
-                              Max project with budget: {plan?.max_projects}
-                            </p>
-                          )}
+                          {/* {plan?.plan_type !== "budget" && ( */}
                           <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            Can create only 1 budget
+                            Max project with budget: {plan?.max_projects}
                           </p>
+                          {/* )} */}
+                          {/* <p className="mb-0" style={{ fontWeight: "bold" }}>
+                            Can create only 1 budget
+                          </p> */}
                           {findDates(plan)?.startDate && (
                             <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>
@@ -752,24 +758,17 @@ export default function SubscriptionPlansPage() {
                               : {findDates(plan)?.trailEndDate}
                             </p>
                           )}
-                          {/* {plan?.interval && (
-                          <p>
-                            <span style={{ fontWeight: "bold" }}>Interval</span>
-                            : {plan?.interval}
-                          </p>
-                        )} */}
-
                           {!currentlyActivePlans?.find(
                             (p) => p?.plan?.id === plan?.id
                           ) && (
-                            <Button
-                              className="card-absolute-btn"
-                              style={{ cursor: "pointer" }}
-                              onClick={() => choosePlan(plan)}
-                            >
-                              Buy
-                            </Button>
-                          )}
+                              <Button
+                                className="card-absolute-btn"
+                                style={{ cursor: "pointer" }}
+                                onClick={() => choosePlan(plan)}
+                              >
+                                Buy
+                              </Button>
+                            )}
                         </div>
                       </Card>
                     </Col>

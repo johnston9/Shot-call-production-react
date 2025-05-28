@@ -48,6 +48,7 @@ export default function PaymentPage() {
     state: "",
     country: "",
     postalCode: "",
+    currency: null
   });
   const [accepted, setAccepted] = useState(false);
 
@@ -116,6 +117,7 @@ export default function PaymentPage() {
       type: "card",
       card: cardElement,
       billing_details: body,
+      // currency: formData?.currency?.split(',')[0].toLowerCase() ?? "usd"
     });
     if (error) {
       setProcessingPayment(false);
@@ -134,6 +136,7 @@ export default function PaymentPage() {
         {
           plan_id: planId,
           subscription_type: "project",
+          currency: formData?.currency?.split(',')[0]?.toLowerCase() ?? "usd",
           customer_details: {
             payment_method: id,
             address_line1: formData.addressLine1,
@@ -293,10 +296,11 @@ export default function PaymentPage() {
                   {/* </div> */}
                   <img src={StripeImage} height={30} />
                 </Row>
+                {console.log(formData?.currency?.split(',')[1])}
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
-                    : `Pay $${paymentAmount} Now`}
+                    : `Pay ${formData?.currency?.split(',')[1] ?? '$'} ${paymentAmount} Now`}
                 </Button>
               </div>
             </div>
