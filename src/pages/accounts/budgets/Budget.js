@@ -16,12 +16,17 @@ const Budget = (props) => {
   const [showInfo, setShowInfo] = useState(false);
   // const [showPost, setShowPost] = useState(false);
 
-  const { budget1, budget2, budget3, projectId } = props;
+  const { budget1, budget2, budget3, projectId , type} = props;
 
-  const budget11 = budget1.results[0] || "";
-  const budget12 = budget2.results[0] || "";
-  const budget13 = budget3.results[0] || "";
+  const budget11 = budget1?.results[0] || "";
+  
+  // projectId !== undefined ? budget1 :
+  // projectId !== undefined ? budget2 :
+  // projectId !== undefined ? budget3 :
+  const budget12 =  budget2?.results[0] || "";
+  const budget13 =  budget3?.results[0] || "";
 
+  console.log(projectId , budget11, "<<<<<<<<<<<<<")
   const {
     // totals
     above_the_line_total,
@@ -2400,11 +2405,18 @@ const Budget = (props) => {
       {budget11 ? (
         <Row className="mt-0 mb-0">
           <Col className="text-center">
+          {
+            type === 0 ? 
             <Link to={`/${projectId}/budgets/edit`}>
               <div className={`px-1`}>
                 <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
               </div>
-            </Link>
+            </Link> :  <Link to={`/${projectId}/my-budgets/edit`}>
+              <div className={`px-1`}>
+                <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+              </div>
+            </Link> 
+          }
           </Col>
         </Row>
       ) : (

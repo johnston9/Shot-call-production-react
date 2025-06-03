@@ -49,6 +49,7 @@ import ForgotPasswordForm from "./pages/auth/ForgotPasswordForm";
 import ResetPasswordForm from "./pages/auth/ResetPasswordForm";
 
 import styles from "./App.module.css";
+import MyBudget from "./pages/budget/budgets/MyBudget";
 
 // import BudgetPage from "./pages/accounts/BudgetPage";
 // import BudgetCreate from "./pages/accounts/BudgetCreate";
@@ -124,13 +125,15 @@ function App() {
             render={() => <BudgetPaymentPage />}
           />
           {/* budget page */}
-          <Route exact path="/:id/budgets" render={() => <BudgetPage />} />
+          <Route exact path="/:id/budgets" render={() => <BudgetPage type={0}/>} />
+
+          <Route exact path="/:id/my-budgets" render={() => <BudgetPage type={1}/>} />
           <Route
             exact
             path="/:id/budgets/create"
             render={() => <BudgetCreate />}
           />
-          <Route exact path="/:id/budgets/edit" render={() => <BudgetEdit />} />
+          <Route exact path="/:id/budgets/edit" render={() => <BudgetEdit type={0}/>} />
           <Route
             exact
             path="/chat"
@@ -138,11 +141,29 @@ function App() {
           />
           {/* for budget only */}
           <Route exact path="/budgets" render={() => <BPage />} />
-          <Route exact path="/budgets/create" render={() => <BCreate />} />
+          <Route exact path="/budgets/create" render={() => <BCreate type={0} />} />
           <Route
             exact
             path="/budgets/edit/:budget1Id/:budget2Id/:budget3Id"
-            render={() => <BEdit />}
+            render={() => <BEdit type={1} />}
+          />
+          {/* CREATE THEIR OWN BUDGET */}
+          <Route
+            exact
+            path="/my-budgets"
+            render={() => <MyBudget />}
+          />
+          <Route exact path="/my-budgets/step-one" render={() => <BCreate type={1} />} />
+          <Route exact path="/:id/my-budgets/edit" render={() => <BudgetEdit type={1}/>} />
+          <Route
+            exact
+            path="/my-budgets/step-two"
+            render={() => <BEdit type={0} />}
+          />
+          <Route
+            exact
+            path="/my-budgets/edit/:id"
+            render={() => <BEdit type={1} />}
           />
           <Route
             exact

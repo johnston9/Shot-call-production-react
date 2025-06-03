@@ -12,7 +12,7 @@ import DownloadIcon from "../../../assets/download-icon.jpg";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const BudgetPage = () => {
+const BudgetPage = ({ type }) => {
   useRedirect();
   const [isGenerating, setIsGenerating] = useState(false); // State to manage button disable
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -22,18 +22,58 @@ const BudgetPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    console.log(type)
     const fetchBudget = async () => {
       try {
-        const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] =
-          await Promise.all([
-            axiosReq.get(id ? `/budgets1/?project=${id}` : `/budgets1/`),
-            axiosReq.get(id ? `/budgets2/?project=${id}` : `/budgets2/`),
-            axiosReq.get(id ? `/budgets3/?project=${id}` : `/budgets3/`),
-          ]);
-        setBudget1({ results: [budget1] });
-        setBudget2({ results: [budget2] });
-        setBudget3({ results: [budget3] });
-        setHasLoaded(true);
+        if (type === 0) {
+          const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] =
+            await Promise.all([
+              axiosReq.get(id ? `/budgets1/?project=${id}` : `/budgets1/`),
+              axiosReq.get(id ? `/budgets2/?project=${id}` : `/budgets2/`),
+              axiosReq.get(id ? `/budgets3/?project=${id}` : `/budgets3/`),
+            ]);
+          setBudget1({ results: [budget1] });
+          setBudget2({ results: [budget2] });
+          setBudget3({ results: [budget3] });
+          setHasLoaded(true);
+
+        } else if (type === 1) {
+          // alert()
+          const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] =
+            await Promise.all([
+              axiosReq.get(id ? `/budget-view/${id}` : `/budgets1/`),
+              axiosReq.get(id ? `/budgets2/?budget_id=${id}` : `/budgets2/`),
+              axiosReq.get(id ? `/budgets3/?budget_id=${id}` : `/budgets3/`),
+            ]);
+          setBudget1({ results: [budget1] });
+          setBudget2({ results: [budget2] });
+          setBudget3({ results: [budget3] });
+          setHasLoaded(true);
+
+          // const { data: budget1 } = await axiosReq.get(
+          //   id ? `/budget-view/${id}` : `/budgets1/`
+          // );
+        
+          // const budget1ID = budget1?.results[0].id;
+        
+          // // Step 2: Get budget2 using budget1ID
+          // const { data: budget2 } = await axiosReq.get(
+          //   `/budgets2/?budget_id=${budget1ID}`
+          // );
+        
+          // // const budget2ID = budget2?.id;
+        
+          // // Step 3: Get budget3 using budget2ID
+          // const { data: budget3 } = await axiosReq.get(
+          //   `/budgets3/?budget_id=${budget1ID}`
+          // );
+        
+          // // Set state
+          // setBudget1({ results: [budget1] });
+          // setBudget2({ results: [budget2] });
+          // setBudget3({ results: [budget3] });
+          // setHasLoaded(true);
+        }
         // console.log(budget1);
         // console.log(budget2);
         // console.log(budget3);
@@ -105,12 +145,14 @@ const BudgetPage = () => {
       {/* budget */}
       <Row>
         <Col id="pdf-content" className="py-2 p-0 p-lg-2">
+        {console.log("budget1",budget1.results)}
           {hasLoaded ? (
             <Budget
               budget1={budget1.results[0]}
               budget2={budget2.results[0]}
               budget3={budget3.results[0]}
               projectId={id}
+              type={type}
             />
           ) : (
             ""

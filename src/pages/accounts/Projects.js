@@ -237,6 +237,21 @@ const Projects = ({
           >
             Create Budget
           </Button>
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
+            // onClick={handleShowProject}
+            onClick={() => {
+              history.push("/my-budgets");
+              // if (hasBudgetPlan(currentlyActivePlans)) {
+              //   history.push("/budgets");
+              // } else {
+              //   toast.error("Please buy budget before creating budget!");
+              //   history.push(`/subscription-plans`);
+              // }
+            }}
+          >
+            My Budget
+          </Button>
           {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>
       </Row>

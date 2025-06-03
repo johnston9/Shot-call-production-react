@@ -15,9 +15,8 @@ export default function SubscriptionPlansPage() {
     fetchMyActivePlan,
   } = useActivePlan();
 
-  console.log(currentlyActivePlans);
-
-  console.log(currentlyActivePlans);
+  // console.log(currentlyActivePlans);
+  // console.log(currentlyActivePlans);
 
   const [allCompanyPlans, setAllCompanyPlans] = useState([]);
   const [allStudPlans, setAllStudPlans] = useState([]);
@@ -35,7 +34,7 @@ export default function SubscriptionPlansPage() {
   const handleShow = () => setShow(true);
 
   const choosePlan = async (plan) => {
-    console.log(plan);
+    // console.log(plan);
     // return;
     if (plan?.plan_type === "budget") {
       history.push(`/payment/budget/${plan?.id}`);
@@ -70,7 +69,7 @@ export default function SubscriptionPlansPage() {
     if (!subPlan) {
       return null;
     }
-    console.log("isTrail", subPlan);
+    // console.log("isTrail", subPlan);
     if (subPlan?.plan?.plan_type === "project") {
       if (subPlan?.inTrial) {
         return {
@@ -164,7 +163,7 @@ export default function SubscriptionPlansPage() {
       });
 
       if (response?.data?.status === 200) {
-        console.log(response?.data?.data);
+        // console.log(response?.data?.data);
         setLoading(false);
         const projectCatergories = response?.data?.data?.filter(
           (p) => p?.category?.name !== "Budget Only"
@@ -174,20 +173,20 @@ export default function SubscriptionPlansPage() {
           (p) => p.category.name === "Company"
         );
         const companyPlans = companyCategory?.plans;
-        console.log("company plans", companyPlans);
+        // console.log("company plans", companyPlans);
         setAllCompanyPlans(companyPlans);
         const studCategory = projectCatergories?.find(
           (p) => p.category.name === "Student"
         );
         const studPlans = studCategory?.plans;
-        console.log("stud plans", studPlans);
+        // console.log("stud plans", studPlans);
         setAllStudPlans(studPlans);
 
         const budgetCatergory = response?.data?.data?.filter(
           (p) => p?.category?.name === "Budget Only"
         );
         const budgetPlans = budgetCatergory[0]?.plans;
-        console.log("budget plans", budgetPlans);
+        // console.log("budget plans", budgetPlans);
         // setAllProjectPlans(projectPlans);
         setAllBudgetPlans(budgetPlans);
       }
@@ -201,8 +200,8 @@ export default function SubscriptionPlansPage() {
     fetchData();
   }, []);
 
-  console.log(allCompanyPlans);
-  console.log(allStudPlans);
+  // console.log(allCompanyPlans);
+  // console.log(allStudPlans);
 
   return (
     <div className="pb-2">
@@ -274,8 +273,8 @@ export default function SubscriptionPlansPage() {
                             border: `${currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             )
-                                ? "1px solid green"
-                                : ""
+                              ? "1px solid green"
+                              : ""
                               }`,
                           }}
                         >
@@ -479,8 +478,8 @@ export default function SubscriptionPlansPage() {
                             border: `${currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             )
-                                ? "1px solid green"
-                                : ""
+                              ? "1px solid green"
+                              : ""
                               }`,
                           }}
                         >
@@ -668,8 +667,8 @@ export default function SubscriptionPlansPage() {
                           border: `${currentlyActivePlans?.find(
                             (p) => p?.plan?.id === plan?.id
                           )
-                              ? "1px solid green"
-                              : ""
+                            ? "1px solid green"
+                            : ""
                             }`,
                         }}
                       >
@@ -717,7 +716,7 @@ export default function SubscriptionPlansPage() {
                               gap: "0.5rem",
                             }}
                           >
-                            <img src={GreenTick} height={20} width={20} alt="check"/>
+                            <img src={GreenTick} height={20} width={20} alt="check" />
 
                             <p>{plan?.description}</p>
                           </div>}
@@ -727,37 +726,39 @@ export default function SubscriptionPlansPage() {
                           </p>
                           {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                           {/* {plan?.plan_type !== "budget" && ( */}
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            Max project with budget: {plan?.max_projects}
+
+                          <p className="mb-0">
+                            <span style={{ fontWeight: "bold" }}>
+                              Interval
+                            </span>
+                            : {plan?.interval}
                           </p>
-                          {/* )} */}
-                          {/* <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            Can create only 1 budget
-                          </p> */}
-                          {findDates(plan)?.startDate && (
-                            <p className="mb-0">
-                              <span style={{ fontWeight: "bold" }}>
-                                Start Date
-                              </span>
-                              : {findDates(plan)?.startDate}
-                            </p>
-                          )}
-                          {findDates(plan)?.renewalDate && (
-                            <p className="mb-0">
-                              <span style={{ fontWeight: "bold" }}>
-                                Renewal Date
-                              </span>
-                              : {findDates(plan)?.renewalDate}
-                            </p>
-                          )}
-                          {findDates(plan)?.trailEndDate && (
-                            <p className="mb-0">
-                              <span style={{ fontWeight: "bold" }}>
-                                Trail End Date
-                              </span>
-                              : {findDates(plan)?.trailEndDate}
-                            </p>
-                          )}
+                          <p className="mb-0" style={{ fontWeight: "bold" }}>
+                            Max budget: {plan?.max_projects}
+                          </p>
+
+
+                          {/* Budget Start Date */}
+                          {/* {plan?.current_period_start
+                           && */}
+                          <p className="mb-0" style={{ fontWeight: "bold" }}>
+                            <span style={{ fontWeight: "bold" }}>
+                              Start Date:
+                            </span>
+                            {plan?.current_period_start}
+                          </p>
+                          {/* } */}
+
+                          {/* Budget End Date */}
+                          {/* {plan?.current_period_end &&  */}
+                          <p className="mb-0" style={{ fontWeight: "bold" }}>
+                            <span style={{ fontWeight: "bold" }}>
+                              End Date:
+                            </span>
+                            {plan?.current_period_end}
+                          </p>
+                          {/* } */}
+
                           {!currentlyActivePlans?.find(
                             (p) => p?.plan?.id === plan?.id
                           ) && (
@@ -773,6 +774,7 @@ export default function SubscriptionPlansPage() {
                       </Card>
                     </Col>
                   ))}
+
               </Row>
             </div>
           </Col>
