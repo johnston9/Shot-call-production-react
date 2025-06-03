@@ -64,8 +64,9 @@ import GeneralEx from "./budgetsectionsother/GeneralEx";
 import IndirectCosts from "./budgetsectionsother/IndirectCosts";
 import InfoBudEdit from "./InfoBudEdit";
 import Globals from "./Globals";
+import toast from "react-hot-toast";
 
-function BudgetEdit() {
+function BudgetEdit({type}) {
   const [errors, setErrors] = useState({});
   const history = useHistory();
   const { budget1Id, budget2Id, budget3Id } = useParams();
@@ -6766,7 +6767,7 @@ function BudgetEdit() {
         className={`${btnStyles.Button} ${btnStyles.Blue} px-5 pl-3`}
         type="submit"
       >
-        Create
+        Update
       </Button>
     </div>
   );
@@ -13992,7 +13993,10 @@ function BudgetEdit() {
 
     try {
       await axiosReq.put(`/budgets3/${budget3Id}/`, formData);
-      history.goBack();
+      toast.success('Budget update successfully');
+      setTimeout(() => {
+        history.goBack();
+      },2000)
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -14007,7 +14011,7 @@ function BudgetEdit() {
         <Col className={`${styles.Back}`}>
           <Row className={`${styles.OverviewBlue} mx-1 mb-1 py-3 text-center`}>
             <Col md={12}>
-              <h5 className={`${styles.BoldBlack}`}>EDIT BUDGET</h5>
+              <h5 className={`${styles.BoldBlack}`}>{type === 1 ? "EDIT" : "CREATE"} BUDGET</h5>
             </Col>
           </Row>
           <Row className="mt-1 ml-0">

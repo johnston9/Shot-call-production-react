@@ -300,7 +300,7 @@ export default function BudgetPaymentPage() {
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
-                    : `Pay ${formData?.currency[1] && '$'} ${paymentAmount} Now`}
+                    : `Pay ${formData?.currency[1] ?? '$'} ${paymentAmount} Now`}
                 </Button>
               </div>
             </div>

@@ -9,11 +9,17 @@ import btnStyles from "../../../styles/Button.module.css";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router-dom";
+// import { useNavigate } from 'react-router-dom';
 import InfoBudCreate from "./InfoBudCreate";
+import toast from "react-hot-toast";
+import { useCurrentUser } from "../../../contexts/CurrentUserContext";
 
-function BudgetCreate() {
+function BudgetCreate({ type }) {
   const [errors, setErrors] = useState({});
   const history = useHistory();
+  const currentUser = useCurrentUser()
+  // console.log(currentUser.pk)
+  // const navigate = useNavigate()
   const { id } = useParams();
   const [showInfo, setShowInfo] = useState(false);
 
@@ -381,12 +387,13 @@ function BudgetCreate() {
       </Button>
     </div>
   );
-
+  // const [budgetID, setBudgetID] = useState(0);
+  // const [budgetIDSecond, setBudgetIDSecond] = useState(0);
   // Submit 1
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    // formData.append("project", id );
+
     formData.append("budget_number", "1");
     // prepared by
     formData.append("dated", dated);
@@ -401,29 +408,50 @@ function BudgetCreate() {
     formData.append("writer", writer);
     formData.append("format", format);
     formData.append("location", location);
-
+    if (type === 1) {
+      formData.append('owner', currentUser?.pk)
+    } else {
+      formData.append("project", id);
+    }
     try {
-      await axiosReq.post("/budgets1/", formData);
-      handleSubmit2(event);
+
+      type === 0 ? await axiosReq.post("/budgets1/", formData) : await axiosReq.post("/budget-view/", formData).then((res) => {
+        // console.log(res?.data?.budget?.id)
+        // setBudgetID(res?.data?.budget?.id)
+        handleSubmit2(event , res?.data?.budget?.id);
+      })
     } catch (err) {
-      console.log(err);
+      const resData = err.response?.data;
+
+
+      console.error("API Error:", resData.error);
+      toast.error(resData.error)
+
+
       if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+        setErrors(resData);
       }
+
     }
   };
 
   // Submit 2
-  const handleSubmit2 = async (event) => {
+  const handleSubmit2 = async (event,budget_ID) => {
     event.preventDefault();
     const formData = new FormData();
-    // formData.append("project", id);
     formData.append("title", title);
-    formData.append("budget_number", "2");
-
+    if (type === 1) {
+      formData.append('budget', budget_ID)
+    } else {
+      formData.append("project", id);
+      formData.append("budget_number", "2");
+    }
     try {
-      await axiosReq.post("/budgets2/", formData);
-      handleSubmit3(event);
+      await axiosReq.post("/budgets2/", formData).then((res) => {
+        // console.log(res?.data)
+        // setBudgetIDSecond(res?.data?.id)
+        handleSubmit3(event, budget_ID);
+      })
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -433,16 +461,26 @@ function BudgetCreate() {
   };
 
   // Submit 3
-  const handleSubmit3 = async (event) => {
+  const handleSubmit3 = async (event, budget_ID) => {
     event.preventDefault();
     const formData = new FormData();
-    // formData.append("project", id);
     formData.append("title", title);
-    formData.append("budget_number", "3");
-
+    if (type === 1) {
+      formData.append('budget', budget_ID)
+    } else {
+      formData.append("project", id);
+      formData.append("budget_number", "2");
+    }
     try {
       await axiosReq.post("/budgets3/", formData);
-      history.goBack();
+      toast.success('Budget created sucessfully')
+      setTimeout(() => {
+        if (type === 0) {
+          history.goBack();
+        } else if (type === 1) {
+          history.push('/budgets')
+        }
+      }, 2000)
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -458,7 +496,8 @@ function BudgetCreate() {
           <Row className={`${styles.OverviewBlue} mx-1 mb-1 py-3 text-center`}>
             <Col md={12}>
               <h5 className={`${styles.BoldBlack}`}>
-                CREATE BUDGET - Project Title: {title}
+                CREATE BUDGET
+                {/* - {type === 0  ? "PROJECT TITLE" : "BUDGET TITLE"}: {title} */}
               </h5>
             </Col>
           </Row>

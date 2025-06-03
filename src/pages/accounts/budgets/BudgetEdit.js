@@ -66,8 +66,9 @@ import Globals from "./Globals";
 
 import styles from "../../../styles/Account.module.css";
 import btnStyles from "../../../styles/Button.module.css";
+import toast from "react-hot-toast";
 
-function BudgetEdit() {
+function BudgetEdit({ type }) {
   const [errors, setErrors] = useState({});
   const history = useHistory();
   const { id } = useParams();
@@ -6127,10 +6128,10 @@ function BudgetEdit() {
       console.log("----execute addAboveTheLine----", developmentTotal);
       setAboveTheLineTotal(
         parseFloat(postDataRightsTotal || 0) +
-          parseFloat(developmentTotal || 0) +
-          parseFloat(scenarioTotal || 0) +
-          parseFloat(producersDirsTotal || 0) +
-          parseFloat(starsMusicTotal || 0)
+        parseFloat(developmentTotal || 0) +
+        parseFloat(scenarioTotal || 0) +
+        parseFloat(producersDirsTotal || 0) +
+        parseFloat(starsMusicTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6189,21 +6190,21 @@ function BudgetEdit() {
     const addbelowB = () => {
       setBelowTheLineBTotal(
         parseFloat(castTotal || 0) +
-          parseFloat(productionstaffTotal || 0) +
-          parseFloat(designlabourTotal || 0) +
-          parseFloat(constructionlabourTotal || 0) +
-          parseFloat(dressinglabourTotal || 0) +
-          parseFloat(propertylabourTotal || 0) +
-          parseFloat(wranglerlabourTotal || 0) +
-          parseFloat(fxlabourTotal || 0) +
-          parseFloat(wardrobelabourTotal || 0) +
-          parseFloat(makeuplabourTotal || 0) +
-          parseFloat(cameralabourTotal || 0) +
-          parseFloat(electriclabourTotal || 0) +
-          parseFloat(griplabourTotal || 0) +
-          parseFloat(soundlabourTotal || 0) +
-          parseFloat(transportlabourTotal || 0) +
-          parseFloat(tvspecificlabourTotal || 0)
+        parseFloat(productionstaffTotal || 0) +
+        parseFloat(designlabourTotal || 0) +
+        parseFloat(constructionlabourTotal || 0) +
+        parseFloat(dressinglabourTotal || 0) +
+        parseFloat(propertylabourTotal || 0) +
+        parseFloat(wranglerlabourTotal || 0) +
+        parseFloat(fxlabourTotal || 0) +
+        parseFloat(wardrobelabourTotal || 0) +
+        parseFloat(makeuplabourTotal || 0) +
+        parseFloat(cameralabourTotal || 0) +
+        parseFloat(electriclabourTotal || 0) +
+        parseFloat(griplabourTotal || 0) +
+        parseFloat(soundlabourTotal || 0) +
+        parseFloat(transportlabourTotal || 0) +
+        parseFloat(tvspecificlabourTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6275,25 +6276,25 @@ function BudgetEdit() {
     const addbelowBcosts = () => {
       setBelowTheLineBCostsTotal(
         parseFloat(proOffTotal || 0) +
-          parseFloat(studioTotal || 0) +
-          parseFloat(siteTotal || 0) +
-          parseFloat(unitTotal || 0) +
-          parseFloat(tralivTotal || 0) +
-          parseFloat(transportTotal || 0) +
-          parseFloat(constructionMatTotal || 0) +
-          parseFloat(artSupTotal || 0) +
-          parseFloat(dressingTotal || 0) +
-          parseFloat(propsTotal || 0) +
-          parseFloat(fxTotal || 0) +
-          parseFloat(animalsTotal || 0) +
-          parseFloat(wardrobeTotal || 0) +
-          parseFloat(makeupTotal || 0) +
-          parseFloat(cameraTotal || 0) +
-          parseFloat(electricTotal || 0) +
-          parseFloat(gripTotal || 0) +
-          parseFloat(soundTotal || 0) +
-          parseFloat(secondUTotal || 0) +
-          parseFloat(stockLabTotal || 0)
+        parseFloat(studioTotal || 0) +
+        parseFloat(siteTotal || 0) +
+        parseFloat(unitTotal || 0) +
+        parseFloat(tralivTotal || 0) +
+        parseFloat(transportTotal || 0) +
+        parseFloat(constructionMatTotal || 0) +
+        parseFloat(artSupTotal || 0) +
+        parseFloat(dressingTotal || 0) +
+        parseFloat(propsTotal || 0) +
+        parseFloat(fxTotal || 0) +
+        parseFloat(animalsTotal || 0) +
+        parseFloat(wardrobeTotal || 0) +
+        parseFloat(makeupTotal || 0) +
+        parseFloat(cameraTotal || 0) +
+        parseFloat(electricTotal || 0) +
+        parseFloat(gripTotal || 0) +
+        parseFloat(soundTotal || 0) +
+        parseFloat(secondUTotal || 0) +
+        parseFloat(stockLabTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6369,7 +6370,7 @@ function BudgetEdit() {
     const addBlabcos = () => {
       setBLabourandCostsTotal(
         parseFloat(belowTheLineBTotal || 0) +
-          parseFloat(belowTheLineBCostsTotal || 0)
+        parseFloat(belowTheLineBCostsTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6421,12 +6422,12 @@ function BudgetEdit() {
     const addPostProC = () => {
       setPostProductionCTotal(
         parseFloat(postStaffFacTotal || 0) +
-          parseFloat(editingTotal || 0) +
-          parseFloat(postSoundTotal || 0) +
-          parseFloat(postLabTotal || 0) +
-          parseFloat(postTitlesTotal || 0) +
-          parseFloat(postVersionTotal || 0) +
-          parseFloat(postVfxTotal || 0)
+        parseFloat(editingTotal || 0) +
+        parseFloat(postSoundTotal || 0) +
+        parseFloat(postLabTotal || 0) +
+        parseFloat(postTitlesTotal || 0) +
+        parseFloat(postVersionTotal || 0) +
+        parseFloat(postVfxTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6489,7 +6490,7 @@ function BudgetEdit() {
     const addBelowBandC = () => {
       setBelowBandCTotal(
         parseFloat(bLabourandCostsTotal || 0) +
-          parseFloat(postProductionCTotal || 0)
+        parseFloat(postProductionCTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6599,9 +6600,9 @@ function BudgetEdit() {
     const addOtherd = () => {
       setOtherDTotal(
         parseFloat(pubTotal || 0) +
-          parseFloat(insurTotal || 0) +
-          parseFloat(genExTotal || 0) +
-          parseFloat(indirCoTotal || 0)
+        parseFloat(insurTotal || 0) +
+        parseFloat(genExTotal || 0) +
+        parseFloat(indirCoTotal || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6711,8 +6712,8 @@ function BudgetEdit() {
       console.log("----execute addGrand----", aboveBelowABCandDTotal);
       setGrandTotal(
         parseFloat(aboveBelowABCandDTotal || 0) +
-          parseFloat(contingency || 0) +
-          parseFloat(completion_bond || 0)
+        parseFloat(contingency || 0) +
+        parseFloat(completion_bond || 0)
       );
     };
     const timer = setTimeout(() => {
@@ -6769,7 +6770,9 @@ function BudgetEdit() {
         className={`${btnStyles.Button} ${btnStyles.Blue} px-5 pl-3`}
         type="submit"
       >
-        Create
+        {
+          type === 0 ? "Create" : "Update"
+        }
       </Button>
     </div>
   );
@@ -6779,9 +6782,11 @@ function BudgetEdit() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets1/?project=${id}`);
-        // console.log(data.results[0])
-        setBudgetId1(data.results[0].id);
+        // console.log(type)
+        const { data } = await axiosReq.get(type === 0 ? `/budgets1/?project=${id}` : `/budget-view/${id}`);
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",data);
+        console.log(data.results[0])
+        setBudgetId1(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
         setBudgetNumber1(budget_number);
@@ -8354,9 +8359,9 @@ function BudgetEdit() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets2/?project=${id}`);
-        // console.log(data.results[0]);
-        setBudgetId2(data.results[0].id);
+        const { data } = await axiosReq.get(type === 0 ? `/budgets2/?project=${id}` : `/budgets2/?budget_id=${budgetId1}`);
+
+        setBudgetId2(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
         setBudgetNumber2(budget_number);
@@ -9745,8 +9750,8 @@ function BudgetEdit() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets3/?project=${id}`);
-        // console.log(data.results[0]);
+        const { data } = await axiosReq.get(type === 0 ? `/budgets3/?project=${id}` : `/budgets3/?budget_id=${budgetId2}`);
+        console.log(data.results[0]);
         setBudgetId3(data.results[0].id);
         // budget number
         const { budget_number } = data.results[0];
@@ -11005,7 +11010,9 @@ function BudgetEdit() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("project", id);
+    if(type === 0){
+      formData.append("project", id);
+    }
     // totals
     formData.append("above_the_line_total", aboveTheLineTotal);
     formData.append("below_the_lineB_total", belowTheLineBTotal);
@@ -12363,7 +12370,7 @@ function BudgetEdit() {
     formData.append("armorall_total", armorallTotal);
 
     try {
-      await axiosReq.put(`/budgets1/${budgetId1}/`, formData);
+      type === 0 ? await axiosReq.put(`/budgets1/${budgetId1}/`, formData) : await axiosReq.patch(`/budget-view/${budgetId1}/`, formData);
       // console.log(`submit1 ${data}`);
       handleSubmit2(event);
     } catch (err) {
@@ -12378,7 +12385,9 @@ function BudgetEdit() {
   const handleSubmit2 = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("project", id);
+    if(type === 0){
+      formData.append("project", id);
+    }
     // wrangling
     formData.append("fringes_taxes_wrangling", fringes_taxes_wrangling);
     formData.append("head_wrangler_quantity", head_wrangler_quantity);
@@ -13309,7 +13318,7 @@ function BudgetEdit() {
     formData.append("otsoundall_total", otsoundallTotal);
 
     try {
-      axiosReq.put(`/budgets2/${budgetId2}/`, formData);
+      type === 0 ? await axiosReq.put(`/budgets2/${budgetId2}/`, formData) : axiosReq.patch(`/budgets2/${budgetId2}/`, formData)
       handleSubmit3(event);
     } catch (err) {
       console.log(err);
@@ -13992,8 +14001,11 @@ function BudgetEdit() {
     formData.append("completion_bond", completion_bond);
 
     try {
-      await axiosReq.put(`/budgets3/${budgetId3}/`, formData);
-      history.goBack();
+      type === 0 ? await axiosReq.put(`/budgets3/${budgetId3}/`, formData) : await axiosReq.patch(`/budgets3/${budgetId3}/`, formData);
+      toast.success('Budget update successfully')
+      setTimeout(() => {
+        history.goBack();
+      }, 2000)
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -14009,7 +14021,7 @@ function BudgetEdit() {
           <Row className={`${styles.OverviewBlue} mx-1 mb-1 py-3 text-center`}>
             <Col md={12}>
               <h5 className={`${styles.BoldBlack}`}>
-                EDIT BUDGET - Project ID: {id}
+                EDIT BUDGET - {type === 0 ? <> Project ID: {id}</> : <>{postDataDetails?.title}</>}
               </h5>
             </Col>
           </Row>
