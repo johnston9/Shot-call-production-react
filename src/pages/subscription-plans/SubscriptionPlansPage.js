@@ -85,7 +85,7 @@ export default function SubscriptionPlansPage() {
     } else {
       if (subPlan?.inTrial) {
         return {
-          startDate: subPlan?.created_at,
+          startDate: subPlan?.current_period_start,
           trailEndDate: subPlan?.current_period_end,
         };
       } else {
@@ -738,28 +738,24 @@ export default function SubscriptionPlansPage() {
                           </p>
 
 
-                          {/* Budget Start Date */}
-                          {/* {plan?.current_period_start
-                           && */}
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            <span style={{ fontWeight: "bold" }}>
-                              Start Date:
-                            </span>
-                            {plan?.current_period_start}
-                          </p>
-                          {/* } */}
+                          {findDates(plan)?.renewalDate && (
+                              <p className="mb-0">
+                                <span style={{ fontWeight: "bold" }}>
+                                  Renewal Date
+                                </span>
+                                : {findDates(plan)?.renewalDate}
+                              </p>
+                            )}
+                            {findDates(plan)?.trailEndDate && (
+                              <p className="mb-0">
+                                <span style={{ fontWeight: "bold" }}>
+                                  Trail End Date
+                                </span>
+                                : {findDates(plan)?.trailEndDate}
+                              </p>
+                            )}
 
-                          {/* Budget End Date */}
-                          {/* {plan?.current_period_end &&  */}
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            <span style={{ fontWeight: "bold" }}>
-                              End Date:
-                            </span>
-                            {plan?.current_period_end}
-                          </p>
-                          {/* } */}
-
-                          {!currentlyActivePlans?.find(
+                          {/* {!currentlyActivePlans?.find(
                             (p) => p?.plan?.id === plan?.id
                           ) && (
                               <Button
@@ -768,6 +764,51 @@ export default function SubscriptionPlansPage() {
                                 onClick={() => choosePlan(plan)}
                               >
                                 Buy
+                              </Button>
+                            )} */}
+                             {!currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            ) ? (
+                              <>
+                                {!currentlyActivePlans?.find(
+                                  (p) => p?.plan?.plan_type === "budget"
+                                ) ? (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      if (enabledBuy(plan)) {
+                                        choosePlan(plan);
+                                      }
+                                    }}
+                                    disabled={!enabledBuy(plan)}
+                                  >
+                                    {enabledBuy(plan)
+                                      ? "Upgrade"
+                                      : "Unavailable"}
+                                  </Button>
+                                )}
+                              </>
+                            ) : (
+                              <Button
+                                className="card-absolute-btn"
+                                style={{
+                                  cursor: "pointer",
+                                  backgroundColor: "red",
+                                }}
+                                onClick={handleShow}
+                                disabled={isCancelling}
+                              >
+                                Cancel Budget
                               </Button>
                             )}
                         </div>
