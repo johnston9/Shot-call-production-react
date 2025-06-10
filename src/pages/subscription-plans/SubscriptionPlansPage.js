@@ -85,7 +85,7 @@ export default function SubscriptionPlansPage() {
     } else {
       if (subPlan?.inTrial) {
         return {
-          startDate: subPlan?.created_at,
+          startDate: subPlan?.current_period_start,
           trailEndDate: subPlan?.current_period_end,
         };
       } else {
@@ -99,11 +99,11 @@ export default function SubscriptionPlansPage() {
   const handleCancelSubscription = async () => {
     // fetch subscription id
     const projectPlan = currentlyActivePlans?.find(
-      (activePlan) => activePlan?.plan?.plan_type === "project"
+      (activePlan) => activePlan?.plan?.plan_type === "project" || "budget"
     );
 
     if (!projectPlan) {
-      return toast.error("No project plan is active yet!");
+      return toast.error("No plan is active yet!");
     }
 
     try {
@@ -136,7 +136,7 @@ export default function SubscriptionPlansPage() {
   const enabledBuy = (plan) => {
     if (currentlyActivePlans?.length <= 0) return true;
     const currentActivetProjectPlan = currentlyActivePlans?.find(
-      (p) => p?.plan?.plan_type === "project"
+      (p) => p?.plan?.plan_type === "project" || "budget"
     );
     if (
       currentActivetProjectPlan?.plan?.subscription_category?.name ===
@@ -380,7 +380,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
 
-                            {!currentlyActivePlans?.find(
+                            {/* {!currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             ) ? (
                               <>
@@ -424,7 +424,86 @@ export default function SubscriptionPlansPage() {
                               >
                                 Cancel Subscription
                               </Button>
-                            )}
+                            )} */}
+
+                            {(() => {
+                              const activePlan = currentlyActivePlans?.find(
+                                (p) => p?.plan?.id === plan?.id
+                              );
+                              // 1. Show message if plan is cancelled but still usable
+                              if (activePlan?.auto_renewal === false) {
+                                return (
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                    Your subscription is cancelled, but you can use the service until{" "}
+                                    {activePlan?.current_period_end}
+                                  </p>
+                                );
+                              }
+
+                              // 2. Show Cancel button if plan is inactive (edge case)
+                              if (activePlan?.is_active === false) {
+                                return (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{
+                                      cursor: "pointer",
+                                      backgroundColor: "red",
+                                    }}
+                                    onClick={handleShow}
+                                    disabled={isCancelling}
+                                  >
+                                    Cancel Subscription
+                                  </Button>
+                                );
+                              }
+
+                              // 3. If no active plan, show Buy/Upgrade logic
+                              if (!activePlan) {
+                                const hasProjectPlan = currentlyActivePlans?.find(
+                                  (p) => p?.plan?.plan_type === "project"
+                                );
+
+                                return !hasProjectPlan ? (
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      if (enabledBuy(plan)) {
+                                        choosePlan(plan);
+                                      }
+                                    }}
+                                    disabled={!enabledBuy(plan)}
+                                  >
+                                    {enabledBuy(plan) ? "Upgrade" : "Unavailable"}
+                                  </Button>
+                                );
+                              }
+
+                              // 4. Default case: show Cancel button
+                              return (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "red",
+                                  }}
+                                  onClick={handleShow}
+                                  disabled={isCancelling}
+                                >
+                                  Cancel Subscription
+                                </Button>
+                              );
+                            })()}
+
                             <Modal show={show} onHide={handleClose}>
                               <Modal.Header closeButton>
                                 <Modal.Title>
@@ -585,7 +664,7 @@ export default function SubscriptionPlansPage() {
                               </p>
                             )}
 
-                            {!currentlyActivePlans?.find(
+                            {/* {!currentlyActivePlans?.find(
                               (p) => p?.plan?.id === plan?.id
                             ) ? (
                               <>
@@ -630,7 +709,88 @@ export default function SubscriptionPlansPage() {
                               >
                                 Cancel Subscription
                               </Button>
-                            )}
+                            )} */}
+
+                            {(() => {
+                              const activePlan = currentlyActivePlans?.find(
+                                (p) => p?.plan?.id === plan?.id
+                              );
+
+                              //  1. Show cancellation message if auto_renewal is false
+                              if (activePlan?.auto_renewal === true) {
+                                return (
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                    Your subscription is cancelled but you can use the service until{" "}
+                                    {activePlan?.current_period_end}
+                                  </p>
+                                );
+                              }
+
+                              // 2. Show cancel button if plan is inactive
+                              if (activePlan?.is_active === false) {
+                                return (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{
+                                      cursor: "pointer",
+                                      backgroundColor: "red",
+                                    }}
+                                    onClick={handleShow}
+                                    disabled={isCancelling}
+                                  >
+                                    Cancel Subscription
+                                  </Button>
+                                );
+                              }
+
+                              //  3. No active plan — Buy / Upgrade / Unavailable flow
+                              if (!activePlan) {
+                                const hasProjectPlan = currentlyActivePlans?.find(
+                                  (p) => p?.plan?.plan_type === "project"
+                                );
+
+                                return !hasProjectPlan ? (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    className="card-absolute-btn"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      if (enabledBuy(plan)) {
+                                        choosePlan(plan);
+                                      }
+                                    }}
+                                    disabled={!enabledBuy(plan)}
+                                  >
+                                    {enabledBuy(plan) ? "Upgrade" : "Unavailable"}
+                                  </Button>
+                                );
+                              }
+
+                              //  4. Default active plan — Show cancel button
+                              return (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "red",
+                                  }}
+                                  onClick={handleShow}
+                                  disabled={isCancelling}
+                                >
+                                  Cancel Subscription
+                                </Button>
+                              );
+                            })()}
+
                           </div>
                         </Card>
                       </Col>
@@ -639,7 +799,7 @@ export default function SubscriptionPlansPage() {
               </div>
             </div>
           </Col>
-
+          {/* BUDGET PLANS */}
           <Col xs={12}>
             <div
               style={{
@@ -738,38 +898,186 @@ export default function SubscriptionPlansPage() {
                           </p>
 
 
-                          {/* Budget Start Date */}
-                          {/* {plan?.current_period_start
-                           && */}
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            <span style={{ fontWeight: "bold" }}>
-                              Start Date:
-                            </span>
-                            {plan?.current_period_start}
-                          </p>
-                          {/* } */}
+                          {findDates(plan)?.renewalDate && (
+                            <p className="mb-0">
+                              <span style={{ fontWeight: "bold" }}>
+                                Renewal Date
+                              </span>
+                              : {findDates(plan)?.renewalDate}
+                            </p>
+                          )}
+                          {findDates(plan)?.trailEndDate && (
+                            <p className="mb-0">
+                              <span style={{ fontWeight: "bold" }}>
+                                Trail End Date
+                              </span>
+                              : {findDates(plan)?.trailEndDate}
+                            </p>
+                          )}
 
-                          {/* Budget End Date */}
-                          {/* {plan?.current_period_end &&  */}
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            <span style={{ fontWeight: "bold" }}>
-                              End Date:
-                            </span>
-                            {plan?.current_period_end}
-                          </p>
-                          {/* } */}
+                          {/* {!currentlyActivePlans?.find(
+                              (p) => p?.auto_renewal === plan?.auto_renewal
+                            ) ? (
+                              <>
+                                
+                                  <Button
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      choosePlan(plan);
+                                    }}
+                                  >
+                                    Buy
+                                  </Button>
 
-                          {!currentlyActivePlans?.find(
-                            (p) => p?.plan?.id === plan?.id
-                          ) && (
+ 
+                              </>
+                            ) : (
                               <Button
                                 className="card-absolute-btn"
-                                style={{ cursor: "pointer" }}
-                                onClick={() => choosePlan(plan)}
+                                style={{
+                                  cursor: "pointer",
+                                  backgroundColor: "red",
+                                }}
+                                onClick={handleShow}
+                                disabled={isCancelling}
                               >
-                                Buy
+                                Cancel Budget
                               </Button>
-                            )}
+                            )} */}
+
+                          {/* {(() => {
+                            const activePlan = currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            );
+                            if (activePlan?.auto_renewal === false) {
+                              return (
+                                <p style={{ color: "orange", fontWeight: "bold" }}>
+                                  Your budget is cancelled, but you can use the service until{" "}
+                                  {activePlan?.current_period_end}
+                                </p>
+                              );
+                            }
+
+                            if (activePlan?.is_active === false) {
+                              return (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "red",
+                                  }}
+                                  onClick={handleShow}
+                                  disabled={isCancelling}
+                                >
+                                  Cancel Budget
+                                </Button>
+                              );
+                            }
+
+                            if (!activePlan) {
+                              return (
+                                <Button
+                                className="card-absolute-btn"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => choosePlan(plan)}
+                                >
+                                  Buy
+                                </Button>
+                              );
+                            }
+
+                            return (
+                              <Button
+                                className="card-absolute-btn"
+                                style={{
+                                  cursor: "pointer",
+                                  backgroundColor: "red",
+                                }}
+                                onClick={handleShow}
+                                disabled={isCancelling}
+                              >
+                                Cancel Subscription
+                              </Button>
+                            );
+                          })()} */}
+
+                          {(() => {
+                            const activePlan = currentlyActivePlans?.find(
+                              (p) => p?.plan?.id === plan?.id
+                            );
+
+                            const hasProjectPlan = currentlyActivePlans?.find(
+                              (p) => p?.plan?.plan_type === "budget"
+                            );
+
+                            // 1. Show notice if auto_renewal is false
+                            if (activePlan?.auto_renewal === false) {
+                              return (
+                                <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                  Your subscription is cancelled, but you can use the service until{" "}
+                                  {activePlan?.current_period_end}
+                                </p>
+                              );
+                            }
+
+                            // 2. Show cancel button if is_active is false
+                            if (activePlan?.is_active === false) {
+                              return (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "red",
+                                  }}
+                                  onClick={handleShow}
+                                  disabled={isCancelling}
+                                >
+                                  Cancel Subscription
+                                </Button>
+                              );
+                            }
+
+                            // 3. No active budget plan — handle Buy / Upgrade / Unavailable
+                            if (!activePlan) {
+                              return !hasProjectPlan ? (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => choosePlan(plan)}
+                                >
+                                  Buy
+                                </Button>
+                              ) : (
+                                <Button
+                                  className="card-absolute-btn"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => {
+                                    if (enabledBuy(plan)) choosePlan(plan);
+                                  }}
+                                  disabled={!enabledBuy(plan)}
+                                >
+                                  {enabledBuy(plan) ? "Upgrade" : "Unavailable"}
+                                </Button>
+                              );
+                            }
+
+                            // 4. Default case: user has an active budget plan
+                            return (
+                              <Button
+                                className="card-absolute-btn"
+                                style={{
+                                  cursor: "pointer",
+                                  backgroundColor: "red",
+                                }}
+                                onClick={handleShow}
+                                disabled={isCancelling}
+                              >
+                                Cancel Subscription
+                              </Button>
+                            );
+                          })()}
+
+
                         </div>
                       </Card>
                     </Col>

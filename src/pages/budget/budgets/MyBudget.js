@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
 import { axiosInstance, axiosReq } from '../../../api/axiosDefaults';
 import Asset from '../../../components/Asset';
 import appStyles from "../../../App.module.css";
@@ -13,38 +13,63 @@ import btnStyles from "../../../styles/Button.module.css";
 function MyBudget() {
     const [hasLoaded, setHasLoaded] = useState(false);
     const [projects, setProjects] = useState({ results: [] });
+    const [budgetCount, setBudgetCount] = useState({ remaining_budget_count: 0, total_budget_count: 0 })
+    // const [budget1, setBudget1] = useState({ results: [] });
+    // const [budget2, setBudget2] = useState({ results: [] });
+    // const [budget3, setBudget3] = useState({ results: [] });
 
-    const [budget1, setBudget1] = useState({ results: [] });
-    const [budget2, setBudget2] = useState({ results: [] });
-    const [budget3, setBudget3] = useState({ results: [] });
-
-
-    useEffect(() => {
-
+    const fetchProjects = async () => {
         try {
-            const data = axiosInstance.get(`/budget-view`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-                    },
-                    withCredentials: true,
-                }
-            );
+            const res = await axiosInstance.get(`/budget-view`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                },
+                withCredentials: true,
+            });
 
-            console.log(", ????????????????", data);
-            data.then((res) => {
-                setProjects({ results: res?.data?.data?.results })
-                console.log(", ????????????????", res?.data?.data?.results)
-            })
-            // setProjects(data);
+            setProjects({ results: res?.data?.data?.results });
+            setBudgetCount({
+                total_budget_count: res?.data?.data?.total_budget_count,
+                remaining_budget_count: res?.data?.data?.total_budget_count,
+            });
             setHasLoaded(true);
         } catch (err) {
             console.log(err);
             setHasLoaded(true);
         }
+    };
 
-    }, [])
+    useEffect(() => {
+        fetchProjects(); // call on initial load
+    }, []);
+    // useEffect(() => {
+
+    //     try {
+    //         const data = axiosInstance.get(`/budget-view`,
+    //             {
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    //                 },
+    //                 withCredentials: true,
+    //             }
+    //         );
+
+    //         // console.log(", ????????????????", data);
+    //         data.then((res) => {
+    //             setProjects({ results: res?.data?.data?.results })
+    //             setBudgetCount({ total_budget_count: res?.data?.data?.total_budget_count, remaining_budget_count: res?.data?.data?.total_budget_count })
+    //             // console.log(", ????????????????", res?.data?.data?.results)
+    //         })
+    //         // setProjects(data);
+    //         setHasLoaded(true);
+    //     } catch (err) {
+    //         console.log(err);
+    //         setHasLoaded(true);
+    //     }
+
+    // }, [fetchProjects])
     const history = useHistory();
 
     return (
@@ -60,15 +85,22 @@ function MyBudget() {
                 </Col>
             </Row>
             <Col className="text-center">
-
-                <Button
-                    className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
-                    onClick={() => {
-                        history.push("/my-budgets/step-one");
-                    }}
-                >
-                    Create Budget
-                </Button>
+                {
+                    parseInt(budgetCount?.remaining_budget_count) !== 0 &&
+                    <Button
+                        className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
+                        onClick={() => {
+                            history.push("/my-budgets/step-one");
+                        }}
+                    >
+                        Create Budget
+                    </Button>
+                }
+                <Alert variant="info"
+                    style={{
+                        maxWidth: "fit-content",
+                        margin: "0 auto",
+                    }}>{budgetCount?.remaining_budget_count} Budget remaining out of {budgetCount?.total_budget_count}</Alert>
             </Col>
             <Row className="px-3">
                 <Col className="text-center">
@@ -89,7 +121,7 @@ function MyBudget() {
                                                 <BudgetCard
                                                     key={proj.id}
                                                     {...proj}
-                                                // fetchData={fetchProjects}
+                                                    fetchData={fetchProjects}
                                                 />
                                             </Col>
                                         );

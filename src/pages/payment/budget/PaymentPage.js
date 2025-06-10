@@ -120,14 +120,14 @@ export default function BudgetPaymentPage() {
     });
     if (error) {
       setProcessingPayment(false);
-      console.log(error);
+      // console.log(error);
     } else {
       const {
         id,
         billing_details: { address, email, name },
         card,
       } = paymentMethod;
-      console.log("payment method id: ", id);
+      // console.log("payment method id: ", id);
 
       // calling create customer api
       const res = await axiosInstance.post(
@@ -154,7 +154,7 @@ export default function BudgetPaymentPage() {
         }
       );
 
-      console.log("create-customer: ", res);
+      // console.log("create-customer: ", res);
       if (res.data?.data?.subscription?.status === "trialing") {
         setProcessingPayment(false);
         history.push(`/subscription-plans`);
@@ -300,7 +300,7 @@ export default function BudgetPaymentPage() {
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
-                    : `Pay ${formData?.currency[1] ?? '$'} ${paymentAmount} Now`}
+                    : `Pay ${formData?.currency.split(',')[1] ?? '$'} ${paymentAmount} Now`}
                 </Button>
               </div>
             </div>
