@@ -434,7 +434,7 @@ export default function SubscriptionPlansPage() {
                               // 1. Show message if plan is cancelled but still usable
                               if (activePlan?.auto_renewal === false) {
                                 return (
-                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold", fontSize:'13px' }}>
                                     Your subscription is cancelled, but you can use the service until{" "}
                                     {activePlan?.current_period_end}
                                   </p>
@@ -722,7 +722,7 @@ export default function SubscriptionPlansPage() {
                               //  1. Show cancellation message if auto_renewal is false
                               if (activePlan?.auto_renewal === true) {
                                 return (
-                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" ,fontSize:'13px' }}>
                                     Your subscription is cancelled but you can use the service until{" "}
                                     {activePlan?.current_period_end}
                                   </p>
@@ -1016,7 +1016,7 @@ export default function SubscriptionPlansPage() {
                             // 1. Show notice if auto_renewal is false
                             if (activePlan?.auto_renewal === false) {
                               return (
-                                <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" }}>
+                                <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold",fontSize:'13px' }}>
                                   Your subscription is cancelled, but you can use the service until{" "}
                                   {activePlan?.current_period_end}
                                 </p>
