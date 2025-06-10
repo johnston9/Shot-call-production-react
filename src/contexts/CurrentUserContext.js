@@ -34,9 +34,9 @@ export const CurrentUserProvider = ({ children }) => {
   const getCurrentUserData = async () => {
     if (localStorage.getItem("user") && localStorage.getItem("accessToken")) {
       const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user);
+      // console.log(user);
       const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`);
-      console.log(data);
+      // console.log(data);
       setCurrentUser({
         ...user,
         profile_image: data?.data?.image,

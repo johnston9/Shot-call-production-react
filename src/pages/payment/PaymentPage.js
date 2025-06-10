@@ -128,7 +128,7 @@ export default function PaymentPage() {
         billing_details: { address, email, name },
         card,
       } = paymentMethod;
-      console.log("payment method id: ", id);
+      // console.log("payment method id: ", id);
 
       // calling create customer api
       const res = await axiosInstance.post(

@@ -19,7 +19,7 @@ export default function BillingDetailsFields({
     axiosInstance
       .get("/countries/")
       .then((response) => {
-        console.log(response.data?.data);
+        // console.log(response.data?.data);
         setCountries(response?.data?.data);
       })
       .catch((error) => console.error("Error fetching countries:", error));
