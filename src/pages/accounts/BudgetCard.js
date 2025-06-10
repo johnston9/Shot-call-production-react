@@ -46,7 +46,7 @@ const BudgetCard = ({
   const handleDelete = async () => {
     try {
       const res = await axiosInstance.delete(`/budget-view/${id}`);
-      console.log(res.data.data.message)
+      // console.log(res.data.data.message)
       if (res?.data?.status === 200) {
         toast.success(res?.data?.data?.message)
         if (fetchData) fetchData();

@@ -41,7 +41,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log("signup data: ", signUpData)
+    // console.log("signup data: ", signUpData)
 
     try {
       // TODO: remove

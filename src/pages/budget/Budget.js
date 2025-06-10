@@ -81,8 +81,8 @@ const Budget = (props) => {
     scenarioTotal,
   } = budget;
 
-  console.log(props);
-  console.log(budget);
+  // console.log(props);
+  // console.log(budget);
 
   const history = useHistory();
 

@@ -145,7 +145,6 @@ const BudgetPage = ({ type }) => {
       {/* budget */}
       <Row>
         <Col id="pdf-content" className="py-2 p-0 p-lg-2">
-        {console.log("budget1",budget1.results)}
           {hasLoaded ? (
             <Budget
               budget1={budget1.results[0]}

@@ -49,10 +49,8 @@ const ChatTop = (props) => {
       };
 
       const handleLike = async () => {
-        console.log("click")
         try {
           const { data } = await axiosRes.post("/likes/", { chatmessage: id });
-          console.log(data)
           setChat((prevChat) => ({
             ...prevChat,
             results: prevChat.results.map((chat) => {

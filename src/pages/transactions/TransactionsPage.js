@@ -44,7 +44,7 @@ export default function TransactionsPage() {
 
       if (response?.data?.status === 200) {
         setLoading(false);
-        console.log(response);
+        // console.log(response);
         // setAllPlans(response?.data?.data?.results);
         const modifiedData =
           response?.data?.data?.results?.length > 0

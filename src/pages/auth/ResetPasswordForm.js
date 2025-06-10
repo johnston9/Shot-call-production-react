@@ -27,7 +27,7 @@ import btnStyles from "../../styles/Button.module.css";
 const ForgotPasswordForm = () => {
   // useRedirectSign()
   const { token, token_id } = useParams();
-  console.log(token, token_id);
+  // console.log(token, token_id);
   const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
@@ -64,7 +64,7 @@ const ForgotPasswordForm = () => {
         }
       );
 
-      console.log(data);
+      // console.log(data);
       toast.success(
         `You have successfully reset your password. Soon you will be redirected to the Login.`,
         {

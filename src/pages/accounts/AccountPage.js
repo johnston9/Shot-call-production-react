@@ -35,7 +35,7 @@ function AccountPage() {
   const [profile] = profilePage.results;
 
   const fetchData = async () => {
-    console.log("token in account", localStorage.getItem("accessToken"));
+    // console.log("token in account", localStorage.getItem("accessToken"));
     try {
       if (localStorage.getItem("accessToken")) {
         const [{ data: profilePage }, { data: accountInfo }] =
@@ -61,8 +61,8 @@ function AccountPage() {
         }));
         setAccount(accountInfo);
         setProfileInfo(profilePage);
-        console.log(profilePage);
-        console.log(profilePage);
+        // console.log(profilePage);
+        // console.log(profilePage);
         setName(accountInfo?.data?.results[0].name);
         setHasLoaded(true);
       }

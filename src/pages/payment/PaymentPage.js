@@ -155,7 +155,6 @@ export default function PaymentPage() {
         }
       );
 
-      console.log("create-customer: ", res);
       if (res.data?.data?.subscription?.status === "trialing") {
         setProcessingPayment(false);
         history.push(`/subscription-plans`);
@@ -182,16 +181,13 @@ export default function PaymentPage() {
 
       if (response?.data?.status === 200) {
         // setLoading(false);
-        console.log(response?.data?.data);
-        console.log(pId);
+      
 
         const plans = response?.data?.data?.filter(
           (p) => p?.category?.id === Number(cId)
         )[0]?.plans;
-        console.log(plans);
         const plan = plans?.find((p) => p?.id === pId);
 
-        console.log(plan);
         setPaymentAmount(plan?.price);
       }
     } catch (err) {
@@ -296,7 +292,6 @@ export default function PaymentPage() {
                   {/* </div> */}
                   <img src={StripeImage} height={30} />
                 </Row>
-                {console.log(formData?.currency?.split(',')[1])}
                 <Button type="submit" disabled={processingPayment}>
                   {processingPayment
                     ? "Processing payment"
