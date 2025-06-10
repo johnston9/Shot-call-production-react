@@ -21,7 +21,6 @@ const Account = ({
   stripeSuccess,
   profileInfo,
 }) => {
-  console.log(account?.data?.results[0]?.image);
   const history = useHistory();
 
   const topProfile = (

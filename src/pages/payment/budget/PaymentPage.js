@@ -205,7 +205,6 @@ export default function BudgetPaymentPage() {
         // console.log(plans);
         // const plan = plans?.find((p) => p?.id === pId);
 
-        console.log("paisa>>>>>>>>>>>", price, response?.data?.data);
         setPaymentAmount(price);
       }
     } catch (err) {

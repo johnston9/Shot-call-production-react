@@ -37,7 +37,6 @@ function ChatPage() {
         ]);
         setChat({ results: [chat] });
         setComments(comments);
-        console.log(chat);
       } catch (err) {
         console.log(err);
       }

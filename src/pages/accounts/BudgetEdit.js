@@ -2710,7 +2710,7 @@ function BudgetEdit() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/budgets/?project=${id}`);
-        console.log(data.results[0])
+        // console.log(data.results[0])
         setBudgetId(data.results[0].id);
         // details
         const { title, series, prodco, format, location, dated} = data.results[0];
@@ -2867,7 +2867,7 @@ function BudgetEdit() {
 
     try {
       const { data } = await axiosReq.put(`/budgets/${budgetId}/`, formData);
-      console.log(data);
+      // console.log(data);
       history.goBack();
     } catch (err) {
       console.log(err);

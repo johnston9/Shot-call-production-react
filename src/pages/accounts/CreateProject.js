@@ -59,7 +59,7 @@ function CreateProject({
     axiosInstanceNoAuth
       .get("/categories/")
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         setUnformattedCategoryTypes(res.data.results);
         const formattedCategoryTypes = res?.data?.results?.map((data) => ({
           value: data.type,

@@ -31,7 +31,7 @@ function MyBudget() {
             setProjects({ results: res?.data?.data?.results });
             setBudgetCount({
                 total_budget_count: res?.data?.data?.total_budget_count,
-                remaining_budget_count: res?.data?.data?.total_budget_count,
+                remaining_budget_count: res?.data?.data?.remaining_budget_count,
             });
             setHasLoaded(true);
         } catch (err) {
@@ -41,35 +41,9 @@ function MyBudget() {
     };
 
     useEffect(() => {
-        fetchProjects(); // call on initial load
+        fetchProjects();  
     }, []);
-    // useEffect(() => {
-
-    //     try {
-    //         const data = axiosInstance.get(`/budget-view`,
-    //             {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //                 },
-    //                 withCredentials: true,
-    //             }
-    //         );
-
-    //         // console.log(", ????????????????", data);
-    //         data.then((res) => {
-    //             setProjects({ results: res?.data?.data?.results })
-    //             setBudgetCount({ total_budget_count: res?.data?.data?.total_budget_count, remaining_budget_count: res?.data?.data?.total_budget_count })
-    //             // console.log(", ????????????????", res?.data?.data?.results)
-    //         })
-    //         // setProjects(data);
-    //         setHasLoaded(true);
-    //     } catch (err) {
-    //         console.log(err);
-    //         setHasLoaded(true);
-    //     }
-
-    // }, [fetchProjects])
+ 
     const history = useHistory();
 
     return (
@@ -130,7 +104,7 @@ function MyBudget() {
                                 })
                             ) : (
                                 <Container className={appStyles.Content}>
-                                    <Asset spinner />
+                                    <Asset src={NoResults} message="No Budgets" />
                                 </Container>
                             )}
                     </>

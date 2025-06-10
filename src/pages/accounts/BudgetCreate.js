@@ -2784,7 +2784,7 @@ function BudgetCreate() {
 
     try {
       const { data } = await axiosReq.post("/budgets/", formData);
-      console.log(data);
+      // console.log(data);
       history.goBack();
     } catch (err) {
       console.log(err);

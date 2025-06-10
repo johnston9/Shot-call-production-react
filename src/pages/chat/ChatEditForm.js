@@ -64,7 +64,6 @@ function ChatEditForm() {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
-    console.log(event.target.files[0])
   };
 
   const textFields = (

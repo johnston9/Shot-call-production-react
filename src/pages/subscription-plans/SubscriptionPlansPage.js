@@ -85,12 +85,13 @@ export default function SubscriptionPlansPage() {
     } else {
       if (subPlan?.inTrial) {
         return {
-          startDate: subPlan?.current_period_start,
+          startDate: subPlan?.created_at,
           trailEndDate: subPlan?.current_period_end,
         };
       } else {
         return {
           startDate: subPlan?.current_period_start,
+          trailEndDate: subPlan?.current_period_end,
         };
       }
     }
@@ -465,6 +466,7 @@ export default function SubscriptionPlansPage() {
 
                                 return !hasProjectPlan ? (
                                   <Button
+                                  className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       choosePlan(plan);
@@ -621,6 +623,7 @@ export default function SubscriptionPlansPage() {
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
+                            
                             {findDates(plan)?.startDate && (
                               <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
@@ -819,7 +822,7 @@ export default function SubscriptionPlansPage() {
               <Row className="justify-content-center">
                 {!loading &&
                   allBudgetPlans?.map((plan) => (
-                    <Col key={plan?.id} xs={12} md={3}>
+                    <Col key={plan?.id} xs={12} md={3} className="mt-3">
                       <Card
                         style={{
                           padding: "2rem",
@@ -887,23 +890,18 @@ export default function SubscriptionPlansPage() {
                           {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                           {/* {plan?.plan_type !== "budget" && ( */}
 
-                          <p className="mb-0">
-                            <span style={{ fontWeight: "bold" }}>
-                              Interval
-                            </span>
-                            : {plan?.interval}
-                          </p>
+
                           <p className="mb-0" style={{ fontWeight: "bold" }}>
                             Max budget: {plan?.max_projects}
                           </p>
 
 
-                          {findDates(plan)?.renewalDate && (
+                          {findDates(plan)?.startDate && (
                             <p className="mb-0">
                               <span style={{ fontWeight: "bold" }}>
-                                Renewal Date
+                                Start Date
                               </span>
-                              : {findDates(plan)?.renewalDate}
+                              : {findDates(plan)?.startDate}
                             </p>
                           )}
                           {findDates(plan)?.trailEndDate && (
@@ -914,7 +912,12 @@ export default function SubscriptionPlansPage() {
                               : {findDates(plan)?.trailEndDate}
                             </p>
                           )}
-
+                          <p className="mb-0">
+                            <span style={{ fontWeight: "bold" }}>
+                              Interval
+                            </span>
+                            : {plan?.interval}
+                          </p>
                           {/* {!currentlyActivePlans?.find(
                               (p) => p?.auto_renewal === plan?.auto_renewal
                             ) ? (

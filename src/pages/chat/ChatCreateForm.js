@@ -47,7 +47,6 @@ function ChatCreateForm({setShow}) {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
-    console.log(event.target.files[0])
   };
 
   const textFields = (
@@ -114,7 +113,6 @@ function ChatCreateForm({setShow}) {
     try {
       const { data } = await axiosReq.post("/chat/", formData);
       history.push(`/chat/${data.id}`);
-      console.log(data)
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
