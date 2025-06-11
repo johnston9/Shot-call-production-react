@@ -81,7 +81,7 @@ export default function BillingDetailsFields({
   return (
     <>
 
-      <Form.Group controlId="formCurrency">
+      {/* <Form.Group controlId="formCurrency">
         <Form.Label>Select Currency</Form.Label>
         <Form.Control
           as="select"
@@ -98,7 +98,7 @@ export default function BillingDetailsFields({
             </option>
           ))}
         </Form.Control>
-      </Form.Group>
+      </Form.Group> */}
 
 
 
