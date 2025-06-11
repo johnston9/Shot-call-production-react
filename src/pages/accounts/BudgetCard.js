@@ -48,7 +48,7 @@ const BudgetCard = ({
       const res = await axiosInstance.delete(`/budget-view/${id}`);
       // console.log(res.data.data.message)
       if (res?.data?.status === 200) {
-        toast.success(res?.data?.data?.message)
+        toast.success(res?.data?.data?.message+'!')
         if (fetchData) fetchData();
 
       } else {
@@ -67,12 +67,12 @@ const BudgetCard = ({
         <Card.Body className={`${styles.ProTop} py-2`}>
           <Row className="d-flex align-items-center">
             <Col xs={2}> {/* Checkbox */}
-              <Form.Check
+              {/* <Form.Check
                 type="checkbox"
                 // label="I agree to the terms before sharing the budget"
                 checked={isChecked}
                 onChange={(e) => setIsChecked(e.target.checked)}
-              />
+              /> */}
             </Col>
             <Col className="text-center" xs={8}>
               <h5
@@ -95,6 +95,7 @@ const BudgetCard = ({
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
                   id={id}
+                  type={'Budget'}
                 />
 
                 // <button onClick={handleEdit} className="btn btn-info-outline btn-sm"> <i className="fa fa-pen text-light"></i> </button>
@@ -117,12 +118,12 @@ const BudgetCard = ({
         </Card.Body>
         <hr />
         <div className="d-flex justify-content-between">
-          <Button className="mx-3 my-3"  size="sm" variant="secondary" disabled={!isChecked} onClick={handleShow} >
+          <Button className="mx-3 my-3"  size="sm" variant="secondary"  onClick={() => {}} >
             <i className="fa fa-share"></i> Share Budget
           </Button>
-          <Button className="mx-3 my-3" size="sm" variant="secondary" onClick={handleShow} >
+          {/* <Button className="mx-3 my-3" size="sm" variant="secondary" onClick={handleShow} >
             <i className="fa fa-info"></i> Budget Info
-          </Button>
+          </Button> */}
         </div>
 
 

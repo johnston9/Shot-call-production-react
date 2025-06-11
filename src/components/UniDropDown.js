@@ -29,7 +29,7 @@ const EditDeleteIcon = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const UniDropdown = ({ handleEdit, handleDelete, id }) => {
+export const UniDropdown = ({ handleEdit, handleDelete, id,type }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -46,7 +46,7 @@ export const UniDropdown = ({ handleEdit, handleDelete, id }) => {
         <Modal.Header closeButton>
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this {type ?? 'item'}?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel

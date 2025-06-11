@@ -2377,7 +2377,7 @@ const Budget = (props) => {
           className={`py-2 ${styles.BoldBlack} ${appStyles.playfair}
      text-center`}
         >
-          {title} Budget Pages{" "}
+          {title}  
         </h2>
       </div>
       {/* back/INFO*/}
@@ -2559,7 +2559,7 @@ const Budget = (props) => {
                 {/* Dated */}
                 <Row>
                   <Col xs={4}>
-                    <p className={`${styles.Underline6}`}>Dated</p>
+                    <p className={`${styles.Underline6}`}>Budget Dated</p>
                   </Col>
                   <Col xs={2}></Col>
                   <Col xs={6}>

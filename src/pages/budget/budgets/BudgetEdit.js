@@ -13993,7 +13993,7 @@ function BudgetEdit({type}) {
 
     try {
       await axiosReq.put(`/budgets3/${budget3Id}/`, formData);
-      toast.success('Budget update successfully');
+      toast.success('Budget updated successfully!');
       setTimeout(() => {
         history.goBack();
       },2000)

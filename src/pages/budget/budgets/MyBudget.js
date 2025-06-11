@@ -41,9 +41,9 @@ function MyBudget() {
     };
 
     useEffect(() => {
-        fetchProjects();  
+        fetchProjects();
     }, []);
- 
+
     const history = useHistory();
 
     return (
@@ -74,7 +74,13 @@ function MyBudget() {
                     style={{
                         maxWidth: "fit-content",
                         margin: "0 auto",
-                    }}>{budgetCount?.remaining_budget_count} Budget remaining out of {budgetCount?.total_budget_count}</Alert>
+                    }}>
+
+
+                    {budgetCount?.remaining_budget_count} Budget remaining out of {budgetCount?.total_budget_count}
+
+
+                </Alert>
             </Col>
             <Row className="px-3">
                 <Col className="text-center">
@@ -104,7 +110,7 @@ function MyBudget() {
                                 })
                             ) : (
                                 <Container className={appStyles.Content}>
-                                    <Asset src={NoResults} message="No Budgets" />
+                                    <Asset src={NoResults} message={budgetCount?.remaining_budget_count >= '1' ? "No Budgets" : `You don't have any subscription plan for budget`} />
                                 </Container>
                             )}
                     </>
