@@ -454,7 +454,7 @@ export default function SubscriptionPlansPage() {
                                       cursor: "pointer",
                                       backgroundColor: "red",
                                     }}
-                                    onClick={() => handleShow('project')}
+                                    onClick={() => handleShow('projects')}
                                     disabled={isCancelling}
                                   >
                                     Cancel Subscription
@@ -502,7 +502,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={() => handleShow('project')}
+                                  onClick={() => handleShow('projects')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -742,7 +742,7 @@ export default function SubscriptionPlansPage() {
                                       cursor: "pointer",
                                       backgroundColor: "red",
                                     }}
-                                    onClick={() => handleShow('project')}
+                                    onClick={() => handleShow('projects')}
                                     disabled={isCancelling}
                                   >
                                     Cancel Subscription
@@ -790,7 +790,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={() => handleShow('project')}
+                                  onClick={() => handleShow('projects')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -1036,7 +1036,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={() => handleShow('budget')}
+                                  onClick={() => handleShow('budgets')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -1076,7 +1076,7 @@ export default function SubscriptionPlansPage() {
                                   cursor: "pointer",
                                   backgroundColor: "red",
                                 }}
-                                onClick={() => handleShow('budget')}
+                                onClick={() => handleShow('budgets')}
                                 disabled={isCancelling}
                               >
                                 Cancel Subscription
