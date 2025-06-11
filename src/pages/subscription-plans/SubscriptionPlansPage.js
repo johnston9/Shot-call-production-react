@@ -24,6 +24,7 @@ export default function SubscriptionPlansPage() {
   const [loading, setLoading] = useState(false);
   const [isCancelling, setIsCancelling] = useState(false);
   const [show, setShow] = useState(false);
+  const [type, setType] = useState('project')
   const handleClose = () => {
     setShow(false);
   };
@@ -31,7 +32,10 @@ export default function SubscriptionPlansPage() {
     handleCancelSubscription();
     setShow(false);
   };
-  const handleShow = () => setShow(true);
+  const handleShow = (type) => {
+    setShow(true);
+    setType(type)
+  }
 
   const choosePlan = async (plan) => {
     // console.log(plan);
@@ -450,7 +454,7 @@ export default function SubscriptionPlansPage() {
                                       cursor: "pointer",
                                       backgroundColor: "red",
                                     }}
-                                    onClick={handleShow}
+                                    onClick={() => handleShow('project')}
                                     disabled={isCancelling}
                                   >
                                     Cancel Subscription
@@ -498,7 +502,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={handleShow}
+                                  onClick={() => handleShow('project')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -515,7 +519,7 @@ export default function SubscriptionPlansPage() {
                               <Modal.Body>
                                 Are you sure you want to cancel your
                                 subscription? Once canceled, you will no longer
-                                have access to your projects.
+                                have access to your {type}.
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button
@@ -738,7 +742,7 @@ export default function SubscriptionPlansPage() {
                                       cursor: "pointer",
                                       backgroundColor: "red",
                                     }}
-                                    onClick={handleShow}
+                                    onClick={() => handleShow('project')}
                                     disabled={isCancelling}
                                   >
                                     Cancel Subscription
@@ -786,7 +790,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={handleShow}
+                                  onClick={() => handleShow('project')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -1032,7 +1036,7 @@ export default function SubscriptionPlansPage() {
                                     cursor: "pointer",
                                     backgroundColor: "red",
                                   }}
-                                  onClick={handleShow}
+                                  onClick={() => handleShow('budget')}
                                   disabled={isCancelling}
                                 >
                                   Cancel Subscription
@@ -1072,7 +1076,7 @@ export default function SubscriptionPlansPage() {
                                   cursor: "pointer",
                                   backgroundColor: "red",
                                 }}
-                                onClick={handleShow}
+                                onClick={() => handleShow('budget')}
                                 disabled={isCancelling}
                               >
                                 Cancel Subscription
