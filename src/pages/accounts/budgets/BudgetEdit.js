@@ -14001,7 +14001,7 @@ function BudgetEdit({ type }) {
 
     try {
       type === 0 ? await axiosReq.put(`/budgets3/${budgetId3}/`, formData) : await axiosReq.patch(`/budgets3/${budgetId3}/`, formData);
-      toast.success('Budget update successfully')
+      toast.success('Budget updated successfully!')
       setTimeout(() => {
         history.goBack();
       }, 2000)

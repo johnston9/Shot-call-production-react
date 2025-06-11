@@ -42,7 +42,7 @@ const Projects = ({
 
   console.log("user data: ", userData);
   const { currentlyActivePlans } = useActivePlan();
-  console.log(currentlyActivePlans, userData);
+  console.log("Plans",currentlyActivePlans, userData);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [projects, setProjects] = useState({ results: [] });
   // eslint-disable-next-line
@@ -140,6 +140,18 @@ const Projects = ({
     setShowCreateProject((showCreateProject) => !showCreateProject);
   };
 
+  const handleShowBudget= () => {
+    console.log(hasBudgetPlan(currentlyActivePlans));
+    if (!hasBudgetPlan(currentlyActivePlans)) {
+      toast.error(`You don't have any active packages!`);
+      history.push(`/subscription-plans`);
+      return;
+    }
+    
+      // history.push(`/profiles/${userData?.pk}`);
+    history.push("/my-budgets");
+    // setShowCreateProject((showCreateProject) => !showCreateProject);
+  };
   const getMaxProject = (plans) => {
     const projectPlan = plans?.find((p) => p?.plan?.plan_type === "project");
     if (projectPlan) {
@@ -223,7 +235,7 @@ const Projects = ({
           >
             Create Project
           </Button>
-          <Button
+          {/* <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
             // onClick={handleShowProject}
             onClick={() => {
@@ -236,19 +248,11 @@ const Projects = ({
             }}
           >
             Create Budget
-          </Button>
+          </Button> */}
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
             // onClick={handleShowProject}
-            onClick={() => {
-              history.push("/my-budgets");
-              // if (hasBudgetPlan(currentlyActivePlans)) {
-              //   history.push("/budgets");
-              // } else {
-              //   toast.error("Please buy budget before creating budget!");
-              //   history.push(`/subscription-plans`);
-              // }
-            }}
+            onClick={handleShowBudget}
           >
             My Budget
           </Button>

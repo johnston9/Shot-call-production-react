@@ -473,7 +473,7 @@ function BudgetCreate({ type }) {
     }
     try {
       await axiosReq.post("/budgets3/", formData);
-      toast.success('Budget created sucessfully')
+      toast.success('Budget created successfully!')
       setTimeout(() => {
         if (type === 0) {
           history.goBack();
