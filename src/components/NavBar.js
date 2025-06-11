@@ -15,10 +15,15 @@ import Avatar from "./Avatar";
 import useDropdownClick from "../hooks/useDropdownClick";
 import { removeTokenTimestamp } from "../utils/utils";
 import { axiosInstanceNoAuth } from "../api/axiosDefaults";
+import useActivePlan from "../hooks/useActivePlan";
+import { hasBudgetPlan } from "../utils/hasBudgetPlan";
+import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const { currentlyActivePlans } = useActivePlan();
 
   // console.log(currentUser);
   // const {
@@ -228,6 +233,20 @@ const NavBar = () => {
       </NavDropdown>
     </>
   );
+  const history = useHistory();
+
+  const handleShowBudget = () => {
+    console.log(hasBudgetPlan(currentlyActivePlans));
+    if (!hasBudgetPlan(currentlyActivePlans)) {
+      toast.error(`You don't have any active packages!`);
+      history.push(`/subscription-plans`);
+      return;
+    }
+
+    // history.push(`/profiles/${userData?.pk}`);
+    history.push("/my-budgets");
+    // setShowCreateProject((showCreateProject) => !showCreateProject);
+  };
 
   const loggedInIcons = (
     <>
@@ -273,6 +292,13 @@ const NavBar = () => {
             <i className="navicon fas fa-play"></i>My Profile
           </NavLink>
         </NavDropdown.Item>
+        
+        <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
+          <span className={` ${styles.NavLink} `}>
+            <i className="navicon fas fa-play"></i> My Budgets
+          </span>
+        </NavDropdown.Item>
+
         <NavDropdown.Item>
           <NavLink
             className={` ${styles.NavLink} `}

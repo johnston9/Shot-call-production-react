@@ -821,7 +821,7 @@ export default function SubscriptionPlansPage() {
                   fontWeight: "bold",
                 }}
               >
-                Budget Only
+                Budget Subscription Plans
               </h3>
               <Row className="justify-content-center">
                 {!loading &&
