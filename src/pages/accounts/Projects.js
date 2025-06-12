@@ -249,13 +249,13 @@ const Projects = ({
           >
             Create Budget
           </Button> */}
-          {/* <Button
+          <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
             // onClick={handleShowProject}
             onClick={handleShowBudget}
           >
             My Budget
-          </Button> */}
+          </Button>
           {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>
       </Row>
