@@ -23,7 +23,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const { currentlyActivePlans } = useActivePlan();
+  // const { currentlyActivePlans } = useActivePlan();
 
   // console.log(currentUser);
   // const {
@@ -236,15 +236,15 @@ const NavBar = () => {
   const history = useHistory();
 
   const handleShowBudget = () => {
-    console.log(hasBudgetPlan(currentlyActivePlans));
-    if (!hasBudgetPlan(currentlyActivePlans)) {
-      toast.error(`You don't have any active packages!`);
-      history.push(`/subscription-plans`);
-      return;
-    }
+    // console.log(hasBudgetPlan(currentlyActivePlans));
+    // if (!hasBudgetPlan(currentlyActivePlans)) {
+    //   toast.error(`You don't have any active packages!`);
+    //   history.push(`/subscription-plans`);
+    //   return;
+    // }
 
-    // history.push(`/profiles/${userData?.pk}`);
-    history.push("/my-budgets");
+    // // history.push(`/profiles/${userData?.pk}`);
+    // history.push("/my-budgets");
     // setShowCreateProject((showCreateProject) => !showCreateProject);
   };
 
@@ -293,11 +293,11 @@ const NavBar = () => {
           </NavLink>
         </NavDropdown.Item>
         
-        <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
+        {/* <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
           <span className={` ${styles.NavLink} `}>
             <i className="navicon fas fa-play"></i> My Budgets
           </span>
-        </NavDropdown.Item>
+        </NavDropdown.Item> */}
 
         <NavDropdown.Item>
           <NavLink
