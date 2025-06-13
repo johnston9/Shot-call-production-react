@@ -61,9 +61,7 @@ const BudgetCard = ({
   const handleDelete = async () => {
     try {
       const res = await axiosInstance.delete(`/budget-view/${id}`);
-      // console.log(res.data.data.message)
       if (res?.data?.status === 200) {
-        // handleFetchSharedListing();
         setTrigger(true)
         toast.success(res?.data?.data?.message + '!')
         if (fetchData) fetchData();
@@ -97,9 +95,6 @@ const BudgetCard = ({
         },
       );
       setTrigger(true)
-      // console.log(res.data.status )
-      // if(!res.status){
-      // }
       if (String(res?.data?.status) === '201') {
         setSuccessMsg("Budget shared successfully!");
         setFormData({ name: "", email: "" });
@@ -107,7 +102,6 @@ const BudgetCard = ({
         toast.error(res?.error?.response?.data?.non_field_errors[0] ?? 'Someting went wrong')
       }
     } catch (err) {
-      console.error("API Error", err);
       setSuccessMsg("Failed to share. Please try again.");
     } finally {
       setLoading(false);

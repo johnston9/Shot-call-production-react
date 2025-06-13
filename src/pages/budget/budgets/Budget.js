@@ -16,7 +16,7 @@ const Budget = (props) => {
   const [showInfo, setShowInfo] = useState(false);
   // const [showPost, setShowPost] = useState(false);
 
-  const { budget1, budget2, budget3 } = props;
+  const { budget1, budget2, budget3,token } = props;
 
   const budget11 = budget1.results[0] || "";
   const budget12 = budget2.results[0] || "";
@@ -2364,7 +2364,6 @@ const Budget = (props) => {
     completion_bond,
   } = budget13;
 
-  console.log(budget1, "yoyo");
 
   const history = useHistory();
   const [showCover, setShowCover] = useState(false);
@@ -2402,6 +2401,15 @@ const Budget = (props) => {
       {budget11 ? (
         <Row className="mt-0 mb-0">
           <Col className="text-center">
+          {
+            token ? <Link
+            to={`/budgets/edit/${budget1?.results[0]?.id}/${budget2?.results[0]?.id}/${budget3?.results[0]?.id}?token=${token}`}
+          >
+            <div className={`px-1`}>
+              <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+            </div>
+          </Link> : 
+
             <Link
               to={`/budgets/edit/${budget1?.results[0]?.id}/${budget2?.results[0]?.id}/${budget3?.results[0]?.id}`}
             >
@@ -2409,6 +2417,7 @@ const Budget = (props) => {
                 <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
               </div>
             </Link>
+          }
           </Col>
         </Row>
       ) : (
@@ -2428,6 +2437,7 @@ const Budget = (props) => {
           </Col>
         </Row>
       )}
+
       {/* Cover and Top sheets buttons */}
       <Row className="mt-1 ml-2">
         <Col xs={6} className="text-center">
@@ -17258,7 +17268,7 @@ const Budget = (props) => {
                       className={`${styles.Box} py-0 d-flex align-items-center justify-content-center`}
                     >
                       <p className={`${styles.Underline}`}>
-                        {he_wran_una_prep}
+                        {he_wran_una_prep || ''}
                       </p>
                     </div>
                   </Col>

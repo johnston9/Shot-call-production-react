@@ -65,13 +65,16 @@ import IndirectCosts from "./budgetsectionsother/IndirectCosts";
 import InfoBudEdit from "./InfoBudEdit";
 import Globals from "./Globals";
 import toast from "react-hot-toast";
-
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 function BudgetEdit({type}) {
   const [errors, setErrors] = useState({});
   const history = useHistory();
   const { budget1Id, budget2Id, budget3Id } = useParams();
-
-  console.log(budget1Id, budget2Id, budget3Id);
+  const query = useQuery();
+  const token = query.get('token');
 
   const [showInformation, setShowInformation] = useState(false);
   const [showGlobals, setShowGlobals] = useState(false);
@@ -8353,7 +8356,11 @@ function BudgetEdit({type}) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets2/${budget2Id}/`);
+        const { data } = await axiosReq.get(`/budgets2/${budget2Id}/`,{
+          headers: {
+            'X-API-KEY': token,  
+          }
+        });
         console.log(data);
         // console.log(data.results[0]);
         setBudgetId2(data.id);
@@ -8397,7 +8404,7 @@ function BudgetEdit({type}) {
           other_wrangling_labour_units_name,
           other_wrangling_labour_rate,
           wranglerlabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataWrangling({
           days6th7th_unit_wran,
           days6th7th_wran,
@@ -8484,7 +8491,7 @@ function BudgetEdit({type}) {
           other_fx_labour_units_name,
           other_fx_labour_rate,
           fxlabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataSpecialEffects({
           fringes_taxes_fx,
           days6th7th_unit_fx,
@@ -8658,7 +8665,7 @@ function BudgetEdit({type}) {
           other_wardrobe_labour_units_name,
           other_wardrobe_labour_rate,
           wardrobelabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataWardrobe({
           train_qty_prep,
           train_uno_prep,
@@ -8896,7 +8903,7 @@ function BudgetEdit({type}) {
           sfx_makeup_units_name,
           sfx_makeup_rate,
           makeuplabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataMakeup({
           fringes_taxes_makeup,
           days6th7th_unit_mak,
@@ -9135,7 +9142,7 @@ function BudgetEdit({type}) {
           stills_rt,
           other_cam_una,
           other_cam_rt,
-        } = data;
+        } = data?.results[0];
         setPostDataCamera({
           days6th7th_unit_cam,
           days6th7th_cam,
@@ -9346,7 +9353,7 @@ function BudgetEdit({type}) {
           other_elec_una,
           other_elec_rt,
           electriclabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataElectric({
           fringes_taxes_electric,
           days6th7th_unit_ele,
@@ -9520,7 +9527,7 @@ function BudgetEdit({type}) {
           griplabour_total,
           other_grip_labour_una,
           other_grip_labour_rt,
-        } = data;
+        } = data?.results[0];
         setPostDataGrip({
           fringes_taxes_grip,
           days6th7th_unit_grip,
@@ -9670,7 +9677,7 @@ function BudgetEdit({type}) {
           soundlabour_total,
           other_sound_labour_una,
           other_sound_labour_rt,
-        } = data;
+        } = data?.results[0];
         setPostDataSoundPro({
           fringes_taxes_sound,
           days6th7th_unit_sound,
@@ -9745,7 +9752,11 @@ function BudgetEdit({type}) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets3/${budget3Id}/`);
+        const { data } = await axiosReq.get(`/budgets3/${budget3Id}/`,{
+          headers: {
+            'X-API-KEY': token,  
+          }
+        });
         // console.log(data.results[0]);
         setBudgetId3(data.id);
         // budget number
@@ -9823,7 +9834,7 @@ function BudgetEdit({type}) {
           drivers_una,
           drivers_rt,
           transportlabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataTransport({
           fringes_taxes_transport,
           days6th7th_unit_tran,
@@ -10017,7 +10028,7 @@ function BudgetEdit({type}) {
           other_tv_una,
           other_tv_rt,
           tvspecificlabour_total,
-        } = data;
+        } = data?.results[0];
         setPostDataTV({
           fringes_taxes_tv,
           days6th7th_unit_tv,
@@ -10147,7 +10158,7 @@ function BudgetEdit({type}) {
           courier_postage,
           office_other,
           proOff_total,
-        } = data;
+        } = data?.results[0];
         setPostDataProOff({
           office_rentals,
           office_equipment,
@@ -10165,7 +10176,7 @@ function BudgetEdit({type}) {
           studio_fx_equipment,
           studio_security,
           studio_other,
-        } = data;
+        } = data?.results[0];
         setPostDataStudio({
           studio_rentals,
           power,
@@ -10186,7 +10197,7 @@ function BudgetEdit({type}) {
           site_other,
           police_control,
           site_total,
-        } = data;
+        } = data?.results[0];
         setPostDataSite({
           surveying_scouting,
           site_rentals,
@@ -10209,7 +10220,7 @@ function BudgetEdit({type}) {
           medical_insurance,
           unit_other,
           unit_total,
-        } = data;
+        } = data?.results[0];
         setPostDataUnit({
           catering,
           craft_expenses,
@@ -10230,7 +10241,7 @@ function BudgetEdit({type}) {
           other_trav_liv,
           customs_brokerage,
           traliv_total,
-        } = data;
+        } = data?.results[0];
         setPostDataTraLiv({
           fares,
           accomatation_hotels,
@@ -10257,7 +10268,7 @@ function BudgetEdit({type}) {
           licenses_permits,
           brokerage_insurance,
           other_transport,
-        } = data;
+        } = data?.results[0];
         setPostDataTransportation({
           production_cars,
           trucks_vans,
@@ -10285,7 +10296,7 @@ function BudgetEdit({type}) {
           scaffolding,
           warehouse_rental,
           constructionmat_total,
-        } = data;
+        } = data?.results[0];
         setPostDataConstructionMat({
           rentals_carpentry,
           carpentry_purchases,
@@ -10305,7 +10316,7 @@ function BudgetEdit({type}) {
           stock_prints_processing,
           blueprinting,
           other_art,
-        } = data;
+        } = data?.results[0];
         setPostDataArtSup({
           drawing_supplies,
           drawing_equipment,
@@ -10322,7 +10333,7 @@ function BudgetEdit({type}) {
           dressing_total,
           dress_repairs_replacements,
           other_dressing,
-        } = data;
+        } = data?.results[0];
         setPostDataDress({
           dress_rentals,
           dress_purchases,
@@ -10342,7 +10353,7 @@ function BudgetEdit({type}) {
           picture_vehicle_mods,
           picture_vehicle_ins,
           other_props,
-        } = data;
+        } = data?.results[0];
         setPostDataProps({
           props_rentals,
           props_purchases,
@@ -10362,7 +10373,7 @@ function BudgetEdit({type}) {
           armaments_permits_fees,
           other_fx,
           fx_total,
-        } = data;
+        } = data?.results[0];
         setPostDataSpecEf({
           fx_rentals,
           fx_purchases,
@@ -10380,7 +10391,7 @@ function BudgetEdit({type}) {
           customs_broker,
           other_animals,
           animals_total,
-        } = data;
+        } = data?.results[0];
         setPostDataAnimals({
           animals_rentals,
           animals_purchases,
@@ -10399,7 +10410,7 @@ function BudgetEdit({type}) {
           ward_repairs_clean,
           other_ward,
           wardrobe_total,
-        } = data;
+        } = data?.results[0];
         setPostDataWardrobeSup({
           wardrobe_rentals,
           wardrobe_purchases,
@@ -10419,7 +10430,7 @@ function BudgetEdit({type}) {
           makeup_fx,
           makeup_ship_brok,
           other_makeup,
-        } = data;
+        } = data?.results[0];
         setPostDataMakeupSup({
           makeup_rentals,
           makeup_purchases,
@@ -10442,7 +10453,7 @@ function BudgetEdit({type}) {
           video_teleprompter,
           camera_ship_brok,
           loss_damage_cam,
-        } = data;
+        } = data?.results[0];
         setPostDataCameraEqu({
           basic_package_rent_cam,
           daily_rentals_cam,
@@ -10464,7 +10475,7 @@ function BudgetEdit({type}) {
           generators,
           loss_damage_elec,
           other_electric,
-        } = data;
+        } = data?.results[0];
         setPostDataElectricEqu({
           basic_package_rent_elec,
           daily_rentals_elec,
@@ -10485,7 +10496,7 @@ function BudgetEdit({type}) {
           grip_purchases,
           loss_damage_grip,
           other_grip,
-        } = data;
+        } = data?.results[0];
         setPostDataGripEqu({
           basic_package_rent_grip,
           daily_rentals_grip,
@@ -10505,7 +10516,7 @@ function BudgetEdit({type}) {
           sound_purchases,
           walkie_talkies,
           other_sound,
-        } = data;
+        } = data?.results[0];
         setPostDataSoundEqu({
           basic_package_rent_sound,
           daily_rentals_sound,
@@ -10526,7 +10537,7 @@ function BudgetEdit({type}) {
           marine_unit,
           fringes_taxes_2U,
           other_2U,
-        } = data;
+        } = data?.results[0];
         setPostDataSecondU({
           crew_2U,
           equipment_2U,
@@ -10553,7 +10564,7 @@ function BudgetEdit({type}) {
           loss_dam_lab,
           other_lab,
           stockLab_total,
-        } = data;
+        } = data?.results[0];
         setPostDataStockLab({
           film_stock,
           video_stock,
@@ -10603,7 +10614,7 @@ function BudgetEdit({type}) {
           post_craft,
           fringes_taxes_post,
           post_other,
-        } = data;
+        } = data?.results[0];
         setPostDataPostStaffFac({
           post_supervisor_qty,
           post_supervisor_uno,
@@ -10670,7 +10681,7 @@ function BudgetEdit({type}) {
           fringes_taxes_post_edit,
           other_post_edit,
           editing_total,
-        } = data;
+        } = data?.results[0];
         setPostDataEdit({
           editor_qty,
           editor_uno,
@@ -10742,7 +10753,7 @@ function BudgetEdit({type}) {
           lossdam_sound,
           fringes_taxes_post_sound,
           other_post_sound,
-        } = data;
+        } = data?.results[0];
         setPostDataPostSound({
           sound_designer_qty,
           sound_designer_uno,
@@ -10794,7 +10805,7 @@ function BudgetEdit({type}) {
           distribution_copies,
           storage_post,
           postLab_total,
-        } = data;
+        } = data?.results[0];
         setPostDataPostLab({
           stock,
           neg_cutting,
@@ -10813,7 +10824,7 @@ function BudgetEdit({type}) {
           stock_footage,
           con_script_ccsl,
           postTitles_total,
-        } = data;
+        } = data?.results[0];
         setPostDataPostTitles({
           titles,
           opticals,
@@ -10833,7 +10844,7 @@ function BudgetEdit({type}) {
           dig_copies_ver,
           other_copies_ver,
           postVersion_total,
-        } = data;
+        } = data?.results[0];
         setPostDataPostVersion({
           dubs,
           subtitles,
@@ -10879,7 +10890,7 @@ function BudgetEdit({type}) {
           fringes_taxes_vfx,
           other_post_vfx,
           postVfx_total,
-        } = data;
+        } = data?.results[0];
         setPostDataPostVFX({
           vfx_producer,
           vfx_supervisor,
@@ -10927,7 +10938,7 @@ function BudgetEdit({type}) {
           other_pub,
           previews,
           website,
-        } = data;
+        } = data?.results[0];
         setPostDataPublicity({
           tests_theater_ren,
           tests_other,
@@ -10951,7 +10962,7 @@ function BudgetEdit({type}) {
           union_insurance,
           other_in,
           insur_total,
-        } = data;
+        } = data?.results[0];
         setPostDataInsurance({
           pro_package,
           gen_lia,
@@ -10969,7 +10980,7 @@ function BudgetEdit({type}) {
           bank_charges,
           audit,
           genEx_total,
-        } = data;
+        } = data?.results[0];
         setPostDataGeneralEx({
           legal,
           medical,
@@ -10984,14 +10995,14 @@ function BudgetEdit({type}) {
           interim_financing,
           fiscal_sponsor_fee,
           indirCo_total,
-        } = data;
+        } = data?.results[0];
         setPostDataIndirectCo({
           corporate_overhead,
           interim_financing,
           fiscal_sponsor_fee,
         });
         setIndirCoTotal(indirCo_total);
-        const { contingency, completion_bond } = data;
+        const { contingency, completion_bond } = data?.results[0];
         setPostDataContingency({ contingency, completion_bond });
       } catch (err) {
         console.log(err);
@@ -12363,7 +12374,16 @@ function BudgetEdit({type}) {
     formData.append("armorall_total", armorallTotal);
 
     try {
-      await axiosReq.put(`/budgets1/${budget1Id}/`, formData);
+      token ? await axiosReq.patch(
+        `/budgets1/${budget1Id}/`,
+        formData,
+        {
+          headers: {
+            'X-API-KEY': token,  
+          }
+        }
+      ): 
+      await axiosReq.patch(`/budgets1/${budget1Id}/`, formData);
       // console.log(`submit1 ${data}`);
       handleSubmit2(event);
     } catch (err) {
@@ -13309,7 +13329,16 @@ function BudgetEdit({type}) {
     formData.append("otsoundall_total", otsoundallTotal);
 
     try {
-      axiosReq.put(`/budgets2/${budget2Id}/`, formData);
+      token ? await axiosReq.patch(
+        `/budgets2/${budget2Id}/`,
+        formData,
+        {
+          headers: {
+            'X-API-KEY': token,  
+          }
+        }
+      ):await    
+      axiosReq.patch(`/budgets2/${budget2Id}/`, formData);
       handleSubmit3(event);
     } catch (err) {
       console.log(err);
@@ -13992,7 +14021,16 @@ function BudgetEdit({type}) {
     formData.append("completion_bond", completion_bond);
 
     try {
-      await axiosReq.put(`/budgets3/${budget3Id}/`, formData);
+      token ?   await axiosReq.patch(
+        `/budgets3/${budget3Id}/`,
+        formData,
+        {
+          headers: {
+            'X-API-KEY': token, 
+          }
+        }
+      ):     
+      await axiosReq.patch(`/budgets3/${budget3Id}/`, formData);
       toast.success('Budget updated successfully!');
       setTimeout(() => {
         history.goBack();

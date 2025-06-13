@@ -8,11 +8,15 @@ import styles from "../../../styles/Account.module.css";
 import btnStyles from "../../../styles/Button.module.css";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../../api/axiosDefaults";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 // import { useNavigate } from 'react-router-dom';
 import InfoBudCreate from "./InfoBudCreate";
 import toast from "react-hot-toast";
 import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
 function BudgetCreate({ type }) {
   const [errors, setErrors] = useState({});
@@ -20,6 +24,8 @@ function BudgetCreate({ type }) {
   const currentUser = useCurrentUser()
   // console.log(currentUser.pk)
   // const navigate = useNavigate()
+  const query = useQuery();
+  const ids = query.get('id');
   const { id } = useParams();
   const [showInfo, setShowInfo] = useState(false);
 
@@ -390,68 +396,163 @@ function BudgetCreate({ type }) {
   // const [budgetID, setBudgetID] = useState(0);
   // const [budgetIDSecond, setBudgetIDSecond] = useState(0);
   // Submit 1
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const formData = new FormData();
+
+  //   formData.append("budget_number", "1");
+  //   // prepared by
+  //   formData.append("dated", dated);
+  //   formData.append("prelimfin", prelimfin);
+  //   formData.append("preparedby", preparedby);
+  //   formData.append("approvedby", approvedby);
+  //   formData.append("approvedbyco", approvedbyco);
+  //   // details
+  //   formData.append("title", title);
+  //   formData.append("series", series);
+  //   formData.append("prodco", prodco);
+  //   formData.append("writer", writer);
+  //   formData.append("format", format);
+  //   formData.append("location", location);
+  //   if (type === 1) {
+  //     formData.append('owner', currentUser?.pk)
+  //   } else {
+  //     formData.append("project", id ?? ids);
+  //   }
+  //   try {
+
+  //     type === 0 ? await axiosReq.post("/budgets1/", formData) : await axiosReq.post("/budget-view/", formData).then((res) => {
+  //       // console.log(res?.data?.budget?.id)
+  //       // setBudgetID(res?.data?.budget?.id)
+  //       handleSubmit2(event , res?.data?.budget?.id);
+  //     })
+  //   } catch (err) {
+  //     const resData = err.response?.data;
+
+
+  //     console.error("API Error:", resData.error);
+  //     toast.error(resData.error)
+
+
+  //     if (err.response?.status !== 401) {
+  //       setErrors(resData);
+  //     }
+
+  //   }
+  // };
+
+  // // Submit 2
+  // const handleSubmit2 = async (event,budget_ID) => {
+  //   event.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   if (type === 1) {
+  //     formData.append('budget', budget_ID)
+  //   } else {
+  //     formData.append("project", id ?? ids);
+  //     formData.append("budget_number", "2");
+  //   }
+  //   try {
+  //     await axiosReq.post("/budgets2/", formData).then((res) => {
+  //       // console.log(res?.data)
+  //       // setBudgetIDSecond(res?.data?.id)
+  //       handleSubmit3(event, budget_ID);
+  //     })
+  //   } catch (err) {
+  //     console.log(err);
+  //     if (err.response?.status !== 401) {
+  //       setErrors(err.response?.data);
+  //     }
+  //   }
+  // };
+
+  // // Submit 3
+  // const handleSubmit3 = async (event, budget_ID) => {
+  //   event.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   if (type === 1) {
+  //     formData.append('budget', budget_ID)
+  //   } else {
+  //     formData.append("project", id ?? ids);
+  //     formData.append("budget_number", "2");
+  //   }
+  //   try {
+  //     await axiosReq.post("/budgets3/", formData);
+  //     toast.success('Budget created successfully!')
+  //     setTimeout(() => {
+  //       if (type === 0) {
+  //         history.goBack();
+  //       } else if (type === 1) {
+  //         history.push('/budgets')
+  //       }
+  //     }, 2000)
+  //   } catch (err) {
+  //     console.log(err);
+  //     if (err.response?.status !== 401) {
+  //       setErrors(err.response?.data);
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
     formData.append("budget_number", "1");
-    // prepared by
     formData.append("dated", dated);
     formData.append("prelimfin", prelimfin);
     formData.append("preparedby", preparedby);
     formData.append("approvedby", approvedby);
     formData.append("approvedbyco", approvedbyco);
-    // details
     formData.append("title", title);
     formData.append("series", series);
     formData.append("prodco", prodco);
     formData.append("writer", writer);
     formData.append("format", format);
     formData.append("location", location);
-    if (type === 1) {
-      formData.append('owner', currentUser?.pk)
-    } else {
-      formData.append("project", id);
-    }
-    try {
 
-      type === 0 ? await axiosReq.post("/budgets1/", formData) : await axiosReq.post("/budget-view/", formData).then((res) => {
-        // console.log(res?.data?.budget?.id)
-        // setBudgetID(res?.data?.budget?.id)
-        handleSubmit2(event , res?.data?.budget?.id);
-      })
+    if (type === 1) {
+      formData.append("owner", currentUser?.pk);
+    } else {
+      formData.append("project", id ?? ids);
+    }
+
+    try {
+      let res;
+      if (type === 0) {
+        res = await axiosReq.post("/budgets1/", formData);
+        await handleSubmit2(event, null); // no budget_ID needed for type 0
+      } else {
+        res = await axiosReq.post("/budget-view/", formData);
+        const budgetID = res?.data?.budget?.id;
+        await handleSubmit2(event, budgetID);
+      }
     } catch (err) {
       const resData = err.response?.data;
-
-
-      console.error("API Error:", resData.error);
-      toast.error(resData.error)
-
-
+      console.error("API Error:", resData?.error);
+      toast.error(resData?.error || "Submission failed");
       if (err.response?.status !== 401) {
         setErrors(resData);
       }
-
     }
   };
 
-  // Submit 2
-  const handleSubmit2 = async (event,budget_ID) => {
+  const handleSubmit2 = async (event, budget_ID) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
+
     if (type === 1) {
-      formData.append('budget', budget_ID)
+      formData.append("budget", budget_ID);
     } else {
-      formData.append("project", id);
+      formData.append("project", id ?? ids);
       formData.append("budget_number", "2");
     }
+
     try {
-      await axiosReq.post("/budgets2/", formData).then((res) => {
-        // console.log(res?.data)
-        // setBudgetIDSecond(res?.data?.id)
-        handleSubmit3(event, budget_ID);
-      })
+      const res = await axiosReq.post("/budgets2/", formData);
+      await handleSubmit3(event, budget_ID);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -460,27 +561,28 @@ function BudgetCreate({ type }) {
     }
   };
 
-  // Submit 3
   const handleSubmit3 = async (event, budget_ID) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
+
     if (type === 1) {
-      formData.append('budget', budget_ID)
+      formData.append("budget", budget_ID);
     } else {
-      formData.append("project", id);
+      formData.append("project", id ?? ids);
       formData.append("budget_number", "2");
     }
+
     try {
       await axiosReq.post("/budgets3/", formData);
-      toast.success('Budget created successfully!')
+      toast.success("Budget created successfully!");
       setTimeout(() => {
         if (type === 0) {
           history.goBack();
         } else if (type === 1) {
-          history.push('/budgets')
+          history.push("/budgets");
         }
-      }, 2000)
+      }, 2000);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -488,6 +590,7 @@ function BudgetCreate({ type }) {
       }
     }
   };
+
 
   return (
     <div className="mt-3">

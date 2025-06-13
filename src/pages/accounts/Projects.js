@@ -40,9 +40,7 @@ const Projects = ({
   const userData = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
-  console.log("user data: ", userData);
   const { currentlyActivePlans } = useActivePlan();
-  console.log("Plans",currentlyActivePlans, userData);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [projects, setProjects] = useState({ results: [] });
   // eslint-disable-next-line
@@ -53,7 +51,6 @@ const Projects = ({
 
   const fetchProjects = useCallback(
     async (searchQuery = "") => {
-      console.log("userData.pk", userData.pk);
 
       try {
         const { data } = await axiosInstance.get(
@@ -68,13 +65,9 @@ const Projects = ({
             withCredentials: true,
           }
         );
-
-        console.log(data);
-
         setProjects(data?.data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
         setHasLoaded(true);
       }
     },
@@ -101,8 +94,6 @@ const Projects = ({
       `/projects/stripe-success/?session_id=${session_id}&project_name=${project_name}&category_type=${category_type}`
     );
 
-    console.log(data);
-
     fetchProjects();
     getCurrentUserData();
     history.push(`/accounts/${userData.pk}`);
@@ -125,7 +116,6 @@ const Projects = ({
   }, [stripeSuccess, stripeCategoryType, stripeProjectName, stripeSessionId]);
 
   const handleShowProject = () => {
-    console.log(hasProjectPlan(currentlyActivePlans));
     if (!hasProjectPlan(currentlyActivePlans)) {
       toast.error(`You don't have any active packages!`);
       history.push(`/subscription-plans`);
@@ -141,7 +131,6 @@ const Projects = ({
   };
 
   const handleShowBudget= () => {
-    console.log(hasBudgetPlan(currentlyActivePlans));
     if (!hasBudgetPlan(currentlyActivePlans)) {
       toast.error(`You don't have any active packages!`);
       history.push(`/subscription-plans`);
@@ -191,15 +180,10 @@ const Projects = ({
   }, [stripeSuccess]);
 
   const getCurrentUserData = async () => {
-    console.log(
-      "test",
-      localStorage.getItem("accessToken"),
-      localStorage.getItem("user")
-    );
+ 
 
     if (localStorage.getItem("user") && localStorage.getItem("accessToken")) {
       const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user);
       try {
         const { data } = await axiosInstance.get(`/profiles/${user?.pk}/`, {
           headers: {
@@ -208,7 +192,6 @@ const Projects = ({
           },
           withCredentials: true,
         });
-        console.log(data);
         setCurrentUser({
           ...user,
           profile_image: data?.data?.image,

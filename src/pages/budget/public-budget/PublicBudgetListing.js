@@ -9,7 +9,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 // import { jwtDecode } from "jwt-decode";
 import jwtDecode from 'jwt-decode';
-
+import Asset from '../../../components/Asset';
+import NoImage from '../../../assets/no-results.png'
 export const PublicBudgetListing = () => {
   // useRedirect();
   const [isGenerating, setIsGenerating] = useState(false); // State to manage button disable
@@ -26,12 +27,11 @@ export const PublicBudgetListing = () => {
     const fetchBudget = async () => {
       try {
 
-        const [{data:b1} , { data: b2 }, { data: b3 }] = await Promise.all([
+        const [{ data: b1 }, { data: b2 }, { data: b3 }] = await Promise.all([
           axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets1/${decoded?.budget}`),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets2/`),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets3/`),
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets2/?budget_id=${decoded?.budget}`),
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets3/?budget_id=${decoded?.budget}`),
         ]);
-        console.log(b1)
         setBudget1({ results: [b1] });
         setBudget2({ results: [b2] });
         setBudget3({ results: [b3] });
@@ -103,15 +103,21 @@ export const PublicBudgetListing = () => {
       </Row>
       <Row>
         <Col id="pdf-content" className="py-2 p-0 p-lg-2">
-        {console.log(budget1)}
           {hasLoaded ? (
-            <Budget
-              budget1={budget1}
-              budget2={budget2.results[0]}
-              budget3={budget3.results[0]}
-            />
+            <>
+              {
+                <Budget
+                  budget1={budget1}
+                  budget2={budget2.results[0]}
+                  budget3={budget3.results[0]}
+                  token={token?.id}
+                />
+              }
+            </>
           ) : (
-            ""
+            <>{
+              budget1.results.length === 0 && <Asset src={NoImage} message={'No Budget Found'} />
+            }</>
           )}
         </Col>
       </Row>

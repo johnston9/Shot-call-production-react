@@ -16,17 +16,16 @@ const Budget = (props) => {
   const [showInfo, setShowInfo] = useState(false);
   // const [showPost, setShowPost] = useState(false);
 
-  const { budget1, budget2, budget3, projectId , type} = props;
+  const { budget1, budget2, budget3, projectId, type } = props;
 
   const budget11 = budget1?.results[0] || "";
-  
+
   // projectId !== undefined ? budget1 :
   // projectId !== undefined ? budget2 :
   // projectId !== undefined ? budget3 :
-  const budget12 =  budget2?.results[0] || "";
-  const budget13 =  budget3?.results[0] || "";
+  const budget12 = budget2?.results[0] || "";
+  const budget13 = budget3?.results[0] || "";
 
-  console.log(projectId , budget11, "<<<<<<<<<<<<<")
   const {
     // totals
     above_the_line_total,
@@ -2380,7 +2379,7 @@ const Budget = (props) => {
           className={`py-2 ${styles.BoldBlack} ${appStyles.playfair}
      text-center`}
         >
-          {title} Budget Pages{" "}
+          {title}
         </h2>
       </div>
       {/* back/INFO*/}
@@ -2405,18 +2404,19 @@ const Budget = (props) => {
       {budget11 ? (
         <Row className="mt-0 mb-0">
           <Col className="text-center">
-          {
-            type === 0 ? 
-            <Link to={`/${projectId}/budgets/edit`}>
-              <div className={`px-1`}>
-                <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
-              </div>
-            </Link> :  <Link to={`/${projectId}/my-budgets/edit`}>
-              <div className={`px-1`}>
-                <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
-              </div>
-            </Link> 
-          }
+            {
+              type === 0 ?
+                <Link to={`/${projectId}/budgets/edit`}>
+                  <div className={`px-1`}>
+                    <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+                  </div>
+                </Link>
+                : <Link to={`/${projectId}/my-budgets/edit`}>
+                  <div className={`px-1`}>
+                    <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+                  </div>
+                </Link>
+            }
           </Col>
         </Row>
       ) : (
@@ -2426,13 +2426,26 @@ const Budget = (props) => {
             xs={{ span: 6, offset: 3 }}
             md={{ span: 4, offset: 4 }}
           >
-            <Link to={`/${projectId}/budgets/create`}>
+            {/* <Link to={`/${projectId}/budgets/create`}>
               <div className={`px-1`}>
                 <span className={`${styles.Edit} py-1 px-5`}>
                   Create Budget
                 </span>
               </div>
-            </Link>
+              </Link> */}
+            {
+              type === 0 ?
+                <Link to={`/${projectId}/budgets/edit`}>
+                  <div className={`px-1`}>
+                    <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+                  </div>
+                </Link>
+                : <Link to={`/${projectId}/my-budgets/edit`}>
+                  <div className={`px-1`}>
+                    <span className={`${styles.Edit} py-1 px-5`}>Edit Budget</span>
+                  </div>
+                </Link>
+            }
           </Col>
         </Row>
       )}
@@ -2567,7 +2580,7 @@ const Budget = (props) => {
                 {/* Dated */}
                 <Row>
                   <Col xs={4}>
-                    <p className={`${styles.Underline6}`}>Dated</p>
+                    <p className={`${styles.Underline6}`}>Budget Dated</p>
                   </Col>
                   <Col xs={2}></Col>
                   <Col xs={6}>
