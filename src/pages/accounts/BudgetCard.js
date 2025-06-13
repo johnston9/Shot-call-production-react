@@ -97,10 +97,10 @@ const BudgetCard = ({
         },
       );
       setTrigger(true)
-      console.log(res.data.status )
+      // console.log(res.data.status )
       // if(!res.status){
       // }
-      if (String(res.data.status) === '201') {
+      if (String(res?.data?.status) === '201') {
         setSuccessMsg("Budget shared successfully!");
         setFormData({ name: "", email: "" });
       } else {
