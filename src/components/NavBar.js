@@ -293,11 +293,11 @@ const NavBar = () => {
           </NavLink>
         </NavDropdown.Item>
         
-        {/* <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
+        <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
           <span className={` ${styles.NavLink} `}>
             <i className="navicon fas fa-play"></i> My Budgets
           </span>
-        </NavDropdown.Item> */}
+        </NavDropdown.Item>
 
         <NavDropdown.Item>
           <NavLink

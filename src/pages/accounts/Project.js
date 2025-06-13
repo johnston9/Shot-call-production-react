@@ -133,7 +133,8 @@ const Project = ({
                     hasBudgetPlan(currentlyActivePlans) ||
                     hasProjectPlan(currentlyActivePlans)
                   ) {
-                    history.push(`/${id}/budgets`);
+                    // history.push(`/${id}/budgets`);
+                    history.push(`/budgets/create?id=${id}`)
                   } else {
                     toast.error(
                       "Cannot access budget. Please buy either budget or project subscription"

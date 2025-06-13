@@ -2866,7 +2866,7 @@ function BudgetEdit() {
     formData.append("producers_dirs_total", producersDirsTotal);
 
     try {
-      const { data } = await axiosReq.put(`/budgets/${budgetId}/`, formData);
+      const { data } = await axiosReq.patch(`/budgets/${budgetId}/`, formData);
       // console.log(data);
       history.goBack();
     } catch (err) {
