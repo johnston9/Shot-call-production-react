@@ -50,6 +50,7 @@ import ResetPasswordForm from "./pages/auth/ResetPasswordForm";
 
 import styles from "./App.module.css";
 import MyBudget from "./pages/budget/budgets/MyBudget";
+// import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 
 // import BudgetPage from "./pages/accounts/BudgetPage";
 // import BudgetCreate from "./pages/accounts/BudgetCreate";
@@ -153,6 +154,7 @@ function App() {
             path="/my-budgets"
             render={() => <MyBudget />}
           />
+          {/* <Route exact path="/public-budgets/:id" render={() => <PublicBudgetListing />} /> */}
           <Route exact path="/my-budgets/step-one" render={() => <BCreate type={1} />} />
           <Route exact path="/:id/my-budgets/edit" render={() => <BudgetEdit type={1}/>} />
           <Route
@@ -212,13 +214,13 @@ function App() {
             render={() => <ProjectEdit />}
           />
           {/* budgets */}
-          {/* <Route exact path="/budgets/:id" render={() => <BudgetPage />} /> */}
-          {/* <Route
+          <Route exact path="/budgets/:id" render={() => <BudgetPage  type={0}/>} /> 
+          <Route
             exact
             path="/budgets/create/:id"
             render={() => <BudgetCreate />}
-          /> */}
-          {/* <Route exact path="/budgets/edit/:id" render={() => <BudgetEdit />} /> */}
+          />
+          <Route exact path="/budgets/edit/:id" render={() => <BudgetEdit />} />
           {/* profiles */}
           <Route exact path="/profiles" render={() => <ProfilesPage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
