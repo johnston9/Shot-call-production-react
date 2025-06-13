@@ -50,6 +50,7 @@ import ResetPasswordForm from "./pages/auth/ResetPasswordForm";
 
 import styles from "./App.module.css";
 import MyBudget from "./pages/budget/budgets/MyBudget";
+import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 // import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 
 // import BudgetPage from "./pages/accounts/BudgetPage";
@@ -154,7 +155,7 @@ function App() {
             path="/my-budgets"
             render={() => <MyBudget />}
           />
-          {/* <Route exact path="/public-budgets/:id" render={() => <PublicBudgetListing />} /> */}
+          <Route exact path="/public-budgets/:id" render={() => <PublicBudgetListing />} />
           <Route exact path="/my-budgets/step-one" render={() => <BCreate type={1} />} />
           <Route exact path="/:id/my-budgets/edit" render={() => <BudgetEdit type={1}/>} />
           <Route
