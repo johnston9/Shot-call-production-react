@@ -6784,8 +6784,8 @@ function BudgetEdit({ type }) {
       try {
         // console.log(type)
         const { data } = await axiosReq.get(type === 0 ? `/budgets1/?project=${id}` : `/budget-view/${id}`);
-        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",data);
-        // console.log(data.results[0])
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",data);
+        console.log(data.results[0])
         setBudgetId1(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
@@ -8359,8 +8359,8 @@ function BudgetEdit({ type }) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(type === 0 ? `/budgets2/?project=${id}` : `/budgets2/?budget_id=${budgetId1}`);
-
+        const { data } = await axiosReq.get(type === 0 ? `/budgets2/?project=${id}` : `/budgets2/?budget_id=${id}`);
+          console.log("??????????", data?.results[0]?.id)
         setBudgetId2(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
@@ -9750,7 +9750,7 @@ function BudgetEdit({ type }) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(type === 0 ? `/budgets3/?project=${id}` : `/budgets3/?budget_id=${budgetId2}`);
+        const { data } = await axiosReq.get(type === 0 ? `/budgets3/?project=${id}` : `/budgets3/?budget_id=${id}`);
         setBudgetId3(data.results[0].id);
         // budget number
         const { budget_number } = data.results[0];
