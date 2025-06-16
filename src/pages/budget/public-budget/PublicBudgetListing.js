@@ -27,23 +27,19 @@ export const PublicBudgetListing = () => {
     const fetchBudget = async () => {
       try {
 
+        const axiosInstance = axios.create({
+          baseURL: process.env.REACT_APP_API_BASE_URL,
+          headers: {
+            'X-API-KEY': token?.id,
+          },
+        });
+        
         const [{ data: b1 }, { data: b2 }, { data: b3 }] = await Promise.all([
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets1/${decoded?.budget}`, {
-            headers: {
-              'x-api-key': token?.id,
-            },
-          }),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets2/?budget_id=${decoded?.budget}`, {
-            headers: {
-              'x-api-key': token?.id,
-            },
-          }),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets3/?budget_id=${decoded?.budget}`, {
-            headers: {
-              'x-api-key': token?.id,
-            },
-          }),
+          axiosInstance.get(`/budgets1/${decoded?.budget}`),
+          axiosInstance.get(`/budgets2/?budget_id=${decoded?.budget}`),
+          axiosInstance.get(`/budgets3/?budget_id=${decoded?.budget}`),
         ]);
+        
         setBudget1({ results: [b1] });
         setBudget2({ results: [b2] });
         setBudget3({ results: [b3] });
