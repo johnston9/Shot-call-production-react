@@ -26,7 +26,7 @@ export const PublicBudgetListing = () => {
     const decoded = jwtDecode(token?.id);
     const fetchBudget = async () => {
       try {
-
+        console.log(token?.id)
         const axiosInstance = axios.create({
           baseURL: process.env.REACT_APP_API_BASE_URL,
           headers: {
@@ -34,6 +34,8 @@ export const PublicBudgetListing = () => {
           },
         });
         
+        console.log(axiosInstance)
+
         const [{ data: b1 }, { data: b2 }, { data: b3 }] = await Promise.all([
           axiosInstance.get(`/budgets1/${decoded?.budget}`),
           axiosInstance.get(`/budgets2/?budget_id=${decoded?.budget}`),

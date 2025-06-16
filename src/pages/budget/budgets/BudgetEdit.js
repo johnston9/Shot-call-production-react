@@ -6780,7 +6780,11 @@ function BudgetEdit({type}) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/budgets1/${budget1Id}/`);
+        const { data } = await axiosReq.get(`/budgets1/${budget1Id}/`,{
+          headers: {
+            'X-API-KEY': token,  
+          }
+        });
         // console.log(data.results[0])
         console.log(data);
         setBudgetId1(data.id);
