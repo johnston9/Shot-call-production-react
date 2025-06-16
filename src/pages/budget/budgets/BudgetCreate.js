@@ -580,7 +580,8 @@ function BudgetCreate({ type }) {
         if (type === 0) {
           history.goBack();
         } else if (type === 1) {
-          history.push("/budgets");
+          // history.push("/budgets");
+          history.goBack();
         }
       }, 2000);
     } catch (err) {

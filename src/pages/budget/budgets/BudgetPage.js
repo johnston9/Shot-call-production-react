@@ -28,7 +28,7 @@ const BudgetPage = () => {
         const [{ data: budget1 }, { data: budget2 }, { data: budget3 }] =
           await Promise.all([
             axiosReq.get(`/budgets1/`),
-            axiosReq.get(`/budgets2/`),
+            axiosReq.get(`/budgets2/?budget_id={}`),
             axiosReq.get(`/budgets3/`),
           ]);
         setBudget1({ results: [budget1] });
