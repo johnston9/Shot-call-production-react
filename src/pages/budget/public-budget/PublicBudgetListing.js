@@ -19,6 +19,7 @@ export const PublicBudgetListing = () => {
   const [budget1, setBudget1] = useState({ results: [] });
   const [budget2, setBudget2] = useState({ results: [] });
   const [budget3, setBudget3] = useState({ results: [] });
+  const [err, setErr] = useState('')
   const token = useParams();
 
 
@@ -33,22 +34,22 @@ export const PublicBudgetListing = () => {
             'X-API-KEY': token?.id,
           },
         });
-        
-        console.log(axiosInstance)
 
         const [{ data: b1 }, { data: b2 }, { data: b3 }] = await Promise.all([
           axiosInstance.get(`/budgets1/${decoded?.budget}`),
           axiosInstance.get(`/budgets2/?budget_id=${decoded?.budget}`),
           axiosInstance.get(`/budgets3/?budget_id=${decoded?.budget}`),
         ]);
-        
+
         setBudget1({ results: [b1] });
         setBudget2({ results: [b2] });
         setBudget3({ results: [b3] });
         setHasLoaded(true);
       } catch (err) {
-
-        console.error("Budget fetch failed:", err);
+        if (err.message === "Request failed with status code 401") {
+          setErr('Unauthorized Access: Please log in or provide valid credentials.')
+        }
+        console.log(err.message);
       }
     };
 
@@ -127,7 +128,7 @@ export const PublicBudgetListing = () => {
             </>
           ) : (
             <>{
-              budget1.results.length === 0 && <Asset src={NoImage} message={'No Budget Found'} />
+              budget1.results.length === 0 && <Asset src={NoImage} message={err || 'No Budget Found'} />
             }</>
           )}
         </Col>
