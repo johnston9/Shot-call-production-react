@@ -35,6 +35,7 @@ const BudgetCard = ({
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
+    setSuccessMsg("");
   };
   const [formData, setFormData] = useState({
     name: "",
@@ -99,7 +100,7 @@ const BudgetCard = ({
         setSuccessMsg("Budget shared successfully!");
         setFormData({ name: "", email: "" });
       } else {
-        toast.error(res?.error?.response?.data?.non_field_errors[0] ?? 'Someting went wrong')
+        toast.error(res?.error?.response?.data?.non_field_errors[0]  ?? 'Someting went wrong')
       }
     } catch (err) {
       setSuccessMsg("Failed to share. Please try again.");
