@@ -28,15 +28,28 @@ export const PublicBudgetListing = () => {
       try {
 
         const [{ data: b1 }, { data: b2 }, { data: b3 }] = await Promise.all([
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets1/${decoded?.budget}`),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets2/?budget_id=${decoded?.budget}`),
-          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets3/?budget_id=${decoded?.budget}`),
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets1/${decoded?.budget}`, {
+            headers: {
+              'x-api-key': token?.id,
+            },
+          }),
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets2/?budget_id=${decoded?.budget}`, {
+            headers: {
+              'x-api-key': token?.id,
+            },
+          }),
+          axios.get(`${process.env.REACT_APP_API_BASE_URL}/budgets3/?budget_id=${decoded?.budget}`, {
+            headers: {
+              'x-api-key': token?.id,
+            },
+          }),
         ]);
         setBudget1({ results: [b1] });
         setBudget2({ results: [b2] });
         setBudget3({ results: [b3] });
         setHasLoaded(true);
       } catch (err) {
+
         console.error("Budget fetch failed:", err);
       }
     };
