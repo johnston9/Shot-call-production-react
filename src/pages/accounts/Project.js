@@ -28,6 +28,7 @@ const Project = ({
   payment,
   created_at,
   fetchData,
+  budget_id
 }) => {
   const currentUser = useCurrentUser();
   const { currentlyActivePlans } = useActivePlan();
@@ -133,8 +134,11 @@ const Project = ({
                     hasBudgetPlan(currentlyActivePlans) ||
                     hasProjectPlan(currentlyActivePlans)
                   ) {
-                    // history.push(`/${id}/budgets`);
-                    history.push(`/budgets/create?id=${id}`)
+                    if (budget_id === null) {
+                      history.push(`/budgets/create`)
+                    } else {
+                      history.push(`/${id}/budgets`);
+                    }
                   } else {
                     toast.error(
                       "Cannot access budget. Please buy either budget or project subscription"

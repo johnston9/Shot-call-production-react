@@ -35,9 +35,6 @@ function ProjectEdit() {
     const handleMount = async () => {
       try {
         const { data } = await axiosInstance.get(`/projects-detail/${id}/`);
-
-        console.log(data);
-
         const { name, category_type, shotcaller_url } = data.data;
 
         setPostData({ name, category_type, shotcaller_url });

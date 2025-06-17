@@ -6125,7 +6125,6 @@ function BudgetEdit({ type }) {
 
   useEffect(() => {
     const addAboveTheLine = () => {
-      console.log("----execute addAboveTheLine----", developmentTotal);
       setAboveTheLineTotal(
         parseFloat(postDataRightsTotal || 0) +
         parseFloat(developmentTotal || 0) +
@@ -6543,7 +6542,6 @@ function BudgetEdit({ type }) {
   // function to add above A and below B and C on change
   useEffect(() => {
     const addBelowAboveABC = () => {
-      console.log("----execute addBelowAboveABC----", aboveTheLineTotal);
       setAboveBelowABCTotal(
         parseFloat(aboveTheLineTotal || 0) + parseFloat(belowBandCTotal || 0)
       );
@@ -6653,7 +6651,6 @@ function BudgetEdit({ type }) {
   // function to add A B C and D on change
   useEffect(() => {
     const addBelowAboveABCandD = () => {
-      console.log("----execute addBelowAboveABCandD----", aboveBelowABCTotal);
       setAboveBelowABCandDTotal(
         parseFloat(aboveBelowABCTotal || 0) + parseFloat(otherDTotal || 0)
       );
@@ -6709,7 +6706,6 @@ function BudgetEdit({ type }) {
   // function to add all totals on change
   useEffect(() => {
     const addGrand = () => {
-      console.log("----execute addGrand----", aboveBelowABCandDTotal);
       setGrandTotal(
         parseFloat(aboveBelowABCandDTotal || 0) +
         parseFloat(contingency || 0) +
@@ -6784,8 +6780,6 @@ function BudgetEdit({ type }) {
       try {
         // console.log(type)
         const { data } = await axiosReq.get(type === 0 ? `/budgets1/?project=${id}` : `/budget-view/${id}`);
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",data);
-        console.log(data.results[0])
         setBudgetId1(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
@@ -8360,7 +8354,6 @@ function BudgetEdit({ type }) {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(type === 0 ? `/budgets2/?project=${id}` : `/budgets2/?budget_id=${id}`);
-          console.log("??????????", data?.results[0]?.id)
         setBudgetId2(data?.results[0]?.id);
         // budget number
         const { budget_number } = data.results[0];
@@ -12370,7 +12363,6 @@ function BudgetEdit({ type }) {
 
     try {
       type === 0 ? await axiosReq.put(`/budgets1/${budgetId1}/`, formData) : await axiosReq.patch(`/budget-view/${budgetId1}/`, formData);
-      // console.log(`submit1 ${data}`);
       handleSubmit2(event);
     } catch (err) {
       console.log(err);

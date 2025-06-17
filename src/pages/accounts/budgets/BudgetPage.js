@@ -22,7 +22,6 @@ const BudgetPage = ({ type }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(type)
     const fetchBudget = async () => {
       try {
         if (type === 0) {
