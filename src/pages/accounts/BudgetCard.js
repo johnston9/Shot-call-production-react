@@ -1,18 +1,13 @@
 /* Component in the Projects Component to display a Project's data */
 import React, { useEffect, useState } from "react";
-
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link, useHistory } from "react-router-dom";
-import { Badge as ManBadge } from "@mantine/core";
+import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosInstance, axiosRes } from "../../api/axiosDefaults";
+import { axiosInstance } from "../../api/axiosDefaults";
 import { UniDropdown } from "../../components/UniDropDown";
-import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
-import useActivePlan from "../../hooks/useActivePlan";
-import { hasProjectPlan } from "../../utils/hasProjectPlan";
+
 
 import styles from "../../styles/Account.module.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
@@ -30,12 +25,12 @@ const BudgetCard = ({
   format,
   fetchData
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
   const [sharedListing, setSharedListing] = useState([])
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
     setSuccessMsg("");
+    setFormData({ name: "", email: "" });
   };
   const [formData, setFormData] = useState({
     name: "",
@@ -265,7 +260,6 @@ const BudgetCard = ({
                         return (
                           <tr key={id}>
                             <td>{i + 1}</td>
-                            {/* <td>{budget}</td> */}
                             <td>{email}</td>
                             <td>{name}</td>
                             <td>
