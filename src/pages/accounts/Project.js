@@ -135,7 +135,7 @@ const Project = ({
                     hasProjectPlan(currentlyActivePlans)
                   ) {
                     if (budget_id === null) {
-                      history.push(`/budgets/create`)
+                      history.push(`/budgets/create?id=${id}`)
                     } else {
                       history.push(`/${id}/budgets`);
                     }
