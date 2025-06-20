@@ -10,6 +10,9 @@ import { Image } from "react-bootstrap";
 import { ProfileEditDropdown } from "../../components/UniDropDown";
 import Projects from "./Projects";
 import { useHistory } from "react-router-dom";
+import useActivePlan from "../../hooks/useActivePlan";
+import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
+import toast from "react-hot-toast";
 
 const Account = ({
   id,
@@ -93,6 +96,19 @@ const Account = ({
       </Row>
     </div>
   );
+  const { currentlyActivePlans } = useActivePlan();
+
+  const handleShowBudget = () => {
+    if (!hasBudgetPlan(currentlyActivePlans)) {
+      toast.error(`You don't have any active packages!`);
+      history.push(`/subscription-plans`);
+      return;
+    }
+
+    // history.push(`/profiles/${userData?.pk}`);
+    history.push("/my-budgets");
+    // setShowCreateProject((showCreateProject) => !showCreateProject);
+  };
   return (
     <div>
       <Row className="mt-3">
@@ -109,8 +125,16 @@ const Account = ({
       <div className="d-block d-md-none">{topProfileMo}</div>
       <Row className="px-3">
         <Col className="text-center">
-          <h3 className="my-3">PROJECTS</h3>
+          <h3 className="my-3" style={{ marginLeft: "130px" }}>PROJECTS</h3>
         </Col>
+        <Button
+        style={{ marginRight: "50px" }}
+          className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
+          // onClick={handleShowProject}
+          onClick={handleShowBudget}
+        >
+          My Budget
+        </Button>
       </Row>
       <Row>
         <Col>

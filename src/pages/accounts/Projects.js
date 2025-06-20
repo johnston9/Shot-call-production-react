@@ -54,8 +54,7 @@ const Projects = ({
 
       try {
         const { data } = await axiosInstance.get(
-          `/projects/${userData.pk}${
-            searchQuery !== "" ? `?search=${searchQuery}` : ""
+          `/projects/${userData.pk}${searchQuery !== "" ? `?search=${searchQuery}` : ""
           }`,
           {
             headers: {
@@ -130,17 +129,7 @@ const Projects = ({
     setShowCreateProject((showCreateProject) => !showCreateProject);
   };
 
-  const handleShowBudget= () => {
-    if (!hasBudgetPlan(currentlyActivePlans)) {
-      toast.error(`You don't have any active packages!`);
-      history.push(`/subscription-plans`);
-      return;
-    }
-    
-      // history.push(`/profiles/${userData?.pk}`);
-    history.push("/my-budgets");
-    // setShowCreateProject((showCreateProject) => !showCreateProject);
-  };
+  
   const getMaxProject = (plans) => {
     const projectPlan = plans?.find((p) => p?.plan?.plan_type === "project");
     if (projectPlan) {
@@ -180,7 +169,7 @@ const Projects = ({
   }, [stripeSuccess]);
 
   const getCurrentUserData = async () => {
- 
+
 
     if (localStorage.getItem("user") && localStorage.getItem("accessToken")) {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -232,13 +221,7 @@ const Projects = ({
           >
             Create Budget
           </Button> */}
-          <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
-            // onClick={handleShowProject}
-            onClick={handleShowBudget}
-          >
-            My Budget
-          </Button>
+         
           {/* {showMessage && getMessage(stripeSuccess)} */}
         </Col>
       </Row>
@@ -253,20 +236,22 @@ const Projects = ({
           getCurrentUserData={getCurrentUserData}
         />
       ) : (
-        ""
-      )}
-      {getMaxProject(currentlyActivePlans) && (
-        <Alert
-          variant="info"
-          style={{
-            maxWidth: "fit-content",
-            margin: "0 auto",
-          }}
-        >
-          {userData?.remaining_projects ? userData?.remaining_projects : 0}{" "}
-          {Number(userData?.remaining_projects) === 1 ? "project" : "projects"}{" "}
-          remaining out of {getMaxProject(currentlyActivePlans)}
-        </Alert>
+        <>
+
+          {getMaxProject(currentlyActivePlans) && (
+            <Alert
+              variant="info"
+              style={{
+                maxWidth: "fit-content",
+                margin: "0 auto",
+              }}
+            >
+              {userData?.remaining_projects ? userData?.remaining_projects : 0}{" "}
+              {Number(userData?.remaining_projects) === 1 ? "project" : "projects"}{" "}
+              remaining out of {getMaxProject(currentlyActivePlans)}
+            </Alert>
+          )}
+        </>
       )}
       {/* search */}
       <Row>
@@ -295,7 +280,7 @@ const Projects = ({
         {hasLoaded ? (
           <>
             {hasProjectPlan(currentlyActivePlans) &&
-            projects?.results?.length ? (
+              projects?.results?.length ? (
               projects.results.map((proj) => {
                 if (proj?.is_deleted) return null;
                 return (
