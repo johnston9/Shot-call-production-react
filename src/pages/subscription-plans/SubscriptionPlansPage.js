@@ -15,8 +15,6 @@ export default function SubscriptionPlansPage() {
     fetchMyActivePlan,
   } = useActivePlan();
 
-  // console.log(currentlyActivePlans);
-  // console.log(currentlyActivePlans);
 
   const [allCompanyPlans, setAllCompanyPlans] = useState([]);
   const [allStudPlans, setAllStudPlans] = useState([]);
@@ -438,7 +436,7 @@ export default function SubscriptionPlansPage() {
                               // 1. Show message if plan is cancelled but still usable
                               if (activePlan?.auto_renewal === false) {
                                 return (
-                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold", fontSize:'13px' }}>
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold", fontSize: '13px' }}>
                                     Your subscription is cancelled, but you can use the service until{" "}
                                     {activePlan?.current_period_end}
                                   </p>
@@ -470,7 +468,7 @@ export default function SubscriptionPlansPage() {
 
                                 return !hasProjectPlan ? (
                                   <Button
-                                  className="card-absolute-btn"
+                                    className="card-absolute-btn"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
                                       choosePlan(plan);
@@ -627,7 +625,7 @@ export default function SubscriptionPlansPage() {
                               <span style={{ fontWeight: "bold" }}>Price</span>:
                               ${plan?.price}
                             </p>
-                            
+
                             {findDates(plan)?.startDate && (
                               <p className="mb-0">
                                 <span style={{ fontWeight: "bold" }}>
@@ -722,19 +720,8 @@ export default function SubscriptionPlansPage() {
                               const activePlan = currentlyActivePlans?.find(
                                 (p) => p?.plan?.id === plan?.id
                               );
-
                               //  1. Show cancellation message if auto_renewal is false
                               if (activePlan?.auto_renewal === true) {
-                                return (
-                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold" ,fontSize:'13px' }}>
-                                    Your subscription is cancelled but you can use the service until{" "}
-                                    {activePlan?.current_period_end}
-                                  </p>
-                                );
-                              }
-
-                              // 2. Show cancel button if plan is inactive
-                              if (activePlan?.is_active === false) {
                                 return (
                                   <Button
                                     className="card-absolute-btn"
@@ -747,6 +734,16 @@ export default function SubscriptionPlansPage() {
                                   >
                                     Cancel Subscription
                                   </Button>
+                                );
+                              }
+
+                              // 2. Show cancel button if plan is inactive
+                              if (activePlan?.auto_renewal === false) {
+                                return (
+                                  <p className="card-absolute-btn" style={{ color: "orange", fontWeight: "bold", fontSize: '13px' }}>
+                                    Your subscription is cancelled but you can use the service until{" "}
+                                    {activePlan?.current_period_end}
+                                  </p>
                                 );
                               }
 
@@ -1020,7 +1017,7 @@ export default function SubscriptionPlansPage() {
                             // 1. Show notice if auto_renewal is false
                             if (activePlan?.auto_renewal === false) {
                               return (
-                                <p className="card-absolute-btn m-0 mt-3" style={{ color: "orange", fontWeight: "bold",fontSize:'13px' }}>
+                                <p className="card-absolute-btn m-0 mt-3" style={{ color: "orange", fontWeight: "bold", fontSize: '13px' }}>
                                   Your subscription is cancelled, but you can use the service until{" "}
                                   {activePlan?.current_period_end}
                                 </p>
