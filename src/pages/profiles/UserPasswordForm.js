@@ -16,6 +16,7 @@ import appStyles from "../../App.module.css"
 import { useRedirect } from "../../hooks/Redirect"
 import useHostName from "../../hooks/useHostName"
 import { CLIENT_PROGRAM_HOSTNAME } from "../../utils/config"
+import toast from "react-hot-toast"
 
 const UserPasswordForm = () => {
   // useRedirect();
@@ -47,20 +48,34 @@ const UserPasswordForm = () => {
   }, [currentUser, history, id])
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      if (host === CLIENT_PROGRAM_HOSTNAME) {
-        await axiosRes.post("/dj-rest-auth/password/change/", userData)
-        history.goBack()
-      } else {
-        await axiosInstance.post("/dj-rest-auth/password/change/", userData)
-        history.goBack()
-      }
-    } catch (err) {
-      console.log(err)
-      setErrors(err.response?.data)
+    event.preventDefault();
+
+    // Check if fields are empty
+    if (!new_password1 || !new_password2) {
+      toast.error("Both password fields are required");
+      // setShowToast(true);
+      return;
     }
-  }
+
+    // Check if passwords match
+    if (new_password1 !== new_password2) {
+      toast.error("Passwords do not match");
+      // setShowToast(true);
+      return;
+    }
+
+    try {
+      const endpoint =
+        host === CLIENT_PROGRAM_HOSTNAME ? axiosRes : axiosInstance;
+
+      await endpoint.post("/dj-rest-auth/password/change/", userData);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+      setErrors(err.response?.data);
+    }
+  };
+
 
   return (
     <Row>

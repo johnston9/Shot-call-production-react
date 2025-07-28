@@ -517,7 +517,7 @@ export default function SubscriptionPlansPage() {
                               <Modal.Body>
                                 Are you sure you want to cancel your
                                 subscription? Once canceled, you will no longer
-                                have access to your {type}.
+                                have access to your {type} after the current payment period is up.
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button
