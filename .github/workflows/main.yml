@@ -13,35 +13,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 16
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Add SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/prod.pem
-          chmod 600 ~/.ssh/prod.pem
-
-      - name: Fetch .env from server
-        run: |
-          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.EC2_SSH }} "cat /home/ubuntu/env.txt" > .env
-        working-directory: ./Shot-call-production-react
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/cnp2329.pem
+          chmod 600 ~/.ssh/cnp2329.pem
 
       - name: Prepare package.json
         run: mv package.json.example package.json
-        working-directory: ./Shot-call-production-react
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./Shot-call-production-react
 
       - name: Build project
         run: npm run build
-        working-directory: ./Shot-call-production-react
 
-      - name: Deploy to EC2
+      - name: Deploy build to EC2
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-          ./Shot-call-production-react/build/ ${{ secrets.EC2_SSH }}:${{ secrets.EC2_TARGET_DIR }}
+          rsync -avz -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+          ./build/ ${{ secrets.EC2_SSH }}:${{ secrets.EC2_TARGET_DIR }}
+
+      - name: Copy .env file to target
+        run: |
+          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.EC2_SSH }} \
+          "cp /home/ubuntu/env.txt ${{ secrets.EC2_TARGET_DIR }}/.env"
+
+      - name: Restart app with PM2
+        run: |
+          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.EC2_SSH }} "
+            cd ${{ secrets.EC2_TARGET_DIR }} && \
+            pm2 delete ShotCallApp || true && \
+            pm2 start npm --name ShotCallApp -- start && \
+            pm2 save
+          "
