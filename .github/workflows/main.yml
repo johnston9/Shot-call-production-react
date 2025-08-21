@@ -1,9 +1,9 @@
-name: CI/CD - Shotcall Production
+name: Deploy Production
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -13,45 +13,34 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Use Node.js 16
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - name: Replace package.json
-        run: |
-          rm -f package.json
-          cp package.json.example package.json
-
-      # ---------- PRODUCTION ----------
-      - name: Setup SSH Key (Production)
+      - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.PROD_EC2_SSH_KEY }}" > ~/.ssh/prod.pem
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/prod.pem
           chmod 600 ~/.ssh/prod.pem
 
-      - name: Fetch .env from Production
+      - name: Fetch .env from Server
         run: |
-          scp -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no \
-            ubuntu@${{ secrets.PROD_EC2_HOST }}:${{ secrets.PROD_EC2_TARGET_DIR }}/.env \
-            .env
+          ${{ secrets.EC2_SSH }} "cat /home/ubuntu/env.txt" > .env
 
-      - name: Install Dependencies & Build (Production)
-        run: |
-          npm install
-          npm run build
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Deploy to Production
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy Code to EC2
         run: |
-          RSYNC_RSH="ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no"
           rsync -avz --delete \
-            -e "$RSYNC_RSH" \
-            ./ ubuntu@${{ secrets.PROD_EC2_HOST }}:${{ secrets.PROD_EC2_TARGET_DIR }} \
+            -e "ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+            ./build/ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production \
             --exclude '.git' --exclude 'node_modules'
 
-          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no ubuntu@${{ secrets.PROD_EC2_HOST }} "
-            cd ${{ secrets.PROD_EC2_TARGET_DIR }} && \
-            pm2 delete Shotcall || true && \
-            pm2 start npm --name Shotcall -- start && \
-            pm2 save
-          "
+      - name: Restart App with PM2
+        run: |
+          ${{ secrets.EC2_SSH }} "pm2 restart shotcall-frontend || pm2 start /var/www/html/Shot-call-Production/server.js --name shotcall-frontend"
