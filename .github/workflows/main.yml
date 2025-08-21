@@ -59,7 +59,6 @@ jobs:
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "
             cd /var/www/html/Shot-call-Production && \
-            /home/ubuntu/.nvm/versions/node/v16.13.0/bin/pm2 delete ShotCallApp || true && \
             /home/ubuntu/.nvm/versions/node/v16.13.0/bin/pm2 start npm --name ShotCallApp -- start && \
             /home/ubuntu/.nvm/versions/node/v16.13.0/bin/pm2 save
           "
