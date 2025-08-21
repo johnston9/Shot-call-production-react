@@ -42,18 +42,18 @@ jobs:
       - name: Deploy build to EC2
         run: |
           rsync -avz -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-          ./build/ ${{ secrets.EC2_SSH }}:${{ secrets.EC2_TARGET_DIR }}
+          ./build/ ${{ secrets.EC2_SSH }}:/var/www/html/Shot-call-Production
 
       - name: Copy .env file to target
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "echo '${{ secrets.REACT_ENV }}' > ${{ secrets.EC2_TARGET_DIR }}/.env"
+          ${{ secrets.EC2_SSH }} "echo '${{ secrets.REACT_ENV }}' > /var/www/html/Shot-call-Production/.env"
 
       - name: Restart app with PM2
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ${{ secrets.EC2_SSH }} "
-            cd ${{ secrets.EC2_TARGET_DIR }} && \
+            cd /var/www/html/Shot-call-Production && \
             pm2 delete ShotCallApp || true && \
             pm2 start npm --name ShotCallApp -- start && \
             pm2 save
