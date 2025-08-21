@@ -38,9 +38,9 @@ jobs:
         run: |
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-            ./build/ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production \
+            ./ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production \
             --exclude '.git' --exclude 'node_modules'
 
-      - name: Restart App with PM2
+      - name: Restart Application with PM2
         run: |
-          ${{ secrets.EC2_SSH }} "pm2 restart shotcall-frontend || pm2 start /var/www/html/Shot-call-Production/server.js --name shotcall-frontend"
+          ${{ secrets.EC2_SSH }} "cd /var/www/html/Shot-call-Production && pm2 restart all || pm2 start npm --name shotcall -- run start"
