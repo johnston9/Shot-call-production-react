@@ -1,47 +1,47 @@
-name: Deploy Production
+name: Production Deploy
 
 on:
   push:
     branches:
-      - main
+      - main   # Production branch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
 
-      - name: Setup SSH Key
+      - name: Add SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/prod.pem
           chmod 600 ~/.ssh/prod.pem
 
-      - name: Fetch .env from Server
+      - name: Fetch .env from server
         run: |
-          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ubuntu@${{ secrets.EC2_HOST }} "cat /home/ubuntu/env.txt" > .env
+          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.EC2_SSH }} "cat /home/ubuntu/env.txt" > .env
+        working-directory: ./Shot-call-production-react
 
-      - name: Install Dependencies
+      - name: Prepare package.json
+        run: mv package.json.example package.json
+        working-directory: ./Shot-call-production-react
+
+      - name: Install dependencies
         run: npm install
+        working-directory: ./Shot-call-production-react
 
-      - name: Build Project
+      - name: Build project
         run: npm run build
+        working-directory: ./Shot-call-production-react
 
-      - name: Deploy Code to EC2
+      - name: Deploy to EC2
         run: |
-          rsync -avz --delete \
-            -e "ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-            ./ ubuntu@${{ secrets.EC2_HOST }}:/var/www/html/Shot-call-Production \
-            --exclude '.git' --exclude 'node_modules'
-
-      - name: Restart Application with PM2
-        run: |
-          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ubuntu@${{ secrets.EC2_HOST }} \
-            "cd /var/www/html/Shot-call-Production && pm2 restart all || pm2 start npm --name shotcall -- run start"
+          rsync -avz -e "ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+          ./Shot-call-production-react/build/ ${{ secrets.EC2_SSH }}:${{ secrets.EC2_TARGET_DIR }}
