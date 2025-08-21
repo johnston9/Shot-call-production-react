@@ -39,6 +39,11 @@ jobs:
         run: |
           CI=false NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
+      - name: Ensure target directory exists on EC2
+        run: |
+          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ${{ secrets.EC2_SSH }} "mkdir -p /var/www/html/Shot-call-Production"
+
       - name: Deploy build to EC2
         run: |
           rsync -avz -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
