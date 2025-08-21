@@ -44,15 +44,24 @@ jobs:
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "mkdir -p /var/www/html/Shot-call-Production"
 
-      - name: Deploy build to EC2
+      - name: Deploy ALL project files to EC2
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-          ./build/ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production
+          rsync -avz --exclude ".git" --exclude "node_modules" \
+          -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+          ./ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production
 
       - name: Copy .env file to target
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "echo '${{ secrets.REACT_ENV }}' > /var/www/html/Shot-call-Production/.env"
+
+      - name: Install dependencies on server
+        run: |
+          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "
+            cd /var/www/html/Shot-call-Production && \
+            npm install --production
+          "
 
       - name: Restart app with PM2
         run: |
