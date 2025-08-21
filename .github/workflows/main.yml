@@ -27,6 +27,12 @@ jobs:
       - name: Prepare package.json
         run: mv package.json.example package.json
 
+      - name: Fetch .env from EC2
+        run: |
+          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.EC2_SSH }} \
+          "cat /home/ubuntu/env.txt" > .env
+          echo ".env file downloaded successfully"
+
       - name: Install dependencies
         run: npm install
 
