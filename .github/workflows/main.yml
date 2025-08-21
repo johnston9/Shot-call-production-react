@@ -42,22 +42,22 @@ jobs:
       - name: Ensure target directory exists on EC2
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "mkdir -p /var/www/html/Shot-call-Production"
+          ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "mkdir -p /var/www/html/Shot-call-Production"
 
       - name: Deploy build to EC2
         run: |
           rsync -avz -e "ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
-          ./build/ ${{ secrets.EC2_SSH }}:/var/www/html/Shot-call-Production
+          ./build/ ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com:/var/www/html/Shot-call-Production
 
       - name: Copy .env file to target
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "echo '${{ secrets.REACT_ENV }}' > /var/www/html/Shot-call-Production/.env"
+          ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "echo '${{ secrets.REACT_ENV }}' > /var/www/html/Shot-call-Production/.env"
 
       - name: Restart app with PM2
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "
+          ubuntu@ec2-99-81-57-169.eu-west-1.compute.amazonaws.com "
             cd /var/www/html/Shot-call-Production && \
             pm2 delete ShotCallApp || true && \
             pm2 start npm --name ShotCallApp -- start && \
