@@ -1,4 +1,4 @@
-name: CI/CD - Shot-call-Production
+name: CI/CD - Shotcall Production
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,34 +23,35 @@ jobs:
           rm -f package.json
           cp package.json.example package.json
 
-      - name: Install Dependencies & Build
+      # ---------- PRODUCTION ----------
+      - name: Setup SSH Key (Production)
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PROD_EC2_SSH_KEY }}" > ~/.ssh/prod.pem
+          chmod 600 ~/.ssh/prod.pem
+
+      - name: Fetch .env from Production
+        run: |
+          scp -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no \
+            ubuntu@${{ secrets.PROD_EC2_HOST }}:${{ secrets.PROD_EC2_TARGET_DIR }}/.env \
+            .env
+
+      - name: Install Dependencies & Build (Production)
         run: |
           npm install
           npm run build
 
-      - name: Setup SSH Key
+      - name: Deploy to Production
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/cnp2329.pem
-          chmod 600 ~/.ssh/cnp2329.pem
-
-      - name: Deploy Code to EC2
-        run: |
-          RSYNC_RSH="${{ secrets.EC2_SSH }}" 
+          RSYNC_RSH="ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no"
           rsync -avz --delete \
             -e "$RSYNC_RSH" \
-            ./ ${{ secrets.EC2_TARGET_DIR }} \
+            ./ ubuntu@${{ secrets.PROD_EC2_HOST }}:${{ secrets.PROD_EC2_TARGET_DIR }} \
             --exclude '.git' --exclude 'node_modules'
 
-      - name: Setup ENV file on EC2
-        run: |
-          ${{ secrets.EC2_SSH }} "cp /home/ubuntu/env.txt ${{ secrets.EC2_TARGET_DIR }}/.env"
-
-      - name: Restart App with PM2
-        run: |
-          ${{ secrets.EC2_SSH }} "
-            cd ${{ secrets.EC2_TARGET_DIR }} && \
-            pm2 delete Shotcall-Production || true && \
-            pm2 start npm --name Shotcall-Production -- start && \
+          ssh -i ~/.ssh/prod.pem -o StrictHostKeyChecking=no ubuntu@${{ secrets.PROD_EC2_HOST }} "
+            cd ${{ secrets.PROD_EC2_TARGET_DIR }} && \
+            pm2 delete Shotcall || true && \
+            pm2 start npm --name Shotcall -- start && \
             pm2 save
           "
