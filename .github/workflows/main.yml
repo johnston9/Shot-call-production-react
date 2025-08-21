@@ -1,0 +1,56 @@
+name: CI/CD - Shot-call-Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Replace package.json
+        run: |
+          rm -f package.json
+          cp package.json.example package.json
+
+      - name: Install Dependencies & Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/cnp2329.pem
+          chmod 600 ~/.ssh/cnp2329.pem
+
+      - name: Deploy Code to EC2
+        run: |
+          RSYNC_RSH="${{ secrets.EC2_SSH }}" 
+          rsync -avz --delete \
+            -e "$RSYNC_RSH" \
+            ./ ${{ secrets.EC2_TARGET_DIR }} \
+            --exclude '.git' --exclude 'node_modules'
+
+      - name: Setup ENV file on EC2
+        run: |
+          ${{ secrets.EC2_SSH }} "cp /home/ubuntu/env.txt ${{ secrets.EC2_TARGET_DIR }}/.env"
+
+      - name: Restart App with PM2
+        run: |
+          ${{ secrets.EC2_SSH }} "
+            cd ${{ secrets.EC2_TARGET_DIR }} && \
+            pm2 delete Shotcall-Production || true && \
+            pm2 start npm --name Shotcall-Production -- start && \
+            pm2 save
+          "
