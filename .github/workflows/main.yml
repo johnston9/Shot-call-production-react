@@ -31,14 +31,13 @@ jobs:
         run: |
           echo "${{ secrets.REACT_ENV }}" > .env
           echo ".env file created successfully"
-          cat .env  # (optional, remove if you don’t want to print)
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
         run: |
-          NODE_OPTIONS="--max-old-space-size=4096" npm run build
+          CI=false NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
       - name: Deploy build to EC2
         run: |
