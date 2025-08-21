@@ -27,11 +27,11 @@ jobs:
       - name: Prepare package.json
         run: mv package.json.example package.json
 
-      - name: Fetch .env from EC2
+      - name: Create .env file from GitHub Secret
         run: |
-          ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "cat /home/ubuntu/env.txt" > .env
-          echo ".env file downloaded successfully"
+          echo "${{ secrets.REACT_ENV }}" > .env
+          echo ".env file created successfully"
+          cat .env  # (optional, remove if you don’t want to print)
 
       - name: Install dependencies
         run: npm install
@@ -47,7 +47,7 @@ jobs:
       - name: Copy .env file to target
         run: |
           ssh -i ~/.ssh/cnp2329.pem -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.EC2_SSH }} "cp /home/ubuntu/env.txt ${{ secrets.EC2_TARGET_DIR }}/.env"
+          ${{ secrets.EC2_SSH }} "echo '${{ secrets.REACT_ENV }}' > ${{ secrets.EC2_TARGET_DIR }}/.env"
 
       - name: Restart app with PM2
         run: |
