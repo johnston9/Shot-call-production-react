@@ -63,4 +63,5 @@ jobs:
             /home/ubuntu/.nvm/versions/node/v16.13.0/bin/pm2 restart ShotCallApp && \
             /home/ubuntu/.nvm/versions/node/v16.13.0/bin/pm2 save
             echo "deployed"
+            echo "done"
           "
