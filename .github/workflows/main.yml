@@ -25,12 +25,12 @@ jobs:
           chmod 600 ~/.ssh/cnp2329.pem
 
       - name: Prepare package.json
-        run: mv package.json.example package.json
+        run: mv package.json.example package.json && mv .env.dev .env
 
-      - name: Create .env file from GitHub Secret
-        run: |
-          echo "${{ secrets.REACT_ENV }}" > .env
-          echo ".env file created successfully"
+      #- name: Create .env file from GitHub Secret
+        #run: |
+          #echo "${{ secrets.REACT_ENV }}" > .env
+          #echo ".env file created successfully"
 
       - name: Install dependencies
         run: npm install
