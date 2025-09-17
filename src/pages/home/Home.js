@@ -1,4 +1,4 @@
-/* Home Page 
+/* Home Page -added budgeting 
  * Section 1 - the temporary background image city1
    Quick links to the Creative and Production feature information pages
  * Section 2 - Overview in 4 parts with temporary images
@@ -54,7 +54,27 @@ const Home = () => {
                 >
                   The entire Creative and Production processes in one Workflow.
                 </h5>
-                <Row className="mt-5">
+                {/* budget */}
+                 <Row className="mt-5" >
+                <Col className={`text-center  ${styles.Creative} `} xs={12} >
+                <h4 className={`mb-2 ${styles.Creative}`}>
+                Budgeting
+                </h4>
+                <p className={`${styles.Creative}`} 
+                  style={{fontStyle: 'italic'}}>
+                Create Industry standard Budgets easily
+                </p>
+                </Col>
+                </Row>
+                <Row>
+                <Col xs={12} >
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/budgeting')}>
+                Budgeting
+                </p>
+                </Col>
+                </Row>
+                <Row className="mt-3">
                   <Col className={`text-center  ${styles.Creative} `} md={6}>
                     {/* The Creative links */}
                     <h4 className={`mb-2 ${styles.Creative}`}>The Creative</h4>
