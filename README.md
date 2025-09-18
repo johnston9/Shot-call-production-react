@@ -236,11 +236,11 @@ The React Dependencies and DRF Requirements can be found in the Deployment secti
 
 All functionality was tested as it was being built to ensure there were no errors, that it did what it was meant to do and that all database errors were handled correctly. <br> 
 
-On completion the functionality of the entire app was repeatedly tested on various devices both by the development team and by Capital Numbers, the InfoTech company responsible for part of the development.<br> 
+On completion the functionality of the entire app was repeatedly tested on various devices both by the development team and by Capital Numbers InfoTech.<br> 
 
 All pages were checked in Lighthouse. All errors were fixed. <br>
 
-W3C Markup Validator, W3C CSS Validator, and JSHint were used to validate all HTML, CSS, and JS in the project, the results are in documentation.
+W3C Markup Validator, W3C CSS Validator, and JSHint were used to validate all HTML, CSS, and JS in the project.
 
 - [W3C Markup Validator](https://validator.w3.org/) 
   - On validated by URL no errors were shown - Info messages were given for the trailing slash in the link and meta tags in index.html but were left in anyhow.
@@ -252,7 +252,7 @@ W3C Markup Validator, W3C CSS Validator, and JSHint were used to validate all HT
 
 - [JSHint](https://jshint.com/) 
   - JSHint was used with "New JavaScript features (ES6)" checked in the configuration menu.
-  [Results](documentation/testing/jshint)
+  No code errors were found.
 
 [Back to Table of Content](#table-of-content)
 
@@ -333,15 +333,15 @@ sqlparse==0.4.2 <br>
 ## Credits - (Shot Caller and Shot Caller Production - Front and Backend)
 
 ### Code
-
-- [Code Institute](https://codeinstitute.net/)
-  The code for the basic React/DRF set-up for the app is from Code Institute. 
+ 
 - [Django Rest Framework](https://www.django-rest-framework.org/)
 Django Rest Framework documents was referred to for a number of backend issues in the project.
 - [stackoverflow.com](https://stackoverflow.com/questions/45380397/scrollable-drop-down-lists-in-react-bootstrap)
 Stack Overflow was referred to for different approaches to some issues including the Regex to allow only numbers and a decimal point in some Budget input boxes and how to add a scroll to a React dropdown.
 - [w3schools.com](https://www.w3schools.com/)
 W3schools was referred to a number of times for Javascript code examples.
+- [Code Institute](https://codeinstitute.net/)
+  The code for the basic React/DRF set-up for the app is from Code Institute.
   
 ### Content
 

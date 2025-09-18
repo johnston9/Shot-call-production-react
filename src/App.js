@@ -51,6 +51,7 @@ import ResetPasswordForm from "./pages/auth/ResetPasswordForm";
 import styles from "./App.module.css";
 import MyBudget from "./pages/budget/budgets/MyBudget";
 import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
+import Budgeting from "./pages/home/Budgeting";
 // import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 
 // import BudgetPage from "./pages/accounts/BudgetPage";
@@ -90,6 +91,7 @@ function App() {
           />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           {/* features */}
+          <Route exact path="/budgeting" render={() => <Budgeting /> } />
           <Route exact path="/moodboards" render={() => <Moodboards />} />
           <Route exact path="/charslocates" render={() => <CharsLocates />} />
           <Route exact path="/workspaces" render={() => <Workspaces />} />

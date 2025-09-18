@@ -371,6 +371,14 @@ const NavBar = () => {
           >
             <i className="fas fa-play"></i>Home
           </NavLink>
+          {/* budgeting */}
+          <NavLink
+            className={`mt-2 pt-1 mx-2  ${styles.NavLink}`}
+            activeClassName={styles.Active}
+            to="/budgeting"
+          >
+            <i className="fas fa-play"></i>Budgeting
+          </NavLink>
           {/* creative */}
           {creativeIcons}
           {/* Production */}
