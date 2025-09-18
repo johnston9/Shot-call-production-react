@@ -1,25 +1,6 @@
-.SignupBox {
+/* .SignupBox {
   background-color: #353839;
   height: 530px;
-}
-
-.Image {
-    height: 300px;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-/* .Row1 {
-  height: 600px;
-} */
-
-.Inner {
-  background-color: #0b3d63;
-  color: #fafafa;
-}
-
-.Guest {
-  color: #fafafa;
 }
 
 .FillerImagel {
@@ -28,13 +9,31 @@
   width: 50%;
 }
 
-.FillerImager {
-  object-fit: contain;
-  height: 300px;
-  width: 50px;
-  margin-top: 30px;
-  background-repeat: no-repeat;
-  margin: 0 auto;
+.Inner {
+  background-color: #0b3d63;
+  color: #fafafa;
+} */
+
+.SignupBox {
+  background-color: #353839;
+  width: 100%; 
+  height: 600px;
+  background-color: #000;
+}
+
+.FillerImagel {
+  object-fit: cover;
+  height: 350px;
+  width: 50%;
+} 
+
+.Inner {
+  background-color: #0b3d63;
+  color: #fafafa;
+}
+
+.Guest {
+  color: #fafafa;
 }
 
 .Form {

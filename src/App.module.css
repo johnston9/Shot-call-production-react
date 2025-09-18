@@ -4,8 +4,26 @@
   min-height: 100vh;
 }
 
+/*----------------Fonts--------------------*/
+
+.lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.playball {
+  font-family: 'Playball', cursive;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.playfair {
+  font-family: "Playfair Display", serif; 
+}
+
 .Main {
-  padding-top: 60px;
+  padding-top: 55px;
 }
 
 .Content {
@@ -96,24 +114,6 @@ figure {
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-/*----------------Fonts--------------------*/
-
-.lato {
-  font-family: 'Lato', sans-serif;
-}
-
-.playball {
-  font-family: 'Playball', cursive;
-}
-
-.roboto {
-  font-family: 'Roboto', sans-serif;
-}
-
-.playfair {
-  font-family: "Playfair Display", serif; 
 }
 
 /*-----line breaks------*/
@@ -236,4 +236,30 @@ hr.grey100 {
 
 .offwhite {
 	color: #F5F5F5;
+}
+
+@media screen and (max-width: 600px) {
+  p {
+    font-size: .75rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
 }

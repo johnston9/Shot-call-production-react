@@ -13,7 +13,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import door from "../../assets/door.png";
 import rightdoor from "../../assets/rightdoor.png";
-import TopBox from "../../components/TopBox";
+import TopBoxSign from "../../components/TopBoxSign"
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirectSign } from "../../hooks/RedirectSign";
 import { setTokenTimestamp } from "../../utils/utils";
@@ -66,9 +66,9 @@ const SignInForm = () => {
 
   return (
     <Container className={styles.SignupBox}>
-      <TopBox title="Sign In" />
+      <TopBoxSign title="Sign In" />
       <Row className={styles.Row}>
-        <Col className="my-3 pr-0 pl-3 pl-md-4" xs={1} md={1}>
+        <Col className="my-3 text-center pr-0 pr-md-3" xs={1} md={1}>
           <Image className={`${styles.FillerImagel}`} src={door} />
         </Col>
         <Col className="my-auto py-2 p-md-2" xs={10}>
@@ -138,7 +138,7 @@ const SignInForm = () => {
             </Col>
           </Row>
         </Col>
-        <Col className={`my-3 pl-0 pr-3 pr-md-4`} xs={1} md={1}>
+        <Col className={`my-3 text-center pl-0 pl-md-3`} xs={1} md={1}>
           <Image className={`${styles.FillerImagel}`} src={rightdoor} />
         </Col>
       </Row>

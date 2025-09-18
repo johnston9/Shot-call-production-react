@@ -1,6 +1,6 @@
 .NavBar {
   background-color: #ffffff;
-  border: 1px solid #dadadf;
+  /* border: 1px solid #dadadf; */
   color: black;
 }
 
@@ -9,26 +9,46 @@ padding: 2px;
 font-size: 12px;
 }
 
+.NavLink:hover {
+padding: 2px;
+font-size: 12px;
+font-weight: 500;
+color: #000;
+}
+
+.NavLink i {
+  color: rgb(41, 180, 180);
+  /* font-size: 1.5em !important; */
+}
+
 i {
   color: rgb(41, 180, 180);
 }
 
 .DropLink {
-color: black;
+  color: black;
 }
 
-.Active i {
+.DropLink:hover {
+  color: #000;
+}
+
+/* .Active i {
 color: #2142b2;
 }
 
 .Active {
 color: #2142b2;
+} */
+
+.Active i {
+color: rgb(3, 81, 81);
+}
+
+.Active {
+color: rgb(3, 81, 81);
 }
 
 Title {
 color: #000;
-}
-
-i {
-font-size: .5em !important;
 }

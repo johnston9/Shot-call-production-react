@@ -4,26 +4,34 @@
     height: 100%;
   }
 
-  .HomeBoxMo {
-    background-color: #11262d;
-    width: 100%; 
-    height: 100%;
-  }
+.HomeBoxMo {
+background-color: #11262d;
+width: 100%; 
+height: 100%;
+}
 
 p { 
-    color: #666;
+    color: #000;
 }
 
 h1, h2, h3, h4, h5 { 
     color: #666;
 } 
+
+.Find {
+    font-weight: 400;
+    color: #0a4e47;
+}
  
 .BlueBody {
-    background-color: rgb(235, 250, 250);
+    /* background-color: rgb(235, 250, 250); */
+    font-weight: 700;
 }
+
 .PinkBody {
     background-color: rgb(253, 249, 253);
 }
+
 .WhiteBody {
     background-color: rgb(226, 246, 246);
 }
