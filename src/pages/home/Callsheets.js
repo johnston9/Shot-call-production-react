@@ -24,16 +24,15 @@ import call3 from "../../assets/call3.png";
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
 import { Image } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 
 const Callsheets = () => {
     const history = useHistory();
   
     return (
       <div className={`mt-0 ${styles.BlueBody}`}>
-      <div className={`mt-0 ${styles.Overview}`}>
-      <h2 className={`py-2 ${styles.OverviewText} ${appStyles.playfair}
-       text-center`} >Callsheets</h2>
-      </div>
+      <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
+       Callsheets</h2>
       <Row className="mt-1 ml-2" >
           <Col xs={3}>
           <Button
@@ -49,24 +48,33 @@ const Callsheets = () => {
       {/* 1  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
-        className="text-center px-1 px-md-3" >
-      <p className="mt-2">
+        className="px-1 px-md-3" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       Create Callsheets for each Shoot Day, the top section containing 
       Company info, Times and Weather info
       and a Personalised Calltime for each individual user
-      </p>
-      <p>
+      </h4>
+      <h4>
       Use the Send Button to send the Callsheet to all Cast and Crew with one click
-      </p>
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
+      <Card className='mx-3 mx-md-5' >
+      <Card.Body className={`text-center px-md-5 `}  >
       <div className="text-center px-1 px-md-3">
       <Image src={top2} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
+      </Card.Body>
+      </Card>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 2 */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -77,21 +85,28 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3 mt-2" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       View the Callsheet on mobile with the top section displaying 
       all info as the desktop view and with 
       links below to all the other sections
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 3 Locations  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       The Locations section
-      </p>
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -100,7 +115,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Locations mo */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -111,23 +129,27 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      View the Locations section on Mobile by clicking on the Locations link
-      </p>
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Locations section Mobile view
+      </h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Schedule  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       The Schedule section which is added 
       automatically from the Schedule page
-      </p>
-      <p >
-      View the Cast and Info by clicking on their links
-      </p>
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -136,7 +158,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Schedule mo */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -147,24 +172,28 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3 mt-2" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       View the Schedule section on Mobile by clicking on the Schedule link
-      </p>
-      <p >
-      The Cast and Info open by clicking on their links
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Advanced Schedule  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       The Advanced Schedule section which is added 
       automatically from the Schedule page
-      </p>
-      <p className="mt-5">The Walkies Channels section below it</p>
+      </h4>
+      <h4 className="mt-5">The Walkies Channels section below it</h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -173,7 +202,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Cast */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -184,18 +216,25 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      The Cast and BG Calltimes sections</p>
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4>
+      The Cast and BG Calltimes sections</h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* crew  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       The Crew Call Times by Department
-      </p>
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -204,6 +243,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Cast mo */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -214,18 +257,25 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      View the Cast and BG Calltimes sections on Mobile</p>
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Cast and BG Calltimes Mobile view</h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* crew mo */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
         <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      View the Crew Call Times by Department on Mobile
-      </p>
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Crew Call Times Mobile view
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -234,7 +284,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* notes */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -245,19 +298,27 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      The Department, Transport and Important Notes section</p>
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4>
+      The Department, Transport and Important Notes section</h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* cast add */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
-      <p >
-      Add the Add Cast quickly to the Callsheet by selecting a Role
-      to pre-fill their details and display their Makeup
-      and Commute times on top while all previously added characters display below 
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add the Cast quickly by selecting a Role
+      which pre-fills their details and displays their Makeup
+      and Commute times on top <br/>
+      All previously added characters display below 
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -266,7 +327,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* side by side */}
       <Row className="mt-3 px-3 pb-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -277,26 +341,29 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-      <p >
-      View the Add Cast and Add BG forms beside the Schedule for 
+        <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Add Cast and Add BG forms can be viewed beside the Schedule for 
       maximum efficiency
-      </p>
-      <p >
-      Click a Scene's Cast link to find 
-      which cast members and BG to add
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* add crew */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
-      <p >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
         Add all the Crew Call Times in a second by using the Set Unit Call button which
-        sets all times to it's value</p>
-       <p>
+        sets all times to its value</h4>
+       <h4>
        Then set any different Calls individually by Department pre-filled from the Crew Info page
-       </p>
+       </h4>
+       </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -305,7 +372,10 @@ const Callsheets = () => {
       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* emails */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -315,12 +385,17 @@ const Callsheets = () => {
       </div>
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }} className="text-center px-1 px-md-1" >
-      <p >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
        Use the Send button to send the Callsheet link
-       to all Crew members and the relevant Cast members</p>
+       to all Crew and relevant Cast members</h4>
+       </div>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       </div>
       {/* mobile */}
       <div className="d-block d-md-none">
@@ -343,7 +418,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 2 */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -360,7 +438,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 3 Locations  */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -375,7 +456,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Locations mo */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -390,7 +474,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Schedule  */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
         <Col xs={12} md={8}>
@@ -409,7 +496,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Schedule mo */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -427,7 +517,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Advanced Schedule  */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -444,7 +537,10 @@ const Callsheets = () => {
       <p className="mt-5">The Walkies Channels section below it</p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Cast */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -458,7 +554,10 @@ const Callsheets = () => {
       The Cast and BG Calltimes sections</p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* crew  */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -473,6 +572,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* Cast mo */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -486,7 +589,10 @@ const Callsheets = () => {
       View the Cast and BG Calltimes sections on Mobile</p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* crew mo */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -501,7 +607,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* notes */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -515,7 +624,10 @@ const Callsheets = () => {
       The Department, Transport and Important Notes section</p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* cast add  */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -532,7 +644,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* side by side */}
       <Row className="mt-3 px-3d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -552,7 +667,10 @@ const Callsheets = () => {
       </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* add crew */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -570,7 +688,10 @@ const Callsheets = () => {
        </p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* emails */}
       <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -585,7 +706,10 @@ const Callsheets = () => {
        to all Crew members and the relevant Cast members</p>
       </Col>
       </Row>
-      <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       </div>
       </div>
     )

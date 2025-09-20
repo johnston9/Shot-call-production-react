@@ -72,6 +72,7 @@ const NavBar = () => {
     //   console.log(err);
     // }
   };
+
   const fetchVideos = async () => {
     /* Function to sign a user out */
     try {
@@ -98,49 +99,48 @@ const NavBar = () => {
         }
         ref={refw}
         id="nav-dropdown1"
-        // activeClassName={styles.Active}
-        className={` ${styles.NavLink} `}
+        className={` ${styles.NavLink} pt-1`}
+        activeClassName={styles.Active}
       >
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={refw3}
             to="workspaces"
           >
-            <i className="navicon fas fa-play"></i>Breakdowns / Workspaces
+            <i className="navicon fas fa-play"></i>Scenes: Breakdowns / Workspaces
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
-            activeClassName={styles.Active}
-            ref={refw1}
-            to="/moodboards"
-          >
-            <i className="navicon fas fa-play"></i>Moodboards / Indexshots
-          </NavLink>
-        </NavDropdown.Item>
-        <NavDropdown.Item>
-          <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={refw4}
             to="shotstory"
             Indexshots
           >
-            <i className="navicon fas fa-play"></i>Storyboard / Shotlist /
-            Script
+            <i className="navicon fas fa-play"></i>Scenes: Shotlist / Storyboard / Script
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={refw2}
             to="charslocates"
           >
             <i className="navicon fas fa-play"></i>Characters / Locations
+          </NavLink>
+        </NavDropdown.Item>
+        <NavDropdown.Item>
+          <NavLink
+            className={` ${styles.DropLink} `}
+            activeClassName={styles.Active}
+            ref={refw1}
+            to="/moodboards"
+          >
+            <i className="navicon fas fa-play"></i>Moodboards / Indexshots
           </NavLink>
         </NavDropdown.Item>
       </NavDropdown>
@@ -158,7 +158,7 @@ const NavBar = () => {
         ref={refh1}
         id="nav-dropdown2"
         // activeClassName={styles.Active}
-        className={`${styles.NavLink} `}
+        className={`${styles.NavLink} pt-1`}
       >
         {videos?.length > 0 &&
           videos?.map((v) => (
@@ -177,32 +177,32 @@ const NavBar = () => {
       </NavDropdown>
     </>
   );
+
   const productionIcons = (
     <>
       <NavDropdown
         title={
           <span style={{ color: "#555555" }}>
-            <i className="navicon fas fa-stream pt-1"></i>Production
+            <i className="navicon fas fa-stream pt-0 pt-lg-1"></i>Production
           </span>
         }
         ref={reff}
         id="nav-dropdown2"
-        // activeClassName={styles.Active}
-        className={`${styles.NavLink} `}
+        className={`${styles.NavLink} pt-1`}
       >
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={reff2}
             to="schedule"
           >
-            <i className="navicon fas fa-play"></i>Schedule and Stripboard
+            <i className="navicon fas fa-play"></i>Schedules / Stripboards
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={reff3}
             to="callsheets"
@@ -222,17 +222,18 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={reff4}
             to="mobile"
           >
-            <i className="navicon fas fa-play"></i>Mobile and Quick Find
+            <i className="navicon fas fa-play"></i>Mobile View
           </NavLink>
         </NavDropdown.Item>
       </NavDropdown>
     </>
   );
+
   const history = useHistory();
 
   const handleShowBudget = () => {
@@ -327,7 +328,7 @@ const NavBar = () => {
     /* Icons that display when a user is logged out */
     <>
       <NavLink
-        className={` mx-2 ${styles.NavLink}`}
+        className={`${styles.NavLink} mx-2`}
         activeClassName={styles.Active}
         to="/signin"
       >
@@ -335,7 +336,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         to="/signup"
-        className={` ${styles.NavLink}`}
+        className={`pt-2 pt-lg-0 ${styles.NavLink}`}
         activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>Sign up
@@ -346,13 +347,13 @@ const NavBar = () => {
   return (
     <Navbar
       expanded={expanded}
-      className={`${styles.NavBar} `}
+      className={`${styles.NavBar} pb-1`}
       expand="lg"
       fixed="top"
     >
       <NavLink to="/landing">
         <Navbar.Brand>
-          <img src={logo} alt="logo" height="30" /> Shot Caller
+          <img src={logo} alt="logo" height="34" className="pb-1" /> Shot Caller
         </Navbar.Brand>
       </NavLink>
       <Navbar.Toggle
@@ -373,7 +374,7 @@ const NavBar = () => {
           </NavLink>
           {/* budgeting */}
           <NavLink
-            className={`mt-2 pt-1 mx-2  ${styles.NavLink}`}
+            className={`pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}
             to="/budgeting"
           >
@@ -384,13 +385,13 @@ const NavBar = () => {
           {/* Production */}
           {productionIcons}
           {/* chat */}
-          <NavLink
+          {/* <NavLink
             className={` pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}
             to="/chat"
           >
             <i className="fas fa-play"></i>Chat
-          </NavLink>
+          </NavLink> */}
           <NavLink
             className={` pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}

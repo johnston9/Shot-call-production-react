@@ -27,6 +27,7 @@ i {
 
 .DropLink {
   color: black;
+  font-size: 1rem;
 }
 
 .DropLink:hover {
@@ -51,4 +52,11 @@ color: rgb(3, 81, 81);
 
 Title {
 color: #000;
+}
+
+@media screen and (max-width:768px) {
+    .DropLink {
+  color: black;
+  font-size: .75rem;
+}
 }

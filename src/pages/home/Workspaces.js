@@ -18,16 +18,15 @@ import charbg from "../../assets/charbg.png";
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
 import { Image } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 
 const Workspaces = () => {
   const history = useHistory();
   
   return (
     <div className={`mt-0 ${styles.BlueBody} mx-0`}>
-    <div className={`mt-0 ${styles.Overview}`}>
-    <h2 className={`py-2 ${styles.OverviewText} ${appStyles.playfair}
-     text-center`} >Scenes - Breakdowns / Workspace</h2>
-    </div>
+    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
+      Scenes - Breakdowns / Workspace</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -57,7 +56,7 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 2 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -74,7 +73,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 3 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
@@ -90,7 +89,7 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 4 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -108,7 +107,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 5 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -128,7 +127,7 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 6 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -144,7 +143,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 7 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -160,7 +159,7 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 8 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -183,7 +182,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 9 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
@@ -202,7 +201,7 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     </div>
     {/* mobile */}
     <div className="d-block d-md-none">
@@ -223,7 +222,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 2 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -240,7 +239,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 3 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -256,7 +255,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 4 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -274,7 +273,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 5 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -294,7 +293,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 6 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -310,7 +309,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 7 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -326,7 +325,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 8 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -349,6 +348,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 9 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -368,7 +368,7 @@ const Workspaces = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     </div>
     <Row>
     <Col className="text-center mt-4" >

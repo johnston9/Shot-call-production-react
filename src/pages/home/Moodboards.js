@@ -13,16 +13,15 @@ import indexcards from "../../assets/indexcards.png";
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
 import { Image } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 
 const Moodboards = () => {
   const history = useHistory();
 
   return (
     <div className={`mt-0 ${styles.BlueBody}`}>
-    <div className={`${styles.Overview}`}>
-    <h2 className={`py-2 ${styles.OverviewText} ${appStyles.playfair}
-     text-center`} >Moodboards / Indexcards / Indexshots</h2>
-    </div>
+    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
+      Moodboards / Indexcards / Indexshots</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -55,7 +54,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 2  */} 
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -71,7 +70,7 @@ const Moodboards = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 3 */}
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -89,7 +88,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 4  */} 
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -106,7 +105,7 @@ const Moodboards = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 5 */}
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -151,7 +150,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 2  */} 
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -166,7 +165,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 3 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -184,7 +183,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* indexcards  */} 
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -201,7 +200,7 @@ const Moodboards = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* indexshots */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>

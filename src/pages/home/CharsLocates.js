@@ -13,16 +13,15 @@ import fullsize from "../../assets/fullsize.png";
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
 import { Image } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 
 const CharsLocates = () => {
   const history = useHistory();
   
   return (
     <div className={`mt-0 ${styles.BlueBody}`}>
-    <div className={`mt-0 ${styles.Overview}`}>
-    <h2 className={`py-2 ${styles.OverviewText} ${appStyles.playfair}
-     text-center`} >Characters / Locations</h2>
-    </div>
+    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
+       Characters / Locations</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -52,7 +51,7 @@ const CharsLocates = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* char two */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -69,7 +68,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* loc one  */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -88,7 +87,7 @@ const CharsLocates = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* loc two */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -104,6 +103,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* full size */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
@@ -119,6 +119,7 @@ const CharsLocates = () => {
     </div>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     </div>
     {/* mobile */}
     <div className="d-block d-md-none">
@@ -139,7 +140,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* char two */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -156,7 +157,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* loc one  */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -175,7 +176,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}></div>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* loc two */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -191,6 +192,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* full size */}
     <Row className="px-3 pb-4 mt-4  d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -206,6 +208,7 @@ const CharsLocates = () => {
     </p>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     </div>
     </div>
   )

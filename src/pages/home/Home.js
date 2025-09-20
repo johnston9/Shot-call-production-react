@@ -285,79 +285,60 @@ const Home = () => {
 
       {/* Section 2 - Overview in 4 parts with temporary image   */}
       <div>
-        <div className={`mt-5 ${styles.Overview}`}>
-          <h2
-            className={`pb-1 ${styles.OverviewText} ${appStyles.playfair}
-         text-center`}
-          >
-            Overview
-          </h2>
-        </div>
         <div className="px-3 mt-3">
           {/* part 1 - platform */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} md={{ span: 3, offset: 1 }} className="text-center">
+            <Col xs={12} md={12} className="text-center">
+              <h5>
+                Design and manage TV and Film Production on one platform
+                utilizing interlinking features.
+              </h5>
+            </Col>
+          </Row>
+          {/* 1 */}
+          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
+            <Col xs={6} className="text-center">
               <p>
-                Build and manage TV and Film Production in the one platform
-                utilizing interlinking tools.
+                Create professional standard highly detailed Budgets quickly.
+              </p>
+              <p>
+                Create and collaborate in Scene Workspaces and Moodboards.
               </p>
             </Col>
-            <Col xs={6} md={{ span: 6, offset: 2 }}>
+            <Col xs={6} >
               <div className="text-center">
-                <Image src={home1} alt="image" className={` ${styles.Image}`} />
+                <Image src={home8} alt="image" className={` ${styles.ImageSection2}`} />
               </div>
             </Col>
           </Row>
-          {/* part 2 - Workspaces */}
+          {/* 2 */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={6} md={6}>
               <div className="text-center">
-                <Image src={home8} alt="image" className={` ${styles.Image}`} />
+                <Image src={home3} alt="image" className={` ${styles.ImageSection2}`} />
               </div>
             </Col>
-            <Col xs={6} md={{ span: 3, offset: 2 }} className="text-center">
+            <Col xs={6} className="text-center">
               <p>
-                Collaborate and design in Scene Department Workspaces and use
-                Moodboards to explore ideas.
-              </p>
-            </Col>
-          </Row>
-          {/* part 3 - Callsheets  */}
-          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} md={{ span: 3, offset: 1 }} className="text-center">
-              <p>
-                Manage Cast and Crew. Easily create Shotlists, Schedules and
+                Easily create Shotlists, Schedules and
                 personalized Callsheets.
               </p>
-            </Col>
-            <Col xs={6} md={{ span: 6, offset: 2 }}>
-              <div className="text-center">
-                <Image src={home2} alt="image" className={` ${styles.Image}`} />
-              </div>
-            </Col>
-          </Row>
-          {/* part 4 - mobile */}
-          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} md={6}>
-              <div className="text-center">
-                <Image src={home3} alt="image" className={` ${styles.Image}`} />
-              </div>
-            </Col>
-            <Col xs={6} md={{ span: 3, offset: 2 }} className="text-center">
               <p>
-                All features easy to use on Mobile. Use Quick Find to locate all
-                Info fast.
+                Manage Cast and Crew.
+              </p>
+              <p>
+                All features are Mobile compatible.
               </p>
             </Col>
           </Row>
+          {/* Quick Runthrough */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} md={{ span: 3, offset: 1 }} className="text-center">
-              <p>
-                Manage Cast and Crew. Easily create Shotlists, Schedules and
-                personalized Callsheets.
-              </p>
+            <Col xs={6} className="text-center">
+            <h3>
+                A Quick Runthrough
+              </h3>
             </Col>
-            <Col xs={6} md={{ span: 6, offset: 2 }}>
+            <Col xs={6} >
               <div>
                 <iframe
                   width="70%"
@@ -369,6 +350,27 @@ const Home = () => {
                   allowFullScreen
                 ></iframe>
               </div>
+            </Col>
+          </Row>
+          {/* A Closer Look */}
+          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
+            <Col xs={6} md={{span: 6, offset: 1}} >
+              <div>
+                <iframe
+                  width="70%"
+                  height="315"
+                  src={`${VIMEO_BASE_URL}403530213`} // Replace with your dummy YouTube link
+                  title="Tutorial"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </Col>
+            <Col xs={6} md={5} className="text-center">
+            <h3>
+                A Closer Look
+              </h3>
             </Col>
           </Row>
         </div>
