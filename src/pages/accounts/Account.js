@@ -27,8 +27,8 @@ const Account = ({
   const history = useHistory();
 
   const topProfile = (
-    <div className={`px-3 py-1 ${styles.Top}`}>
-      <Row className="mx-2 mt-2 ">
+    <div className={`${styles.Top}`}>
+      <Row className="">
         <Col md={3}>
           <Image
             className={styles.ProfileImage}
@@ -37,19 +37,19 @@ const Account = ({
             roundedCircle
             src={profileInfo?.data?.image}
           />
-          <span className={`${styles.TopName} pl-2`}>
+          {/* <span className={`${styles.TopName} pl-2`}>
             {account?.data?.results[0]?.owner}
-          </span>
+          </span> */}
         </Col>
-        <Col md={8} className="text-center">
-          <h3 className={` ${styles.TopCompany}`}>
+        <Col md={6} className="text-center">
+          <h5 className={` ${styles.TopCompany}`}>
             {account?.data?.results[0]?.company}
             <span className={`pl-5 ${styles.TopName}`}>
               {account?.data?.results[0]?.name}
             </span>
-          </h3>
+          </h5>
         </Col>
-        <Col md={1}>
+        <Col md={3}>
           <ProfileEditDropdown id={id} />
         </Col>
       </Row>
@@ -57,8 +57,8 @@ const Account = ({
   );
 
   const topProfileMo = (
-    <div className={`px-3 py-1 ${styles.Top}`}>
-      <Row className="mx-2 mt-2 ">
+    <div className={`${styles.Top}`}>
+      <Row>
         <Col xs={{ span: 8, offset: 2 }} className="text-center">
           <Image
             className={styles.ProfileImage}
@@ -67,7 +67,6 @@ const Account = ({
             roundedCircle
             src={profile?.image}
           />
-          <span className={`${styles.TopName} pl-2`}>{profile?.owner}</span>
         </Col>
         <Col xs={2}>
           <ProfileEditDropdown id={id} />
@@ -110,31 +109,33 @@ const Account = ({
     // setShowCreateProject((showCreateProject) => !showCreateProject);
   };
   return (
-    <div>
-      <Row className="mt-3">
-        <Col>
-          <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue} ml-2 mb-2`}
+    <div className="px-3">
+      <div className="d-none d-md-block">{topProfile}</div>
+      <div className="d-block d-md-none">{topProfileMo}</div>
+      {/* budget button */}
+      <Row className="my-2">
+        <Col xs={6} className="">
+        <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
             onClick={() => history.goBack()}
           >
             Back
-          </Button>
+        </Button>
+        </Col>
+        <Col xs={6} className="">
+        <Button
+          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.Order} `}
+          onClick={handleShowBudget}
+        >BUDGETS
+        </Button>
         </Col>
       </Row>
-      <div className="d-none d-md-block">{topProfile}</div>
-      <div className="d-block d-md-none">{topProfileMo}</div>
       <Row className="px-3">
         <Col className="text-center">
-          <h3 className="my-3" style={{ marginLeft: "130px" }}>PROJECTS</h3>
+        <h3 className="my-3">
+          {/* <h3 className="my-3" style={{ marginLeft: "130px" }}> */}
+            PROJECTS</h3>
         </Col>
-        <Button
-        style={{ marginRight: "50px" }}
-          className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
-          // onClick={handleShowProject}
-          onClick={handleShowBudget}
-        >
-          My Budget
-        </Button>
       </Row>
       <Row>
         <Col>
