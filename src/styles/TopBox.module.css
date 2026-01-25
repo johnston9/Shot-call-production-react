@@ -5,6 +5,7 @@
 }
 .RegBox {
     background-color: #353839;
+    background-color: #000;
     margin: 0;  
     width: 100%; 
 }
@@ -17,11 +18,13 @@
 }
 
 .Longboxl {
+    font-family: "Playfair";
     color: rgb(255, 6, 6);
     margin-top: 30px;
 }
 
 .Longboxr {
+    font-family: "Playfair";
     color: rgb(255, 6, 6);
     margin-top: 10px;
 }
@@ -36,18 +39,38 @@
     margin-bottom: 0;
 }
 
-.Titlebox {
-	background-color: #3b444b;
-    /* background-color: #405766; */
-	margin-bottom: 15px;
-	margin-top: 15px;
+.Shot {
+    color: #F5F5F5;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    font-family: "Cinzel";
 }
 
-.SmallPanel {
+.TitleT {
+    color: #00d1ff;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    font-family: "Cinzel";
+    border-bottom: 1px solid #c1f1f7;
+}
+
+.Titlebox {
+    background-color: #3b444b;
+	margin-bottom: 15px;
+	margin-top: 15px;
+    height: 120px;
+}
+
+/* .SmallPanel {
     height: 120px;
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+} */
+
+ .SmallPanel {
+    height: 100%;
+    width: 5px;
+    object-fit: cover;
+    height: 120px;
 }
 
 .PadLeft1 {

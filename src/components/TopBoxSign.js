@@ -6,7 +6,7 @@ import styles from "../styles/TopBox.module.css";
 import { Col, Row, Image } from "react-bootstrap";
 
 function TopBoxSign(props) {
-  const { title, scene, title2, title3, title4, work, slug } = props;
+  const { title, scene, title2, title3, title4, work, slug, shot } = props;
   const [proj, setProj] = useState("");
 
   function toTitleCase(str) {
@@ -40,13 +40,13 @@ function TopBoxSign(props) {
 
         <Col className="pb-1" xs={8} md={6} lg={4}>
           <div className={`${styles.Titlebox}`}>
-            <Row>
-              <Col xs={1}>
+            <Row className="py-0 my-0"> 
+              <Col xs={1} className="py-0 my-0">
                 <Image
                   className={styles.SmallPanel}
                   src={door}
                   alt="door"
-                  height="120"
+                  // height="120"
                 />
               </Col>
               <Col
@@ -54,13 +54,19 @@ function TopBoxSign(props) {
                 className={`d-flex align-items-center justify-content-center ${styles.Alignme}`}
               >
                 <div>
+                  {shot && (
+                    <h3 className={` text-center ${styles.Shot}`}>{shot} </h3>
+                  )}
+                  <h1 className={` text-center ${styles.TitleT}`}>
+                    SHOT CALLER
+                  </h1>
                   {work && (
                     <h2 className={` text-center ${styles.Title}`}>{work} </h2>
                   )}
                   {title && (
-                    <h2 className={` text-center ${styles.Title2}`}>
+                    <h3 className={`pt-2 text-center ${styles.Title2}`}>
                       {title}{" "}
-                    </h2>
+                    </h3>
                   )}
                   {title4 && (
                     <h2 className={` text-center ${styles.Title2}`}>
@@ -96,11 +102,6 @@ function TopBoxSign(props) {
           <p>E</p>
           <p>R</p>
         </Col>
-        {/* <Col xs={2}
-            className={`text-center mt-5 ${styles.Longboxr}`}
-        >    
-        <p className="mt-4">C A L L E R</p>
-        </Col> */}
       </Row>
     </div>
   );

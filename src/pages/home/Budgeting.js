@@ -19,8 +19,8 @@ const Budgeting = () => {
   
     return (
       <div className={`mt-0 ${styles.BlueBody} px-3`}>
-        <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-       Budgeting</h2>
+        <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+       BUDGETING</h2>
       <Row className="mt-1 ml-2" >
           <Col xs={3}>
           <Button
@@ -31,7 +31,7 @@ const Budgeting = () => {
           </Button>
           </Col>
       </Row>
-      {/* desktop */}
+      {/* desktop cinzel*/}
       <div className="d-none d-md-block">
       {/* one */}
       <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">

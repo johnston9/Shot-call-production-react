@@ -21,23 +21,24 @@ function TopBox(props) {
 
         <Col className="pb-1" xs={8} md={6} lg={4}>
             <div className={`${styles.Titlebox}`}>
-            <Row>
-                <Col xs={1}>
+            <Row className="py-0 my-0">
+                <Col xs={1} className="py-0 my-0">
                     <Image
                         className={styles.SmallPanel}
                         src={door}
                         alt="door"
-                        height="120"
+                        // height="120"
                     />
                 </Col>
-                <Col xs={10} className={`d-flex align-items-center justify-content-center ${styles.Alignme}`} >
+                <Col xs={10} 
+                className={`d-flex align-items-center justify-content-center ${styles.Alignme}`} >
                     <div >
+                    <h1 className={` text-center ${styles.TitleT}`}>SHOT CALLER</h1>
                     {work && <h2 className={` text-center ${styles.Title}`}>{work} </h2>}
                     {title && <h2 className={` text-center ${styles.Title2}`}>{title} </h2>}
                     {title4 && <h2 className={` text-center ${styles.Title2}`}>{title4} </h2>}
                     {scene && <h2 className={` text-center ${styles.Title2}`}>Scene {scene} </h2>}
                     <h5 style={{ textTransform: 'capitalize'}} className={`text-center ${styles.Title3}`}>{title2} {title3}</h5>
-                    {/* <p style={{ textTransform: 'capitalize'}} className={`mb-0 text-center ${styles.Title3}`}>{title3} </p> */}
                     </div>
                 </Col>
             </Row>

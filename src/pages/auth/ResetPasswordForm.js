@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import door from "../../assets/door.png";
 import rightdoor from "../../assets/rightdoor.png";
-import TopBox from "../../components/TopBox";
+import TopBoxSign from "../../components/TopBoxSign";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirectSign } from "../../hooks/RedirectSign";
 import { setTokenTimestamp } from "../../utils/utils";
@@ -81,7 +81,7 @@ const ForgotPasswordForm = () => {
 
   return (
     <Container className={styles.SignupBox}>
-      <TopBox title="Reset Password" />
+      <TopBoxSign title="Reset Password" />
       <Row className={styles.Row}>
         <Col className="my-3 pr-0 pl-3 pl-md-4" xs={1} md={1}>
           <Image className={`${styles.FillerImagel}`} src={door} />

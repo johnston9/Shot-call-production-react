@@ -25,8 +25,8 @@ const Workspaces = () => {
   
   return (
     <div className={`mt-0 ${styles.BlueBody} mx-0`}>
-    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-      Scenes - Breakdowns / Workspace</h2>
+    <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+      THE SCENES WORKSPACE - BREAKDOWNS & WORKSHOPS</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -42,12 +42,17 @@ const Workspaces = () => {
     {/* one */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-    <p >
-    The Primary Creative work place is the Scene page
-    </p>
-    <p >
-    Create the Scenes quickly then easily select a Scene to work in
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    The primary Creative work takes place in the the Scenes Workspace
+    </h4>
+    <h4 >
+    The Scene page being the Platform's core Production element 
+    </h4>
+     <h4 >
+    Create Scenes quickly then select a Scene to work in
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -67,20 +72,26 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-    <p >
-    Each Scene contains a Breakdown, Workspace, Shotlist, Characters/BG,
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Each Scene contains a Breakdown, Workshop, Shotlist, Characters/BG,
     Storyboard, Moodboards and Script feature
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
     {/* 3 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-    <p >
-    Create Breakdowns which will be
-    automatically loaded in all other features including Stripboards
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+     Create the Scene Breakdown quickly with the help of Select Dropdowns
+    </h4>
+    <h4 >
+     This will be automatically loaded in other features, including Stripboards
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -100,11 +111,14 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-    <p >
-    Create the Character/BG Breakdown, which includes
-    Costumes, and will also be
-    automatically loaded in all other features including Stripboards
-    </p>
+      <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+     Create the Scene Character/BG Breakdown, the Characters being added quickly from a Dropdown
+    </h4>
+    <h4 >
+     Character's Costumes Number can be added and will also be automatically loaded in other features
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
@@ -214,12 +228,17 @@ const Workspaces = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center mt-3 px-3" >
-    <p >
-    The Primary Creative workplace is the Scene page
-    </p>
-    <p >
-    Create the Scenes quickly then easily select a Scene to work in
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    The primary Creative work takes place in the the Scenes Workspace
+    </h4>
+    <h4 >
+    The Scene page being the Platform's core Production element 
+    </h4>
+    <h4 >
+    Create Scenes quickly then select a Scene to work in
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
@@ -233,10 +252,12 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-3" >
-    <p >
-    Each Scene contains a Breakdown, Workspace, Shotlist, Characters/BG,
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Each Scene contains a Breakdown, Workshop, Shotlist, Characters/BG,
     Storyboard, Moodboards and Script feature
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
@@ -249,10 +270,14 @@ const Workspaces = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center px-3 mt-3" >
-    <p >
-    Create Breakdowns which will be
-    automatically loaded in all other features including Stripboards
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+     Create the Scene Breakdown quickly with the help of Select Dropdowns
+    </h4>
+    <h4 >
+     This will be automatically loaded in other features, including Stripboards
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
@@ -266,11 +291,14 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-3 mt-3" >
-    <p >
-    Create the Character/BG Breakdown, which includes
-    Costumes, and will also be
-    automatically loaded in all other features including Stripboards
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+     Create the Scene Character/BG Breakdown, the Characters being added quickly from a Dropdown
+    </h4>
+    <h4 >
+     Character's Costumes Number can be added and will also be automatically loaded in other features
+    </h4>
+    </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>

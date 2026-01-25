@@ -76,14 +76,14 @@ const Home = () => {
                 </h4>
                 <p className={`${styles.Creative}`} 
                   style={{fontStyle: 'italic'}}>
-                Collaborate and design in Scene Workspaces
+                Collaborate and design in Scenes Workspace
                 </p>
                 <Row >
-                {/* Breakdowns / Workspaces */}
+                {/* Breakdowns / Workshops */}
                 <Col md={6} >
                 <p className={`${styles.Depts}`}
                   onClick={() => history.push('/workspaces')}>
-                Breakdowns / Workspaces
+                Breakdowns / Workshops
                 </p>
                 </Col>
                 {/* Moodboards / Indexshots */}
@@ -302,7 +302,7 @@ const Home = () => {
                 Create professional standard highly detailed Budgets quickly.
               </p>
               <p>
-                Create and collaborate in Scene Workspaces and Moodboards.
+                Create and collaborate in Scenes Workspace and Moodboards.
               </p>
             </Col>
             <Col xs={6} >
@@ -398,11 +398,11 @@ const Home = () => {
         </div>
         </Col>
         <Col xs={9} className="text-center" >
-        <h4>Breakdowns and Workspaces</h4>
+        <h4>Breakdowns and Workshops</h4>
         <p >
         Create a Scene Page for each Scene
         that contains the all the work features 
-        including Breakdowns and Department Workspaces.
+        including Breakdowns and Department Workshops.
         </p>
         </Col>
         </Row>

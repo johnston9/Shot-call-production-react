@@ -109,7 +109,7 @@ const NavBar = () => {
             ref={refw3}
             to="workspaces"
           >
-            <i className="navicon fas fa-play"></i>Scenes: Breakdowns / Workspaces
+            <i className="navicon fas fa-play"></i>Scenes: Breakdowns / Workshops
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
