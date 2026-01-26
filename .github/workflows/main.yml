@@ -24,8 +24,7 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/cnp2329.pem
           chmod 600 ~/.ssh/cnp2329.pem
 
-      - name: Prepare package.json
-        run: mv package.json && mv .env
+      # - name: Prepare package.json
         # run: mv package.json.example package.json && mv .env.dev .env
 
       #- name: Create .env file from GitHub Secret
