@@ -202,7 +202,7 @@ const Projects = ({
       <Row>
         <Col className="text-center">
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue} mb-2`}
+            className={`${btnStyles.Button} ${btnStyles.Shed} px-3 px-md-5 mb-2`}
             onClick={handleShowProject}
           >
             Create Project

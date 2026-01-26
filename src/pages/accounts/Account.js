@@ -28,28 +28,24 @@ const Account = ({
 
   const topProfile = (
     <div className={`${styles.Top}`}>
-      <Row className="">
+      <Row className="py-3 d-flex align-items-center">
         <Col md={3}>
           <Image
-            className={styles.ProfileImage}
-            height={40}
-            width={40}
-            roundedCircle
+            className={`${styles.Avatar}`}
+            height={50}
+            width={50}
             src={profileInfo?.data?.image}
           />
-          {/* <span className={`${styles.TopName} pl-2`}>
-            {account?.data?.results[0]?.owner}
-          </span> */}
         </Col>
         <Col md={6} className="text-center">
+        <h3 className={` ${styles.TopName}`}>
+            {account?.data?.results[0]?.name}
+          </h3>
           <h5 className={` ${styles.TopCompany}`}>
             {account?.data?.results[0]?.company}
-            <span className={`pl-5 ${styles.TopName}`}>
-              {account?.data?.results[0]?.name}
-            </span>
           </h5>
         </Col>
-        <Col md={3}>
+        <Col md={3} className="d-flex align-items-center">
           <ProfileEditDropdown id={id} />
         </Col>
       </Row>
@@ -60,12 +56,11 @@ const Account = ({
     <div className={`${styles.Top}`}>
       <Row>
         <Col xs={{ span: 8, offset: 2 }} className="text-center">
-          <Image
-            className={styles.ProfileImage}
-            height={40}
-            width={40}
-            roundedCircle
-            src={profile?.image}
+        <Image
+            className={`${styles.Avatar}`}
+            height={30}
+            width={30}
+            src={profileInfo?.data?.image}
           />
         </Col>
         <Col xs={2}>
@@ -112,8 +107,8 @@ const Account = ({
     <div className="px-3">
       <div className="d-none d-md-block">{topProfile}</div>
       <div className="d-block d-md-none">{topProfileMo}</div>
-      {/* budget button */}
-      <Row className="my-2">
+      {/* back button */}
+      <Row className="mt-1">
         <Col xs={6} className="">
         <Button
             className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -122,9 +117,9 @@ const Account = ({
             Back
         </Button>
         </Col>
-        <Col xs={6} className="">
+        <Col xs={6} className="text-center">
         <Button
-          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.Order} `}
+          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.OrderG}`}
           onClick={handleShowBudget}
         >BUDGETS
         </Button>
@@ -132,9 +127,13 @@ const Account = ({
       </Row>
       <Row className="px-3">
         <Col className="text-center">
-        <h3 className="my-3">
+        {/* <h5 className={`mt-1 py-1 text-center ${styles.SubTitle4}`}
+      >PROJECTS
+      </h5> */}
+        <h3 className="mt-2">
           {/* <h3 className="my-3" style={{ marginLeft: "130px" }}> */}
             PROJECTS</h3>
+            <hr className={`mt-0 mb-0 py-1 ${styles.BreakTitle}`}/>
         </Col>
       </Row>
       <Row>

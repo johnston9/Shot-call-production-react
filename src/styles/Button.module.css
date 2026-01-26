@@ -1,7 +1,7 @@
 .Button {
   font-size: 0.8rem;
   align-self: center;
-  border-radius: 4px;
+  border-radius: 25px;
   border-color: transparent;
   padding: 0px 10px;
   margin-left: 2px;
@@ -9,10 +9,102 @@
 }
 
 .Button:hover {
-  opacity: 0.8;
-  border-color: transparent;
-  cursor: pointer;
+    border-color: transparent !important;
+    cursor: pointer;
+  }
+
+  .Button:active {
+    border-color: #000 !important;
+    background-color: #0f6270 !important;
+  }
+  
+  .Button:focus {
+    border-color: #000 !important;
+    background-color: #0f6270 !important;
+  }
+
+  .ButtonTrack {
+    padding: 4px 20px;
+    font-size: 0.8rem;
+    align-self: center;
+    border-color: transparent;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  
+  .ButtonTrack:hover {
+    border-color: transparent !important;
+    cursor: pointer;
+  }
+
+  .ButtonTrack:active {
+    border-color: transparent !important;
+    background-color: #0f6270 !important;
+  }
+  
+  .ButtonTrack:focus {
+    border-color: transparent !important;
+    background-color: #0f6270 !important;
+  }
+
+  .Track {
+    background-color: #24acc3;
+    border: 1px solid rgba(74, 56, 1, 0.99);
+    color: #fff;
 }
+
+.Track:hover {
+  background-color: #0f6270;
+  color: #fff;
+}
+
+.WideTrack {
+    width: 20%;
+    font-size: 1rem;
+  }
+
+.OrderG {
+  background-color: #000;
+  border: 2px solid rgba(74, 56, 1, 0.99);
+  border: 2px solid rgba(129, 102, 21, 0.99);
+  color: #fff;
+}
+
+.OrderG:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.GreyDarkTrack {
+    background-color: #43606a;
+    border: 1px solid rgba(74, 56, 1, 0.99);
+    color: #fff;
+  }
+
+  .GreyDarkTrack:hover {
+    background-color: #2f454c;
+    border: 2px solid rgba(129, 102, 21, 0.99);}
+    
+
+ .GreyDark {
+    background-color: #43606a;
+    color: #fff;
+  }
+
+  .GreyDark:hover {
+    background-color: #0f6270;
+    color: #fff;
+  }
+
+  .GreyBlue {
+    background-color: #39606e;
+    color: #fff;
+  }
+
+  .GreyBlue:hover {
+    background-color: #0f6270;
+    color: #fff;
+  }
 
 .Shed {
   background-color: #24acc3;
@@ -23,6 +115,17 @@
   background-color: #0f6270;
   color: #fff;
 }
+
+.OrderS {
+    background-color: #780770;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .OrderS:hover {
+    background-color: #480644;
+    color: #fff;
+  }
 
 .Once {
   background-color: grey;

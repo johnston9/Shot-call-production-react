@@ -25,7 +25,8 @@ jobs:
           chmod 600 ~/.ssh/cnp2329.pem
 
       - name: Prepare package.json
-        run: mv package.json.example package.json && mv .env.dev .env
+        run: mv package.json && mv .env
+        # run: mv package.json.example package.json && mv .env.dev .env
 
       #- name: Create .env file from GitHub Secret
         #run: |

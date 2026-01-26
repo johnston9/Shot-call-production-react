@@ -3,6 +3,58 @@
   color: #000;
 }
 
+.BoldScene {
+  color: rgba(129, 102, 21, 0.99);
+}
+
+.BreakTitle {
+  border-top: 10px solid #e8f0f1;
+}
+
+.Top {
+    background-color: #1ea7ae;
+    background-color: #39606e;
+    color: #fff;
+  }
+
+.TopCompany {
+    color: #fff;
+    font-style: italic;
+}
+
+.TopName {
+    color: #fff;
+}
+
+.Top i {
+    color: #fff;
+}
+
+.ProTop {
+    background-color: #3b444b;
+    color: #fff;
+}
+
+/* .ProTop i {
+    color: #666; 
+} */
+
+.ProTop i {
+  color: #9b4242;
+  font-size: 1em !important;
+}
+
+.ProTop i:hover {
+  color: #ef5151;
+  font-size: 1em !important;
+}
+
+.Avatar {
+    border-radius: 50%;
+    margin: 0px 8px 0px 8px;
+    object-fit: cover;
+  }
+
 .Box5 {
   margin-top: 3px;
   margin-bottom: 0;
@@ -220,42 +272,6 @@
   cursor: pointer;
   font-size: .75rem;
 } */
-
-.Top {
-    background-color: #1ea7ae;
-    color: #fff;
-  }
-
-.TopCompany {
-    color: #fff;
-}
-
-.TopName {
-    color: #fff;
-}
-
-.Top i {
-    color: #fff;
-}
-
-.ProTop {
-    background-color: #3b444b;
-    color: #fff;
-}
-
-/* .ProTop i {
-    color: #666; 
-} */
-
-.ProTop i {
-  color: #9b4242;
-  font-size: 1em !important;
-}
-
-.ProTop i:hover {
-  color: #ef5151;
-  font-size: 1em !important;
-}
 
 .BudgetLink {
     background-color: #33e6e0;
