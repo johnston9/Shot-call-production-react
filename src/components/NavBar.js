@@ -272,37 +272,11 @@ const NavBar = () => {
         id="nav-dropdown5"
         // activeClassName={styles.Active}
         className={`py-0 ${styles.NavLink}`}
-      >
+      > 
         <NavDropdown.Item>
           <NavLink
+            // className={` ${styles.NavLink} `}
             className={` ${styles.DropLink} `}
-            activeClassName={styles.Active}
-            ref={refp1}
-            to={`/accounts/${currentUser?.profile_id}`}
-          >
-            <i className="navicon fas fa-play"></i>My Account
-          </NavLink>
-        </NavDropdown.Item>
-        <NavDropdown.Item>
-          <NavLink
-            className={` ${styles.NavLink} `}
-            activeClassName={styles.Active}
-            ref={refp2}
-            to={`/profiles/${currentUser?.profile_id}`}
-          >
-            <i className="navicon fas fa-play"></i>My Profile
-          </NavLink>
-        </NavDropdown.Item>
-        
-        {/* <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
-          <span className={` ${styles.NavLink} `}>
-            <i className="navicon fas fa-play"></i> My Budgets
-          </span>
-        </NavDropdown.Item> */}
-
-        <NavDropdown.Item>
-          <NavLink
-            className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refp2}
             to={`/subscription-plans`}
@@ -312,7 +286,34 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
-            className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
+            activeClassName={styles.Active}
+            ref={refp1}
+            to={`/accounts/${currentUser?.profile_id}`}
+          >
+            <i className="navicon fas fa-play"></i>Projects/Budgets
+          </NavLink>
+        </NavDropdown.Item>
+        <NavDropdown.Item>
+          <NavLink
+            // className={` ${styles.NavLink} `}
+            className={` ${styles.DropLink} `}
+            activeClassName={styles.Active}
+            ref={refp2}
+            to={`/profiles/${currentUser?.profile_id}`}
+          >
+            <i className="navicon fas fa-play"></i>My Profile
+          </NavLink>
+        </NavDropdown.Item>        
+        {/* <NavDropdown.Item onClick={handleShowBudget}  ref={refp2}>
+          <span className={` ${styles.NavLink} `}>
+            <i className="navicon fas fa-play"></i> My Budgets
+          </span>
+        </NavDropdown.Item> */}
+        <NavDropdown.Item>
+          <NavLink
+          className={` ${styles.DropLink} `}
+            // className={` ${styles.NavLink} `}
             activeClassName={styles.Active}
             ref={refp2}
             to={`/transactions`}

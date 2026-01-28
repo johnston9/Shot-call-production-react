@@ -117,7 +117,7 @@ const Account = ({
             Back
         </Button>
         </Col>
-        <Col xs={6} className="text-center">
+        <Col xs={6}>
         <Button
           className={`float-right px-5 ${btnStyles.Button} ${btnStyles.OrderG}`}
           onClick={handleShowBudget}

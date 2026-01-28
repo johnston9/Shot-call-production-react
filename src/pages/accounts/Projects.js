@@ -202,7 +202,7 @@ const Projects = ({
       <Row>
         <Col className="text-center">
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Shed} px-3 px-md-5 mb-2`}
+            className={`${btnStyles.Button} ${btnStyles.WideTrack} ${btnStyles.GreyDark} mb-2`}
             onClick={handleShowProject}
           >
             Create Project
@@ -269,7 +269,7 @@ const Projects = ({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               type="text"
-              className="mr-sm-2"
+              className={`${styles.InputBar}`}
               placeholder="Search"
             />
           </Form>

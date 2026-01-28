@@ -3,9 +3,62 @@
   color: #000;
 }
 
+.Blue {
+  color: #00d1ff;
+}
+
+.SubTitle6 {
+    background-color: #010f13;
+    color: #fff;
+    font-size: 1.25rem;
+    /* font-family: "Noto Serif"; */
+}
+
+.SubTitle6 p {
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.Small {
+  font-size: .75rem;
+  font-style: italic;
+}
+
+.SmallInfo {
+  font-size: .75rem;
+  color: #1da3aa;
+  color: #0c414f;
+  cursor: pointer;
+}
+
+.SmallSize {
+  font-size: .75rem;
+  color: #1da3aa;
+}
+
+.InfoText {
+  color: #17748e;
+}
+
+.InfoTextI {
+  color: #17748e;
+  font-style: italic;
+}
+
 .BoldScene {
   color: rgba(129, 102, 21, 0.99);
 }
+
+.InputBar {
+  background: #ffffff;
+  border: 1px solid #e0e3eb;
+  box-sizing: border-box;
+  height: 30px !important;
+  border-radius: 20px;
+  color: #242a3d;
+  padding-left: 40px;
+  margin-bottom: 16px;
+} 
 
 .BreakTitle {
   border-top: 10px solid #e8f0f1;
@@ -391,4 +444,15 @@
 .BorderRightLeftBottom {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .Icon i {
+    font-size: 1rem;
+  }
+
+  .InputBar {
+    height: 20px !important;
+    font-size: .75rem !important;
+  }
 }

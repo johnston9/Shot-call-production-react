@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosDefaults";
 import { Button, Card, Col, Row, Modal } from "react-bootstrap";
+import btnStyles from "../../styles/Button.module.css";
 import useActivePlan from "../../hooks/useActivePlan";
 import { useHistory } from "react-router-dom";
 import { Chip } from "@mantine/core";
 import GreenTick from "../../assets/green-tick.png";
 import { toast } from "react-hot-toast";
+import styles from "../../styles/Account.module.css";
+import InfoSub from "./InfoSub";
 
 export default function SubscriptionPlansPage() {
   const history = useHistory();
+  const [showImp, setShowImp] = useState(false);
   const {
     loading: currentlyActivePlanLoading,
     currentlyActivePlans,
@@ -207,18 +211,42 @@ export default function SubscriptionPlansPage() {
   // console.log(allStudPlans);
 
   return (
-    <div className="pb-2">
-      <h2
+    <div className="pb-2 px-3">
+      <h3
         className="text-center py-4 w-100 mt-2"
         style={{
-          background: "#3B444A",
+          // background: "#3B444A",
+          background: "#39606e",
           color: "#F5F5F5",
           fontFamily: "Playfair Display",
           textTransform: "uppercase",
         }}
       >
         Subscription Plans
-      </h2>
+      </h3>
+      {/* back button */}
+      <Row className="mt-1">
+        <Col xs={6} className="">
+        <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            onClick={() => history.goBack()}
+          >
+            Back
+        </Button>
+        </Col>
+        <Col xs={6} >
+        <Button
+          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.Order}`}
+          onClick={() => setShowImp(showImp => !showImp)}
+        >INFO
+        </Button>
+        </Col>
+      </Row>
+      {!showImp ? (
+          ""
+              ) : (
+                <InfoSub  /> 
+      ) } 
       <div
         style={{
           maxWidth: "1400px",
@@ -255,6 +283,16 @@ export default function SubscriptionPlansPage() {
               >
                 Projects with Budgets
               </div> */}
+              <Row>
+              <Col md={{span: 8, offset: 2}} className={`text-center`} >
+              <p className={`${styles.InfoTextI}`}>
+              Buy a Project Subscription Plan here, buy Budget Subscription Plans below.
+              </p>
+              <p className={`${styles.InfoTextI}`}>
+              Then create Projects and Budgets on the Projects/Budget page.
+              </p>
+              </Col>
+              </Row>
               <div style={{ marginBottom: "2rem" }}>
                 <h3
                   className="px-2 pb-4 text-center"

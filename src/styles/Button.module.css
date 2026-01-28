@@ -65,8 +65,8 @@
 
 .OrderG {
   background-color: #000;
-  border: 2px solid rgba(74, 56, 1, 0.99);
-  border: 2px solid rgba(129, 102, 21, 0.99);
+  border: 1px solid rgba(74, 56, 1, 0.99);
+  /* border: 2px solid rgba(129, 102, 21, 0.99); */
   color: #fff;
 }
 
@@ -283,5 +283,10 @@
 @media screen and (max-width: 600px) {
   .Wide2 {
     width: 50%;
+  }
+
+  .WideTrack {
+    width: 50%;
+    font-size: 1rem;
   }
 }
