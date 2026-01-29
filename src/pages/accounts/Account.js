@@ -1,6 +1,6 @@
 /* Component in Accountpage to display the Profile and Account data
  * Contains the CreateProject and Projects components */
-import React from "react";
+import React, { useEffect, useState } from "react"; 
 import btnStyles from "../../styles/Button.module.css";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import useActivePlan from "../../hooks/useActivePlan";
 import { hasBudgetPlan } from "../../utils/hasBudgetPlan";
 import toast from "react-hot-toast";
+import InfoAcc from "./InfoAcc";
 
 const Account = ({
   id,
@@ -25,10 +26,11 @@ const Account = ({
   profileInfo,
 }) => {
   const history = useHistory();
+  const [showImp, setShowImp] = useState(false);
 
   const topProfile = (
     <div className={`${styles.Top}`}>
-      <Row className="py-3 d-flex align-items-center">
+      <Row className="py-2 d-flex align-items-center">
         <Col md={3}>
           <Image
             className={`${styles.Avatar}`}
@@ -38,12 +40,18 @@ const Account = ({
           />
         </Col>
         <Col md={6} className="text-center">
-        <h3 className={` ${styles.TopName}`}>
+        <h5 className={` ${styles.TopName}`}>
+            ACCOUNT PAGE
+          </h5>
+          <h3 className={`pt-3 ${styles.TopCompany}`}>
+            {account?.data?.results[0]?.name} - {account?.data?.results[0]?.company}
+          </h3>
+        {/* <h3 className={` ${styles.TopName}`}>
             {account?.data?.results[0]?.name}
           </h3>
           <h5 className={` ${styles.TopCompany}`}>
             {account?.data?.results[0]?.company}
-          </h5>
+          </h5> */}
         </Col>
         <Col md={3} className="d-flex align-items-center">
           <ProfileEditDropdown id={id} />
@@ -53,9 +61,9 @@ const Account = ({
   );
 
   const topProfileMo = (
-    <div className={`${styles.Top}`}>
-      <Row>
-        <Col xs={{ span: 8, offset: 2 }} className="text-center">
+    <div className={`${styles.Top} text-center`}>
+      <Row className="d-flex align-items-center">
+        <Col xs={2} >
         <Image
             className={`${styles.Avatar}`}
             height={30}
@@ -63,15 +71,21 @@ const Account = ({
             src={profileInfo?.data?.image}
           />
         </Col>
+        <Col xs={8}>
+        <h5 className={` ${styles.TopName}`}>
+            ACCOUNT PAGE
+          </h5>
+        </Col>
         <Col xs={2}>
           <ProfileEditDropdown id={id} />
         </Col>
-        <Col xs={12} className="text-center">
-          <h3 className={`pl-5 ${styles.TopCompany}`}>{profile?.company}</h3>
-        </Col>
-        <Col xs={12} className="text-center">
-          <span className={`pl-5 ${styles.TopName}`}>{profile?.name}</span>
-        </Col>
+      </Row>
+      <Row>
+      <Col>
+      <h3 className={`pt-3 ${styles.TopCompany}`}>
+            {account?.data?.results[0]?.name} - {account?.data?.results[0]?.company}
+          </h3>
+      </Col>
       </Row>
     </div>
   );
@@ -117,9 +131,31 @@ const Account = ({
             Back
         </Button>
         </Col>
-        <Col xs={6}>
+        <Col xs={6} >
         <Button
-          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.OrderG}`}
+          className={`float-right px-3 ${btnStyles.Button} ${btnStyles.Order}`}
+          onClick={() => setShowImp(showImp => !showImp)}
+        >INFO
+        </Button>
+        </Col>
+      </Row>
+      {!showImp ? (
+          ""
+              ) : (
+                <InfoAcc  /> 
+      ) } 
+      <Row className={` mb-0`}>
+      <Col md={{span: 8, offset: 2}} className={`text-center mb-0`} >
+      <p className={`${styles.SmallSize} mb-0`}>
+      Click here to go to the Seperate Budgets page
+      </p>
+      </Col>
+      </Row>
+      {/* budgets */}
+      <Row className="mb-3">
+        <Col xs={12} className="text-center">
+        <Button
+          className={`px-5 ${btnStyles.Button} ${btnStyles.Track}`}
           onClick={handleShowBudget}
         >BUDGETS
         </Button>
@@ -127,13 +163,11 @@ const Account = ({
       </Row>
       <Row className="px-3">
         <Col className="text-center">
-        {/* <h5 className={`mt-1 py-1 text-center ${styles.SubTitle4}`}
-      >PROJECTS
-      </h5> */}
-        <h3 className="mt-2">
-          {/* <h3 className="my-3" style={{ marginLeft: "130px" }}> */}
-            PROJECTS</h3>
-            <hr className={`mt-0 mb-0 py-1 ${styles.BreakTitle}`}/>
+        <h3 className={`mt-1 py-1 text-center ${styles.SubTitle4}`}
+      >PLATFORM PROJECTS
+      </h3>
+        {/* <h3 className="mt-2">PROJECTS</h3>
+        <hr className={`mt-0 mb-0 py-1 ${styles.BreakTitle}`}/> */}
         </Col>
       </Row>
       <Row>

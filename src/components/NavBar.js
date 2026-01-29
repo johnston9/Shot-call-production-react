@@ -275,6 +275,16 @@ const NavBar = () => {
       > 
         <NavDropdown.Item>
           <NavLink
+            className={` ${styles.DropLink} `}
+            activeClassName={styles.Active}
+            ref={refp1}
+            to={`/accounts/${currentUser?.profile_id}`}
+          >
+            <i className="navicon fas fa-play"></i>Account Page
+          </NavLink>
+        </NavDropdown.Item>
+        <NavDropdown.Item>
+          <NavLink
             // className={` ${styles.NavLink} `}
             className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
@@ -282,16 +292,6 @@ const NavBar = () => {
             to={`/subscription-plans`}
           >
             <i className="navicon fas fa-play"></i>Subscription Plans
-          </NavLink>
-        </NavDropdown.Item>
-        <NavDropdown.Item>
-          <NavLink
-            className={` ${styles.DropLink} `}
-            activeClassName={styles.Active}
-            ref={refp1}
-            to={`/accounts/${currentUser?.profile_id}`}
-          >
-            <i className="navicon fas fa-play"></i>Projects/Budgets
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
