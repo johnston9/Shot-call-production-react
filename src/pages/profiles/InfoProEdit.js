@@ -13,10 +13,8 @@ const InfoProEdit = () => {
           <p className={`${styles.Blue} text-center`}>EDIT PROFILE INFO</p>
           <hr className={`mt-2 mb-0`}/>
           <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> Profile <span className={`${styles.Blue}`}>Costume</span> are.
-          </p>
-          <p className={`pt-2 ${styles.Small}`}>
-          Note: .
+          <span className={`${styles.Blue}`}>*</span> Add your Name, Company and Profile
+          Image here.
           </p>
           <hr className={`mt-2 mb-0`}/>
          </div> 

@@ -34,6 +34,8 @@ const ProfileEditForm = () => {
   const imageFile = useRef()
   const [showImp, setShowImp] = useState(false);
 
+  console.log(currentUser?.profile_id?.toString())
+
   const [profileData, setProfileData] = useState({
     name: "",
     company: "",
@@ -46,7 +48,7 @@ const ProfileEditForm = () => {
 
   useEffect(() => {
     const handleMount = async () => {
-      if (currentUser?.profile_id?.toString() === id) {
+      // if (currentUser?.profile_id?.toString() === id) {
         try {
           if (host === CLIENT_PROGRAM_HOSTNAME) {
             const { data } = await axiosReq.get(`/profiles/${id}/`)
@@ -60,11 +62,11 @@ const ProfileEditForm = () => {
           }
         } catch (err) {
           console.log(err)
-          history.push("/")
+          // history.push("/")
         }
-      } else {
-        history.push("/")
-      }
+      // } 
+      // else {history.push("/")
+      //   console.log("id")}
     }
 
     handleMount()
@@ -180,38 +182,38 @@ const ProfileEditForm = () => {
   return (
     <div>
       <div className={`${styles.Top}`}>
-      <Row className="py-3 d-flex align-items-center">
-        <Col className="text-center">
-        <h2 className={` ${styles.TopName}`}>
+      <Row className="py-3 text-center">
+        <Col className=" d-flex align-items-center justify-content-center">
+        <h3 className={` ${styles.TopName2} pt-3`}>
             EDIT PROFILE
-          </h2>
+          </h3>
         </Col>
       </Row>
       </div>
       {/* back button */}
-            <Row className="mt-1">
-              <Col xs={6} className="">
-              <Button
-                  className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                  onClick={() => history.goBack()}
-                >
-                  Back
-              </Button>
-              </Col>
-              <Col xs={6} >
-              <Button
-                className={`float-right px-3 ${btnStyles.Button} ${btnStyles.Order}`}
-                onClick={() => setShowImp(showImp => !showImp)}
-              >INFO
-              </Button>
-              </Col>
-            </Row>
-            {!showImp ? (
-                ""
-                    ) : (
-                      <InfoProEdit  /> 
-            ) }
-    <Form onSubmit={handleSubmit}>
+      <Row className="mt-1">
+        <Col xs={6} className="">
+        <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            onClick={() => history.goBack()}
+          >
+            Back
+        </Button>
+        </Col>
+        <Col xs={6} >
+        <Button
+          className={`float-right px-3 ${btnStyles.Button} ${btnStyles.Order}`}
+          onClick={() => setShowImp(showImp => !showImp)}
+        >INFO
+        </Button>
+        </Col>
+      </Row>
+      {!showImp ? (
+          ""
+              ) : (
+                <InfoProEdit  /> 
+      ) }
+    {/* <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
@@ -255,12 +257,11 @@ const ProfileEditForm = () => {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
-    </Form>
+    </Form> */}
     {/* form2 */}
      <Form className={`${styles.WhiteBack } px-3`} onSubmit={handleSubmit}>
         <Row className="mt-3">
           <Col md={6} className="text-center" >
-          {/* name */}
           <Form.Group controlId="name" className="mb-2">
             <Form.Label className={`${styles.BoldScene}`}>Name</Form.Label>
             <Form.Control
@@ -276,7 +277,6 @@ const ProfileEditForm = () => {
               {message}
             </Alert>
           ))}
-          {/* Company */}
           <Form.Group controlId="company" className="mb-2">
             <Form.Label className={`${styles.BoldScene}`}>Company</Form.Label>
             <Form.Control
@@ -292,9 +292,8 @@ const ProfileEditForm = () => {
               {message}
             </Alert>
           ))}
-          {/* Additional */}
           <Form.Group controlId="content" className="mb-2">
-            <Form.Label className={`${styles.BoldScene}`}>Additional</Form.Label>
+            <Form.Label className={`${styles.BoldScene}`}>Title</Form.Label>
             <Form.Control
             className={`${styles.Input}`}
               type="text"

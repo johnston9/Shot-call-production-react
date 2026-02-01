@@ -18,7 +18,7 @@ import { axiosInstanceNoAuth } from "../api/axiosDefaults";
 import useActivePlan from "../hooks/useActivePlan";
 import { hasBudgetPlan } from "../utils/hasBudgetPlan";
 import toast from "react-hot-toast";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom"
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -276,7 +276,7 @@ const NavBar = () => {
         <NavDropdown.Item>
           <NavLink
             className={` ${styles.DropLink} `}
-            activeClassName={styles.Active}
+            // activeClassName={styles.Active}
             ref={refp1}
             to={`/accounts/${currentUser?.profile_id}`}
           >
@@ -287,7 +287,7 @@ const NavBar = () => {
           <NavLink
             // className={` ${styles.NavLink} `}
             className={` ${styles.DropLink} `}
-            activeClassName={styles.Active}
+            // activeClassName={styles.Active}
             ref={refp2}
             to={`/subscription-plans`}
           >
@@ -298,7 +298,7 @@ const NavBar = () => {
           <NavLink
             // className={` ${styles.NavLink} `}
             className={` ${styles.DropLink} `}
-            activeClassName={styles.Active}
+            // activeClassName={styles.Active}
             ref={refp2}
             to={`/profiles/${currentUser?.profile_id}`}
           >
@@ -314,7 +314,7 @@ const NavBar = () => {
           <NavLink
           className={` ${styles.DropLink} `}
             // className={` ${styles.NavLink} `}
-            activeClassName={styles.Active}
+            // activeClassName={styles.Active}
             ref={refp2}
             to={`/transactions`}
           >
@@ -338,7 +338,7 @@ const NavBar = () => {
       <NavLink
         to="/signup"
         className={`pt-2 pt-lg-0 ${styles.NavLink}`}
-        activeClassName={styles.Active}
+        // activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>Sign up
       </NavLink>

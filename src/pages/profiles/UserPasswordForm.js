@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
+import styles from "../../styles/Account.module.css";
+import toast from "react-hot-toast";
 
 import { useHistory, useParams } from "react-router"
 import { axiosInstance, axiosRes } from "../../api/axiosDefaults"
@@ -16,7 +18,6 @@ import appStyles from "../../App.module.css"
 import { useRedirect } from "../../hooks/Redirect"
 import useHostName from "../../hooks/useHostName"
 import { CLIENT_PROGRAM_HOSTNAME } from "../../utils/config"
-import toast from "react-hot-toast"
 
 const UserPasswordForm = () => {
   // useRedirect();
@@ -78,6 +79,27 @@ const UserPasswordForm = () => {
 
 
   return (
+    <div>
+      <div className={`${styles.Top}`}>
+    <Row className="py-3 text-center">
+      <Col className=" d-flex align-items-center justify-content-center">
+      <h3 className={` ${styles.TopName2} pt-3`}>
+          CHANGE PASSWORD
+        </h3>
+      </Col>
+    </Row>
+    </div>
+    {/* back button */}
+    <Row className="mt-1">
+      <Col xs={6} className="">
+      <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          onClick={() => history.goBack()}
+        >
+          Back
+      </Button>
+      </Col>
+    </Row>
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
@@ -128,6 +150,7 @@ const UserPasswordForm = () => {
         </Container>
       </Col>
     </Row>
+    </div>
   )
 }
 

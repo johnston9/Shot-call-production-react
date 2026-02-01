@@ -62,8 +62,8 @@ const Account = ({
 
   const topProfileMo = (
     <div className={`${styles.Top} text-center`}>
-      <Row className="d-flex align-items-center">
-        <Col xs={2} >
+      <Row className="d-flex align-items-center py-1">
+        <Col xs={2} className="d-flex align-items-center" >
         <Image
             className={`${styles.Avatar}`}
             height={30}
@@ -76,7 +76,7 @@ const Account = ({
             ACCOUNT PAGE
           </h5>
         </Col>
-        <Col xs={2}>
+        <Col xs={2} className="d-flex align-items-center">
           <ProfileEditDropdown id={id} />
         </Col>
       </Row>

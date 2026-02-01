@@ -77,9 +77,13 @@
 }
 
 .TopName {
-    color: #1ea7ae;
-    /* color: rgba(129, 102, 21, 0.99); */
     color: #37f1fa;
+    color: #abb8be;
+}
+
+.TopName2 {
+    color: #37f1fa;
+    color: #fff;
 }
 
 .Top i {

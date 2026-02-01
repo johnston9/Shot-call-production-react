@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
+import styles from "../../styles/Account.module.css";
+import toast from "react-hot-toast";
 
 import { useHistory, useParams } from "react-router"
 import { axiosInstance, axiosRes } from "../../api/axiosDefaults"
@@ -69,6 +71,27 @@ const UsernameForm = () => {
   }
 
   return (
+    <div>
+    <div className={`${styles.Top}`}>
+    <Row className="py-3 text-center">
+      <Col className=" d-flex align-items-center justify-content-center">
+      <h3 className={` ${styles.TopName2} pt-3`}>
+          CHANGE USERNAME
+        </h3>
+      </Col>
+    </Row>
+    </div>
+    {/* back button */}
+    <Row className="mt-1">
+      <Col xs={6} className="">
+      <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          onClick={() => history.goBack()}
+        >
+          Back
+      </Button>
+      </Col>
+    </Row>
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
@@ -103,6 +126,7 @@ const UsernameForm = () => {
         </Container>
       </Col>
     </Row>
+    </div>
   )
 }
 
