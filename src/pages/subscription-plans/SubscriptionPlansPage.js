@@ -218,7 +218,7 @@ export default function SubscriptionPlansPage() {
           // background: "#3B444A",
           background: "#39606e",
           color: "#F5F5F5",
-          fontFamily: "Playfair Display",
+          // fontFamily: "Playfair Display",
           textTransform: "uppercase",
         }}
       >
@@ -247,25 +247,22 @@ export default function SubscriptionPlansPage() {
               ) : (
                 <InfoSub  /> 
       ) } 
-      <div
+      {/* <div
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
           padding: "1rem",
         }}
-      >
-        <Row
+      > */}
+      <div>
+        {/* <Row
           style={{
             display: "flex",
             justifyContent: "center",
             marginBottom: "2rem",
           }}
-        ></Row>
-        <Row
-          style={{
-            gap: "2rem",
-          }}
-        >
+        ></Row> */}
+        <Row style={{gap: "2rem",}}>
           <Col xs={12}>
             <div
               style={{
@@ -286,10 +283,21 @@ export default function SubscriptionPlansPage() {
               <Row>
               <Col md={{span: 8, offset: 2}} className={`text-center`} >
               <p className={`${styles.InfoTextI}`}>
-              Buy a Project Subscription Plan here, buy Budget Subscription Plans below.
+              Buy a "Platform Project with Budget" Subscription Plan here, buy a "Budget Only" Subscription Plan below.
               </p>
               <p className={`${styles.InfoTextI}`}>
-              Then create Projects and Budgets on the Projects/Budget page.
+              Then create Projects and Budgets on the Account page page.
+              </p>
+               <p className={`${styles.InfoTextI}`}>
+              The Company plans is for Film or TV projects with over 100 Users or Video projects 
+              with over 25 Users.
+              </p>
+              <p className={`${styles.InfoTextI}`}>
+              The Indie/Student plan is for Film or TV projects with under 100 Users or Video projects 
+              with under 25 Users.
+              </p>
+              <p className={`${styles.InfoTextI}`}>
+              The Video platforms are intended for Commercial work, Music Videos or Short films.
               </p>
               </Col>
               </Row>
@@ -300,7 +308,7 @@ export default function SubscriptionPlansPage() {
                     fontWeight: "bold",
                   }}
                 >
-                  Plans for Company for Projects with Budgets
+                  Company Platform Project with Budget Plans
                 </h3>
                 <Row className="justify-content-center">
                   {!loading &&
@@ -585,7 +593,7 @@ export default function SubscriptionPlansPage() {
                     fontWeight: "bold",
                   }}
                 >
-                  Plans for Indie/Student for Projects with Budgets
+                  Indie/Student Projects with Budgets Plans
                 </h3>
                 <Row className="justify-content-center">
                   {!loading &&
@@ -856,7 +864,7 @@ export default function SubscriptionPlansPage() {
                   fontWeight: "bold",
                 }}
               >
-                Budget Subscription Plans
+                Budget Only Subscription Plans
               </h3>
               <Row className="justify-content-center">
                 {!loading &&

@@ -54,6 +54,7 @@ const UsernameForm = () => {
           username,
         }))
         history.goBack()
+        toast.success(`Username Updated Successfully!`);
       } else {
         await axiosInstance.put("/dj-rest-auth/user/", {
           username,
@@ -63,10 +64,12 @@ const UsernameForm = () => {
           username,
         }))
         history.goBack()
+        toast.success(`Username Updated Successfully!`);
       }
     } catch (err) {
       console.log(err)
       setErrors(err.response?.data)
+      toast.error(`Username not Updated! Please try again.`);
     }
   }
 
@@ -96,10 +99,16 @@ const UsernameForm = () => {
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
           <Form onSubmit={handleSubmit} className="my-2">
+          <p className={`${styles.SmallSize} text-center`}>
+          Enter your new Username and note it down as an advisory email is not sent
+          </p>
+          <Row className="text-center">
+            <Col >
             <Form.Group>
-              <Form.Label>Change username</Form.Label>
+              <Form.Label className={`${styles.BoldScene}`}>New Username</Form.Label>
               <Form.Control
                 placeholder="username"
+                className={`${styles.Input}`}
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
@@ -110,18 +119,24 @@ const UsernameForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </Button>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              type="submit"
-            >
-              Submit
-            </Button>
+            </Col>
+            </Row>
+            <Row className="text-center mt-3">
+            <Col className="mt-3">
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue} mr-3 px-3 px-md-5`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue} ml-3 px-3 px-md-5`}
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Col>
+          </Row>
           </Form>
         </Container>
       </Col>

@@ -260,7 +260,7 @@ const ProfileEditForm = () => {
     </Form> */}
     {/* form2 */}
      <Form className={`${styles.WhiteBack } px-3`} onSubmit={handleSubmit}>
-        <Row className="mt-3">
+      <Row className="mt-3">
           <Col md={6} className="text-center" >
           <Form.Group controlId="name" className="mb-2">
             <Form.Label className={`${styles.BoldScene}`}>Name</Form.Label>
@@ -349,8 +349,8 @@ const ProfileEditForm = () => {
               </Form.Group>
             </div>
           </Col>
-        </Row>
-        <Row className="text-center mt-3">
+      </Row>
+      <Row className="text-center mt-3">
         <Col className="mt-3">
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mr-3 px-3 px-md-5`}

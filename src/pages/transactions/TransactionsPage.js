@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosDefaults";
 import TransactionsTable from "./TransactionTable";
+import styles from "../../styles/Account.module.css";
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 export default function TransactionsPage() {
   const [loading, setLoading] = useState(false);
@@ -72,7 +75,7 @@ export default function TransactionsPage() {
 
   return (
     <div>
-      <h2
+      {/* <h2
           className="text-center py-4 w-100 mt-2"
             style={{
               background: "#3B444A",
@@ -82,7 +85,21 @@ export default function TransactionsPage() {
             }}
           >
             Transaction List
-          </h2>
+          </h2> */}
+          <div className={`${styles.Top}`}>
+    <Row className="py-3 text-center">
+      <Col className=" d-flex align-items-center justify-content-center">
+      <h3 
+      style={{
+              textTransform: "uppercase",
+              // fontFamily: "Playfair Display",
+            }}
+      className={` ${styles.TopName2} pt-3`}>
+          Transaction List
+        </h3>
+      </Col>
+    </Row>
+    </div>
       <div
       className="py-4"
       style={{

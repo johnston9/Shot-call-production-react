@@ -74,6 +74,7 @@ const UserPasswordForm = () => {
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
+      toast.error(`Password not Updated! Please try again.`);
     }
   };
 
@@ -104,11 +105,17 @@ const UserPasswordForm = () => {
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
           <Form onSubmit={handleSubmit}>
+          <p className={`${styles.SmallSize} text-center`}>
+          Enter your new Password and note it down as an advisory email is not sent
+          </p>
+          <Row>
+          <Col>
             <Form.Group>
-              <Form.Label>New password</Form.Label>
+              <Form.Label className={`${styles.BoldScene}`}>New Password</Form.Label>
               <Form.Control
                 placeholder="new password"
                 type="password"
+                className={`${styles.Input}`}
                 value={new_password1}
                 onChange={handleChange}
                 name="new_password1"
@@ -120,10 +127,11 @@ const UserPasswordForm = () => {
               </Alert>
             ))}
             <Form.Group>
-              <Form.Label>Confirm password</Form.Label>
+              <Form.Label className={`${styles.BoldScene}`}>Confirm Password</Form.Label>
               <Form.Control
                 placeholder="confirm new password"
                 type="password"
+                className={`${styles.Input}`}
                 value={new_password2}
                 onChange={handleChange}
                 name="new_password2"
@@ -134,18 +142,24 @@ const UserPasswordForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-            >
-              Submit
-            </Button>
+            </Col>
+            </Row>
+            <Row className="text-center mt-3">
+            <Col className="mt-3">
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue} mr-3 px-3 px-md-5`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue} ml-3 px-3 px-md-5`}
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Col>
+          </Row>
           </Form>
         </Container>
       </Col>
