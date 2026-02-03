@@ -13,7 +13,8 @@ const InfoSub = () => {
           <p className={`${styles.Blue} text-center`}>SUBSCRIPTIONS INFO</p>
           <hr className={`mt-2 mb-0`}/>
           <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> Subscriptions <span className={`${styles.Blue}`}>Costume</span> are.
+          <span className={`${styles.Blue}`}>*</span>
+           Buy a "Platform Project with Budget" Subscription Plan here, buy a "Budget Only" Subscription Plan below.
           </p>
           <p className={`pt-2 ${styles.Small}`}>
           Note: .

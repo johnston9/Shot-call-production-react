@@ -113,7 +113,7 @@ const UserPasswordForm = () => {
             <Form.Group>
               <Form.Label className={`${styles.BoldScene}`}>New Password</Form.Label>
               <Form.Control
-                placeholder="new password"
+                placeholder="*******"
                 type="password"
                 className={`${styles.Input}`}
                 value={new_password1}
@@ -129,7 +129,7 @@ const UserPasswordForm = () => {
             <Form.Group>
               <Form.Label className={`${styles.BoldScene}`}>Confirm Password</Form.Label>
               <Form.Control
-                placeholder="confirm new password"
+                placeholder="*******"
                 type="password"
                 className={`${styles.Input}`}
                 value={new_password2}

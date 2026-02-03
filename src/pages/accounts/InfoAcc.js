@@ -13,18 +13,14 @@ const InfoAcc = () => {
           <p className={`${styles.Blue} text-center`}>ACCOUNT INFO</p>
           <hr className={`mt-2 mb-0`}/>
           <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> Purchase a <span className={`${styles.Blue}`}>Project</span> subscription 
+          <span className={`${styles.Blue}`}>*</span> Purchase a <span className={`${styles.Blue}`}>Platform Project</span> subscription 
           on the Subscriptions page then create Platform Projects below.
           </p>
           <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> All Platform Projects include Budgets.
-          </p>
-          <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> Purchase a <span className={`${styles.Blue}`}>Budget</span> subscription 
+          <span className={`${styles.Blue}`}>*</span> Purchase a <span className={`${styles.Blue}`}>Budget Only</span> subscription 
           on the Subscriptions page then create separate Budgets on the Budgets page.
           </p>
-          <p className={`pt-2 ${styles.Small}`}>
-          Note: .
+          <p className={`pt-2 ${styles.SmallSize}`}><span className={`${styles.Blue}`}>*</span> Note: All Platform Projects include Budgets.
           </p>
           <hr className={`mt-2 mb-0`}/>
          </div> 
