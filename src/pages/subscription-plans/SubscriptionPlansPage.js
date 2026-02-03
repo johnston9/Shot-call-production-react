@@ -282,22 +282,8 @@ export default function SubscriptionPlansPage() {
               </div> */}
               <Row>
               <Col md={{span: 8, offset: 2}} className={`text-center`} >
-              <p className={`${styles.InfoTextI}`}>
-              Buy a "Platform Project with Budget" Subscription Plan here, buy a "Budget Only" Subscription Plan below.
-              </p>
-              <p className={`${styles.InfoTextI}`}>
-              Then create Projects and Budgets on the Account page page.
-              </p>
                <p className={`${styles.InfoTextI}`}>
-              The Company plans is for Film or TV projects with over 100 Users or Video projects 
-              with over 25 Users.
-              </p>
-              <p className={`${styles.InfoTextI}`}>
-              The Indie/Student plan is for Film or TV projects with under 100 Users or Video projects 
-              with under 25 Users.
-              </p>
-              <p className={`${styles.InfoTextI}`}>
-              The Video platforms are intended for Commercial work, Music Videos or Short films.
+              Please click the Info button for Subscription information
               </p>
               </Col>
               </Row>
