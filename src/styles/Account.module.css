@@ -3,8 +3,23 @@
   color: #000;
 }
 
+.ChartTitle {
+  color: #00d1ff;
+  font-weight: 700;
+}
+
 .Blue {
   color: #00d1ff;
+}
+
+.SubTitleChart {
+    background-color: #fff;
+    border: 1px solid #39606e;
+    /* font-family: "Noto Serif"; */
+}
+
+.ChartBor {
+  border: 1px solid #00d1ff;
 }
 
 .SubTitle6 {

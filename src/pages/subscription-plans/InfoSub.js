@@ -42,11 +42,18 @@ const InfoSub = () => {
           to be made, Gold allowing 2, Gold ++ 10 and Platinum 25.
           </p>
           <p className={`pt-2`}>
+          <span className={`${styles.Blue}`}>*</span> You may only have one active Platform Project or Budget Only Plan at a time. If needed upgrade to 
+          a higher Plan.
+          </p>
+          <p className={`pt-2`}>
+          <span className={`${styles.Blue}`}>*</span> You may cancel your Subscription Plan at any time.
+          </p>
+          <p className={`pt-2`}>
           <span className={`${styles.Blue}`}>*</span> Once you purchase a Subscription Plan begin by creating Projects or Budgets
           on the Account page where you will find all the necessary informating needed.
           </p>
           <p className={`pt-2`}>
-          <span className={`${styles.Blue}`}>*</span> Please see the chart below for Subscription Plan details.
+          <span className={`${styles.Blue}`}>*</span> Please see the chart for Subscription Plan details.
           </p>
           <hr className={`mt-2 mb-0`}/>
          </div> 

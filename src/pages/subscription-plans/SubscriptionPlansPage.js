@@ -9,10 +9,12 @@ import GreenTick from "../../assets/green-tick.png";
 import { toast } from "react-hot-toast";
 import styles from "../../styles/Account.module.css";
 import InfoSub from "./InfoSub";
+import SubChart from "./SubChart";
 
 export default function SubscriptionPlansPage() {
   const history = useHistory();
   const [showImp, setShowImp] = useState(false);
+  const [showCha, setShowCha] = useState(false);
   const {
     loading: currentlyActivePlanLoading,
     currentlyActivePlans,
@@ -224,9 +226,9 @@ export default function SubscriptionPlansPage() {
       >
         Subscription Plans
       </h3>
-      {/* back button */}
+      {/* back chart info */}
       <Row className="mt-1">
-        <Col xs={6} className="">
+        <Col xs={4} className="">
         <Button
             className={`${btnStyles.Button} ${btnStyles.Blue}`}
             onClick={() => history.goBack()}
@@ -234,9 +236,16 @@ export default function SubscriptionPlansPage() {
             Back
         </Button>
         </Col>
-        <Col xs={6} >
+        <Col xs={4} className="text-center">
         <Button
-          className={`float-right px-5 ${btnStyles.Button} ${btnStyles.Order}`}
+          className={`px-5 ${btnStyles.Button} ${btnStyles.Shed}`}
+          onClick={() => setShowCha(showCha => !showCha)}
+        >CHART
+        </Button>
+        </Col>
+        <Col xs={4} >
+        <Button
+          className={`float-right px-3 ${btnStyles.Button} ${btnStyles.Order}`}
           onClick={() => setShowImp(showImp => !showImp)}
         >INFO
         </Button>
@@ -247,22 +256,21 @@ export default function SubscriptionPlansPage() {
               ) : (
                 <InfoSub  /> 
       ) } 
-      {/* <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "1rem",
-        }}
-      > */}
+      {!showCha ? (
+          ""
+              ) : (
+                <SubChart  /> 
+      ) } 
+      <Row className="my-2">
+      <Col md={{span: 8, offset: 2}} className={`text-center`} >
+        <p className={`${styles.SmallSize}`}>
+      Please click the Info and Chart buttons for Subscription information
+      </p>
+      </Col>
+      </Row>
       <div>
-        {/* <Row
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "2rem",
-          }}
-        ></Row> */}
         <Row style={{gap: "2rem",}}>
+          {/* PLATFORM PLANS */}
           <Col xs={12}>
             <div
               style={{
@@ -271,22 +279,7 @@ export default function SubscriptionPlansPage() {
                 gap: "1rem",
               }}
             >
-              {/* <div
-                style={{
-                  marginLeft: "1.2rem",
-                  fontWeight: "bold",
-                  fontSize: "18px",
-                }}
-              >
-                Projects with Budgets
-              </div> */}
-              <Row>
-              <Col md={{span: 8, offset: 2}} className={`text-center`} >
-               <p className={`${styles.InfoTextI}`}>
-              Please click the Info button for Subscription information
-              </p>
-              </Col>
-              </Row>
+              {/* Company Platform Projects with Budget Plans */}
               <div style={{ marginBottom: "2rem" }}>
                 <h3
                   className="px-2 pb-4 text-center"
@@ -294,7 +287,7 @@ export default function SubscriptionPlansPage() {
                     fontWeight: "bold",
                   }}
                 >
-                  Company Platform Project with Budget Plans
+                  Company Platform Projects with Budget Plans
                 </h3>
                 <Row className="justify-content-center">
                   {!loading &&
@@ -320,9 +313,6 @@ export default function SubscriptionPlansPage() {
                               gap: 2,
                             }}
                           >
-                            {/* {plan?.plan_type === "budget" && (
-                        <h4>Pay for Budget</h4>
-                      )} */}
                             <div
                               style={{
                                 display: "flex",
@@ -347,9 +337,6 @@ export default function SubscriptionPlansPage() {
                                       display: "flex",
                                       alignItems: "center",
                                       justifyContent: "center",
-                                      // borderRadius: "20px",
-                                      // border: "1px solid green",
-                                      // padding: "0.3rem 0.8rem",
                                     }}
                                   >
                                     Active
@@ -396,8 +383,6 @@ export default function SubscriptionPlansPage() {
                                 : {findDates(plan)?.trailEndDate}
                               </p>
                             )}
-
-                            {/* <p>Plan Id: {plan?.stripe_plan_id}</p> */}
                             {plan?.plan_type !== "budget" && (
                               <p
                                 className="mb-0"
@@ -572,6 +557,7 @@ export default function SubscriptionPlansPage() {
                     ))}
                 </Row>
               </div>
+              {/* Indie/Student Platform Projects with Budget Plans */}
               <div style={{ marginBottom: "2rem" }}>
                 <h3
                   className="px-2 py-4 text-center"
@@ -579,7 +565,7 @@ export default function SubscriptionPlansPage() {
                     fontWeight: "bold",
                   }}
                 >
-                  Indie/Student Projects with Budgets Plans
+                  Indie/Student Platform Projects with Budget Plans
                 </h3>
                 <Row className="justify-content-center">
                   {!loading &&
@@ -833,8 +819,8 @@ export default function SubscriptionPlansPage() {
                     ))}
                 </Row>
               </div>
-            </div>
-          </Col>
+              </div>
+              </Col>
           {/* BUDGET PLANS */}
           <Col xs={12}>
             <div
