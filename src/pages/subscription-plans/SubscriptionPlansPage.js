@@ -238,7 +238,7 @@ export default function SubscriptionPlansPage() {
         </Col>
         <Col xs={4} className="text-center">
         <Button
-          className={`px-5 ${btnStyles.Button} ${btnStyles.Shed}`}
+          className={`px-3 px-md-5 ${btnStyles.Button} ${btnStyles.Shed}`}
           onClick={() => setShowCha(showCha => !showCha)}
         >CHART
         </Button>
