@@ -61,7 +61,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 2 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -80,7 +83,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 3 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
@@ -100,7 +106,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 4 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -111,28 +120,30 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-      <div className={` ${styles.FeatureBox1}`}>
+    <div className={` ${styles.FeatureBox1}`}>
     <h4 >
      Create the Scene Character/BG Breakdown, the Characters being added quickly from a Dropdown
     </h4>
-    <h4 >
-     Character's Costumes Number can be added and will also be automatically loaded in other features
+    <h4 >The Wardrobe Department can use the Costume box to quickly add or update
+     Character's Costumes Numbers which will also be automatically loaded in other features
     </h4>
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 5 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-1 px-md-3" >
-    <p >
-    Collaborate in the Scene Workspaces by Department using Requirements, Workspaces 
-    and Finals Categories
-    </p>
-    <p >
-    Each Category displaying the number of Read and Unread Posts to guide collaboration
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Use the Production Tracker to design, collaborate and build Production Items by Scene 
+    in the Scene Workshop 
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -141,7 +152,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 6 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -152,19 +166,27 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-    <p >
-    Use the Department Category's Posts for precision work in the Scene
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+      The Workshops are divided by Department and use Requirements, Workspaces 
+    and Finals Categories each displaying the number of Read and Unread Posts
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 7 */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-1 px-md-3" >
-    <p >
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Upload Ideas and Images/Files in Posts each with a Comments Section
-    </p>
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -173,7 +195,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 8 */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -184,38 +209,18 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-      <p >
-    The Quick Find Posts page facilitates collaboration in the Scenes Workspace and is designed
-    to make sure relevant Posts are easily found
-    </p>
-    <p >
-    Click the Feed tab to view Posts by Users that are being followed
-    </p>
-    <p >
-    Click the Liked or Starred tabs to return all Liked or Starred Posts 
-    </p>
-    </Col>
-    </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
-    {/* 9 */}
-    <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
-    <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-    <p>
-    THere the Departments return all a Department's Requirements, Workspace or Finals
-    Posts
-    </p>
-    <p>
-    The Requirement and Finals Posts being returned in Scene order
-    </p>
-    </Col>
-    <Col xs={12} md={8}>
-    <div className="text-center px-1 px-md-3">
-    <Image src={quick2} alt="image" 
-      className={` ${styles.FeatureImage}`} />
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Use the Quick Find Posts page to easily find Posts by Department, your Feed 
+    or Liked or Starred Posts
+    </h4>
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     {/* mobile */}
     <div className="d-block d-md-none">
@@ -241,7 +246,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 2 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8} className="text-center px-1 px-md-3" >
@@ -260,7 +268,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 3 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -280,7 +291,10 @@ const Workspaces = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 4 */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -292,16 +306,19 @@ const Workspaces = () => {
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-3 mt-3" >
     <div className={` ${styles.FeatureBox1}`}>
-    <h4 >
+     <h4 >
      Create the Scene Character/BG Breakdown, the Characters being added quickly from a Dropdown
     </h4>
-    <h4 >
-     Character's Costumes Number can be added and will also be automatically loaded in other features
+    <h4 >The Wardrobe Department can use the Costume box to quickly add or update
+     Character's Costumes Numbers which will also be automatically loaded in other features
     </h4>
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 5 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -312,16 +329,18 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-3 mt-3" >
-    <p >
-    Collaborate in the Scene Workspaces by Department using Requirements, Workspaces 
-    and Finals Categories
-    </p>
-    <p >
-    Each Category displaying the number of Read and Unread Posts to guide collaboration
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Use the Production Tracker to design, collaborate and build Production Items by Scene 
+    in the Scene Workshop 
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 6 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -332,12 +351,18 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-3 mt-3" >
-    <p >
-    Use the Department Category's Posts for precision work in the Scene
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+      The Workshops are divided by Department and use Requirements, Workspaces 
+    and Finals Categories each displaying the number of Read and Unread Posts
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 7 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -348,12 +373,17 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-3 mt-3" >
-    <p >
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Upload Ideas and Images/Files in Posts each with a Comments Section
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 8 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -364,39 +394,18 @@ const Workspaces = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-3 mt-3" >
-    <p >
-    The Quick Find Posts facilitates collaboration in the Scenes Workspace and is designed
-    to make sure relevant Posts are easily found
-    </p>
-    <p >
-    Click the Feed tab to view Posts by Users that are being followed
-    </p>
-    <p >
-    Click the Liked or Starred tabs to return all Liked or Starred Posts 
-    </p>
-    </Col>
-    </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
-    {/* 9 */}
-    <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
-    <Col xs={12} md={8}>
-    <div className="text-center px-1 px-md-3">
-    <Image src={quick2} alt="image" 
-      className={` ${styles.FeatureImage}`} />
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Use the Quick Find Posts page to easily find Posts by Department, your Feed 
+    or Liked or Starred Posts
+    </h4>
     </div>
     </Col>
-    <Col xs={12} md={{span: 3, offset: 1 }}
-      className="text-center px-3 mt-3" >
-    <p>
-    The Quick Find Posts Departments return all a Department's Requirements, Workspace or Finals
-    Posts
-    </p>
-    <p>
-    The Requirement and Finals Posts being returned in Scene order
-    </p>
-    </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     <Row>
     <Col className="text-center mt-4" >
