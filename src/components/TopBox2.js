@@ -23,7 +23,7 @@ function TopBox2(props) {
         <Col className="pb-1" xs={12}>
             <div className={`${styles.Titlebox}`}>
             <Row>
-                <Col xs={2} className="float-right" >
+                <Col xs={1} className="float-right" >
                     <Image
                         className={`float-right ${styles.SmallPanel}`}
                         src={door}
@@ -31,7 +31,7 @@ function TopBox2(props) {
                         height="100"
                     />
                 </Col>
-                <Col xs={8} className={`d-flex align-items-center justify-content-center ${styles.Alignme}`} >
+                <Col xs={10} className={`d-flex align-items-center justify-content-center ${styles.Alignme}`} >
                     <div >
                     {work && <h2 className={` text-center ${styles.Title}`}>{work} </h2>}
                     {title && <h2 className={` text-center ${styles.Title2}`}>{title} </h2>}

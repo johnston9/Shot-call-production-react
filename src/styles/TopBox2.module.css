@@ -11,13 +11,22 @@
 
 .Titlebox {
 	background-color: #3b444b;
+    background-color: #39606e;
 	/* margin-bottom: 10px;
 	margin-top: 10px; */
 }
 
-.SmallPanel {
+/* .SmallPanel {
     height: 100px;
     padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+} */
+
+.SmallPanel {
+    width: 5px;
+    object-fit: cover;
+    height: 90px;
     padding-top: 10px;
     padding-bottom: 10px;
 }

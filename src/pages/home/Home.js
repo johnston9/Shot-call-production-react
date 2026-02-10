@@ -76,7 +76,7 @@ const Home = () => {
                 </h4>
                 <p className={`${styles.Creative}`} 
                   style={{fontStyle: 'italic'}}>
-                Collaborate and design in Scenes Workspace
+                Collaborate and Design in the Scenes Workspace
                 </p>
                 <Row >
                 {/* Breakdowns / Workshops */}
@@ -283,7 +283,7 @@ const Home = () => {
         </Row>
         </div> */}
 
-      {/* Section 2 - Overview in 4 parts with temporary image   */}
+      {/* Section 2 - Overview   */}
       <div>
         <div className="px-3 mt-3">
           {/* part 1 - platform */}
@@ -295,14 +295,44 @@ const Home = () => {
               </h5>
             </Col>
           </Row>
-          {/* 1 */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
+            <Col xs={12} className="text-center">
+              <p>
+                Create professional standard highly detailed Budgets quickly.
+              </p>
+              <p>
+                Create and collaborate in the Scenes Workspace and Moodboards.
+              </p>
+               <p>
+                Easily create Shotlists, Schedules and
+                personalized Callsheets.
+              </p>
+              <p>
+                Manage Cast and Crew.
+              </p>
+              <p>
+                All features are Mobile compatible.
+              </p>
+            </Col>
+          </Row>
+          {/* 1 */}
+          {/* <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={6} className="text-center">
               <p>
                 Create professional standard highly detailed Budgets quickly.
               </p>
               <p>
-                Create and collaborate in Scenes Workspace and Moodboards.
+                Create and collaborate in the Scenes Workspace and Moodboards.
+              </p>
+               <p>
+                Easily create Shotlists, Schedules and
+                personalized Callsheets.
+              </p>
+              <p>
+                Manage Cast and Crew.
+              </p>
+              <p>
+                All features are Mobile compatible.
               </p>
             </Col>
             <Col xs={6} >
@@ -310,9 +340,9 @@ const Home = () => {
                 <Image src={home8} alt="image" className={` ${styles.ImageSection2}`} />
               </div>
             </Col>
-          </Row>
+          </Row> */}
           {/* 2 */}
-          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
+          {/* <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={6} md={6}>
               <div className="text-center">
                 <Image src={home3} alt="image" className={` ${styles.ImageSection2}`} />
@@ -330,7 +360,7 @@ const Home = () => {
                 All features are Mobile compatible.
               </p>
             </Col>
-          </Row>
+          </Row> */}
           {/* Quick Runthrough */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={6} className="text-center">
@@ -400,9 +430,11 @@ const Home = () => {
         <Col xs={9} className="text-center" >
         <h4>Breakdowns and Workshops</h4>
         <p >
-        Create a Scene Page for each Scene
-        that contains the all the work features 
-        including Breakdowns and Department Workshops.
+        Create Scenes that contain the all the work features 
+        including Breakdowns.
+        </p>
+        <p >
+        Collaborate on Production Items in Scene Workshops using the Production Tracker.
         </p>
         </Col>
         </Row>
@@ -608,8 +640,7 @@ const Home = () => {
         <Col xs={9} md={6} className="text-center" >
         <h4>Mobile View</h4>
         <p >
-        Use all Features in Mobile View and find all Posts fast 
-        using the Quick Find Feature
+        Use all Features in Mobile View
         </p>
         </Col>
         <Col xs={3} className="d-none d-md-block" >
