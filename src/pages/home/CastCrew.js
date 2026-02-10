@@ -20,8 +20,8 @@ const CastCrew = () => {
   
   return (
     <div className={`mt-0 ${styles.BlueBody}`}>
-    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-       Cast and Crew</h2>
+    <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+                CAST & CREW</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -53,7 +53,10 @@ const CastCrew = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew one */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
@@ -76,7 +79,10 @@ const CastCrew = () => {
       </div>
       </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew two */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -93,7 +99,10 @@ const CastCrew = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew mo one */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
@@ -111,7 +120,10 @@ const CastCrew = () => {
       </div>
       </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew two */}
     <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -130,7 +142,10 @@ const CastCrew = () => {
        </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     {/* mobile */}
     <div className="d-block d-md-none">
@@ -152,7 +167,10 @@ const CastCrew = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew one */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -175,7 +193,10 @@ const CastCrew = () => {
       </p>
       </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew two */}
     <Row className="mt-3 px-3 align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -191,7 +212,10 @@ const CastCrew = () => {
     </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew mo one */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
@@ -209,7 +233,10 @@ const CastCrew = () => {
        </p>
       </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* crew mo two */}
     <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -227,7 +254,10 @@ const CastCrew = () => {
        </p>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     </div>
   )

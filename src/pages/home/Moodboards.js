@@ -20,8 +20,8 @@ const Moodboards = () => {
 
   return (
     <div className={`mt-0 ${styles.BlueBody}`}>
-    <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-      Moodboards / Indexcards / Indexshots</h2>
+    <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+            PRE-VIS: MOODBOARDS & INDEXCARDS & INDEXSHOTS</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button
@@ -44,24 +44,31 @@ const Moodboards = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-    <p >
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Create Moodboards for Characters, Locations,
-    Scenes or other themes
-    </p>
-    <p >
+    Scenes or other Themes
+    </h4>
+    <h4 >
     They can be created or viewed from 
     their respective pages or from the Moodboards page
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 2  */} 
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-1 px-md-3" >
-    <p >
-    Multiple Moodboards may be used for each Character, Location and Scene
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Characters, Locations and Scenes may have multiple Moodboards
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -70,7 +77,10 @@ const Moodboards = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 3 */}
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -81,22 +91,29 @@ const Moodboards = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-    <p >
-    A Moodboard can be added solely for a Character, Location 
-    and Scene or any combination of the three, interlinking them and 
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Moodboards may be added solely for a Character, Location 
+    or Scene or any combination of the three, interlinking them and 
     allowing general or specific exploration and design
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 4  */} 
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={{span: 3, offset: 1 }}
       className="text-center px-1 px-md-3" >
-    <p >
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Create Indexcards to track the "Story" and "Style" elements
     for each Scene
-    </p>
+    </h4>
+    </div>
     </Col>
     <Col xs={12} md={8}>
     <div className="text-center px-1 px-md-3">
@@ -105,7 +122,10 @@ const Moodboards = () => {
     </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 5 */}
     <Row className="px-3 mt-4 pb-4 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -116,17 +136,23 @@ const Moodboards = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-    <p>
+      <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Use Indexshots to pre-visualize action, style,
-    colour or shot sequences and themes
-    </p>
-    <p>
-    Similar to Moodboards but of unlimited length this feature is 
-    designed for action sequences and exploring themes that may run throughout the
+    or shot sequences and themes
+    </h4>
+    <h4 >
+    Similar to Moodboards but of unlimited length Indexshots
+    may be used to design action sequences or explore themes that may run throughout the
     entire production
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     {/* mobile */}
     <div className="d-block d-md-none">
@@ -140,17 +166,22 @@ const Moodboards = () => {
     </Col>
     <Col xs={12}
     className="text-center px-3 mt-3" >
-    <p >
+      <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Create Moodboards for Characters, Locations,
-    Scenes or other themes
-    </p>
-    <p >
+    Scenes or other Themes
+    </h4>
+    <h4 >
     They can be created or viewed from 
     their respective pages or from the Moodboards page
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 2  */} 
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -160,12 +191,17 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center px-3 mt-3" >
-    <p >
-    Multiple Moodboards may be used for each Character, Location and Scene
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Characters, Locations and Scenes may have multiple Moodboards
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* 3 */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -176,14 +212,19 @@ const Moodboards = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-3 mt-3" >
-    <p >
-    A Moodboard can be added solely for a Character, Location 
-    and Scene or any combination of the three, interlinking them and 
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
+    Moodboards may be added solely for a Character, Location 
+    or Scene or any combination of the three, interlinking them and 
     allowing general or specific exploration and design
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* indexcards  */} 
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -193,14 +234,19 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 1 }}
-      className="text-center px-3 mt-3" >
-    <p >
+      className="text-center px-3 mt-4" >
+    <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Create Indexcards to track the "Story" and "Style" elements
     for each Scene
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
-    <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
+    <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     {/* indexshots */}
     <Row className="px-3 mt-3 d-flex align-items-center justify-content-center">
     <Col xs={12} md={8}>
@@ -211,15 +257,17 @@ const Moodboards = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-3 mt-3" >
-    <p>
+     <div className={` ${styles.FeatureBox1}`}>
+    <h4 >
     Use Indexshots to pre-visualize action, style,
-    colour or shot sequences and themes
-    </p>
-    <p>
-    Similar to Moodboards but of unlimited length this feature is 
-    designed for action sequences and exploring themes that may run throughout the
+    or shot sequences and themes
+    </h4>
+    <h4 >
+    Similar to Moodboards but of unlimited length Indexshots
+    may be used to design action sequences or explore themes that may run throughout the
     entire production
-    </p>
+    </h4>
+    </div>
     </Col>
     </Row>
     </div>

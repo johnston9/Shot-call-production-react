@@ -127,20 +127,20 @@ const NavBar = () => {
           <NavLink
             className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
-            ref={refw2}
-            to="charslocates"
+            ref={refw1}
+            to="/moodboards"
           >
-            <i className="navicon fas fa-play"></i>Characters / Locations
+            <i className="navicon fas fa-play"></i>Pre-vis: Moodboards / Indexcards / Indexshots
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink
             className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
-            ref={refw1}
-            to="/moodboards"
+            ref={refw2}
+            to="charslocates"
           >
-            <i className="navicon fas fa-play"></i>Moodboards / Indexshots
+            <i className="navicon fas fa-play"></i>Characters / Locations
           </NavLink>
         </NavDropdown.Item>
       </NavDropdown>

@@ -24,8 +24,8 @@ const Mobile = () => {
   
     return (
       <div className={`mt-0 ${styles.BlueBody}`}>
-      <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-       Moblile View</h2>
+      <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+            MOBILE VIEW</h2>
       <Row className="mt-1 ml-2" >
           <Col xs={3}>
           <Button
@@ -69,6 +69,10 @@ const Mobile = () => {
       <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 2 Posts */}
       <Row className="px-3 pb-md-4 mt-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={6}>
@@ -92,6 +96,10 @@ const Mobile = () => {
       <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 3 breakdown */}
       <Row className="px-3 pb-md-4 mt-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={6}>
@@ -115,12 +123,21 @@ const Mobile = () => {
       <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* vv v */}
       <Row>
       <Col className="text-center" >
       <h4 className={`py-2 ${styles.OverviewText} ${appStyles.playfair}
        text-center`} >Scenes Shotlist</h4>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 4 shotlist */}
       <Row className="px-3 pb-md-4 mt-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={6}>
@@ -144,6 +161,10 @@ const Mobile = () => {
       <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       {/* 5 shotlist */}
       <Row className="px-3 pb-md-4 mt-3">
       <Col xs={12} md={{span: 6, offset: 3}}>
@@ -157,6 +178,10 @@ const Mobile = () => {
       <div className={`${styles.Overview} py-4 px-0 mx-0`}><hr/></div>
       </Col>
       </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
       </div>
     )
   }
