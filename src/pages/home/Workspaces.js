@@ -232,7 +232,7 @@ const Workspaces = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center mt-3 px-3" >
+    <Col xs={12} className="text-center mt-5 px-3" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     The primary Creative work takes place in the the Scenes Workspace
@@ -259,7 +259,7 @@ const Workspaces = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-    className="text-center px-3" >
+    className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Each Scene contains a Breakdown, Workshop, Shotlist, Characters/BG,
@@ -280,7 +280,7 @@ const Workspaces = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
      Create the Scene Breakdown quickly with the help of Select Dropdowns
@@ -304,7 +304,7 @@ const Workspaces = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-    className="text-center px-3 mt-3" >
+    className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
      <h4 >
      Create the Scene Character/BG Breakdown, the Characters being added quickly from a Dropdown
@@ -328,7 +328,7 @@ const Workspaces = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 1 }}
-      className="text-center px-3 mt-3" >
+      className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Use the Production Tracker to design, collaborate and build Production Items by Scene 

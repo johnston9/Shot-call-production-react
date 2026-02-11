@@ -76,21 +76,21 @@ const Home = () => {
                 </h4>
                 <p className={`${styles.Creative}`} 
                   style={{fontStyle: 'italic'}}>
-                Collaborate and Design in the Scenes Workspace
+                Collaborate and Design with Workspaces & Pre-vis
                 </p>
                 <Row >
                 {/* Breakdowns / Workshops */}
                 <Col md={6} >
                 <p className={`${styles.Depts}`}
                   onClick={() => history.push('/workspaces')}>
-                Breakdowns / Workshops
+                Breakdowns & Workshops 
                 </p>
                 </Col>
                 {/* Moodboards / Indexshots */}
                 <Col md={6} >
                 <p className={`${styles.Depts}`}
                   onClick={() => history.push('/moodboards')}>
-                Moodboards / Indexshots
+                Moodboards & Indexshots
                 </p>
                 </Col>
                 </Row>
@@ -99,7 +99,7 @@ const Home = () => {
                 <Col md={6}>
                 <p className={`${styles.Depts}`}
                   onClick={() => history.push('/charslocates')} >
-                Characters / Locations 
+                Characters & Locations 
                 </p>
                 </Col>
                 {/* Shotlists / Storyboards */}
@@ -140,7 +140,7 @@ const Home = () => {
                 <Col md={6}>
                 <p className={`${styles.Depts}`}
                   onClick={() => history.push('/castcrew')}>
-                Cast / Crew
+                Cast & Crew
                 </p>
                 </Col>
                 {/* Mobile View */}
@@ -162,126 +162,7 @@ const Home = () => {
              </Row>
           </Col>
         </Row>
-        </div>
-        {/* Mobile view possibly don't need one */}
-        {/* <div className={`${styles.HomeBoxMo} d-md-none`}
-        style={{ backgroundImage: `url(${city1})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat', }}
-        >
-        <Row className={styles.Row}>
-          <Col className="my-5" xs={12}>
-            <Row>
-               <Col xs={12} className={` text-center ${styles.Header}`} >
-                <h2 className={`${styles.Header}`} >TV and Film Production Software</h2>
-                <h5 className={`${styles.Header}`}  style={{fontStyle: 'italic'}}>
-                  The entire Creative and Production processes 
-                  in one Workflow.</h5>
-                <Row className="mt-5" >
-                <Col className={`text-center  ${styles.Creative} `} xs={12} >
-                <h4 className={`mb-2 ${styles.Creative}`}>
-                Budgeting
-                </h4>
-                <p className={`${styles.Creative}`} 
-                  style={{fontStyle: 'italic'}}>
-                Create Industry standard Budgets easily
-                </p>
-                </Col>
-                </Row>
-                <Row>
-                <Col xs={12} >
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/budgeting')}>
-                Budgeting
-                </p>
-                </Col>
-                </Row>
-                <Row className="mt-3" >
-                <Col className={`text-center  ${styles.Creative} `} md={6}>
-                <h4 className={`mb-2 ${styles.Creative}`}>
-                The Creative
-                </h4>
-                <p className={`${styles.Creative}`} 
-                  style={{fontStyle: 'italic'}}>
-                Collaborate and design in Scene Department Workspaces
-                </p>
-                <Row >
-                <Col xs={12} >
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/workspaces')}>
-                Breakdowns / Workspaces
-                </p>
-                </Col>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/moodboards')}>
-                Moodboards / Indexshots
-                </p>
-                </Col>
-                </Row>
-                <Row>
-                <Col xs={12} >
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/shotstory')} >
-                Shotlists
-                </p>
-                </Col>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/charslocates')} >
-                Characters / Locations 
-                </p>
-                </Col>
-                </Row>
-                </Col>
-                <Col xs={12} className={` ${styles.Creative} `} >
-                <h4 className={`mb-2 ${styles.Creative}`}>
-                Production
-                </h4>
-                <p className={`${styles.Header}`}
-                  style={{fontStyle: 'italic'}}>
-                All Production Software Tools in one Connected Workflow
-                </p>
-                <Row>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/schedule')}>
-                Schedule Stripboards
-                </p>
-                </Col>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/callsheets')} >
-                Callsheets
-                </p>
-                </Col>
-                </Row>
-                <Row>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/castcrew')}>
-                Cast / Crew
-                </p>
-                </Col>
-                <Col xs={12}>
-                <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/mobile')} >
-                Mobile View
-                </p>
-                </Col>
-                </Row>
-                </Col>
-                </Row>
-                <Container className="mt-3" >
-                <Link className={styles.Link} to="/signup">
-                  Sign up <span>Here</span>
-                </Link>
-                </Container>
-               </Col>
-             </Row>
-          </Col>
-        </Row>
-        </div> */}
+        </div>       
 
       {/* Section 2 - Overview   */}
       <div>
@@ -290,28 +171,28 @@ const Home = () => {
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={12} md={12} className="text-center">
               <h5>
-                Design and manage TV and Film Production on one platform
-                utilizing interlinking features.
+                Design and manage Film, TV and Video Production on one platform
+                utilizing interlinking features
               </h5>
             </Col>
           </Row>
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
             <Col xs={12} className="text-center">
               <p>
-                Create professional standard highly detailed Budgets quickly.
+                Create professional standard highly detailed Budgets quickly
               </p>
               <p>
-                Create and collaborate in the Scenes Workspace and Moodboards.
+                Create and collaborate in the Scenes Workspace and Moodboards
               </p>
                <p>
                 Easily create Shotlists, Schedules and
-                personalized Callsheets.
+                personalized Callsheets
               </p>
               <p>
-                Manage Cast and Crew.
+                Manage Cast and Crew
               </p>
               <p>
-                All features are Mobile compatible.
+                All features are Mobile compatible
               </p>
             </Col>
           </Row>
@@ -363,15 +244,15 @@ const Home = () => {
           </Row> */}
           {/* Quick Runthrough */}
           <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} className="text-center">
+            <Col md={6} className="text-center d-none d-md-block">
             <h3>
                 A Quick Runthrough
               </h3>
             </Col>
-            <Col xs={6} >
+            <Col md={6} className="text-center">
               <div>
                 <iframe
-                  width="70%"
+                  width="100%"
                   height="315"
                   src={`${VIMEO_BASE_URL}403530213`} // Replace with your dummy YouTube link
                   title="Tutorial"
@@ -380,14 +261,17 @@ const Home = () => {
                   allowFullScreen
                 ></iframe>
               </div>
+              <h3 className="text-center d-block d-md-none">
+                A Quick Runthrough
+              </h3>
             </Col>
           </Row>
           {/* A Closer Look */}
-          <Row className="mt-1 mt-md-5 d-flex align-items-center justify-content-center">
-            <Col xs={6} md={{span: 6, offset: 1}} >
+          <Row className="mt-5 d-flex align-items-center justify-content-center">
+            <Col xs={12} md={6} >
               <div>
                 <iframe
-                  width="70%"
+                  width="100%"
                   height="315"
                   src={`${VIMEO_BASE_URL}403530213`} // Replace with your dummy YouTube link
                   title="Tutorial"
@@ -397,7 +281,7 @@ const Home = () => {
                 ></iframe>
               </div>
             </Col>
-            <Col xs={6} md={5} className="text-center">
+            <Col xs={12} md={6} className="text-center">
             <h3>
                 A Closer Look
               </h3>
@@ -430,11 +314,10 @@ const Home = () => {
         <Col xs={9} className="text-center" >
         <h4>Breakdowns and Workshops</h4>
         <p >
-        Create Scenes that contain the all the work features 
-        including Breakdowns.
+          Use the Scenes Workspace to create Breakdowns and other creative features
         </p>
         <p >
-        Collaborate on Production Items in Scene Workshops using the Production Tracker.
+        Use the Production Tracker to collaborate on Production Items in Scene Workshops
         </p>
         </Col>
         </Row>
@@ -446,7 +329,7 @@ const Home = () => {
           className={`${styles.FeatureLink} `}>
         <Row >
         <Col xs={9} className="text-center" >
-        <h4>Moodboards and Indexshots</h4>
+        <h4>Pre-vis: Moodboards and Indexshots</h4>
         <p >
         Use Moodboards to guide and design Scenes,
         Characters and Locations. Use Indexshots to design sequences

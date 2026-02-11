@@ -202,7 +202,7 @@ const ShotStory = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} md={{span: 3, offset: 1 }} className="text-center mt-3 px-3" >
+    <Col xs={12} md={{span: 3, offset: 1 }} className="text-center mt-5 px-3" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Create the Scene Storyboard in your prefered method then upload it 
@@ -224,7 +224,7 @@ const ShotStory = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center mt-3 px-3" >
+      className="text-center mt-5 px-3" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Create easy to read Shotlists for each Scene the main Info displaying on top
@@ -248,7 +248,7 @@ const ShotStory = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center mt-3 px-3" >
+    <Col xs={12} className="text-center mt-5 px-3" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Click the Info tab to view the extra Info added
@@ -268,7 +268,7 @@ const ShotStory = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} md={{span: 3, offset: 0 }} className="text-center px-3 mt-3" >
+    <Col xs={12} md={{span: 3, offset: 0 }} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Click the Image link to view the Shot Sketch if added
@@ -288,7 +288,7 @@ const ShotStory = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     View the Storyboard and the Shotlist
@@ -310,7 +310,7 @@ const ShotStory = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center px-1 mt-3" >
+      className="text-center px-1 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     The Scene Script can be added to the Scene page if desired and changed when necessary
@@ -330,7 +330,7 @@ const ShotStory = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Add the Full Script to the Scenes page along with

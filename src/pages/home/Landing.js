@@ -92,6 +92,125 @@ const Landing = () => {
              </Row>
           </Col>
         </Row>
+        {/* Mobile view possibly don't need one */}
+        {/* <div className={`${styles.HomeBoxMo} d-md-none`}
+        style={{ backgroundImage: `url(${city1})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat', }}
+        >
+        <Row className={styles.Row}>
+          <Col className="my-5" xs={12}>
+            <Row>
+               <Col xs={12} className={` text-center ${styles.Header}`} >
+                <h2 className={`${styles.Header}`} >TV and Film Production Software</h2>
+                <h5 className={`${styles.Header}`}  style={{fontStyle: 'italic'}}>
+                  The entire Creative and Production processes 
+                  in one Workflow.</h5>
+                <Row className="mt-5" >
+                <Col className={`text-center  ${styles.Creative} `} xs={12} >
+                <h4 className={`mb-2 ${styles.Creative}`}>
+                Budgeting
+                </h4>
+                <p className={`${styles.Creative}`} 
+                  style={{fontStyle: 'italic'}}>
+                Create Industry standard Budgets easily
+                </p>
+                </Col>
+                </Row>
+                <Row>
+                <Col xs={12} >
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/budgeting')}>
+                Budgeting
+                </p>
+                </Col>
+                </Row>
+                <Row className="mt-3" >
+                <Col className={`text-center  ${styles.Creative} `} md={6}>
+                <h4 className={`mb-2 ${styles.Creative}`}>
+                The Creative
+                </h4>
+                <p className={`${styles.Creative}`} 
+                  style={{fontStyle: 'italic'}}>
+                Collaborate and design in Scene Department Workspaces
+                </p>
+                <Row >
+                <Col xs={12} >
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/workspaces')}>
+                Breakdowns / Workspaces
+                </p>
+                </Col>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/moodboards')}>
+                Moodboards / Indexshots
+                </p>
+                </Col>
+                </Row>
+                <Row>
+                <Col xs={12} >
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/shotstory')} >
+                Shotlists
+                </p>
+                </Col>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/charslocates')} >
+                Characters / Locations 
+                </p>
+                </Col>
+                </Row>
+                </Col>
+                <Col xs={12} className={` ${styles.Creative} `} >
+                <h4 className={`mb-2 ${styles.Creative}`}>
+                Production
+                </h4>
+                <p className={`${styles.Header}`}
+                  style={{fontStyle: 'italic'}}>
+                All Production Software Tools in one Connected Workflow
+                </p>
+                <Row>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/schedule')}>
+                Schedule Stripboards
+                </p>
+                </Col>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/callsheets')} >
+                Callsheets
+                </p>
+                </Col>
+                </Row>
+                <Row>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/castcrew')}>
+                Cast / Crew
+                </p>
+                </Col>
+                <Col xs={12}>
+                <p className={`${styles.Depts}`}
+                  onClick={() => history.push('/mobile')} >
+                Mobile View
+                </p>
+                </Col>
+                </Row>
+                </Col>
+                </Row>
+                <Container className="mt-3" >
+                <Link className={styles.Link} to="/signup">
+                  Sign up <span>Here</span>
+                </Link>
+                </Container>
+               </Col>
+             </Row>
+          </Col>
+        </Row>
+        </div> */}
         </div>
     </div>
   );
