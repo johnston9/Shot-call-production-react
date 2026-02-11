@@ -26,7 +26,7 @@ const Workspaces = () => {
   return (
     <div className={`mt-0 ${styles.BlueBody} mx-0`}>
     <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
-      THE SCENES WORKSPACE - BREAKDOWNS & WORKSHOPS</h2>
+      SCENES WORKSPACE - BREAKDOWNS & WORKSHOPS</h2>
     <Row className="mt-1 ml-2" >
         <Col xs={3}>
         <Button

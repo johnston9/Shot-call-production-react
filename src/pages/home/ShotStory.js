@@ -25,7 +25,7 @@ const ShotStory = () => {
   return (
     <div className={`mt-0 ${styles.BlueBody}`}>
       <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
-            THE SCENES WORKSPACE - STORYBOARD & SHOTLIST & SCRIPT</h2>
+            SCENES WORKSPACE - STORYBOARD & SHOTLIST & SCRIPT</h2>
     <Row className="mt-1" >
         <Col xs={3}>
         <Button

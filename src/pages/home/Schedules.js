@@ -39,12 +39,15 @@ const Schedules = () => {
       {/* one */}
       <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-      <p >
-      Create Shooting Schedules with easy to read Stripboards in minutes</p>
-      <p >
-      Use Drag and Drop to re-order them quickly and automatically change
-      all Order numbers
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Create Shooting Schedules Stripboards in minutes
+      </h4>
+      <h4 >
+      Use Drag and Drop to re-order Shots quickly automatically changing
+      Shot Numbers
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -67,11 +70,11 @@ const Schedules = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-      <p >
-      Select a Scene by Act or 
-      Location to autofill the Stripboard Scene Breakdown Info and then
-      add the Shooting Info
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Select Scenes by Dropdowns to autofill the Stripboard Scene Breakdown then add the Shooting Info
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -82,8 +85,11 @@ const Schedules = () => {
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p> Click the Info link to view extra Info also pre-filled on selection
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Click the Info tab to view pre-filled Info from the Scene Breakdown
+      </h4>
+      </div>    
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -106,9 +112,11 @@ const Schedules = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-      <p >
-      Click the Cast link to view Pre-filled Cast, BG and Costumes Info
-      </p>
+       <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Click the Cast tab to view pre-filled Cast, BG and Costumes Info from the Scene Breakdown
+      </h4>
+      </div>   
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -118,8 +126,11 @@ const Schedules = () => {
       {/* 5 */}
       <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-      <p >
-      Schedules Stripboards in Mobile View</p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Stripboards in Mobile View
+      </h4>
+      </div> 
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -142,9 +153,11 @@ const Schedules = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-1 px-md-3" >
-      <p >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       Schedules Info and Characters/BG in Mobile View
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -155,8 +168,11 @@ const Schedules = () => {
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-      <p> Stripboard Edit page in Mobile View
-      </p>
+        <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Stripboard Edit page in Mobile View
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -181,12 +197,15 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      Create Shooting Schedules with easy to read Stripboards in minutes</p>
-      <p >
-      Use Drag and Drop to re-order them quickly and automatically change
-      all Order numbers
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Create Shooting Schedules Stripboards in minutes
+      </h4>
+      <h4 >
+      Use Drag and Drop to re-order Shots quickly automatically changing
+      Shot Numbers
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -203,11 +222,11 @@ const Schedules = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
       className="text-center px-3 mt-3" >
-      <p >
-      Select a Scene by Act or 
-      Location to autofill the Stripboard Scene Breakdown Info and then
-      add the Shooting Info
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Select Scenes by Dropdowns to autofill the Stripboard Scene Breakdown then add the Shooting Info
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -223,8 +242,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p> Click the Info link to view extra Info also pre-filled on selection
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Click the Info tab to view pre-filled Info from the Scene Breakdown
+      </h4>
+      </div>         
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -240,9 +262,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      Click the Cast link to view Pre-filled Cast, BG and Costumes Info
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Click the Cast tab to view pre-filled Cast, BG and Costumes Info from the Scene Breakdown
+      </h4>
+      </div> 
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -258,8 +282,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      Schedules Stripboards in Mobile View</p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Stripboards in Mobile View
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -275,9 +302,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       Schedules Info and Characters/BG in Mobile View
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -293,8 +322,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p> Stripboard Edit page in Mobile View
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Stripboard Edit page in Mobile View
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>

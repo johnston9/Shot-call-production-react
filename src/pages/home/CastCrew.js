@@ -44,13 +44,15 @@ const CastCrew = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-    <p >
-    Add Cast members to their Character page allowing their details
-       to be pre-filled on selection in the Callsheet Cast Call Times section
-    </p>
-    <p >
-    This also enables Callsheets to be automatically sent to their email
-    </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add Cast members to their Character page, their details
+      being pre-filled in the Callsheet Cast Calltimes section
+      </h4>
+      <h4 >
+      This also enables Callsheets to be automatically sent to their email
+      </h4>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -60,17 +62,15 @@ const CastCrew = () => {
     {/* crew one */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-      <p >
-       The Crew Info conprised two sections the Callsheet Main Crew 
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Crew Info conprised two sections the Callsheet Main Crew 
        and the Non-Callsheet Extra Crew 
-       </p>
-      <p >
-       Add the Callsheet Main Crew to their Department allowing their details
-       to be pre-filled on the Callsheet Crew Call Times section
-       </p>
-       <p >
-      This also enables Callsheets to be automatically sent to their email
-      </p>
+      </h4>
+      <h4 >
+      The Callsheet Main Crew will automatically be sent Callsheets to their email
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -93,10 +93,11 @@ const CastCrew = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-    <p>
-      Add the Non-Callsheet Extra Crew to their Department in a section
-      below the Main Crew
-    </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add the Non-Callsheet Extra Crew on their Department page
+      </h4>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -106,12 +107,14 @@ const CastCrew = () => {
     {/* crew mo one */}
     <Row className="mt-1 mt-md-3 pb-4 px-3 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-3" >
-      <p >
-       The Mobile View Main Crew page
-       </p>
-       <p >
-       The Extra Crew displays similarly on Mobile
-       </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Mobile View Main Crew page
+      </h4>
+      <h4 >
+      The Extra Crew displays similarly on Mobile
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
@@ -134,12 +137,14 @@ const CastCrew = () => {
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
     className="text-center px-1 px-md-3" >
-      <p >
-       The Mobile View Add Main Crew page
-    </p>
-    <p >
-       The Add Extra Crew displays similarly on Mobile
-       </p>
+    <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Mobile Add Main Crew page
+      </h4>
+      <h4 >
+      The Add Extra Crew displays similarly on Mobile
+      </h4>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -158,13 +163,15 @@ const CastCrew = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center px-3 mt-3" >
-    <p >
-    Add Cast members to their Character page allowing their details
-       to be pre-filled on selection in the Callsheet Cast Call Times section
-    </p>
-    <p >
-    This also enables Callsheets to be automatically sent to their email
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add Cast members to their Character page, their details
+      being pre-filled in the Callsheet Cast Calltimes section
+      </h4>
+      <h4 >
+      This also enables Callsheets to be automatically sent to their email
+      </h4>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -180,17 +187,15 @@ const CastCrew = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-       The Crew Info conprised two sections the Callsheet Main Crew 
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Crew Info conprised two sections the Callsheet Main Crew 
        and the Non-Callsheet Extra Crew 
-       </p>
-      <p >
-       Add the Callsheet Main Crew to their Department allowing their details
-       to be pre-filled on the Callsheet Crew Call Times section
-       </p>
-       <p >
-      This also enables Callsheets to be automatically sent to their email
-      </p>
+      </h4>
+      <h4 >
+      The Callsheet Main Crew will automatically be sent Callsheets to their email
+      </h4>
+      </div>
       </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -206,10 +211,13 @@ const CastCrew = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center px-3 mt-3" >
-    <p>
-      Add the Non-Callsheet Extra Crew to their Department in a section
-      below the Main Crew
-    </p>
+    <div className={` ${styles.FeatureBox1}`}>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add the Non-Callsheet Extra Crew on their Department page
+      </h4>
+      </div>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -225,12 +233,14 @@ const CastCrew = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-       The Mobile View Main Crew page
-       </p>
-       <p >
-       The Extra Crew displays similarly on Mobile
-       </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Mobile View Main Crew page
+      </h4>
+      <h4 >
+      The Extra Crew displays similarly on Mobile
+      </h4>
+      </div>
       </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -246,12 +256,14 @@ const CastCrew = () => {
     </div>
     </Col>
     <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-       The Mobile Add Main Crew page
-    </p>
-    <p >
-       The Add Extra Crew displays similarly on Mobile
-       </p>
+    <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Mobile Add Main Crew page
+      </h4>
+      <h4 >
+      The Add Extra Crew displays similarly on Mobile
+      </h4>
+      </div>
     </Col>
     </Row>
     <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
