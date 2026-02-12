@@ -51,12 +51,13 @@ const Callsheets = () => {
         className="px-1 px-md-3" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      Create Callsheets for each Shoot Day, the top section containing 
-      Company info, Times and Weather info
-      and a Personalised Calltime for each individual user
+      Create Callsheets with a Personalised Calltime for each Crew and Cast User
       </h4>
       <h4>
       Use the Send Button to send the Callsheet to all Cast and Crew with one click
+      </h4>
+      <h4>
+      Check the Received page to view all received Acknowledgements 
       </h4>
       </div>
       </Col>
@@ -408,14 +409,17 @@ const Callsheets = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p className="mt-2">
-      Create Callsheets for each Shoot Day, the top section containing 
-      Company info, Times and Weather info
-      and a Personalised Calltime for each individual user
-      </p>
-      <p>
-      Use the Send Button to send the callsheet to all Cast and Crew with one click
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Create Callsheets with a Personalised Calltime for each Crew and Cast User
+      </h4>
+      <h4>
+      Use the Send Button to send the Callsheet to all Cast and Crew with one click
+      </h4>
+      <h4>
+      Check the Received page to view all received Acknowledgements 
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>

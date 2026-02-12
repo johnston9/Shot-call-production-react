@@ -157,7 +157,7 @@ const CharsLocates = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Create Characters then add the Actor Details which will be automaticlly added
@@ -182,7 +182,7 @@ const CharsLocates = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-    className="text-center px-3 mt-3" >
+    className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Add the Character Makeup Image and Details

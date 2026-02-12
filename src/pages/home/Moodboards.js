@@ -165,7 +165,7 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12}
-    className="text-center px-3 mt-3" >
+    className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Create Moodboards for Characters, Locations,
@@ -190,7 +190,7 @@ const Moodboards = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Characters, Locations and Scenes may have multiple Moodboards
@@ -211,7 +211,7 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center px-3 mt-3" >
+      className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Moodboards may be added solely for a Character, Location 
@@ -234,7 +234,7 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 1 }}
-      className="text-center px-3 mt-4" >
+      className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Create Indexcards to track the "Story" and "Style" elements
@@ -256,7 +256,7 @@ const Moodboards = () => {
     </div>
     </Col>
     <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center px-3 mt-3" >
+      className="text-center px-3 mt-5" >
      <div className={` ${styles.FeatureBox1}`}>
     <h4 >
     Use Indexshots to pre-visualize action, style,

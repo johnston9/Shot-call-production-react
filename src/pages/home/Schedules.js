@@ -72,7 +72,8 @@ const Schedules = () => {
       className="text-center px-1 px-md-3" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      Select Scenes by Dropdowns to autofill the Stripboard Scene Breakdown then add the Shooting Info
+      Create the Stripboard by selecting Scenes by Dropdowns to autofill the 
+      Stripboard Scene Breakdown then add the Shooting Info
       </h4>
       </div>
       </Col>
@@ -196,7 +197,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Create Shooting Schedules Stripboards in minutes
@@ -221,10 +222,11 @@ const Schedules = () => {
       </div>
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center px-3 mt-3" >
+      className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      Select Scenes by Dropdowns to autofill the Stripboard Scene Breakdown then add the Shooting Info
+      Create the Stripboard by selecting Scenes by Dropdowns to autofill the 
+      Stripboard Scene Breakdown then add the Shooting Info
       </h4>
       </div>
       </Col>
@@ -241,7 +243,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Click the Info tab to view pre-filled Info from the Scene Breakdown
@@ -261,7 +263,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Click the Cast tab to view pre-filled Cast, BG and Costumes Info from the Scene Breakdown
@@ -281,7 +283,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Stripboards in Mobile View
@@ -301,7 +303,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Schedules Info and Characters/BG in Mobile View
@@ -321,7 +323,7 @@ const Schedules = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Stripboard Edit page in Mobile View

@@ -162,7 +162,7 @@ const CastCrew = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Add Cast members to their Character page, their details
@@ -186,7 +186,7 @@ const CastCrew = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Crew Info conprised two sections the Callsheet Main Crew 
@@ -210,7 +210,7 @@ const CastCrew = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
@@ -232,7 +232,7 @@ const CastCrew = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Mobile View Main Crew page
@@ -255,7 +255,7 @@ const CastCrew = () => {
       className={` ${styles.FeatureImage}`} />
     </div>
     </Col>
-    <Col xs={12} className="text-center px-3 mt-3" >
+    <Col xs={12} className="text-center px-3 mt-5" >
     <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Mobile Add Main Crew page
