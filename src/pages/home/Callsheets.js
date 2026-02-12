@@ -86,7 +86,7 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3 mt-2" >
-          <div className={` ${styles.FeatureBox1}`}>
+      <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       View the Callsheet on mobile with the top section displaying 
       all info as the desktop view and with 
@@ -103,9 +103,9 @@ const Callsheets = () => {
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-          <div className={` ${styles.FeatureBox1}`}>
+      <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      The Locations section
+      The Locations section automatically added from the Schedule
       </h4>
       </div>
       </Col>
@@ -130,7 +130,7 @@ const Callsheets = () => {
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
         className="text-center px-1 px-md-3" >
-          <div className={` ${styles.FeatureBox1}`}>
+      <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Locations section Mobile view
       </h4>
@@ -145,10 +145,9 @@ const Callsheets = () => {
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={{span: 3, offset: 1 }}
         className="text-center px-1 px-md-3" >
-          <div className={` ${styles.FeatureBox1}`}>
+      <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      The Schedule section which is added 
-      automatically from the Schedule page
+      The Schedule automatically from the Schedule page
       </h4>
       </div>
       </Col>
@@ -175,7 +174,7 @@ const Callsheets = () => {
         className="text-center px-1 px-md-3 mt-2" >
           <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      View the Schedule section on Mobile by clicking on the Schedule link
+      The Schedule section Mobile view
       </h4>
       </div>
       </Col>
@@ -408,7 +407,7 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       Create Callsheets with a Personalised Calltime for each Crew and Cast User
@@ -434,12 +433,14 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       View the Callsheet on mobile with the top section displaying 
       all info as the desktop view and with 
       links below to all the other sections
-      </p>
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -454,10 +455,12 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      The Locations section
-      </p>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Locations section automatically added from the Schedule
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -472,10 +475,12 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      View the Locations section on Mobile by clicking on the Locations link
-      </p>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Locations section Mobile view
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -491,13 +496,11 @@ const Callsheets = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      The Schedule section which is added 
-      automatically from the Schedule page
-      </p>
-      <p >
-      View the Cast and Info by clicking on their links
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Schedule automatically from the Schedule page
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -513,12 +516,11 @@ const Callsheets = () => {
       </div>
       </Col>
       <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      View the Schedule section on Mobile by clicking on the Schedule link
-      </p>
-      <p >
-      The Cast and Info open by clicking on their links
-      </p>
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Schedule section Mobile view
+      </h4>
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
