@@ -14,7 +14,8 @@ import Image from "react-bootstrap/Image";
 import Alert from "react-bootstrap/Alert";
 
 import { useHistory } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosInstance, axiosReq, axiosRes} from "../../api/axiosDefaults";
+// import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import { useRedirect } from "../../hooks/Redirect";
 
@@ -111,8 +112,19 @@ function ChatCreateForm({setShow}) {
     }
 
     try {
-      const { data } = await axiosReq.post("/chat/", formData);
-      history.push(`/chat/${data.id}`);
+      // const { data } = await axiosReq.post("/chat/", formData);
+      const { data } = await axiosInstance.post(
+        `/chat/`, formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          withCredentials: true,
+        }
+      );
+      history.goBack();
+      // history.push(`/chat/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {

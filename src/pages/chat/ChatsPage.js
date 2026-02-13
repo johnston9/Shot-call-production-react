@@ -16,7 +16,8 @@ import styles from "../../styles/ChatsPage.module.css";
 import NoResults from "../../assets/no-results.png";
 import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect } from "react";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosInstance, axiosReq, axiosRes} from "../../api/axiosDefaults";
+// import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ChatTop from "./ChatTop";
@@ -40,9 +41,21 @@ function ChatsPage({message, filter=""} ) {
   useEffect(() => {
     const fetchChat = async () => {
       try {
-        const { data } = await axiosReq.get(`/chat/?${filter}search=${query}`);
+        // const { data } = await axiosReq.get(`/chat/?${filter}search=${query}`);
+        const { data } = await axiosInstance.get(
+          `/chat/?${filter}search=${query}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            withCredentials: true,
+          }
+        );
+
         setChat(data);
         setHasLoaded(true);
+        console.log(data)
       } catch (err) {
         console.log(err);
       }
@@ -137,7 +150,7 @@ function ChatsPage({message, filter=""} ) {
         {/* chats */}
         {hasLoaded ? (
           <>
-            {chat.results.length ? (
+            {chat.results?.length ? (
               <InfiniteScroll 
                children={
                 chat.results.map((cha) => (

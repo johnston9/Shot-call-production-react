@@ -3,7 +3,8 @@
    Which use the followHelper function in utils
  * query context is just used to reload after selection is changed */
 import { createContext, useContext, useEffect, useState } from "react";
-import { axiosReq, axiosRes } from "../api/axiosDefaults";
+import { axiosInstance, axiosReq, axiosRes} from "../api/axiosDefaults";
+// import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
 import { CLIENT_PROGRAM_HOSTNAME } from "../utils/config";
@@ -80,9 +81,19 @@ export const ProfileDataProvider = ({ children }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(
-          "/profiles/?ordering=-followers_count"
-        );
+        // const { data } = await axiosReq.get(
+        //   "/profiles/?ordering=-followers_count"
+        // );
+        const { data } = await axiosInstance.get(
+                  `/profiles/?ordering=-followers_count`,
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                    },
+                    withCredentials: true,
+                  }
+                );
         setProfileData((prevState) => ({
           ...prevState,
           profilesAll: data,

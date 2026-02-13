@@ -103,6 +103,35 @@ function App() {
           {/* chat  */}
           <Route exact path="/needtosignin" render={() => <NeedToSignIn />} />
           <Route exact path="/chat/edit/:id" render={() => <ChatEditForm />} />
+          {/* Feed chat*/}
+          <Route
+            exact
+            path="/chat"
+            render={() => <ChatsPage message="No results found." />}
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <ChatsPage
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+                message="No results found. Adjust the search keyword or follow a user."
+              />
+            )}
+          />
+          {/* Liked chat*/}
+          <Route
+            exact
+            path="/liked"
+            render={() => (
+              <ChatsPage
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                message="No results found. Adjust the search keyword or like a chat."
+              />
+            )}
+          />
+          <Route exact path="/chat/:id" render={() => <ChatPage />} />
+          {/* subscriptions  */}
           <Route
             exact
             path="/subscription-plans"
@@ -138,11 +167,6 @@ function App() {
             render={() => <BudgetCreate />}
           />
           <Route exact path="/:id/budgets/edit" render={() => <BudgetEdit type={0}/>} />
-          <Route
-            exact
-            path="/chat"
-            render={() => <ChatsPage message="No results found." />}
-          />
           {/* for budget only */}
           <Route exact path="/budgets" render={() => <BPage />} />
           <Route exact path="/budgets/create" render={() => <BCreate type={0} />} />
@@ -172,11 +196,6 @@ function App() {
           />
           <Route
             exact
-            path="/chat"
-            render={() => <ChatsPage message="No results found." />}
-          />
-          <Route
-            exact
             path="/contact-us"
             render={() => <ContactUs message="No results found." />}
           />
@@ -185,29 +204,6 @@ function App() {
             path="/how-it-works/:video_id/:title"
             render={() => <HowItWorks message="No results found." />}
           />
-          {/* Feed chat*/}
-          <Route
-            exact
-            path="/feed"
-            render={() => (
-              <ChatsPage
-                filter={`owner__followed__owner__profile=${profile_id}&`}
-                message="No results found. Adjust the search keyword or follow a user."
-              />
-            )}
-          />
-          {/* Liked chat*/}
-          <Route
-            exact
-            path="/liked"
-            render={() => (
-              <ChatsPage
-                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
-                message="No results found. Adjust the search keyword or like a chat."
-              />
-            )}
-          />
-          <Route exact path="/chat/:id" render={() => <ChatPage />} />
           {/* accounts */}
           <Route exact path="/accounts/:id" render={() => <AccountPage />} />
           {/* projects */}

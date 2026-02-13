@@ -386,13 +386,13 @@ const NavBar = () => {
           {/* Production */}
           {productionIcons}
           {/* chat */}
-          {/* <NavLink
+          <NavLink
             className={` pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}
             to="/chat"
           >
             <i className="fas fa-play"></i>Chat
-          </NavLink> */}
+          </NavLink>
           <NavLink
             className={` pt-1 mx-2  ${styles.NavLink}`}
             activeClassName={styles.Active}
