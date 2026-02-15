@@ -225,9 +225,9 @@ const NavBar = () => {
             className={` ${styles.DropLink} `}
             activeClassName={styles.Active}
             ref={reff4}
-            to="mobile"
+            to="second"
           >
-            <i className="navicon fas fa-play"></i>Mobile View
+            <i className="navicon fas fa-play"></i>2ND UNIT
           </NavLink>
         </NavDropdown.Item>
       </NavDropdown>
@@ -379,7 +379,7 @@ const NavBar = () => {
             activeClassName={styles.Active}
             to="/budgeting"
           >
-            <i className="fas fa-play"></i>Budgeting
+            <i className="navicon fas fa-stream pt-1"></i>Budgeting
           </NavLink>
           {/* creative */}
           {creativeIcons}

@@ -31,8 +31,8 @@ const Callsheets = () => {
   
     return (
       <div className={`mt-0 ${styles.BlueBody}`}>
-      <h2 className={`text-center py-3 ${styles.SubTitle } ${appStyles.playfair}`}>
-       Callsheets</h2>
+       <h2 className={`text-center py-2 ${styles.SubTitle } ${appStyles.cinzel}`}>
+                   CALLSHEETS</h2>
       <Row className="mt-1 ml-2" >
           <Col xs={3}>
           <Button
@@ -51,11 +51,50 @@ const Callsheets = () => {
         className="px-1 px-md-3" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      Create Callsheets with a Personalised Calltime for each Crew and Cast User
+      Create Callsheets with a Personalised Calltime for each Callsheet Crew and Cast User
       </h4>
-      <h4>
-      Use the Send Button to send the Callsheet to all Cast and Crew with one click
-      </h4>
+      </div>
+      </Col>
+      <Col xs={12} md={8}>
+      <Card className='mx-3 mx-md-5' >
+      <Card.Body className={`text-center px-md-5 `}  >
+      <div className="text-center px-1 px-md-3">
+      <Image src={top2} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Card.Body>
+      </Card>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* emails */}
+      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={email4} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} md={{span: 3, offset: 0 }} className="text-center px-1 px-md-1" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+       Use the Send button to send the Callsheet link
+       to all Callsheet Crew and relevant Cast</h4>
+       </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* Received */}
+      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={{span: 3, offset: 1 }}
+        className="px-1 px-md-3" >
+      <div className={` ${styles.FeatureBox1}`}>
       <h4>
       Check the Received page to view all received Acknowledgements 
       </h4>
@@ -99,19 +138,21 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* 3 Locations  */}
+      {/* cast add */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={{span: 3, offset: 1 }}
-        className="text-center px-1 px-md-3" >
+      <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      The Locations section automatically added from the Schedule
+      Add the Cast quickly by selecting a Role
+      which pre-fills their details and displays their Makeup
+      and Commute times on top <br/>
+      All previously added characters display below 
       </h4>
       </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={callocdesk} alt="image" 
+      <Image src={call3} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
@@ -120,84 +161,43 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* Locations mo */}
-      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
+      {/* side by side */}
+      <Row className="mt-3 px-3 pb-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={callocmo} alt="image" 
+      <Image src={shedcast5} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
-        className="text-center px-1 px-md-3" >
+      className="text-center px-1 px-md-3" >
+        <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Add Cast and Add BG forms can be viewed beside the Schedule for 
+      maximum efficiency
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* add crew */}
+      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      The Locations section Mobile view
-      </h4>
-      </div>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* Schedule  */}
-      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={{span: 3, offset: 1 }}
-        className="text-center px-1 px-md-3" >
-      <div className={` ${styles.FeatureBox1}`}>
-      <h4 >
-      The Schedule automatically from the Schedule page
-      </h4>
-      </div>
+        Add all the Crew Call Times in a second by using the Set Unit Call button which
+        sets all times to its value</h4>
+       <h4>
+       Then set any different Calls individually by Department pre-filled from the Crew Info page
+       </h4>
+       </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={calshed2} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* Schedule mo */}
-      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={calshedmo2} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} md={{span: 3, offset: 0 }}
-        className="text-center px-1 px-md-3 mt-2" >
-          <div className={` ${styles.FeatureBox1}`}>
-      <h4 >
-      The Schedule section Mobile view
-      </h4>
-      </div>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* Advanced Schedule  */}
-      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={{span: 3, offset: 1 }}
-        className="text-center px-1 px-md-3" >
-          <div className={` ${styles.FeatureBox1}`}>
-      <h4 >
-      The Advanced Schedule section which is added 
-      automatically from the Schedule page
-      </h4>
-      <h4 className="mt-5">The Walkies Channels section below it</h4>
-      </div>
-      </Col>
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={adshed} alt="image" 
+      <Image src={crewaddcal} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
@@ -300,7 +300,7 @@ const Callsheets = () => {
         className="text-center px-1 px-md-3" >
           <div className={` ${styles.FeatureBox1}`}>
       <h4>
-      The Department, Transport and Important Notes section</h4>
+      The Important, Transport and Department Notes section</h4>
       </div>
       </Col>
       </Row>
@@ -308,21 +308,19 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* cast add */}
+      {/* 3 Locations  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
+      <Col xs={12} md={{span: 3, offset: 1 }}
+        className="text-center px-1 px-md-3" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      Add the Cast quickly by selecting a Role
-      which pre-fills their details and displays their Makeup
-      and Commute times on top <br/>
-      All previously added characters display below 
+      The Locations section automatically added from the Schedule
       </h4>
       </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={call3} alt="image" 
+      <Image src={callocdesk} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
@@ -331,20 +329,19 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* side by side */}
-      <Row className="mt-3 px-3 pb-4 d-flex align-items-center justify-content-center">
+      {/* Locations mo */}
+      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={shedcast5} alt="image" 
+      <Image src={callocmo} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
       <Col xs={12} md={{span: 3, offset: 0 }}
-      className="text-center px-1 px-md-3" >
-        <div className={` ${styles.FeatureBox1}`}>
+        className="text-center px-1 px-md-3" >
+      <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-      The Add Cast and Add BG forms can be viewed beside the Schedule for 
-      maximum efficiency
+      The Locations section Mobile view
       </h4>
       </div>
       </Col>
@@ -353,21 +350,19 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* add crew */}
+      {/* Schedule  */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={{span: 3, offset: 1 }} className="text-center px-1 px-md-1" >
+      <Col xs={12} md={{span: 3, offset: 1 }}
+        className="text-center px-1 px-md-3" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-        Add all the Crew Call Times in a second by using the Set Unit Call button which
-        sets all times to its value</h4>
-       <h4>
-       Then set any different Calls individually by Department pre-filled from the Crew Info page
-       </h4>
-       </div>
+      The Schedule automatically from the Schedule page
+      </h4>
+      </div>
       </Col>
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={crewaddcal} alt="image" 
+      <Image src={calshed2} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
@@ -376,20 +371,44 @@ const Callsheets = () => {
       <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
       </hr>
       </div>
-      {/* emails */}
+      {/* Schedule mo */}
       <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
       <Col xs={12} md={8}>
       <div className="text-center px-1 px-md-3">
-      <Image src={email4} alt="image" 
+      <Image src={calshedmo2} alt="image" 
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} md={{span: 3, offset: 0 }} className="text-center px-1 px-md-1" >
-      <div className={` ${styles.FeatureBox1}`}>
+      <Col xs={12} md={{span: 3, offset: 0 }}
+        className="text-center px-1 px-md-3 mt-2" >
+          <div className={` ${styles.FeatureBox1}`}>
       <h4 >
-       Use the Send button to send the Callsheet link
-       to all Crew and relevant Cast members</h4>
-       </div>
+      The Schedule section Mobile view
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* Advanced Schedule  */}
+      <Row className="px-3 pb-4 mt-4 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={{span: 3, offset: 1 }}
+        className="text-center px-1 px-md-3" >
+          <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Advanced Schedule section which is added 
+      automatically from the Schedule page
+      </h4>
+      <h4 className="mt-2">The Walkie Channels section below it</h4>
+      </div>
+      </Col>
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={adshed} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -412,11 +431,46 @@ const Callsheets = () => {
       <h4 >
       Create Callsheets with a Personalised Calltime for each Crew and Cast User
       </h4>
-      <h4>
-      Use the Send Button to send the Callsheet to all Cast and Crew with one click
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* emails */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={email4} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+       Use the Send button to send the Callsheet link
+       to all Callsheet Crew and the relevant Cast
       </h4>
-      <h4>
-      Check the Received page to view all received Acknowledgements 
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* received */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={email4} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+       Check the Received page to view all received Acknowledgements 
       </h4>
       </div>
       </Col>
@@ -439,6 +493,157 @@ const Callsheets = () => {
       View the Callsheet on mobile with the top section displaying 
       all info as the desktop view and with 
       links below to all the other sections
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* cast add  */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={call3} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      Add the Add Cast quickly to the Callsheet by selecting a Role
+      to pre-fill their details and display their Makeup
+      and Commute times on top while all previously added characters display below 
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* side by side */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={shedcast5} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      View the Add Cast and Add BG forms beside the Schedule for 
+      maximum efficiency
+      </h4>
+      <h4 >
+      Click a Schedule Scene's Cast link to find 
+      which Cast members and BG to add
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* add crew */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={crewaddcal} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+       Add all the Crew Call Times in a second by using the Set Unit Call button which
+        sets all times to it's value
+      </h4>
+      <h4 >
+      Then set any different Calls individually by Department pre-filled from the Crew Info page
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* Cast */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={caltal} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Cast and BG Calltimes sections
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* crew  */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={calcrew} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Crew Calltimes by Department section
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* Cast mo */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={castcallsmo} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Cast and BG Calltimes sections Mobile View
+      </h4>
+      </div>
+      </Col>
+      </Row>
+      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
+      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+      </hr>
+      </div>
+      {/* crew mo */}
+      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
+      <Col xs={12} md={8}>
+      <div className="text-center px-1 px-md-3">
+      <Image src={crewcallsmo} alt="image" 
+        className={` ${styles.FeatureImage}`} />
+      </div>
+      </Col>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Crew Calltimes sections Mobile View
       </h4>
       </div>
       </Col>
@@ -495,7 +700,7 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Schedule automatically from the Schedule page
@@ -515,7 +720,7 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
+      <Col xs={12} className="text-center px-3 mt-5" >
       <div className={` ${styles.FeatureBox1}`}>
       <h4 >
       The Schedule section Mobile view
@@ -535,82 +740,16 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
       The Advanced Schedule section which is added 
-      automatically from the Schedule page
-      </p>
-      <p className="mt-5">The Walkies Channels section below it</p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
+      automatically
+      </h4>
+      <h4 >
+      The Walkie Channels section below it
+      </h4>
       </div>
-      {/* Cast */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={caltal} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      The Cast and BG Calltimes sections</p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* crew  */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={calcrew} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      The Crew Call Times by Department
-      </p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* Cast mo */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={castcallsmo} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      View the Cast and BG Calltimes sections on Mobile</p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* crew mo */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={crewcallsmo} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      View the Crew Call Times by Department on Mobile
-      </p>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
@@ -625,91 +764,12 @@ const Callsheets = () => {
         className={` ${styles.FeatureImage}`} />
       </div>
       </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      The Department, Transport and Important Notes section</p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
+      <Col xs={12} className="text-center px-3 mt-5" >
+      <div className={` ${styles.FeatureBox1}`}>
+      <h4 >
+      The Important, Transport and Department Notes section
+      </h4>
       </div>
-      {/* cast add  */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={call3} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      Add the Add Cast quickly to the Callsheet by selecting a Role
-      to pre-fill their details and display their Makeup
-      and Commute times on top while all previously added characters display below 
-      </p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* side by side */}
-      <Row className="mt-3 px-3d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={shedcast5} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-      View the Add Cast and Add BG forms beside the Schedule for 
-      maximum efficiency
-      </p>
-      <p >
-      Click a Scene's Cast link to find 
-      which cast members and BG to add
-      </p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* add crew */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={crewaddcal} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-        Add all the Crew Call Times in a second by using the Set Unit Call button which
-        sets all times to it's value</p>
-       <p>
-       Then set any different Calls individually by Department pre-filled from the Crew Info page
-       </p>
-      </Col>
-      </Row>
-      <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>
-      <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
-      </hr>
-      </div>
-      {/* emails */}
-      <Row className="mt-3 px-3 d-flex align-items-center justify-content-center">
-      <Col xs={12} md={8}>
-      <div className="text-center px-1 px-md-3">
-      <Image src={email4} alt="image" 
-        className={` ${styles.FeatureImage}`} />
-      </div>
-      </Col>
-      <Col xs={12} className="text-center px-3 mt-3" >
-      <p >
-       Use the Send button to send the Callsheet link
-       to all Crew members and the relevant Cast members</p>
       </Col>
       </Row>
       <div className={`${styles.Overview} py-2 mt-3 px-0 mx-0`}>

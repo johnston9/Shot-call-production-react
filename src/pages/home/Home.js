@@ -45,9 +45,17 @@ const Home = () => {
             <Row>
                <Col xs={12} className={` text-center ${styles.Header}`} >
                 <h2 className={`${styles.Header}`} >TV and Film Production Software</h2>
-                <h5 className={`${styles.Header}`}  style={{fontStyle: 'italic'}}>
+                <h5 className={`${styles.Header}`} style={{fontStyle: 'italic'}}>
                   The entire Creative and Production processes 
-                  in one Workflow.</h5>
+                  in one Workflow
+                </h5>
+                <Row>
+                <Col className="text-center" >
+                <p className={`${styles.Header} pt-1`} style={{fontStyle: 'italic'}}>
+                All features, apart from Budgeting, are totally Mobile compatable
+                </p>
+                </Col>
+                </Row>
                   {/* Budgeting */}
                 <Row className="mt-3" >
                 <Col className={`text-center  ${styles.Creative} `} xs={12} >
@@ -143,11 +151,11 @@ const Home = () => {
                 Cast & Crew
                 </p>
                 </Col>
-                {/* Mobile View */}
+                {/* 2ND UNIT */}
                 <Col md={6}>
                 <p className={`${styles.Depts}`}
-                  onClick={() => history.push('/mobile')} >
-                Mobile View
+                  onClick={() => history.push('/second')} >
+                2nd Unit
                 </p>
                 </Col>
                 </Row>
@@ -190,9 +198,6 @@ const Home = () => {
               </p>
               <p>
                 Manage Cast and Crew
-              </p>
-              <p>
-                All features are Mobile compatible
               </p>
             </Col>
           </Row>
@@ -505,10 +510,10 @@ const Home = () => {
         </Col>
         </Row>
         <Row className="my-3">
-        {/* Mobile */}
+        {/* second */}
         <Col className="d-none d-md-block" md={2}></Col>
         <Col xs={12} md={8} className="mt-3 mt-md-0">
-        <div onClick={() => history.push('/mobile')}
+        <div onClick={() => history.push('/second')}
           className={`${styles.FeatureLink} `}>
         <Row>
         <Col xs={3} >
@@ -521,9 +526,9 @@ const Home = () => {
         </div>
         </Col>
         <Col xs={9} md={6} className="text-center" >
-        <h4>Mobile View</h4>
+        <h4>2nd Unit</h4>
         <p >
-        Use all Features in Mobile View
+        Manage the 2nd Unit Crew, Schedule and Callsheets in its own section
         </p>
         </Col>
         <Col xs={3} className="d-none d-md-block" >

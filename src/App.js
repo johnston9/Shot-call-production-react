@@ -52,6 +52,7 @@ import styles from "./App.module.css";
 import MyBudget from "./pages/budget/budgets/MyBudget";
 import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 import Budgeting from "./pages/home/Budgeting";
+import SecondUnit from "./pages/home/SecondUnit";
 // import { PublicBudgetListing } from "./pages/budget/public-budget/PublicBudgetListing";
 
 // import BudgetPage from "./pages/accounts/BudgetPage";
@@ -99,7 +100,7 @@ function App() {
           <Route exact path="/castcrew" render={() => <CastCrew />} />
           <Route exact path="/schedule" render={() => <Schedules />} />
           <Route exact path="/callsheets" render={() => <Callsheets />} />
-          <Route exact path="/mobile" render={() => <Mobile />} />
+          <Route exact path="/second" render={() => <SecondUnit />} />
           {/* chat  */}
           <Route exact path="/needtosignin" render={() => <NeedToSignIn />} />
           <Route exact path="/chat/edit/:id" render={() => <ChatEditForm />} />

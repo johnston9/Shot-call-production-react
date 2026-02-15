@@ -270,6 +270,10 @@ const Moodboards = () => {
     </div>
     </Col>
     </Row>
+    <div className={`${styles.Overview} py-2 my-3 px-0 mx-0`}>
+    <hr className={`${styles.Five} py-2 mt-3 px-0 mx-0`}>
+    </hr>
+    </div>
     </div>
     </div>
   )
